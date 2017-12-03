@@ -1,2 +1,2 @@
 # litwr2.github.io
-Documentation to my software projects
+Documentation for my software projects
