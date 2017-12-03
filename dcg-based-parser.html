@@ -1,0 +1,134 @@
+<style>
+em { font-style: normal; font-weight: bold; color: red }
+i { font-style: normal; color: blue; background-color: yellow }
+</style>
+
+<h1><a href=https://github.com/litwr2/simple-rdc>dcg-based-parser</a></h1>
+
+<p>It is a simple programming language step-by-step implementation using DCG-parsing power.  It also evaluates a code and optinally builds a parse tree.  It is tested with gprolog (1.4.4) but it possibly can be used with other prolog translators.
+
+<p><strong>Step 1</strong>.  It is a calculator for the real arithmetic.  It works with any formula compliant with the next grammar in BNF:
+
+<hr>
+<pre>
+Input <em>&#x2192;</em> Expression <em>|</em> <i>nothing</i>
+Expression <em>&#x2192;</em> Term Expression_rest
+Expression_rest <em>&#x2192;</em> <i>+</i> Term Expression_rest <em>|</em> <i>-</i> Term Expression_rest <em>|</em> <i>nothing</i>
+Term <em>&#x2192;</em> Factor Term_Rest
+Term_Rest <em>&#x2192;</em> <i>*</i> Factor Term_Rest <em>|</em> <i>/</i>  Factor Term_Rest <em>|</em> <i>nothing</i>
+Factor <em>&#x2192;</em> Element <i>^</i> Factor <em>|</em> <i>-</i> Factor <em>|</em> <i>+</i> Factor <em>|</em> Element
+Element <em>&#x2192;</em> <i>(</i> Expression <i>)</i> <em>|</em> <i>number</i>
+</pre>
+<hr>
+
+<p>Use `hoc1.pro' for this step.  Use `hoc1x.pro' if you want to have a parse tree.  The tree is printed in text linear form by default.  If a graphic tree is required use the aim <i>hoc1g</i> to produce a file in dot-format.
+
+
+<p><strong>Step 2</strong>.  It is missed.  It supposes an addition of a support for one letter named variables.
+
+
+<p><strong>Step 3</strong>.  It is a calculator for the real arithmetic with constants (pi, e, phi), built-in functions (sin, ln, sqrt, arctg, log2, fib), and variables.  It works with any formula compliant with the next grammar in BNF:
+
+<hr>
+<pre>
+Input <em>&#x2192;</em> Assignment <em>|</em> Expression <em>|</em> <i>nothing</i>
+Assignment <em>&#x2192;</em> identifier <i>=</i> Expression
+Expression <em>&#x2192;</em> Term Expression_rest <em>|</em> Assignment
+Expression_rest <em>&#x2192;</em> <i>+</i> Term Expression_rest <em>|</em> <i>-</i> Term Expression_rest <em>|</em> <i>nothing</i>
+Term <em>&#x2192;</em> Factor Term_rest
+Term_rest <em>&#x2192;</em> <i>*</i> Factor Term_rest <em>|</em> <i>/</i> Factor Term_rest <em>|</em> <i>nothing</i>
+Factor <em>&#x2192;</em> Element <i>^</i> Factor <em>|</em> <i>-</i> Factor <em>|</em> <i>+</i> Factor <em>|</em> Element
+Element <em>&#x2192;</em> <i>(</i> Expression <i>)</i> <em>|</em> <i>built_in</i> <i>(</i> Expression <i>)</i> <em>|</em> identifier <em>|</em> <i>number</i>
+</pre>
+<hr>
+
+<p>Use `hoc3.pro' for this step.  Use `hoc3x.pro' if you want to have a parse tree.  For a graphic tree use the aim <i>hoc3g</i> as usual.  The file `hoc3.pl' is a wrapper to use it for swi-prolog &ndash; it gives the idea how to use such wrappers with other samples.
+
+
+<p><strong>Step 4</strong>.  It is for the same language but it generates a code and later executes it.  It allows to add the support for the programming language statements later.  This impementation contains an interpreter which executes the generated codes.  The previous implementations just evaluate an inputted text immediately.  Use `hoc4.pro' for this step.
+
+
+<p><strong>Step 5</strong>.  It adds C-like relational operators (<, >, ==, !==, <=, >=), C-like logical operators (||, &&, !), loop (while), conditional (if) and print statements. It also prints the stream of entered lexemes and the result of translation in RPN.
+
+<hr>
+<pre>
+Input <em>&#x2192;</em> Assignment <em>|</em> Formula <em>|</em> Statement <em>|</em> <i>nothing</i>
+Statement <em>&#x2192;</em> <i>while</i> Condition Statement<br>&nbsp;<em>|</em> <i>print</i> Formula<br>&nbsp;<em>|</em> <i>if</i> Condition Statement <i>else</i> Statement<br>&nbsp;<em>|</em> <i>if</i> Condition Statement<br>&nbsp;<em>|</em> <i>{</i> Statement_list <i>}</i><br>&nbsp;<em>|</em> Formula
+Statement_list <em>&#x2192;</em> Statement Statement_list <em>|</em> <i>nothing</i>
+Formula <em>&#x2192;</em> Relation Formula_rest <em>|</em> Assignment
+Formula_rest <em>&#x2192;</em> <i>&&</i> Relation Formula_rest <em>|</em> <i>||</i> Relation Formula_rest <em>|</em> <i>nothing</i>
+Relation <em>&#x2192;</em> Expression <i>==</i> Expression <em>|</em> Expression <i>!=</i> Expression <em>|</em> Expression <i>&lt;=</i> Expression
+&nbsp;<em>|</em> Expression <i>&gt;=</i> Expression</i> <em>|</em> Expression <i>&gt;</i> Expression <em>|</em> Expression <i>&lt;</i> Expression <em>|</em> Expression
+Assignment <em>&#x2192;</em> Lvalue <i>=</i> Formula
+Expression <em>&#x2192;</em> Term Expression_rest
+Expression_rest <em>&#x2192;</em> <i>+</i> Term Expression_rest <em>|</em> <i>-</i> Term Expression_rest <em>|</em> <i>nothing</i>
+Term <em>&#x2192;</em> Factor Term_Rest
+Term_Rest <em>&#x2192;</em> <i>*</i> Factor Term_Rest <em>|</em> <i>/</i>  Factor Term_Rest <em>|</em> <i>nothing</i>
+Factor <em>&#x2192;</em> Element <i>^</i> Factor <em>|</em> <i>-</i> Factor <em>|</em> <i>+</i> Factor <em>|</em> Element
+Element <em>&#x2192;</em> Condition <em>|</em> <i>!</i> Element <em>|</em> <i>built_in</i> <i>(</i> Expression <i>)</i> <em>|</em> <i>identifier</i> <em>|</em> <i>number</i>
+Condition <em>&#x2192;</em> <i>(</i> Formula <i>)</i>
+Lvalue <em>&#x2192;</em> <i>identifier</i>
+</pre>
+<hr>
+
+<p>Use `hoc5.pro' for this step.  Use `hoc5x.pro' if you want to have a parse tree.  For a graphic tree use the aim <i>hoc5g</i>.
+
+
+<p><strong>Step 6</strong>. It adds support for string output and subroutines (procedures and functions).
+
+<hr>
+<pre>
+Input <em>&#x2192;</em> Assignment <em>|</em> Formula <em>|</em> Statement <em>|</em> Define_function <em>|</em> <i>nothing</i>
+Define_function <em>&#x2192;</em> <i>func</i> Lvalue <i>()</i> Statement <em>|</em> <i>proc</i> Lvalue <i>()</i> Statement
+Statement <em>&#x2192;</em> <i>while</i> Condition Statement
+&nbsp;<em>|</em> <i>print</i> Print_list
+&nbsp;<em>|</em> <i>if</i> Condition Statement <i>else</i> Statement
+&nbsp;<em>|</em> <i>if</i> Condition Statement
+&nbsp;<em>|</em> <i>{</i> Statement_list <i>}</i>
+&nbsp;<em>|</em> Procedure_call <i>(</i> Argument_list <i>)</i>
+&nbsp;<em>|</em> <i>return</i> Formula
+&nbsp;<em>|</em> <i>return</i>
+&nbsp;<em>|</em> Formula
+Argument_list <em>&#x2192;</em> Formula <i>,</i> Argument_list <em>|</em> Formula <em>|</em> <i>nothing</i>
+Statement_list <em>&#x2192;</em> Statement Statement_list <em>|</em> <i>nothing</i>
+Formula <em>&#x2192;</em> Relation Formula_rest <em>|</em> Assignment
+Formula_rest <em>&#x2192;</em> <i>&&</i> Relation Formula_rest <em>|</em> <i>||</i> Relation Formula_rest <em>|</em> <i>nothing</i>
+Relation <em>&#x2192;</em> Expression <i>==</i> Expression <em>|</em> Expression <i>!=</i> Expression <em>|</em> Expression <i>&lt;=</i> Expression 
+&nbsp;<em>|</em> Expression <i>&gt;=</i> Expression</i> <em>|</em> Expression <i>&gt;</i> Expression <em>|</em> Expression <i>&lt;</i> Expression <em>|</em> Expression
+Assignment <em>&#x2192;</em> Lvalue <i>=</i> Formula <em>|</em> Local_id <i>=</i> Formula
+Expression <em>&#x2192;</em> Term Expression_rest
+Expression_rest <em>&#x2192;</em> <i>+</i> Term Expression_rest <em>|</em> <i>-</i> Term Expression_rest <em>|</em> <i>nothing</i>
+Term <em>&#x2192;</em> Factor Term_Rest
+Term_Rest <em>&#x2192;</em> <i>*</i> Factor Term_Rest <em>|</em> <i>/</i>  Factor Term_Rest <em>|</em> <i>nothing</i>
+Factor <em>&#x2192;</em> Element <i>^</i> Factor <em>|</em> <i>-</i> Factor <em>|</em> <i>+</i> Factor <em>|</em> Element
+Element <em>&#x2192;</em> Condition
+<em>|</em> <i>!</i> Element
+<em>|</em> <i>built_in</i> <i>(</i> Expression <i>)</i>
+<em>|</em> Function_call <i>(</i> Argument_list <i>)</i>
+<em>|</em> <i>identifier</i>
+<em>|</em> Local_id
+<em>|</em> <i>number</i>
+Condition <em>&#x2192;</em> <i>(</i> Formula <i>)</i>
+Print_list <em>&#x2192;</em> Formula <i>,</i> Print_list <em>|</em> Formula <em>|</em> String <i>,</i> Print_list <em>|</em> String 
+Local_id <em>&#x2192;</em> <i>$</i> <i>number</i>
+String <em>&#x2192;</em> <i>"</i> <i>text</i> <i>"</i>
+Lvalue <em>&#x2192;</em> <i>identifier</i>
+Procedure_call <em>&#x2192;</em> <i>identifier</i>
+Function_call <em>&#x2192;</em> <i>identifier</i>
+</pre>
+<hr>
+
+<p>Use `hoc6.pro' for this step.  Use `hoc6x.pro' if you want to have a parse tree.  For a graphic tree use the aim <i>hoc6g</i>.  A file `hoc6.pl' provides a wrapper for swi-prolog system.
+
+<p><strong>Step 7</strong>.  It should provide new statements (do, for, break, continue, unless, ...), new operators (++, --, +=, /=, ...), local variables (static and automatic), arrays, constants with identifiers, ...  It is still not realised.  Don't hesitate to make it!
+
+
+<h2>Other Project's Files</h2>
+
+<p>gtree.pro &ndash; it is used by the parser graphic tree drawing routine for `hoc1x.pro', `hoc3x.pro', and `hoc5x.pro'.
+<p>gtreex.pro &ndash; it is used by the parser graphic tree drawing routine for `hoc6x.pro'.
+<p>test5.in &ndash; a test for `hoc5.pro' and 'hoc5x.pro'.
+<p>test6.in &ndash; a test for `hoc6.pro' and 'hoc6x.pro'.
+<p>www/expr.html &ndash; a web interface page for an interactive parse tree generation.
+<p>www/expr.sh &ndash; a web interface script for an interactive parse tree generation.
+
