@@ -1,0 +1,34 @@
+<style>
+em { font-style: normal; font-weight: bold; color: red }
+i { font-style: normal; color: blue; background-color: yellow }
+</style>
+
+<h1><a href=https://github.com/litwr2/simple-rdc>simple-rdc</a></h1>
+
+<p>It is a simple recurse descent parser for arithmetic formulas.  It converts a formula in infix notation to Reverse Polish notation (RPN).  It also evaluates the integer formula value.  It can easily be modified for usage of the arithmetic of real numbers.
+
+<p>It works with any formula compliant with the next grammar in BNF:
+
+<hr>
+<pre>
+Formula <em>&#x2192;</em> Formula <i>+</i> Term <em>|</em> Formula <i>-</i> Term
+Term <em>&#x2192;</em> Term <i>*</i> Component <em>|</em> Term <i>/</i> Component
+Component <em>&#x2192;</em> <i>+</i> Component <em>|</em> <i>-</i> Component <em>|</em> Item
+Item <em>&#x2192;</em> Element <em>|</em> Element <i>^</i> Component
+Element <em>&#x2192;</em> (Formula) <em>|</em> <i>number</i>
+</pre>
+<hr>
+
+<p>The grammar above is left recursive so the parser has to use the equivalent grammar in EBNF:
+
+<hr>
+<pre>
+Formula <em>&#x2192;</em> Term <em>{</em> AddSub Term <em>}</em>
+AddSub <em>&#x2192;</em> <i>+</i> <em>|</em> <i>-</i>
+Term <em>&#x2192;</em> Component <em>{</em> MulDiv Component <em>}</em>
+MulDiv <em>&#x2192;</em> <i>*</i> <em>|</em> <i>/</i>
+Component <em>&#x2192;</em> <i>+</i> Component <em>|</em> <i>-</i> Component <em>|</em> Item
+Item <em>&#x2192;</em> Element <em>|</em> Element <i>^</i> Component
+Element <em>&#x2192;</em> (Formula) <em>|</em> <i>number</i>
+</pre>
+<hr>
