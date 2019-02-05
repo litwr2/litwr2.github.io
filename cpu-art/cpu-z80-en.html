@@ -1,0 +1,72 @@
+<head>
+<meta charset=utf-8>
+<title>Emotional stories about processors for first computers: part 4 (Zilog Z80)</title>
+<meta name=keywords content="CPU,processor,computer,history,Zilog,Intel,8080,ARM,6502,PC,hardware,ZX Spectrum,Tandy TRS-80,Amstrad CPC,Amstrad PCW,GNU as">
+<style type=text/css>
+p {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+</style>
+</head>
+
+<body>
+<h2>Zilog Z80</h2>
+
+<p>This processor became along with the 6502 the main processor of the first personal computers.  There are no dramatic events in the history of its appearance and use.  There is only some intrigue in the failure of Zilog to make the next generation of processors.  The Z80 was first produced in 1976 and its variants are still in production.  Once even Bill Gates himself announced support for systems based on the z80.
+
+<p>A number of coincidences are interesting.  As in the case of the 6502 the main developer of the Z80 Federico Faggin left a large company, Intel.  After working on the z80 Federico almost did not work with the next generation the Z8000 processor. He left Zilog (founded by him) in the early 80's and never dealt with processors in the future.  He then created several relatively successful startups, which were communication systems, touchpads and digital cameras.  It can be mentioned that in addition to the z80 being with Zilog he had also developed a successful and still-produced Z8 microcontroller.
+
+<p>The Z80 is more convenient for inclusion in computer systems than the 8080.  It requires only one power supply voltage and has built-in support for the regeneration of dynamic memory.  In addition though it is fully compatible with the 8080 it has a lot of new commands, a second set of basic registers and several completely new registers.  It is interesting that Zilog refused to use the 8080 assembler mnemonics, and began to use their own mnemonics more suitable for the extended command system of the z80.  A similar story happened to the Intel x86 assembler in the GNU software world, for some reason they also use their own conventions for writing programs in assembler by default.  The Z80 added support for the overflow flag, Intel officially added support for this flag only in the 8086.  However this flag in the z80 was combined with the parity flag, so you cannot use both flags at the same time as in the 8086.  In the z80 as in the 6502 there are only basic checks of the value of the flag, i.e. there are no checks of two or three flags at once, which is necessary for comparisons "greater" or "less or equal", as well as for all signed comparisons.  In such cases it is necessary to do several checks, while with the 8086, 6800 or PDP-11 one is enough.
+
+<p>Among the new z80's commands, block memory copy commands for 21 cycles per byte are especially impressive, as well as an interesting search for a byte in memory instruction.  However the EXX instruction is the most interesting it swaps the contents of 48 bytes of register memory, registers BC, DE, HL, with their counterparts in just 4 cycles!  Even the 32-bit ARM will need at least 6 cycles for the same operation.  The remaining additional instructions are not so impressive, although they can sometimes be useful.  Additionally added were the following commands:
+
+<ul>
+<li>16-bit subtraction with borrow and 16-bit addition with carry for 15 clocks;
+<li>unary minus for the accumulator for 8 clocks;
+<li>possibility to read from memory and write to it, using registers BC, DE, SP, IX, IY &ndash; not just HL;
+<li>shifts, rotates and input-output for all 8-bit registers;
+<li>instructions to check, set and reset a bit by its number;
+<li>jumps with offsets (JR);
+<li>a loop instruction.
+</ul>
+
+<p>Most new commands are rather slow, but using them right can still make the code somewhat faster and significantly more compact.  This particularly applies to the use of new 16-bit registers IX and IY, which can be used for new addressing modes.
+
+<p>Many of the 8080's commands in the z80 became faster by one clock and this is a very noticeable acceleration.  But the basic command for 16-bit arithmetic, the ADD instruction became slower by one clock which makes all arithmetic, if faster, only slightly.
+
+<p>The system of working with interrupts became much more interesting than that available at the 8080.  With the z80 you can use both non-maskable interrupts and three methods (one of them is compatible with the 8080) to work with masked ones.  The masked interrupts mode 2 is the most interesting, as it allows you the flexibility to change the address of the code to handle the interrupt.
+
+<p>The Z80 has a number of undocumented instructions, some of them were documented by some firms and in fact become part of standard instructions.  Especially useful are instructions that allow you to work with individual bytes of the clumsy 16-bit registers IX and IY.
+
+<p>Of course the z80 even more so than the 8080 has the right to be called slightly 16-bit.  The hypothetical bit index of the z80 is clearly slightly higher than for the 8080, but it is paradoxical that the ALU of the z80 is actually 4-bit!  At the electronic level the z80 and 8080 are completely different chips.
+
+<p>Much has been written about the comparison of the performance of the z80 and 6502, as these processors were very widely used in the first mass computers.  In this topic there are several difficult points and without understanding them it is very problematic to maintain objectivity.  Due to the presence of a rather large number of registers, the z80 is naturally used at a frequency higher than memory.  Therefore the z80 at 4 MHz can use the same memory as the 6502 or 6809 at 1.3 MHz.  According to many experienced programmers who wrote code for both processors, at the same frequency the 6502 is on average about 2.4 to 2.6 times faster than the z80.  The author of this material agrees with this.  I just need to add that writing fast code for the z80 is very difficult, you need to repeatedly optimize the use of the registers, and to work with memory as much as possible using the stack.  If you really try then in my opinion, you can reduce the difference between the z80 and 6502 to about 2.2.  If you do not try and ignore timings, then you can even easily get the difference up to 4.  In some individual cases the z80 can show very good timings.  On the task of filling memory using the PUSH instruction the Z80 can be even slightly faster than the 6502, but this is at the cost of disabling interrupts.  On copying memory blocks the z80 is only 1.5 times slower.  It is especially impressive that in the division of the 32-bit divisible by the 16-bit divider the z80 is slower by only 1.7 times.  By the way such a notable division was implemented by a programmer from Russia.  Thus, we get that the ZX Spectrum with the z80 at 3.5 MHz is about 1.5 times faster than the C64 with the 6502 at 1 MHz.  It should also be noted that some ticks in most systems with the z80 or 6502 are taken from the processor to circuits for generating the video signal.  For example because of this the popular Amstrad CPC/PCW computers have the effective processor frequency of 3.2 MHz, not the full 4.  On the 6502 systems you can usually turn off the screen for maximum processor performance.  If we take as a basis the frequency of memory not the processor, it turns out that the z80 25-40% is faster than the 6502.  The last result can be illustrated by the fact that with memory with a frequency of 2 MHz the z80 can operate at a frequency of up to 6 MHz, and the 6502 only up to 2 MHz.
+
+<p>The Z80 was used in a very large number of computer systems.  In the USA the Tandy TRS-80 was very popular, in Europe it was the ZX Spectrum, and later the Amstrad CPC and PCW.  Interestingly the Amstrad PCW computers maintained their importance until the mid-90's and massively and actively were used for their intended purpose until the late 90's.  Japan and other countries produced quite successful around the world the MSX computers.  The rather popular C128 could also use the z80, but in this case the users were left in a rather embarrassing situation.  This late 1985 release, the 8-bit computer with the z80, which officially clocked at 2 MHz, really only worked at 1.6 MHz.  It was slower even than the first systems of the mid-70's based on the 8080.  The range of computers for using the operating system CP/M has at least three dozen fairly well-known systems.
+
+<div align=center>
+<table>
+<tr><td align=center><img src=Amstrad_9512_Running_s1.jpg>
+<tr><td align=center style=font-size:90%;>Such a PC looked decent even in the mid-90's, but its z80 was slower than that in the ZX Spectrum
+</table>
+</div>
+
+<p>The fastest computer system known to me based on the Z80 is the BBC Micro which has 6 MHz second processor the TUBE's Z80B, which was produced from 1984.  The processor in this system runs at full speed, as it is possible to say, "without brakes".  Similar devices were produced for Apple ][ since 1979.  Some such Z80-cards later used the Z80H at 8 MHz and even higher.  Interestingly Microsoft in 1980 received the greatest revenue from the sale of such devices.  We can also mention the Amstrad PcW16 produced since 1994, which uses the CMOS Z80 at a frequency of 16 MHz.
+
+<p>In Japan for the MSX TurboR systems (1990), the R800 processor was made compatible with the Z80.  In the R800 they added hardware 16-bit multiplication with a 32-bit result.  Although when multiplying a 16-bit constant, table multiplication with the table of 768 bytes is one clock faster.  There are opinions that the R800 is just a simplified Z800, running at four times the frequency of the bus which is about 7.16 MHz.  So the R800 internal clock is about 28.64 MHz!
+
+<p>Zilog did work on improving the Z80 very inconsistently and extremely slowly.  The first Z80 worked at frequencies up to 2.5 MHz, the Z80A which soon appeared had limiting frequency of 4 MHz.  The latter processors became the basis for most popular computers using the Z80.  The Z80B appeared by 1980 but was used relatively rarely, for example, in the mentioned second processor card for the BBC Micro or in the late (1989) computer Sam Coupé.  The Z80H appeared by the mid-80's and could operate at frequencies up to 8 MHz, it was not used in well-known computers.  Interestingly Zilog products had special traps on all chips for those who tried to make copies of them.  For example the base Z80 had 9 traps and they, according to reviews of those who tried copying, slowed down the process for almost a year.
+
+<p>A deeper upgrade of the Z80 was hampered by the desire of Zilog to create processors that were competitive with 16-bit Intel processors.  In 1978 a little later than the 8086 the Z8000 was released, it was not compatible with the Z80.  This processor was unable to withstand competition from Intel and especially Motorola, the 68000 surpassed the Z8000 in almost all parameters, although the Z8000 was used in about a dozen different low-cost systems, usually for working with Unix variants.  Interestingly IBM did not even consider the Z8000 as a possible processor for the IBM PC, since Zilog was funded by Exxon which was going to compete with IBM.  Perhaps due to the lack of success of the Z8000 Zilog became an Exxon subsidiary by 1980.  There was also an attempt to create a competitive 32-bit processor.  In 1986 the Z80000 appeared compatible with the Z8000, which has never been used anywhere.
+
+<p>Creating a new processor based on the Z80 was postponed until 1985 when the Z800 was produced.  However then the main efforts of Zilog were directed at the Z80000 and the Z800 was released in very few numbers.  In 1986 after the failure of the Z80000 the Z280 was released, an insignificantly improved version of the Z800 (maybe it was just a rebranding).  The Z800/Z280 in particular could work on the internal frequency several times higher than the bus frequency.  This new idea brought a big success to the Intel 486DX2 and 486DX4 processors later.  But perhaps because of poor performance the Z280 despite many technological innovations could use only relatively low clock frequencies, this processor also has not been used anywhere.  It is considered that the Z280 roughly matched the capabilities of the Intel 80286, but was significantly at least 50% slower when using the same clock speed as used with the 80286.  Perhaps if the Z280 had appeared 5 years earlier it could have been very successful.
+
+<p>The greatest success was achieved thanks to cooperation with the Japanese company Hitachi, which in 1985 released its super-Z80 (the HD64180) similar in capabilities with the Intel 80186.  The HD64180 allowed the use of 512 KB of memory, added a dozen new instructions, but at the same time some almost standard undocumented Z80 instructions were not supported.  This processor was used in some computer systems. Zilog received a license for the HD64180 and began to produce them with the marking Z64180.  Zilog managed to slightly improve this processor in particular to add support for working with 1 MB of memory and released it by the end of 1986.  This new processor was called the Z180 and became the basis for a family of processors and controllers with clock frequencies up to 33 MHz.  It was used in some rare models of the MSX2 computers, but more as a controller.  It is a curious coincidence that the Z280 and Z180 appeared in one year as was the case of their approximate counterparts the 80286 and 80186 four years before.  In 1994 the 32-bit Z380 was made on the basis of the Z180, which retained compatibility with the Z80 and roughly corresponds to the capabilities of the Intel 80386 or Motorola 68020.  In fact Zilog showed a lag behind competitors by almost 10 years.  For the 21st century again on the basis of the Z180 the successful eZ80 controller-processors have been manufactured with timings almost like the 6502.  They are used in various equipment in particular in network cards, DVD-drives, calculators, etc.
+
+<p>Edited by Richard BN
+</body>
+

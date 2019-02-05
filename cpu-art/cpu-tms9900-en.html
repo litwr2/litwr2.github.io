@@ -1,0 +1,45 @@
+<head>
+<meta charset=utf-8>
+<title>Emotional stories about processors for first computers: part 6 (TI TMS9900)</title>
+<meta name=keywords content="CPU,processor,computer,history,TI,Texas Instruments,6502,Motorola,6800,68000,IBM/370,IBM PC,Intel,8088,Commodore,VIC-20,hardware,BE,LE">
+<style type=text/css>
+code {
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgreen;
+    border-radius: 2px;
+    padding: 1px;
+}
+p {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+</style>
+</head>
+
+<h2>Texas Instruments TMS9900</h2>
+
+<p>I have never written codes for this very special processor.  Though this is the first 16-bit processor available for use in personal computers.  It was produced since 1976.  It uses a much rarer big-endian order of bytes. This order is used only in processors of the Motorola's 6800 and 68000 series and in the architecture of the giant IBM/370.  All other processors in this review use little-endian byte order.
+
+<p>The TMS9900 has only three 16-bit registers: the program counter, the status register and the base register for pseudo-registers.  This processor uses a dedicated 32-byte memory space as 16 double-byte registers.  Such a way of use of memory is somewhat like the zero page memory in the 6502 architecture.  Using the base register, the TMS9900 can very quickly change the context.  This is similar to the Z80, which has two register contexts.  Processor status flags differ in originality, along with typical flags of carry, zero (equality), overflow, parity, there are two more unique flags of logical and arithmetic less.  Working with the stack and subroutines resembles the RISC-processors of the incoming future.  There is simply no ready to use stack, but you can do it using one of the pseudo-registers.  When a subroutine is called, a new value is selected for the counter and base registers, and all three registers are stored in the pseudo-registers of the new context.  Thus, calling a subroutine is more like calling a software interrupt.  The TMS9900 has a built-in interrupt controller, designed to work with hardware interrupts of up to 16.
+
+<div align=center>
+<table>
+<tr><td align=center><img src=https://habrastorage.org/webt/bs/ir/lv/bsirlvxf7fobwzwpdcvxkcnousc.jpeg style=width:50%;height:auto;>
+<tr><td align=center style=font-size:90%;>The first 16-bit home computer &ndash; it has even color sprites!
+</table>
+</div>
+
+<p>The system of instructions looks very impressive.  There are even multiplication and division.  The unique X instruction allows you to execute one instruction on any memory address and move on to the next one.  The execution of instructions is rather slow, the fastest instructions require 8 cycles, arithmetic instructions &ndash; 14, but multiplication (16*16=32) for 52 cycles and especially division (32/16=16,16) for 124 cycles were probably the fastest among processors of the 70s.
+
+<p>The TMS9900 requires three supply voltages of -5, 5 and 12 volts and four phases of the clock signal &ndash; these are the antirecords among the processors known to me.  In 1979, this processor was demonstrated to IBM specialists, who then were looking for a processor for the IBM PC prototype.  The obvious drawbacks of the TMS9900 (addressability of only 64 KB of memory, lack of the necessary controllers, relative slowness) made an appropriate impression and the Intel 8088 was chosen for the future leader among PCs.  To deal with the lack of controllers, Texas Instruments also produced the TMS9900 with an 8-bit bus, the TMS-9980, which works 33% slower.
+
+<p>The TMS9900 is used in fairly popular in the USA computers TI99/4 and TI99/4A, which were "crushed" in the price war by the computer Commodore VIC-20 by 1983.  Curiously, as a result of this war, Texas Instruments was forced to cut prices on its computer to the incredible for 1983 $49 (in 1979 the price was $1150!) and sell them with a big loss for themselves.  As an example, we can mention the relatively unpopular Commodore +4 computer, which ceased to produce in 1986, but the price of which fell to the $49 only in 1989.  The T99/4A was ceased to be produced in 1984, when, because of the ultra-low prices, it began to gain popularity.  This computer might only be conditionally called 16-bit:  it has only 256 bytes (!) of RAM and all ROM memory addressable through a 16-bit bus.  The rest of the memory and I/O-devices work over a slow 8-bit bus.  Therefore, it is possible to more correctly consider <a href="https://en.wikipedia.org/wiki/Electronika_BK">BK0010</a> as the first home 16-bit computer.  It is interesting that the TI99/4 and TI99/4A use a processor at a frequency of 3 MHz &ndash; exactly the same as the BK0010 uses.
+
+<p>In the TI-99/4 and TI99/4A, a rather successful TMS9918 chip was used as a video controller, which became the basis for the very popular worldwide MSX standard, as well as for some other computers and game consoles.  In the Japanese company Yamaha, this video chip was significantly improved and was subsequently used, in particular, to upgrade the TI-99/4 and TI99/4A themselves!
+
+<p>The TI99/4 series is a rare example of computers where the processor and computer manufacturer was the same.
+

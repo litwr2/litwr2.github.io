@@ -1,0 +1,70 @@
+<head>
+<meta charset=utf-8>
+<title>Emotional stories about processors for first computers: part 11 (Intel 8080)</title>
+<meta name=keywords content="CPU,processor,computer,history,Zilog,Intel,Motorola,z80,6800,8080,8085,8086,6502,x86,PC,hardware,Altair 8800">
+<style type=text/css>
+p {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+</style>
+</head>
+
+<body>
+<h2>Intel 8080 и 8085</h2>
+
+<p>The first real processor on a chip, made in the first half of 1974, is still being manufactured and is currently being used.  It repeatedly cloned around the world, in the USSR he had the designation KP580BM80A.  Modern Intel processors for the PC still easily reveal their kinship to this in some sense a relic product. I myself haven't written codes for this processor, but being well acquainted with the architecture of the z80, I would venture to give some of my comments.
+
+<p>The 8080 instruction system, like other Intel processors for the PC, can hardly be called ideal, but it is universal, quite flexible and has some very attractive features.  The 8080 favorably differed from their competitors, the Motorola 6800 and MOS Technology 6502, by a large number of even somewhat clumsy registers, providing a user with one 8-bit accumulator, a 16-bit semi-accumulator and simultaneously fast index register HL, a 16-bit  stack pointer, as well as two more 16-bit registers BC and DE.  The BC, DE, and HL registers could also be used as 6 byte-registers.  In addition, the 8080 has support for a almost full set of status flags: carry, sign, zero and even parity and auxiliary carry.  Some instructions from the 8080 instruction set had been speed champions for a long time.  For example, the XCHG command makes the exchange of the contents of the 16-bit DE and HL registers in just 4 clock cycles &ndash; it was extremely fast!  A number of other commands, although they did not set such bright records, were also among the best for a long time:
+
+<ul>
+<li>XTHL &ndash; exchange of HL register contents and data at the top of the stack, 18 cycles &ndash; it seems like a lot, but even on the real 16-bit 8086 an equivalent of such a command takes at least 26 cycles, and for the 6800 or 6502 such a command is hard to imagine;
+
+<li>DAD &ndash; add to the semi-accumulator HL the value of another 16-bit register (BC, DE or even SP), 10 cycles.  This is a true 16-bit addition with a carry flag set.  If you add HL to yourself, you will get a quick 16-bit shift left or multiplication by 2, a key operation for programming both full multiplication and dividing;
+
+<li>PUSH и POP &ndash; put in the stack and remove from the stack a 16-bit value respectively from the register or in the register.  They perform in 11 and 10 cycles.  These are the fastest 8080's operations for working with memory, and when they are executed, SP is automatically incremented or decremented.  PUSH can be used, for example, to quickly fill memory with a pattern with values from 3 registers (BC, DE, HL).  There are no commands for working with 8-bit values with the stack at all;
+
+<li>LXI &ndash; a loading of a 16-bit constant into a register (HL, DE, BC, SP) for 10 cycles;
+
+<li>RNZ, RZ, RNC, RC, RPO, RPE, RP, RM &ndash; conditional returns from a subroutine, allow to make the code cleaner, eliminating the need to write extra conditional jumps.  These commands were abandoned in the x86 architecture, but they should probably have been saved, the code with it turns out nicer.
+</ul>
+
+<p>This processor was used in the first almost personal computer Altair 8800, which became very popular after the journal publication in early 1975.  By the way, in the USSR a similar publication happened only in 1980 and corresponding to it in relevance only in 1986.
+
+<div align=center>
+<table>
+<tr><td align=center><img src=https://img.newatlas.com/altair-8800-clone-0.jpg?auto=format%2Ccompress&fit=max&h=670&q=60&w=1000&s=a0b62f09568803467c43a40736f5f4df style=width:90%;height:auto;>
+<tr><td align=center style=font-size:90%;>The first almost PC
+</table>
+</div>
+
+<p>The Intel's 8080 became the basis for the development of the first mass professional operating system CP/M, which occupied a dominant position among microcomputers for professional work until the mid-1980s.
+
+<p>Now about the shortcomings.  The 8080 requires three supply voltages of -5, 5, and 12 volts.  Working with interrupts is clumsy and slow.  And in general, the 8080 rather leisurely, if you compare it with the soon appeared competitors.  The 6502 could be up to 3 times faster when working on the same frequency as the 8080.  However, the architecture of the 8080 was laid, as it turned out, the correct vision of the future, namely the unknown in the 70s, the fact that the processors will be faster than memory.  The 8080's DE and BC registers are a prototype of modern caches, with manual control, rather than general-purpose registers.  8080 started at 2 MHz and competitors only at 1, which smoothed the performance difference.
+
+<p>It's hard to call the 8080 an 8-bit processor at 100%.  Indeed, its ALU is 8 bits wide, but there are many 16-bit commands that work faster than if you use only 8-bit counterparts instead.  And for some instructions, there are no 8-bit analogs at all.  XCHG instruction is essentially and by timing 100% 16-bit.  There are real 16-bit registers.  Therefore, I venture to call the 8080 partially 16-bit.  It would be interesting to calculate the processor's bit index based on the set of its features, but as far as the author knows, no one has done such work so far.
+
+<p>The author does not know the reasons why Intel had abandoned direct support of the 8-bit desktops with their processors.  Intel has always distinguished the complexity and ambiguity of the policy.  Its connection with politics, in particular, is illustrated by the fact that for a long time Intel has had fabs in Israel and until the end of the 90s it was secret.  Intel practically did not try to improve the 8080, only the clock frequency was raised up to 3 MHz. In fact, the 8-bit computer market was given to Zilog with a related to 8080 the z80 processor, which was able to quite successfully withstand the main competitor, The Terminator 6502.
+
+<p>In the USSR and Russia, the domestic clone of the 8080 became the basis of many popular computers that remained popular until the early 90s.  Those are, of course, <a href="https://en.wikipedia.org/wiki/Radio-86RK">Radio-86RK</a>, <a href="http://www.leningrad.su/museum/show_calc.php?n=286">Mikrosha</a>, multicolor <a href="https://en.wikipedia.org/wiki/Orion-128">Orion-128</a>, <a href="https://en.wikipedia.org/wiki/Vector-06C">Vector</a>, and <a href="http://www.leningrad.su/museum/show_calc.php?n=565">Corvette</a>.  Eventually cheap and improved ZX Spectrum clones based on the z80 won the clone wars.
+
+<div align=center>
+<table>
+<tr><td align=center><img src=https://www.old-games.ru/forum/attachments/d64acd00877a00143c992eeffc16e35d-jpg.75531/ style=width:100%;height:auto;>
+<tr><td align=center style=font-size:90%;>This is a real PC
+</table>
+</div>
+
+<p>In early 1976 Intel introduced the 8085 processor, compatible with the 8080, but significantly superior to its predecessor.  In it, the power supply of -5 and 12 volts has become unnecessary and the connection scheme has been simplified, work with interrupts has been improved, the clock frequency has been used from 3 to a very solid 6 MHz, the command system has been expanded with very useful instructions: 16-bit subtraction, 16-bit shift right for only 7 cycles (it was very fast), 16-bit rotate left through the carry flag, loading of 16-bit register with 8-bit offset (this instruction is possible to use with the stack pointer too), writing of HL register contents to an address in DE register, analogous reading of HL via an address in DE.  All the instructions mentioned above, except for the shift to the right, are executed in 10 cycles &ndash; this is sometimes significantly faster than their counterparts or emulation on the z80.  Some more instructions and even two new processor status flags were added.  Among the new flags it is worth noting the overflow flag, although the work with it was almost not supported.  Among the new flags it is worth noting the overflow flag, although the work with it was almost not supported.  In addition, many instructions for working with byte data were accelerated by 1 clock cycle.  This was very significant, as many systems with the 8080 or z80 used wait states, which due to the presence of extra cycles on the 8080 could pull the execution time almost twice.  For example, in a mentioned computer Vector register-register instructions were performed for 8 cycles, and if there were the 8085 or z80, then the same instructions would be executed only in 4 cycles.  XTHL instruction has become faster even by two cycles.  However, some instructions, for example, a 16-bit increment and decrement, PUSH and conditional returns have become slower by a cycle.
+
+<p>The 8085 has built-in support for interrupts, which in many cases eliminates the need for a separate interrupt controller in a system, and a serial I/O port.  In the 8085, no support was added for the overflow flag, so the arithmetic of signed numbers remained somewhat incomplete.
+
+<p>However, I can repeat the formula "for unknown reasons" Intel refused to promote 8085 as the main processor for computers.  It is known only about several computers based on 8085 &ndash; this is TRS-80 Model 100 and, of course, the predecessor and almost competitor of IBM PC &ndash; <a href="https://www.ibm.com/ibm/history/exhibits/pc/pc_9.html">IBM System/23 Datamaster</a>.  In the SU/Russia in the early 90s on the basis of domestic clone &#x418;M1821BM85A there were attempts to improve some systems, for example, computer Vector.  In fact, Intel had given way to the z80 in the 70s.  A few years later, in the battle for the 16-bit market, Intel behaved quite differently, starting a lawsuit to ban sales of the V20 and v30 processors in the United States.  Interestingly, the mentioned processors of the Japanese company NEC could switch to full binary compatibility with the 8080, which made them the fastest processors of the 8080 architecture.
+
+<p>Another secret from Intel is the refusal to publish an extended command system.  However, one of the official manufacturers of these processors has published the entire system of instructions.  What are the reasons for this strange refusal?  One can only guess.  Could Zilog then play a role that AMD might have once played, and created the ostensible appearance of competition, while the 8085 could bring down Zilog?  Maybe it's about wanting to keep the system of instructions closer to the 8086 then being designed?  The latter seems doubtful.  The 8086 was released more than 2 years after the release of the 8085 and it’s hard to believe that in 1975 the system of its commands was already known.  And in any case, compatibility with both the 8080 and 8085 on the 8086 is achievable only with the use of a macro processor, sometimes replacing one an 8080's or 8085's instruction with several of its own.  Moreover, the two published new instructions of the 8085 in the 8086 are not realizable at all.  It is especially difficult to explain why Intel did not publish information about new instructions after the release of the 8086.  We can also assume that most likely it was in marketing. Artificially worsening specifications of the 8085, received on this background a more spectacular 8086.
+
+</body>
+

@@ -1,0 +1,60 @@
+<head>
+<meta charset=utf-8>
+<title>Emotional stories about processors for first computers: part 2 (DEC PDP-11)</title>
+<meta name=keywords content="CPU,processor,computer,history,Intel,DEC,PDP-11,VAX-11,8086,x86,hardware,GNU">
+<style type=text/css>
+code {
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgreen;
+    border-radius: 2px;
+    padding: 1px;
+}
+p {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+</style>
+</head>
+
+<h2>Processors of DEC PDP-11</h2>
+
+<p>Since the early 70's in the world began a 10-year era of domination of the company DEC.  DEC computers were significantly cheaper than those produced by IBM and therefore attracted attention from small organizations for which IBM systems were unaffordable.  With these computers also begins the era of mass professional programming.  The PDP-11 computer series was very successful.  Various PDP-11 models were produced from the early 70's to the early 90's.  They were successfully cloned in the SU and became the first mass popular computer systems there.  Some of the SU made PDP-11 compatible computers have several unique traits.  For example, several models like <a href="https://en.wikipedia.org/wiki/DVK">DVK</a> are rather personal computers than minicomputers and several models like <a href="https://en.wikipedia.org/wiki/UKNC">UKNC</a> and <a href="https://en.wikipedia.org/wiki/Electronika_BK">BK</a> are pure personal computers.  BTW the mentioned BK became the first PC available for SU ordinary people to buy since 1985.
+
+<p>DEC also promoted the more expensive and complex computers of the <a href="https://en.wikipedia.org/wiki/VAX-11">VAX-11</a> family, the situation around which was somewhat politicized.  From the second half of the 70's, DEC practically stopped development in the PDP-11 series.  In particular the support of hexadecimal numbers for the assembler was not introduced.  The performance of PDP-11 systems has also remained virtually unchanged since the mid-70's.
+
+<p>The PDP-11 used various processors compatible with the main command system for example, the LSI-11, F-11, J-11.  In the late 70's DEC made a cheap processor T-11 for microcomputers.  However for unclear reasons despite the seemingly large and high-quality software that could eventually be transferred to the system using it, it was not noted by the manufacturers of any computer systems.  The only exception was one model of the Atari gaming console.  The T-11 found itself a mass application only in the world of embedded equipment, although in terms of capabilities it was slightly higher than the z80.  The SU produced processors <a href="https://en.wikipedia.org/wiki/1801_series_CPU">K1801VM1, K1801VM2, K1801VM3, etc.</a> similar to DEC processors and also exact copies of DEC processors.  The latter were much more expensive and were produced in small quantities.
+
+<p>The PDP-11 processor command system is almost completely orthogonal, a pleasant quality, but when it is brought to the extreme it can create ridiculous commands.  The command system of the PDP-11 processors has had an impact on many architectures and in particular on the Motorola 68000.
+
+<p>The PDP-11 system of commands is strictly 16 bit.  All 8 general purpose registers (and the program counter in this architecture is the usual R7 register) are 16 bit, the processor status word (it contains typical flags) is 16 bit too, the size of instructions is from 1 to 3 16-bit words.  Any operand of an instruction can be (although there are exceptions, for example, the XOR instruction) any type &ndash; this is orthogonality.  Among the types of operands are registers and memory locations.  The SU's programmers in the 80s sometimes didn't understand why the Intel's x86 instruction system misses memory to memory types of instructions.  This was the influence of the PDP-11 school, where you can easily write the full addresses of each operand.  This indeed is slow and especially slow for systems with typical slow RAM which was used since the early 90's.  It is possible to form a memory address using a register, a register with an offset, a register with autoincrement or autodecrement.  A particularity of the PDP-11 instruction system is a possibility to use double indirect access to memory through a register, for example, <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">MOV @(R0)+,@-(R1)</code> means the same as the operator <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">**&ndash;r1 = **r1++;</code> in the C/C++ programming languages, where r0 and r1 are declared as <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">signed short **r0, **r1;</code>.
+
+<p>Another example, the instruction <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">MOVB @11(R2),@-20(R3)</code> corresponds to <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">**(r3-20) = **(r2+11);</code>, where r2 and r3 are declared as <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">char **r2, **r3;</code>.
+
+<p>In the modern popular architectures, one instruction for such cases can be insufficient, it may require at least 10 instructions.  It is also possible to get an address relative to the current value of the program counter.  I will give another example with more simple addressing.  The x86 instruction <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">ADD [BX+11],16</code> corresponds to <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">ADD #16,11(R4)</code>.  In DEC assemblers it is common to write operands from left to right, unlike Intel where they write from the right-left.  There is a reason to believe that the GNU assembler for the x86 was made under the influence of the PDP-11 assembler.
+
+<p>Division and multiplication instructions are only signed and not available on all processors.  The arithmetic of the decimal numbers is optional too &ndash; it is so-called commercial arithmetic in DEC terminology.  As an oddity of full orthogonality I will give an example of the command <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">MOV #11,#22</code>, which after execution turns into <code style="border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px">MOV #11,#11</code> &ndash; it is an example of using a direct constant as an operand.  Another curious instruction is a unique instruction MARK which code needs to be placed on the stack and which may never be used explicitly.  Calling subroutines in the architecture of the PDP-11 is also somewhat peculiar.  The corresponding instruction first saves the allocated register (can be any) on the stack, then saves the program counter in this register and only then writes a new value to the program counter.  The return from the subroutine instruction must do the reverse and know which register was used when calling the subroutine.  Strange effects can be sometimes obtained using the program counter as a normal register.
+
+<p>It is interesting that among the programmers for the PDP-11 there is a culture of working directly with machine codes.  Programmers could for example work without a disassembler when debugging.  Or even write small programs directly into memory, without assembling!
+
+<p>Indeed instruction timings were not too fast.  It was surprising to find out that on a BK home computer the instruction to send from a register to a register takes as much as 12 clocks (10 clocks when using the code in ROM), and the instructions with two operands with double indirect addressing are executed for more than 100 clocks.  The Z80 does 16-bit register transfer for 8 clocks.  However the slowness of the BK is caused not so much by the processor, but by the poor quality of the SU made RAM, under the features of which the BK had to be adapted.  If fast enough memory was used the BK would send 16 register bits for 8 clock cycles too.  Once there was a lot of controversy, which is faster than the BK or <a href="https://en.wikipedia.org/wiki/ZX_Spectrum">Sinclair ZX Spectrum</a>?  I must say that the Spectrum is one of the fastest mass 8-bit personal computers when using the top 32 KB of memory.  Therefore it is not surprising than the Spectrum is faster than the BK but not much. And if BK worked with fast enough memory it could even be a bit faster.
+
+<p>The code density is also rather a weak point in the PDP-11 architecture.  Instruction codes must be multiples of the machine word length &ndash; 2 bytes, which is especially frustrating when working with byte arguments or simple commands like setting or resetting a flag.
+
+<p>There were interesting attempts to make a personal computer on the basis of PDP-11 architecture.  One of the first PC's in the world that appeared only a bit later that the <a href="https://en.wikipedia.org/wiki/Apple_II">Apple ][</a> and <a href="https://en.wikipedia.org/wiki/Commodore_PET">Commodore PET</a> and rather a bit earlier than the <a href="https://en.wikipedia.org/wiki/TRS-80">Tandy TRS-80</a>, was the <a href="https://en.wikipedia.org/wiki/Terak_8510/a">Terak 8510/a</a>, which had black and white graphics and an ability to load an incomplete variant of Unix.  This computer was quite expensive and as far as I know was only used in the system of higher education in the USA.  DEC itself also tried to make its own PC, but very inconsistently.  DEC for example produced PC's based on the z80 and 8088 explicitly playing against its own main developments.  The PDP-11's architecture based PC's <a href="https://en.wikipedia.org/wiki/DEC_Professional_(computer)">DEC PRO-325/350/380</a> have some rather contrived incompatibilities with the underlying architecture that impeded the use of some software.  Best of all personalization of technologies of mini-computers turned out in the USSR, where produced the BK, DVK, UKNC, ...  By the way the Electronica-85 was a quite accurate clone of the DEC PRO-350.
+
+<div align=center>
+<table>
+<tr><td align=center><img src=https://hsto.org/storage2/054/de2/ed6/054de2ed61ad81127c1d7db0f7171100.jpg>
+<tr><td align=center style=font-size:90%;>Made in USSR 16-bit home computer (model of 1987) &ndash; it is almost PDP-11 compatible
+</table>
+</div>
+
+<p>The K1801VM2 processor which was used in the DVK is about two times faster than the K1801VM1.  The K1801VM3 is even faster and has a performance close to the Intel 8086.
+
+<p>Processors of the top PDP-11 computers can address up to 4 MB of memory but for one program can be allocated no more than 64 KB.  The performance of these processors in the number of operations per megahertz is also close to the 8086, although still slower.
+
+Edited by Richard BN
