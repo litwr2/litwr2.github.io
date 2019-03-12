@@ -1,7 +1,7 @@
 <head>
 <meta charset=utf-8>
 <title>Emotional stories about processors for first computers: part 4 (Zilog Z80)</title>
-<meta name=keywords content="CPU,processor,computer,history,Zilog,Intel,8080,ARM,6502,PC,hardware,ZX Spectrum,Tandy TRS-80,Amstrad CPC,Amstrad PCW,GNU as">
+<meta name=keywords content="CPU,processor,computer,history,Zilog,Intel,8080,ARM,6502,6800,PC,hardware,ZX Spectrum,Tandy TRS-80,Amstrad CPC,Amstrad PCW,GNU as">
 <style type=text/css>
 p {
     display: block;
@@ -34,7 +34,7 @@ p {
 <li>a loop instruction.
 </ul>
 
-<p>Most new commands are rather slow, but using them right can still make the code somewhat faster and significantly more compact.  This particularly applies to the use of new 16-bit registers IX and IY, which can be used for new addressing modes.
+<p>Most new commands are rather slow, but using them right can still make the code somewhat faster and significantly more compact.  This particularly applies to the use of new 16-bit registers IX and IY, which can be used for new addressing modes.  Interestingly, the index registers IX and IY appeared in the Z80 in order to attract the 6800 users to use the Z80 instead!  But I dare to express my opinion, operations with the Z80's index registers are made rather ineffective, due to the presence of an almost useless byte offset in commands using these registers.
 
 <p>Many of the 8080's commands in the z80 became faster by one clock and this is a very noticeable acceleration.  But the basic command for 16-bit arithmetic, the ADD instruction became slower by one clock which makes all arithmetic, if faster, only slightly.
 
