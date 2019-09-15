@@ -1,5 +1,5 @@
 <meta charset=utf-8>
-<script src=data.js></script>
+<script src=data-all.js></script>
 
 <style type=text/css>
 table, th, td {
@@ -23,20 +23,19 @@ var radixSorts = ["radix_bsd", "sradix_bsd", "radix8", "radix11", "radix16", "ra
 var slowSorts = ["insertion", "bubble", "selection"]
 var indexSorted = [stdlibSorts, fastSteadySorts, shellSorts, quickSorts, arrayAndHashSorts, radixSorts, stableSorts, slowSorts]
 var cmpType = ["absolute", "average", "median", "minimum", "maximum"]
-var order = ["RANDOM", "RANDOM"]
 var type = ["INT32", "INT32"]
 var marked = {}
 var precision = 1
 var optionRel = 0
-var sortOrder = [0, 0, 0, 0, 1, 0, 0, 0]
+var sortOrder = [0, 0, 0, 1, 0, 0, 0, 0]
 var trans = [1, 1, -1]
 var orderArrows = ["&#x2193;", "&#xb7;", "&#x2191;"]
-var duoMode = [0, 0]
+var duoMode = 0
 var sbuttc = ["1 &#8594; 2", "2 &#8594; 1"]
 </script>
 
 <div align=center>
-<script src=actions.js></script>
+<script src=actions-all.js></script>
 <p id=tab1a>
 
 <p>
