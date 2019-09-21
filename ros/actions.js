@@ -85,8 +85,8 @@ function drawTable1() {
     for (i = M - 1; i > 0; i--)
         for (sortm in Data[order[0]][type[0]])
             if (typeof(Data[order[0]][type[0]][sortm][i]) == "number") { MA = i + 1; i = 0; break }
-    var text = "<tr><th rowspan=2>#<th rowspan=2>Алгоритм<button onclick=changeOrd(0) style='padding:0px 0px;margin:0px 5px'>" + orderArrows[sortOrder[0] + 1]
-        + "</button><th colspan=" + MA + ">Размер данных" + "<th align=center rowspan=2>Временная<br>зaвиcимocть"
+    var text = "<tr><th rowspan=2>#<th rowspan=2>Algorithm<button onclick=changeOrd(0) style='padding:0px 0px;margin:0px 5px'>" + orderArrows[sortOrder[0] + 1]
+        + "</button><th colspan=" + MA + ">Data size" + "<th align=center rowspan=2>Time<br>dependancy"
     text += "<tr>"
     for (i = 0; i < MA; ++i)
         text += "<th align=center>10<sup>" + (i + 3)

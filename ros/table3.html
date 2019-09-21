@@ -1,0 +1,36 @@
+<div align=center>
+<table border=1>
+<tr><th>Method<th>Dependency
+<tr><td>array*1<td align=center>(T + 1/8)<i>N</i>
+<tr><td>array*k, k&gt;1<td align=center>(T + 4k)<i>N</i>
+<tr><td>bubble<td align=center>0
+<tr><td>clib_qsort<td align=center>от &#x2248;T<i>N</i>/2 до &#x2248;T<i>N</i><sup>*</sup>
+<tr><td>flat_stable<td align=center>&#x2248;T<i>N</i>/256
+<tr><td>hash<td align=center>(T + 8 + 4A)<i>N</i>
+<tr><td>hashbt<td align=center>(T + 12)<i>N</i>
+<tr><td>hashbt_boost<td align=center>(56 + T + 4A + M)<i>N</i>
+<tr><td>hashbt_std<td align=center>(80 + T + 4A + M)<i>N</i>
+<tr><td>heapsort<td align=center>0
+<tr><td>insertion<td align=center>0
+<tr><td>mergesort_bsd<td align=center>от &#x2248;Tlog<sub>2</sub><i>N</i> до T<i>N</i><sup>*</sup>
+<tr><td>pdq<td align=center>Tlog<i>N</i>
+<tr><td>quicksort<td align=center>от &#x2248;16log<sub>2</sub><i>N</i> до 16<i>N</i>
+<tr><td>quicksort_tco<td align=center>от 0 до <i>N</i>
+<tr><td>radix<td align=center>&#x2248;T<i>N</i>
+<tr><td>radix8_trie<td align=center>от &#x2248;T<i>N</i> + 24L до &#x2248;(T + 24L + 12)<i>N</i>
+<tr><td>radix_bsd<td align=center>0
+<tr><td>radix_msd<td align=center>&#x2248;T<i>N</i>
+<tr><td>selection<td align=center>0
+<tr><td>shell<td align=center>0
+<tr><td>spin<td align=center>T<i>N</i>/2
+<tr><td>spread<td align=center>&#x2248;0
+<tr><td>sradix_bsd<td align=center>&#x2248;T<i>N</i><sup>*</sup>
+<tr><td>stlsort<td align=center>от 0 до до &#x2248;Tlog<sub>2</sub><i>N</i><sup>*</sup>
+<tr><td>stlstable<td align=center>от 0 до &#x2248;T<i>N</i>/2<sup>*</sup>
+<tr><td>timsort<td align=center>от 0 до &#x2248;T<i>N</i><sup>*</sup>
+<tr><td>tree_boost<td align=center>(T + 24)<i>N</i>
+<tr><td>tree_stl<td align=center>(T + 32)<i>N</i>
+</table>
+</div>
+<p>T &ndash; size of type in bytes; <i>N</i> &ndash; size of data in elements; A &ndash; can be 0 or 1, it is an alignment to 64-bit border; L &ndash; average length of data for this type in bytes, it is equal to T for numbers; M &ndash; it is an alignment used by the standard memory allocator, it is supposedly equal to the supplement to 32 bytes
+
