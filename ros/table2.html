@@ -1,5 +1,6 @@
 <meta charset=utf-8>
 <script src=data-all.js></script>
+<script src=actions-all.js></script>
 
 <style type=text/css>
 table, th, td {
@@ -32,14 +33,12 @@ var trans = [1, 1, -1]
 var orderArrows = ["&#x2193;", "&#xb7;", "&#x2191;"]
 var duoMode = 0
 var sbuttc = ["1 &#8594; 2", "2 &#8594; 1"]
+var query = new URLSearchParams(window.location.search)
 </script>
 
 <div align=center>
-<script src=actions-all.js></script>
 <p id=tab1a>
-
-<p>
-<span id=rel></span>
+<p><span id=rel></span>
 precision:
 <select id=optionsPrec onchange=changeOptPrec()>
 <option value=0>0</option>
@@ -65,10 +64,54 @@ select:
 
 <p>
 <table border=1 id=tab1></table>
+<p><b><span id=curUrl></span></b>
+<br>
 
 <script>
 drawTable1()
 drawActionTable1()
+var f = 0;
+if (query.has('rel')) {
+    optionRel = query.get('rel')
+    f = 1
+}
+if (query.has('type')) {
+    var res = query.get('type').split(",")
+    type = [res[0], res[1]]
+    f = 1
+}
+if (query.has('duo')) {
+    duoMode = query.get('duo')
+    f = 1
+}
+if (query.has('prec')) {
+    document.getElementById("optionsPrec").value = query.get('prec')
+    changeOptPrec()
+    f = 1
+}
+if (query.has('sort')) {
+    var res = query.get('sort')
+    for (var i = 0; i < sortOrder.length; ++i)
+        sortOrder[i] = 0
+    sortOrder[res.charAt(0)] = res.charAt(1) == 'A' ? 1 : -1
+    f = 1
+}
+if (query.has('sel')) {
+    document.getElementById("optionSel").value = query.get('sel')
+    f = 1
+}
+if (query.has('marked')) {
+    var res = query.get('marked').split(",")
+    marked = {}
+    for (var i = 0; i < res.length; ++i)
+        marked[res[i]] = 1
+    f = 1
+}
+if (f == 1) {
+    changeOptAll()
+    drawTable1()
+    drawActionTable1()
+}
 </script>
 </div>
 

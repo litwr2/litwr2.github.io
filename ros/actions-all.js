@@ -113,6 +113,19 @@ function drawTable1() {
         }
     }
     document.getElementById("tab1").innerHTML = text
+    var query = '?duo=' + duoMode + '&type=' + type[0] + ',' + type[1] + 
+        '&prec=' + document.getElementById("optionsPrec").value + '&rel=' + optionRel + '&sort='
+    for (i = 0; i < sortOrder.length; ++i)
+        if (sortOrder[i] != 0) break
+    query += i + (sortOrder[i] < 0 ? 'D' : 'A') + '&sel=' + document.getElementById("optionSel").value
+    var ar = []
+    for (i in marked) ar.push(i)
+    if (ar.length > 0) {
+        query += '&marked=' + ar[0]
+        for (i = 1; i < ar.length; ++i)
+            query += ',' + ar[i]
+    }
+    document.getElementById("curUrl").innerHTML = location.protocol + '//' + location.hostname + location.pathname + query
 }
 
 function DataAvg() {
