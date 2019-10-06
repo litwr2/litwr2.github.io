@@ -196,17 +196,25 @@ function changeOptRel() {
     var pivot = 1  //absolute
     optionRel = document.getElementById("optionRel").value
     if (optionRel == 1)  //average
-        pivot = DataAvg();
+        pivot = DataAvg()
     else if (optionRel == 2)  //median
-        pivot = DataMedian();
+        pivot = DataMedian()
     else if (optionRel == 3)  //minimum
-        pivot = DataMin();
+        pivot = DataMin()
     else if (optionRel == 4)  //maximum
-        pivot = DataMax();
+        pivot = DataMax()
+    else if (optionRel == 5) //deviation
+        pivot = -1
     for (var sortm in Data[order[0]][type[0]]) {
         for (var i = 0; i < M; ++i)
             if (typeof(Data[order[0]][type[0]][sortm][i]) == "number")
-               Data1[order[0]][type[0]][sortm][i] = Data[order[0]][type[0]][sortm][i]/pivot
+                if (pivot < 0) {
+                    var t1 = Data[order[0]][type[0]][sortm][i]
+                    var t2 = Math.pow(10, (i + 3)*Data[order[0]][type[0]][sortm][M])*Data[order[0]][type[0]][sortm][M + 1]/1000
+                    Data1[order[0]][type[0]][sortm][i] = Math.abs(t1 - t2)/t1
+                }
+                else
+                    Data1[order[0]][type[0]][sortm][i] = Data[order[0]][type[0]][sortm][i]/pivot
         Data1[order[0]][type[0]][sortm][M] = Data[order[0]][type[0]][sortm][M]
         Data1[order[0]][type[0]][sortm][M + 1] = Data[order[0]][type[0]][sortm][M + 1]
     }
