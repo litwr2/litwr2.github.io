@@ -196,10 +196,18 @@ function changeOptRel() {
         pivot = DataMin();
     else if (optionRel == 4)  //maximum
         pivot = DataMax();
+    else if (optionRel == 5) //deviation
+        pivot = -1
     for (var sortm in Data[type[0]])
         for (var i = 0; i < M; ++i)
             if (typeof(Data[type[0]][sortm][i]) == "number")
-               Data1[type[0]][sortm][i] = Data[type[0]][sortm][i]/pivot
+                if (pivot < 0) {
+                    var t1 = Data[type[0]][sortm][i]
+                    var t2 = Math.pow(i + 7, Data[type[0]][sortm][M])*Data[type[0]][sortm][M + 1]
+                    Data1[type[0]][sortm][i] = Math.abs(t1 - t2)/t1
+                }
+                else
+                   Data1[type[0]][sortm][i] = Data[type[0]][sortm][i]/pivot
     drawTable1()
 }
 
