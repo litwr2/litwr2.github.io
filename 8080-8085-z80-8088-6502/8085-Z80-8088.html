@@ -1,0 +1,72 @@
+<head>
+<meta name=google content=notranslate>
+<title></title>
+<style type=text/css>
+table, th, td {
+   border-width:thin;
+   border-style:solid;
+   border-color:green;
+   border-spacing:0px;
+}
+</style>
+<script src=db.js></script>
+</head>
+<body>
+<div align=center>
+<h1>The 8080, 8085, Z80, 8088 register correspondence</h1>
+<table>
+<tr><th>8080/8085<th>Z80<th>8088
+<tr><td align=center>A, PSW<td align=center>A, AF<td align=center>AL, flags*
+<tr><td colspan=2 align=center>B, C, BC<td align=center>CH, CL, CX
+<tr><td colspan=2 align=center>D, E, DE<td align=center>DH, DL, DX
+<tr><td colspan=2 align=center>H, L, HL<td align=center>BH, BL, BX
+<tr><td colspan=3 align=center>SP
+<tr><td><td align=center>IX<td align=center>BP
+<tr><td><td align=center>IY<td align=center>DI
+</table>
+<p>* - the 8080's PSW (the z80's AF, F is the lower byte) combines two registers, the 8088's AL and flags are always separated
+
+<h1>The Z80 and 8088 instructions for the additional 8085 instructions</h1>
+<table id=tab8085></table>
+
+<h1>References</h1>
+</div>
+<ol>
+<li>XLT86™ 8080 to 8086 Assembly Language Translator USER'S GUIDE Copyright © 1981 Digital Research, Inc.
+<li>Intel 8080 Assembly Language Programming Manual, INTEL CORPORATION, 3065 Bowers Avenue, Santa Clara
+<li>Intel iAPX 86, 88 USER'S MANUAL, AUGUST 1981
+<li>Mohamed Rafiquzzaman, Microprocessors and Microcomputer Development Systems: Designing Microprocessor-Based Systems, Harper and Row, 1984
+<li>Russel Rector, George Alexy, The 8086 Book, Osborne/McGraw-Hill, Berkeley, California, 1980
+<li>Wolfgang Sehnhardt and Villy M. Sorensen, Unspecified 8085 op codes enhance programming. Engineer's Notebook, "Electronics" magazine, Jan 18, 1979 p 144-145.
+<li>Sean Young, The Undocumented Z80 Documented, Version 0.91, 18th September, 2005
+<li><a href=http://www.righto.com/2013/02/looking-at-silicon-to-understanding.html>Silicon reverse engineering: The 8085's undocumented flags</a>
+</ol>
+<script>
+var s = "<tr><th colspan=5 style=padding-left:10px;padding-right:10px>8085"
+    + "<th colspan=3 align=center>z80"
+    + "<th colspan=3 align=center>8088"
+    + "<th rowspan=2>comments\n"
+    + "<tr><th colspan=2>instruction<th>code<th>size<th>ticks"
+    + "<th>instructions<th>size<th>ticks"
+    + "<th>instructions<th>size<th>ticks\n"
+for(var i = 0; i < ma.length; ++i) {
+    if (ma[i].m8080 == "" || ma[i].t8080 != "") continue;
+    ss = style[ma[i].style] + ">"
+    s += "<tr>"
+        + "<td style=border-right:0;padding-left:4px" + ss + ma[i].m8080
+        + "<td align=center style=border-left:0;padding-left:4px" + ss + ma[i].o8080
+        + "<td align=center style=" + ss + ma[i].oc
+        + "<td align=center style=" + ss + ma[i].sz
+        + "<td align=center style=" + ss + ma[i].t8085
+        + "<td align=center style=" + ss + ma[i].mz80.replace(/~/g, "<br>")
+        + "<td align=center style=" + ss + ma[i].oz80
+        + "<td align=center style=" + ss + ma[i].tz80
+        + "<td align=center style=" + ss + ma[i].x86.replace(/~/g, "<br>")
+        + "<td align=center style=" + ss + ma[i].x86sz
+        + "<td align=center style=" + ss + ma[i].t8088
+        + "<td align=center style=" + ss + ma[i].comment.replace(/~/g, "<br>") + "\n"
+}
+document.getElementById("tab8085").innerHTML = s
+</script>
+</body>
+

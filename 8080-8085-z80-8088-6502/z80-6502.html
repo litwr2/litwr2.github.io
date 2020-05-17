@@ -1,0 +1,77 @@
+<head>
+<meta name=google content=notranslate>
+<title></title>
+<style type=text/css>
+table, th, td {
+   border-width:thin;
+   border-style:solid;
+   border-color:green;
+   border-spacing:0px;
+}
+</style>
+<script src=db.js></script>
+</head>
+<body>
+<div align=center>
+<h1>The Z80, 6502 register correspondence</h1>
+<table>
+<tr><th>Z80<th>6502
+<tr><td align=center>A, AF<td align=center>A, SR
+<tr><td align=center>B, C, BC<td align=center>zc+1, zc, zc
+<tr><td align=center>D, E, DE<td align=center>ze+1, ze, ze
+<tr><td align=center>H, L, HL<td align=center>zl+1, zl, zl
+<tr><td colspan=2 align=center>SP
+<tr><td align=center>IX<td align=center>zx
+<tr><td align=center>IY<td align=center>zy
+</table>
+<p>zc, ze, zl, zx, zy are words in the zero page memory.<br>zs is a word for temporary values in the ZP.<br>XR is always 0 - this allows to have faster (HL)-based addressing
+<hr>
+<p>The 6502 and Z80 have several architectural differences which makes the emulation of several the Z80's features almost impossible:
+<ul style=list-style-position:inside>
+<li>The stack pointer of the 6502 has its high byte always set to 1 but SP of the Z80 has 16 bits;
+<li>The 6502 load instructions (LDA, TXA, LDY, PLA, ...) change SF and ZF, the Z80 load instructions don't change flags;
+<li>The 6502 has the decimal mode and the Z80 has decimal correction instruction (DAA);
+<li>The 6502 doesn't have parity, half-carry and subtraction flags;
+<li>The 6502 uses the inverted carry flag for subtractions and comparisons;
+<li>The 6502 instructions JSR and RET work with a stack a bit differently than the Z80 instructions CALL and RET;
+<li>The 6502 has nothing similar to the Z80 instructions HALT, RETN and IM or to registers R and I;
+<li>The Z80 instruction RETI is unique in the processor world;
+<li>The 6502 doesn't have a special address space for input and output.
+</ul>
+<hr>
+
+<h1>The 6502 instructions for the Z80 instructions</h1>
+<table id=tab6502></table>
+
+<h1>References</h1>
+</div>
+<ol>
+<li>Mohamed Rafiquzzaman Microprocessors and Microcomputer Development Systems: Designing Microprocessor-Based Systems, Harper and Row, 1984
+<li><a href=http://litwr2.atspace.eu/p4asheet.pdf>Commodore+4 info sheet</a>
+</ol>
+
+<script>
+var style = [";border-top:0;border-bottom:0", ";border-bottom:0", ";border-top:0", ""]
+s = "<tr><th colspan=5 style=padding-left:10px;padding-right:10px>Z80"
+    + "<th colspan=3 align=center>6502"
+    + "<th rowspan=2>comments\n"
+    + "<tr><th colspan=2>instruction<th>code<th>size<th>ticks"
+    + "<th>instructions<th>size<th>ticks\n"
+for(var i = 0; i < ma.length; ++i) {
+    if (ma[i].m8080 != "" && ma[i].t8080 == "") continue;
+    ss = style[ma[i].style] + ">"
+    s += "<tr>"
+        + "<td style=border-right:0;padding-left:4px" + ss + ma[i].mz80
+        + "<td align=center style=border-left:0;padding-left:4px" + ss + ma[i].oz80
+        + "<td align=center style=" + ss + ma[i].oc.replace(/~/g, "<br>")
+        + "<td align=center style=" + ss + ma[i].sz
+        + "<td align=center style=" + ss + ma[i].tz80
+        + "<td align=center style=" + ss + ma[i].m6502.replace(/~/g, "<br>")
+        + "<td align=center style=" + ss + ma[i].sz6502
+        + "<td align=center style=" + ss + ma[i].t6502
+        + "<td align=center style=" + ss + ma[i].comment.replace(/~/g, "<br>") + "\n"
+}
+document.getElementById("tab6502").innerHTML = s
+</script>
+</body>
+
