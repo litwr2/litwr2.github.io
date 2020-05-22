@@ -25,7 +25,7 @@ table, th, td {
 <tr><td>Amiga 1200<td>WB<td>amiga-4<td>0.12<td>4.8<td>39<td>9252<td align=center>FS-UAE 2.6.2 (high)
 <tr><td>ARM Evaluation system @6.67Mhz<td>ROM OS<td>arm1-4<td>0.07<td>5.8<td>52<td>9148<td align=center>real iron (thanks to BigEd) &amp; estimation<!--B-em to real iron ratio is 1:0.84662 for 3000, 1:0.84684 for 1000, 1:0.83333 for 100 -->
 <tr><td>IBM PC 5170 AT 8MHz VGA<td>DOS<td>ibmpc-5<td>0.11<td>7.1<td>60<td>9264<td align=center>real iron (thanks to modem7) &amp; estimation
-<tr><td>VAX 11/785<td>Open VMS 7.3<td>vax-vms-1<td>0.12<td>7.2<td>62<td>9268<td align=center>real iron (thanks to LCM+L)
+<tr><td>VAX 11/785<td>Open VMS 7.3<td>vax-vms-2<td>0.11<td>7<td>61<td>9228<td align=center>real iron (thanks to LCM+L)<!--0.11/6.99/60.57-->
 <tr><td>IBM PC Clone 386DX @6.25MHz<td>DOS<td>ibmpc-5<td>0.11<td>8<td>69<td>9264<td align=center>real iron<!--0.11/8.02/69.36-->
 <tr><td>IBM PC 5162 XT/286 VGA<td>DOS<td>ibmpc-5<td>0.11<td>8.2<td>71<td>9264<td align=center>real iron (thanks to per) &amp; estimation
 <tr><td>Acorn Master 512 (TUBE 80186 @10MHz)<td>DOS<td>msdos-5-master512<td>0.14<td>8.7<td>75<td>9264<td  align=center>real iron (thanks to george.h) &amp; estimation<!--B-em to real iron ratio is 1:0.919 for 1000 and 3000, 0.875:1 for 100 digits -->
@@ -46,6 +46,7 @@ table, th, td {
 <tr><td>IBM PC 5150 MDA<td>DOS<td>ibmpc-5<td>0.65<td>47.6<td>407<td>9264<td align=center>real iron (thanks to modem7) &amp; estimation<!--pce-ibmpc version 20140222-4b05f0c to real iron ratio is 1:1.206 for 3000, 1:1.193 for 1000, 1:1.031 for 100 -->
 <tr><td>Tiki-100 (8088 board)<td>DOS<td>msdos-5-tiki100<td>0.84<td>54.4<td>471<td>9260<td align=center>real iron (thanks to per) &amp; estimation
 <tr><td>BBC Micro (TUBE 6502 @4MHz)<td>ROM Basic<td>bbc-5<td>0.78<td>77.2<td>691<td>up to 3216<td  align=center>real iron (thanks to BigEd and Kieran) &amp; estimation<!--B-em to real iron ratio is 1:1.0214 for 1000, lower for more digits -->
+<tr><td>VAX 11/730<td>BSD 4.3<td>vax-bsd-1<td>1.5<td>87.2<td>737<td>9244<td align=center>real iron (thanks to LCM+L)<!--1.499/87.179/736.891-->
 <tr><td>BBC Micro (TUBE Acorn z80 @6MHz)<td>ROM Z80 Basic<td>bbc-z80-3<td>1.05<td>96.7<td>866<td>6252<td  align=center>real iron (thanks to BigEd)<!--B-em to real iron ratio is 1:1.3394 -->
 <tr><td>BBC Micro (TUBE Acorn z80 @6MHz)<td>CP/M<td>cpm22bios-7-acorn<td>1.06<td>96.7<td>867<td>8220<td  align=center>real iron (thanks to BigEd) &amp; estimation<!--B-em to real iron ratio is 1:1.3394 -->
 <tr><td>BBC Micro (TUBE 6502 @3MHz)<td>ROM Basic<td>bbc-5<td>1.07<td>106.4<td>952<td>up to 3216<td  align=center>real iron (thanks to BigEd and hoglet) &amp; estimation<!--Beebem to real iron ratio is 1:1.0494 -->
@@ -92,9 +93,10 @@ table, th, td {
 <tr><td>13<td>J11<td>1840
 <tr><td>14<td>8088<td>1940
 <tr><td>15<td>6809<td>2520
-<tr><td>16<td>6502<td>2760
-<tr><td>17<td>Z80<td>5200
-<tr><td>18<td>K1801BM1<td>7340<!--4700 without memory delays-->
+<tr><td>16<td>VAX-11/730<td>2730
+<tr><td>17<td>6502<td>2760
+<tr><td>18<td>Z80<td>5200
+<tr><td>19<td>K1801BM1<td>7340<!--4700 without memory delays-->
 </table>
 <br>
 <p>The next table contains the details about the tested systems in the chronological order.
@@ -106,6 +108,7 @@ table, th, td {
 <tr><td>BBC Micro<td>1981<td>6502 2 MHz
 <tr><td>ZX Spectrum 48k<td>1982<td>z80 3.5 MHz
 <tr><td>Dragon-32<td>1982<td>6809 &#x2248;0.89&ndash;1.78 MHz
+<tr><td>VAX-11/730<td>1982<td>VAX-11/730 3.7 MHz
 <tr><td>Z80 Torch 2nd processor<td>1982<td>z80 4 MHz
 <tr><td>Commodore 64<td>1982<td>6502 &#x2248;1 MHz
 <tr><td>MSX<td>1983<td>Z80 3.58 MHz
@@ -143,10 +146,11 @@ table, th, td {
 <tr><td>pdp11-unix7-eis-1<td>636&#176;
 <tr><td>ibmpc-5<td>660
 <tr><td>dragon-6309-3<td>281+496=777*
+<tr><td>vax-bsd-1<td>816&#176;
 <tr><td>amiga1200-4<td>868
 <tr><td>rt11-eis-3<td>894**
 <tr><td>amiga-4<td>904
-<tr><td>vax-vms-1<td>917**
+<tr><td>vax-vms-2<td>915**
 <tr><td>bbc-pandora-2<td>992
 <tr><td>bbc-panos-2<td>1044
 <tr><td>pdp11-unix7-noeis-1<td>1258&#176;
@@ -181,7 +185,7 @@ table, th, td {
 <tr><td>Torch z80 Co Pro for BBC Micro/Master<td>CP/M<td>up to 8740
 </table>-->
 <hr>
-<p>Download the latest sources and executables (<a href=pipack-25.tar.bz2>v25 [151 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=pipack-26.tar.bz2>v26 [152 KB]</a>) pack.
 <p><a href=pipacks.html>Archive</a>
 </div>
 </body>
