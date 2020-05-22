@@ -12,14 +12,24 @@ table, th, td {
 <body>
 <div align=center>
 <h1 style=color:green>The number &#x3c0; calculation by spigot algorithm benchmark</h1>
-<p>The table below consists of the best results for the listed computers. It is open for the further expansion.  So if anybody has faster implementation of <a href=http://www.z88dk.org/wiki/doku.php?id=libnew:examples:pi>spigot algorithm</a> for one of systems listed below then please inform author of this page (to vol.litwr&nbsp;at gmail dot&nbsp;com) and it should be updated.  The same is true for the results of other systems missed in the table.
-<p>The results are time in seconds for the calculation of 100, 1000, 3000 digits.  They also contain the upper limit to the number of digits for the programs used.  The data are sorted by time for 3000 digits.
-<p>Every program is satisfying four restrictions: 1) it calculates time; 2) it uses an OS function to print digits; 3) it uses less than 64 KB RAM for the code and data; 4) it utilizes all available RAM below 64 KB limit to get the maximum number of calculated digits, so it is forbidden to restrict artificially the maximum number of digits.
+<p>The table below consists of the best results for the listed computers. It is open for the further expansion.  So if anybody has faster implementation of <a href=http://www.z88dk.org/wiki/doku.php?id=libnew:examples:pi>spigot algorithm</a> for one of systems listed below then please inform the author of this page (to vol.litwr&nbsp;at gmail dot&nbsp;com) and it should be updated.  The same is true for the results of other systems missed in the table.
+<p>The results are time intervals in seconds for the calculation of 100, 1000, 3000 digits.  They also contain the upper limits to the number of digits for the programs used.  The data are sorted by time for 3000 digits.
+<p>Every program is satisfying four restrictions: 1) it measures time; 2) it uses an OS function to print digits; 3) it uses less than 64 KB RAM for the code and data; 4) it utilizes all available RAM below 64 KB limit to get the maximum number of calculated digits, so it is forbidden to restrict artificially the maximum number of digits.
 <p>
 <table border=1>
 <tr><th rowspan=2>Computer<th rowspan=2>OS<th rowspan=2>Program<br>version<th colspan=3>Digits<th rowspan=2>Max<br>digits<th rowspan=2>Emulator used and its quality
 <tr><th>100<th>1000<th>3000
-<tr><td>Acorn A3020<td>RiscOS<td>arm2-1<td>0.04<td>3.5<td>31<td>9144<td align=center>real iron (thanks to danielj)<!--0.04/3.48/31.05-->
+<tr><td>Acorn RiscPC StrongARM @203MHz<td>RiscOS<td>arm2-1<td>0.00<td>0.2<td>1.5<td>9144<td align=center>real iron (thanks to paulv)<!--0.00/0.15/1.48-->
+<tr><td>VAX 7000-640<td>OpenVMS 7.3<td>vax-vms-2<td>0.01<td>0.5<td>3.8<td>9228<td align=center>real iron (thanks to to LCM+L)<!--0.01/0.45/3.75-->
+<tr><td>VAX 4000 model 100A<td>OpenVMS 6.1<td>vax-vms-2<td>0.01<td>0.5<td>4.7<td>9228<td align=center>real iron (thanks to DECtechGuy)<!--0.01/0.54/4.7-->
+<tr><td>MicroVAX 3100 model 85 @62.5MHz<td>OpenVMS 7.3<td>vax-vms-2<td>0.01<td>0.7<td>6.9<td>9228<td align=center>real iron (thanks to to g4ugm)<!--0.01/0.74/6.93-->
+<tr><td>VAXstation 4000 model 60<td>OpenVMS 7.3<td>vax-vms-2<td>0.03<td>1.2<td>8.7<td>9228<td align=center>real iron (thanks to to cruff)<!--0.03/1.17/8.7002-->
+<tr><td>A410/1 ARM3 @36MHz<td>RiscOS<td>arm2-1<td>0.01<td>1.1<td>9.7<td>9144<td align=center>real iron (thanks to paulv)<!--0.01/1.09/9.68-->
+<tr><td>PS/2 Model 85 486SX @33MHz<td>DOS<td>pc386-5<td>0.01<td>1.2<td>10.4<td>9228<td align=center>real iron (thanks to to RadRacer203)<!--0.00/1.15/10.43-->
+<tr><td>VAX 4000 VLC<td>OpenVMS 7.3<td>vax-vms-2<td>0.04<td>2.1<td>17.1<td>9228<td align=center>real iron (thanks to to g4ugm)<!--0.04/2.1/17.05-->
+<tr><td>IBM PC Clone 386DX @25MHz<td>DOS<td>pc386-5<td>0.03<td>2.1<td>18<td>9272<td align=center>real iron<!--0.03/2.08/17.62-->
+<tr><td>IBM PC Clone 386DX @25MHz<td>DOS<td>ibmpc-5<td>0.03<td>2.1<td>18<td>9264<td align=center>real iron<!--0.03/2.14/18.32-->
+<tr><td>Acorn A3020<td>RiscOS<td>arm2-1<td>0.04<td>3.5<td>31.1<td>9144<td align=center>real iron (thanks to danielj)<!--0.04/3.48/31.05-->
 <tr><td>Amiga 1200/PAL with fast RAM<td>WB<td>amiga1200-4<td>0.09<td>4<td>34<td>9256<td align=center>corrected FS-UAE 2.6.2 (almost high)
 <tr><td>IBM PC Clone 386DX @12.5MHz<td>DOS<td>pc386-5<td>0.05<td>4<td>35<td>9272<td align=center>real iron<!--0.05/4.01/34.71-->
 <tr><td>IBM PC Clone 386DX @12.5MHz<td>DOS<td>ibmpc-5<td>0.05<td>4.2<td>36<td>9264<td align=center>real iron<!--0.05/4.17/36.41-->
@@ -29,15 +39,19 @@ table, th, td {
 <tr><td>Acorn Archimedes 440/1<td>RiscOS<td>arm2-1<td>0.06<td>5.1<td>45<td>9144<td align=center>real iron (thanks to steve3000)
 <tr><td>ARM Evaluation system @6.67Mhz<td>ROM OS<td>arm1-4<td>0.07<td>5.8<td>52<td>9148<td align=center>real iron (thanks to BigEd) &amp; estimation<!--B-em to real iron ratio is 1:0.84662 for 3000, 1:0.84684 for 1000, 1:0.83333 for 100 -->
 <tr><td>IBM PC 5170 AT 8MHz VGA<td>DOS<td>ibmpc-5<td>0.11<td>7.1<td>60<td>9264<td align=center>real iron (thanks to modem7) &amp; estimation
-<tr><td>VAX 11/785<td>OpenVMS 7.3<td>vax-vms-2<td>0.11<td>7<td>61<td>9228<td align=center>real iron (thanks to LCM+L)<!--0.11/6.99/60.57-->
+<tr><td>VAX 11/780-5<td>OpenVMS 7.3<td>vax-vms-2<td>0.11<td>7<td>61<td>9228<td align=center>real iron (thanks to LCM+L)<!--0.11/6.99/60.57-->
 <tr><td>IBM PC Clone 386DX @6.25MHz<td>DOS<td>ibmpc-5<td>0.11<td>8<td>69<td>9264<td align=center>real iron<!--0.11/8.02/69.36-->
 <tr><td>IBM PC 5162 XT/286 VGA<td>DOS<td>ibmpc-5<td>0.11<td>8.2<td>71<td>9264<td align=center>real iron (thanks to per) &amp; estimation
 <tr><td>Acorn Master 512 (TUBE 80186 @10MHz)<td>DOS<td>msdos-5-master512<td>0.14<td>8.7<td>75<td>9264<td  align=center>real iron (thanks to george.h) &amp; estimation<!--B-em to real iron ratio is 1:0.919 for 1000 and 3000, 0.875:1 for 100 digits -->
 <tr><td>IBM PC 5170 AT 6MHz CGA<td>DOS<td>ibmpc-5<td>0.21<td>10.2<td>83<td>9264<td align=center>real iron (thanks to modem7) &amp; estimation<!--PCem v10.1 to real iron ratio is 1.239:1 for 3000, 1.1289:1 for 1000, 2:1 for 100 digits -->
 <tr><td>Commodore SuperCPU-64/PAL<td>ROM Basic<td>scpu64-5<td>0.1<td>9.7<td>87<td>7024<td align=center>VICE Version 2.4.22 (high)
 <tr><td>Commodore SuperCPU-64/NTSC<td>ROM Basic<td>scpu64-5<td>0.1<td>10<td>90<td>7024<td align=center>VICE Version 2.4.22 (high)
+<tr><td>AT&amp;T PC 6300 / Olivetti M24 (NEC V30)<td>DOS<td>ibmpc-5<td>0.22<td>11.8<td>98<td>9264<td align=center>real iron (thanks to pietja) <!--0.22/11.75/97.91-->
 <tr><td>microPDP-11/83<td>RT11SB<td>rt11-eis-5<td>0.14<td>11.4<td>102<td>up to 6580<td align=center>real iron (thanks to form) &amp; estimation
-<tr><td>microPDP-11/70<td>Unix v7<td>pdp11-unix7-eis-1<td>0.17<td>11.9<td>104<td>up to 7312<td align=center>real iron (thanks to LCM+L)
+<tr><td>Compaq Deskpro 1 (NEC V30 @7.14MHz)<td>DOS<td>ibmpc-5<td>0.22<td>12<td>103<td>9264<td align=center>real iron (thanks to resman) <!--0.22/12.08/102.53-->
+<tr><td>PDP-11/70<td>Unix v7<td>pdp11-unix7-eis-1<td>0.17<td>11.9<td>104<td>up to 7312<td align=center>real iron (thanks to LCM+L)
+<tr><td>PDP-11/93<td>2.11BSD<td>pdp11-211bsd-eis-1<td>0.18<td>12.6<td>109<td>6728<td align=center>real iron (thanks to bqt)
+<tr><td>HP 200LX (Palmtop)<td>DOS<td>ibmpc-5<td>0.38<td>15.9<td>130<td>9264<td align=center>real iron (thanks to rosaage)<!--0.38/15.87/129.71-->
 <tr><td>Commodore SuperCPU-64/PAL<td>ROM Basic<td>c64-9<td>0.15<td>14.9<td>133<td>6360<td align=center>VICE Version 2.4.22 (high)
 <tr><td>Commodore SuperCPU-64/NTSC<td>ROM Basic<td>c64-9<td>0.15<td>15.2<td>136<td>6360<td align=center>VICE Version 2.4.22 (high)
 <tr><td>Amiga 500/PAL + fast RAM<td>WB<td>amiga-4<td>0.42<td>19.7<td>164<td>9252<td align=center>FS-UAE 2.6.2 (high)
@@ -46,19 +60,27 @@ table, th, td {
 <tr><td>BBC Micro (TUBE Acorn 32016 @6MHz)<td>PanOS<td>bbc-panos-2<td>0.28<td>21.6<td>191<td>9264<td align=center>real iron (thanks to Chris) &amp; estimation
 <tr><td>MSX turbo R<td>ROM Basic<td>msx-3<td>0.25<td>22.1<td>198<td>3264<td align=center>openmsx 0.10.1 (high)
 <tr><td>microPDP-11/83<td>RT11SB<td>rt11-noeis-5<td>0.26<td>22.5<td>202<td>up to 6500<td align=center>real iron (thanks to form) &amp; estimation
-<tr><td>microPDP-11/70<td>Unix v7<td>pdp11-unix7-noeis-1<td>0.32<td>24.8<td>219<td>up to 7164<td align=center>real iron (thanks to LCM+L)
-<tr><td>Dragon 32 (6309 CPU)*<td>ROM Basic<td>dragon-6309-3<td>0.45<td>41.7<td>374<td>3176<td align=center>XRoar 0.34.1 (medium)
+<tr><td>IBM PC 5160/XT (NEC V20)<td>DOS<td>ibmpc-5<td>0.44<td>25.2<td>213<td>9264<td align=center>real iron (thanks to RadRacer203) <!--0.44/25.15/212.85-->
+<tr><td>AT&amp;T PC 6300 / Olivetti M24<td>DOS<td>ibmpc-5<td>0.38<td>25<td>217<td>9264<td align=center>real iron (thanks to Trixter) <!--0.38/25.04/216.58-->
+<tr><td>PDP-11/70<td>Unix v7<td>pdp11-unix7-noeis-1<td>0.32<td>24.8<td>219<td>up to 7164<td align=center>real iron (thanks to LCM+L)
+<tr><td>Panasonic Exec Parter FT-70<td>DOS<td>ibmpc-5<td>0.33<td>26<td>229<td>9264<td align=center>real iron (thanks to RadRacer203) <!--0.33/26.03/228.78-->
+<tr><td>Sharp PC-7000<td>DOS<td>ibmpc-5<td>0.49<td>36.1<td>312<td>9264<td align=center>real iron (thanks to RadRacer203) <!--0.49/36.08/311.53-->
+<tr><td>PDP-11/34A<td>RT11 5.01 XM<td>rt11-eis-5<td>0.5<td>36.7<td>321<td>up to 6580<td align=center>real iron (thanks to elb) <!--0.50/36.65/321.43/822.70 (for 4812?)-->
+<tr><td>Dragon 32 (6309 CPU)*<td>ROM Basic<td>dragon-6309-3<td>0.44<td>41.7<td>374<td>3176<td align=center>real iron (thanks to robcfg) <!-- XRoar 0.34.1 (high) 0.45/41.7/374-->
 <tr><td>IBM PC 5150 MDA<td>DOS<td>ibmpc-5<td>0.65<td>47.6<td>407<td>9264<td align=center>real iron (thanks to modem7) &amp; estimation<!--pce-ibmpc version 20140222-4b05f0c to real iron ratio is 1:1.206 for 3000, 1:1.193 for 1000, 1:1.031 for 100 -->
+<tr><td>&#x423;KH&#x426; (PDP-11 architecture)<td>RT11SJ 5.02<td>rt11-eis-5<td>0.56<td>46.2<td>414<td>6344<td align=center>real iron (thanks to Arseny)
 <tr><td>Tiki-100 (8088 board)<td>DOS<td>msdos-5-tiki100<td>0.84<td>54.4<td>471<td>9260<td align=center>real iron (thanks to per) &amp; estimation
 <tr><td>BBC Micro (TUBE 6502 @4MHz)<td>ROM Basic<td>bbc-5<td>0.78<td>77.2<td>691<td>up to 3216<td  align=center>real iron (thanks to BigEd and Kieran) &amp; estimation<!--B-em to real iron ratio is 1:1.0214 for 1000, lower for more digits -->
 <tr><td>VAX 11/730<td>BSD 4.3<td>vax-bsd-1<td>1.5<td>87.2<td>737<td>9244<td align=center>real iron (thanks to LCM+L)<!--1.499/87.179/736.891-->
 <tr><td>BBC Micro (TUBE Acorn z80 @6MHz)<td>ROM Z80 Basic<td>bbc-z80-3<td>1.05<td>96.7<td>866<td>6252<td  align=center>real iron (thanks to BigEd)<!--B-em to real iron ratio is 1:1.3394 -->
 <tr><td>BBC Micro (TUBE Acorn z80 @6MHz)<td>CP/M<td>cpm22bios-7-acorn<td>1.06<td>96.7<td>867<td>8220<td  align=center>real iron (thanks to BigEd) &amp; estimation<!--B-em to real iron ratio is 1:1.3394 -->
 <tr><td>BBC Micro (TUBE 6502 @3MHz)<td>ROM Basic<td>bbc-5<td>1.07<td>106.4<td>952<td>up to 3216<td  align=center>real iron (thanks to BigEd and hoglet) &amp; estimation<!--Beebem to real iron ratio is 1:1.0494 -->
+<tr><td>PDP-11/34A<td>RT11 5.01 XM<td>rt11-noeis-5<td>1.42<td>122.4<td>1090<td>up to 6500<td align=center>real iron (thanks to elb) <!--1.42/122.35/1090.27/2703.13 (for 4728?)-->
+<tr><td>&#x423;KH&#x426; (PDP-11 architecture)<td>RT11SJ 5.02<td>rt11-noeis-5<td>1.48<td>129.2<td>1159<td>6260<td align=center>real iron (thanks to Arseny)
 <tr><td>Commodore +4/PAL<td>ROM Basic<td>plus4-10<td>1.48<td>143.5<td>1283<td>7716<td align=center>real iron
 <tr><td>BBC Micro (TUBE Torch z80 @4MHz)<td>CPN<td>cpm22bdos-7-torch<td>1.62<td>145.3<td>1300<td>up to 8740<td  align=center>real iron (thanks to danielj)<!--Beebem to real iron ratio is 1:1.433628 [100], 1:1.420847 [1000], 1:1.4213667 [3000] -->
 <tr><td>BBC Micro<td>ROM Basic<td>bbc-5<td>1.61<td>157.8<td>1411<td>up to 3216<td align=center>real iron (thanks to BigEd and hoglet) &amp; estimation<!--B-em to real iron ratio is 1:1 -->
-<tr><td>Dragon 32<td>ROM Basic<td>dragon-4<td>1.7<td>157.6<td>1414<td>3100<td align=center>XRoar 0.34.1 (high)
+<tr><td>Dragon 32*<td>ROM Basic<td>dragon-4<td>1.72<td>157.5<td>1414<td>3100<td align=center>real iron (thanks to robcfg) <!-- XRoar 0.34.1 (high) 1.7/157.6/1414-->
 <tr><td>Commodore 128/NTSC<td>ROM Basic<td>c128-9<td>1.65<td>159.4<td>1425<td>5044<td align=center>VICE Version 2.4.22 (high)
 <tr><td>Commodore 128/PAL<td>ROM Basic<td>c128-9<td>1.72<td>166<td>1484<td>5044<td align=center>VICE Version 2.4.22 (high)
 <tr><td>ZX Spectrum 48k<td>ROM Basic<td>zx-1<td>1.9<td>171.1<td>1529<td>up to 4400<td align=center>fuse version 1.1.1 (high)
@@ -80,40 +102,57 @@ table, th, td {
 </table>
 <br>
 <p>This algorithm speed depends very much on the speed of integer division.  So systems with hardware division have a big advantage.
-<p>*The results are for CPU @1.78MHz.  At this clock automatic DRAM regeneration doesn't work so it is possible that the maximum speed for hardware is only 75% of the given.
-<p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time of the calculation of 3000 digits by the CPU frequency.  ER values are gotten for pi-spigot which uses base 16-bit integer arithmetics.  The best ER value for each CPU is taken.
+<p>*The results are for CPU @1.78MHz.  At this clock automatic DRAM regeneration doesn't work so it is possible that some hardware and software can't work with this speed.  So, for normal system work, the maximum clock frequency is about 1.34 MHz, or 75% of that that used for the results given in the table.
+<p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time of the calculation of 3000 digits by the CPU frequency.  The ER values are gotten for pi-spigot which uses base 16-bit integer arithmetic.  The best ER value for each CPU is taken.
 <table border=1>
-<tr><th>Rank<th>CPU<th>ER
-<tr><td>1<td>ARM1<td>350
-<tr><td>2<td>ARM2<td>360
-<tr><td>3<td>ARM250<td>370*
-<tr><td>4<td>80286<td>430
-<tr><td>5<td>80386<td>440
-<tr><td>6<td>VAX-11/780<td>460
-<tr><td>7<td>68020<td>480
-<tr><td>8<td>6309<td>670
-<tr><td>9<td>80186<td>750
-<tr><td>10<td>32016<td>1140
-<tr><td>11<td>68000<td>1160
-<tr><td>12<td>R800<td>1420
-<tr><td>13<td>KB11C<td>1730
-<tr><td>14<td>65816<td>1740
-<tr><td>15<td>J11<td>1840
-<tr><td>16<td>8088<td>1940
-<tr><td>17<td>6809<td>2520
-<tr><td>18<td>VAX-11/730<td>2730
-<tr><td>19<td>6502<td>2760
-<tr><td>20<td>Z80<td>5200
-<tr><td>21<td>K1801BM1<td>7340**
+<tr><th><script>a=0</script>Rank<th>CPU<th>ER
+<tr><td align=center><script>document.write(++a)</script><td>StrongARM<td>300
+<tr><td align=center><script>document.write(++a)</script><td>80486<td>340
+<tr><td align=center><script>document.write(++a)</script><td>KA52/NVAX<td>340
+<tr><td align=center><script>document.write(++a)</script><td>ARM1<td>350
+<tr><td align=center><script>document.write(++a)</script><td>KA66A/NVAX+<td>360
+<tr><td align=center><script>document.write(++a)</script><td>ARM2<td>360
+<tr><td align=center><script>document.write(++a)</script><td>ARM250<td>370*
+<tr><td align=center><script>document.write(++a)</script><td>KA48/SOC<td>430
+<tr><td align=center><script>document.write(++a)</script><td>NVAX<td>430
+<tr><td align=center><script>document.write(++a)</script><td>80286<td>430
+<tr><td align=center><script>document.write(++a)</script><td>80386<td>440
+<tr><td align=center><script>document.write(++a)</script><td>VAX-11/780-5<td>460
+<tr><td align=center><script>document.write(++a)</script><td>68020<td>480
+<tr><td align=center><script>document.write(++a)</script><td>KA46/Mariah<td>480
+<tr><td align=center><script>document.write(++a)</script><td>6309<td>670
+<tr><td align=center><script>document.write(++a)</script><td>NEC V30<td>730
+<tr><td align=center><script>document.write(++a)</script><td>80186<td>750
+<tr><td align=center><script>document.write(++a)</script><td>NEC V20<td>1020
+<tr><td align=center><script>document.write(++a)</script><td>Hornet<sup>1</sup><td>1030
+<tr><td align=center><script>document.write(++a)</script><td>32016<td>1140
+<tr><td align=center><script>document.write(++a)</script><td>68000<td>1160
+<tr><td align=center><script>document.write(++a)</script><td>R800<td>1420***
+<tr><td align=center><script>document.write(++a)</script><td>KD11-EA<td>1600
+<tr><td align=center><script>document.write(++a)</script><td>8086<td>1640
+<tr><td align=center><script>document.write(++a)</script><td>KB11C<td>1730
+<tr><td align=center><script>document.write(++a)</script><td>65816<td>1740
+<tr><td align=center><script>document.write(++a)</script><td>J11<td>1840
+<tr><td align=center><script>document.write(++a)</script><td>8088<td>1940
+<tr><td align=center><script>document.write(++a)</script><td>6809<td>2520
+<tr><td align=center><script>document.write(++a)</script><td>VAX-11/730<td>2730
+<tr><td align=center><script>document.write(++a)</script><td>6502<td>2760
+<tr><td align=center><script>document.write(++a)</script><td>K1801BM2<td>3310
+<tr><td align=center><script>document.write(++a)</script><td>Z80<td>5200
+<tr><td align=center><script>document.write(++a)</script><td>K1801BM1<td>7340**
+
 </table>
-<p>* ARM250 shows a bit slower performance than ARM1 because it has more delays with RAM at A3020
+<p>* the ARM250 shows a bit slower performance than the ARM1 because it has more delays with RAM at A3020
 <br>** the tested systems use a very slow RAM interface, with the pefect one the speed will be 4700
+<br>*** its internal frequency is 4 times higher, this gives us ER=5680, i.e. more than for the Z80
+<br><sup>1</sup> it is a 80186 compatible processor with low power consumption
 <br>
 <p>The next table contains the details about the tested systems in the chronological order.
 <p>
 <table border=1>
 <tr><th>System<th>Year<th>CPU
 <tr><td>DEC PDP-11/70<td>1975<td>KB-11C 16.7 MHz
+<tr><td>DEC PDP-11/34A<td>1978<td>KD11-EA &#x2248;5 MHz
 <tr><td>IBM PC 5150<td>1981<td>8088 4.77 MHz
 <tr><td>BBC Micro<td>1981<td>6502 2 MHz
 <tr><td>ZX Spectrum 48k<td>1982<td>z80 3.5 MHz
@@ -122,32 +161,48 @@ table, th, td {
 <tr><td>Z80 Torch 2nd processor<td>1982<td>z80 4 MHz
 <tr><td>Commodore 64<td>1982<td>6502 &#x2248;1 MHz
 <tr><td>MSX<td>1983<td>Z80 3.58 MHz
+<tr><td>IBM PC 5160/XT<td>1981<td>8088 or V20 4.77 MHz
 <tr><td>Commodore +4<td>1984<td>6502 &#x2248;0.9-2.2 MHz
-<tr><td>VAX-11/785<td>1984<td>VAX-11/780 7.52 MHz
+<tr><td>VAX-11/785<td>1984<td>VAX-11/780-5 7.52 MHz
+<tr><td>Olivetti M24<td>1983<td>8086 8 Mhz
+<tr><td>AT&amp;T PC 6300<td>1983<td>8086 7.14 Mhz
 <tr><td>6502 Acorn 2nd processor<td>1984<td>6502 3 MHz
 <tr><td>Z80 Acorn 2nd processor<td>1984<td>z80 6 MHz
+<tr><td>Compaq Deskpro Model 1<td>1984<td>8086 8 MHz
 <tr><td>IBM PC 5170<td>1984<td>80286 6 MHz
-<tr><td>Tiki-100<td>1984<td>z80 4 MHz, optional 8088 4 MHz
+<tr><td><a href=https://en.wikipedia.org/wiki/Tiki_100>Tiki-100</a><td>1984<td>z80 4 MHz, optional 8088 4 MHz
 <tr><td>Commodore 128<td>1985<td>6502 &#x2248;2 MHz, z80 &#x2248;2 MHz
 <tr><td>32016 Acorn 2nd processor<td>1985<td>32016 6 MHz
 <tr><td>Amstrad CPC6128<td>1985<td>z80 4 MHz
 <tr><td>Amstrad PCW8256<td>1985<td>z80 4 MHz
 <tr><td>Amiga 1000<td>1985<td>68000 7.1 MHz
-<tr><td>&#x411;K0010<td>1985<td>K1801BM1 3 MHz
+<tr><td><a href=https://en.wikipedia.org/wiki/Electronika_BK>&#x411;K0010</a><td>1985<td>K1801BM1 3 MHz
+<tr><td>Sharp PC-7000<td>1985<td>8086 7.37 MHz
+<tr><td>Panasonic Executive Partner FT-70<td>1985<td>8086 7.16 MHz
 <tr><td>Acorn 2nd processor for BBC Micro<td>1986<td>6502 4 MHz
 <tr><td>ARM Evaluation system<td>1986<td>ARM1 6.67 MHz
 <tr><td>Acorn BBC Master 512<td>1986<td>80186 10 MHz, 6502 2 MHz
 <tr><td>IBM PC 5170<td>1986<td>80286 8 MHz
 <tr><td>IBM PC 5162 XT/286<td>1986<td>80286 6 MHz (0WS RAM)
 <tr><td>BBC Archimedes 305<td>1987<td>ARM2 8 MHz
-<tr><td>&#x420;<td>KM1801BM2 8 MHz
+<tr><td><a href=https://en.wikipedia.org/wiki/UKNC>&#x423;KH&#x426;</a><td>1987<td>KM1801BM2 8 MHz
 <tr><td>microPDP-11/83<td>1988<td>J11 18 MHz
 <tr><td>Acorn Archimedes 440/1<td>1989<td>ARM2 8 MHz
-<tr><td>&#x411;K0011<td>1989<td>K1801BM1 4 MHz
-<tr><td>MSX turbo R<td>1990<td>R800 7.16 MHz
+<tr><td><a href=https://en.wikipedia.org/wiki/Electronika_BK>&#x411;K0011</a><td>1989<td>K1801BM1 4 MHz
+<tr><td>microPDP-11/93<td>1990<td>J11 18 MHz
+<tr><td>MSX turbo R<td>1990<td>R800 7.16 MHz (28.64 MHz)
 <tr><td>IBM PC Clone 0WS RAM<td>1991<td>AMD 80386DX 6.25/12.5/25 MHz
-<tr><td>Amiga 1200<td>1992<td>68020 14.2 MHz
+<tr><td>VAX 4000 VLC<td>1991<td>KA48/SOC 25 MHz
+<tr><td>VAXstation 4000/60<td>1991<td>KA46/Mariah 55 MHz
 <tr><td>Acorn A3020<td>1992<td>ARM250 12 MHz
+<tr><td>VAX 4000 Model 100A<td>1992<td>KA52/NVAX 72 MHz
+<tr><td>Amiga 1200<td>1992<td>68020 14.2 MHz
+<tr><td>IFEL board for Archimedes<td>1992<td>ARM3 36 MHz
+<tr><td>VAX 7000-640<td>1992<td>KA66A/NVAX+ 90.9 MHz
+<tr><td>IBM PS/2 <a href=http://ohlandl.ipv7.net/9585/9585_SX_Planar.html>Model 85</a><td>1992<td>80486 33MHz
+<tr><td><a href=https://en.wikipedia.org/wiki/HP_200LX>HP 200LX</a><td>1994<td>80186 "Hornet" 7.91Mhz
+<tr><td>MicroVAX 3100 model 85<td>1994<td>NVAX 62.5 MHz
+<tr><td>Acorn RiscPC<td>1996<td>StrongARM 203 MHz
 <tr><td>Commodore SuperCPU-64<td>1996<td>65816 20 MHz
 </table>
 <br>
@@ -196,7 +251,7 @@ table, th, td {
 <br>
 <!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
 <hr>
-<p>Download the latest sources and executables (<a href=pipack-28.tar.bz2>v28 [153 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=pipack-29.tar.bz2>v29 [154 KB]</a>) pack.
 <p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=pipacks.html>Archive</a>
 </div>
 </body>
