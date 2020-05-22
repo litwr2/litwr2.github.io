@@ -21,7 +21,7 @@ table, th, td {
 <tr><th>100<th>1000<th>3000
 <tr><td>Acorn A3020<td>RiscOS<td>arm2-1<td>0.04<td>3.5<td>31<td>9144<td align=center>real iron (thanks to danielj)<!--0.04/3.48/31.05-->
 <tr><td>Amiga 1200/PAL with fast RAM<td>WB<td>amiga1200-4<td>0.09<td>4<td>34<td>9256<td align=center>corrected FS-UAE 2.6.2 (almost high)
-<tr><td>IBM PC Clone 386DX @12.5MHz<td>DOS<td>pc386-4<td>0.05<td>4<td>35<td>9268<td align=center>real iron<!--0.05/4.01/34.71-->
+<tr><td>IBM PC Clone 386DX @12.5MHz<td>DOS<td>pc386-5<td>0.05<td>4<td>35<td>9272<td align=center>real iron<!--0.05/4.01/34.71-->
 <tr><td>IBM PC Clone 386DX @12.5MHz<td>DOS<td>ibmpc-5<td>0.05<td>4.2<td>36<td>9264<td align=center>real iron<!--0.05/4.17/36.41-->
 <tr><td>Amiga 1200/PAL<td>WB<td>amiga1200-4<td>0.12<td>4.8<td>37<td>9256<td align=center>real iron (thanks to cyberfred91 &amp; Thelemorf)<!--FS-UAE 2.6.2 (almost high) to real iron ratio is 1:0.912 for 3000, 1:1:0.875 for 1000, 1:0.833-->
 <tr><td>Amiga 1200/PAL<td>WB<td>amiga-4<td>0.14<td>5.4<td>43<td>9252<td align=center>real iron (thanks to cyberfred91 &amp; Thelemorf)<!--FS-UAE 2.6.2 (almost high) to real iron ratio is 1:0.907 for 3000, 1:1:0.889 for 1000, 1:0.857-->
@@ -47,7 +47,7 @@ table, th, td {
 <tr><td>MSX turbo R<td>ROM Basic<td>msx-3<td>0.25<td>22.1<td>198<td>3264<td align=center>openmsx 0.10.1 (high)
 <tr><td>microPDP-11/83<td>RT11SB<td>rt11-noeis-5<td>0.26<td>22.5<td>202<td>up to 6500<td align=center>real iron (thanks to form) &amp; estimation
 <tr><td>microPDP-11/70<td>Unix v7<td>pdp11-unix7-noeis-1<td>0.32<td>24.8<td>219<td>up to 7164<td align=center>real iron (thanks to LCM+L)
-<tr><td>Dragon 32 (6309 CPU)<td>ROM Basic<td>dragon-6309-3<td>0.45<td>41.7<td>374<td>3176<td align=center>XRoar 0.34.1 (medium)
+<tr><td>Dragon 32 (6309 CPU)*<td>ROM Basic<td>dragon-6309-3<td>0.45<td>41.7<td>374<td>3176<td align=center>XRoar 0.34.1 (medium)
 <tr><td>IBM PC 5150 MDA<td>DOS<td>ibmpc-5<td>0.65<td>47.6<td>407<td>9264<td align=center>real iron (thanks to modem7) &amp; estimation<!--pce-ibmpc version 20140222-4b05f0c to real iron ratio is 1:1.206 for 3000, 1:1.193 for 1000, 1:1.031 for 100 -->
 <tr><td>Tiki-100 (8088 board)<td>DOS<td>msdos-5-tiki100<td>0.84<td>54.4<td>471<td>9260<td align=center>real iron (thanks to per) &amp; estimation
 <tr><td>BBC Micro (TUBE 6502 @4MHz)<td>ROM Basic<td>bbc-5<td>0.78<td>77.2<td>691<td>up to 3216<td  align=center>real iron (thanks to BigEd and Kieran) &amp; estimation<!--B-em to real iron ratio is 1:1.0214 for 1000, lower for more digits -->
@@ -80,6 +80,7 @@ table, th, td {
 </table>
 <br>
 <p>This algorithm speed depends very much on the speed of integer division.  So systems with hardware division have a big advantage.
+<p>*The results are for CPU @1.78MHz.  At this clock automatic DRAM regeneration doesn't work so it is possible that the maximum speed for hardware is only 75% of the given.
 <p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time of the calculation of 3000 digits by the CPU frequency.  ER values are gotten for pi-spigot which uses base 16-bit integer arithmetics.  The best ER value for each CPU is taken.
 <table border=1>
 <tr><th>Rank<th>CPU<th>ER
@@ -139,6 +140,7 @@ table, th, td {
 <tr><td>IBM PC 5170<td>1986<td>80286 8 MHz
 <tr><td>IBM PC 5162 XT/286<td>1986<td>80286 6 MHz (0WS RAM)
 <tr><td>BBC Archimedes 305<td>1987<td>ARM2 8 MHz
+<tr><td>&#x420;<td>KM1801BM2 8 MHz
 <tr><td>microPDP-11/83<td>1988<td>J11 18 MHz
 <tr><td>Acorn Archimedes 440/1<td>1989<td>ARM2 8 MHz
 <tr><td>&#x411;K0011<td>1989<td>K1801BM1 4 MHz
@@ -153,7 +155,7 @@ table, th, td {
 <table style=border-style:none><tr><td style=border-style:none>
 <table border=1>
 <tr><th>Program<th>Size
-<tr><td>pc386-4<td>629
+<tr><td>pc386-5<td>603
 <tr><td>msdos-5<td>635&ndash;640
 <tr><td>pdp11-unix7-eis-1<td>636&#176;
 <tr><td>ibmpc-5<td>660
@@ -192,13 +194,9 @@ table, th, td {
 &#176; it is a size of the assembler + C code without a loader and C-libraries
 </table>
 <br>
-<!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.
-<table border=1>
-<tr><th>System<th>OS<th>Max digits
-<tr><td>Torch z80 Co Pro for BBC Micro/Master<td>CP/M<td>up to 8740
-</table>-->
+<!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
 <hr>
-<p>Download the latest sources and executables (<a href=pipack-27.tar.bz2>v27 [154 KB]</a>) pack.
-<p><a href=pipacks.html>Archive</a>
+<p>Download the latest sources and executables (<a href=pipack-28.tar.bz2>v28 [153 KB]</a>) pack.
+<p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=pipacks.html>Archive</a>
 </div>
 </body>
