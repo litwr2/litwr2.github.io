@@ -37,10 +37,15 @@ function off() {
   document.getElementById("overlay").style.display = "none";
 }
 var internalTest = false
+var isGithub = window.location.href.toLowerCase().includes("github") && window.location.href.toLowerCase().includes("http")
 var query = new URLSearchParams(window.location.search)
 var format = 0
 if (query.has('format')) {
     format = query.get('format')
+}
+function rpURL() {
+    if (isGithub) return ""
+    return "https://litwr2.github.io/pi-spigot-benchmark/"
 }
 function k1(t1000, t3000) {
     return (t3000 - 3*t1000)/2625000.0
@@ -89,7 +94,7 @@ function drawTabs() {
     for(var i = 0; i < ma.length; ++i) {
         s += "<tr><td>" + (i + 1)
         if (ma[i].screenshot != "") 
-            s += " <img width=20 src=" + ma[i].screenshot + " onmouseenter=on(\"" + ma[i].screenshot + "\") onmouseleave=off()>"
+            s += " <img width=20 src=" + rpURL() + ma[i].screenshot + " onmouseenter=on(\"" + rpURL() + ma[i].screenshot + "\") onmouseleave=off()>"
         s += "<td align=center>"
         if (ma[i].href != "") s += "<a href=" + ma[i].href + ">"
         s += ma[i].computer
