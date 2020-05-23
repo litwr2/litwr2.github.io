@@ -47,6 +47,14 @@ function rpURL() {
     if (isGithub) return ""
     return "https://litwr2.github.io/pi-spigot-benchmark/"
 }
+function mirror() {
+    var s = "<a href=http://litwr2."
+    if (isGithub)
+        s += "atspace.eu/pi"
+    else 
+        s += "github.io/pi-spigot-benchmark"
+    return s + "/pi-spigot-benchmark.html>Mirror</a>"
+}
 function k1(t1000, t3000) {
     return (t3000 - 3*t1000)/2625000.0
 }
@@ -352,7 +360,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
 <p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-41.tar.bz2>v41 [173 KB]</a>) pack.
-<p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a>
+<p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a> <script>document.write(mirror())</script>
 <script>
 drawTabs()
 </script>
