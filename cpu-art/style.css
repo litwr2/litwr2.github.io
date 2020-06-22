@@ -5,6 +5,12 @@ p {
     margin-left: 0;
     margin-right: 0;
 }
+table, th, td {
+   border-width:thin;
+   border-style:solid;
+   border-color:green;
+   border-spacing:0px;
+}
 .code {
     border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px
 }
