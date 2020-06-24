@@ -2,22 +2,7 @@
 <meta charset=utf-8>
 <title>Emotional stories about processors for first computers: part 2 (DEC PDP-11)</title>
 <meta name=keywords content="CPU,processor,computer,history,Intel,DEC,PDP-11,VAX-11,8086,x86,hardware,GNU">
-<style type=text/css>
-code {
-    border-width: 1px;
-    border-style: solid;
-    border-color: lightgreen;
-    border-radius: 2px;
-    padding: 1px;
-}
-p {
-    display: block;
-    margin-top: 0px;
-    margin-bottom: 1em;
-    margin-left: 0;
-    margin-right: 0;
-}
-</style>
+<link rel=stylesheet type=text/css href=style.css>
 </head>
 
 <h2>Processors of DEC PDP-11</h2>
@@ -55,7 +40,7 @@ p {
 
 <p>The K1801VM2 processor which was used in the DVK is about two times faster than the K1801VM1.  The K1801VM3 is even faster and has a performance close to the Intel 8086.
 
-<p>##Processors of the top PDP-11 computers can address up to 4 MB of memory but for one program can usually get no more than 64 KB.  However, using the special capabilities of hardware and system software, it was possible to create large codes.  The best DEC processors, for example, the J-11, can use a separate address space for instructions and data, which doubles the size of the address space and does not slow down execution.  The processors were made in the USSR could not do such the separation.  And here it is worth noting that even the first x86 processors were able to do this directly "out of the box" and even more advanced, allocating up to 256 KB with similar separation, and if you count the port space, then all 320 KB.  The size of executable code in the PDP-11 can also be increased through memory-based overlays.  Working with the PDP-11 overlays requires very thorough support from the OS and compilers, and is significantly slower than far calls in the first x86.  You can use virtual arrays to work with big data on the PDP-11, which again requires good support from the OS and compilers, and is also slower than working with large arrays in the first x86.  In terms of performance, the best processors for the PDP-11 are close to the 8086 in terms of the number of operations per megahertz.  However, due to the higher frequencies used, the best PDP-11 were faster than the first IBM PC, but already the IBM PC AT with 8 MHz were almost equal to them.##
+<p>##Processors of the top PDP-11 computers can address up to 4 MB of memory but for one program can usually get no more than 64 KB.  However, using the special capabilities of hardware and system software, it was possible to create large codes.  The best DEC processors, for example, the J-11, can use a separate address space for instructions and data, which doubles the size of the address space and does not slow down execution.  The processors were made in the USSR could not do such the separation.  And here it is worth noting that even the first x86 processors were able to do this directly "out of the box" and even more advanced, allocating up to 256 KB with similar separation, and if you count the port space, then all 320 KB.  The size of executable code in the PDP-11 can also be increased through memory-based overlays.  Working with the PDP-11 overlays requires very thorough support from the OS and compilers, and is significantly slower than far calls in the first x86.  You can use virtual arrays to work with big data on the PDP-11, which again requires good support from the OS and compilers, and is also slower than working with large arrays in the first x86.  In terms of performance, the best processors for the PDP-11 are close to the 8086 in terms of the number of operations per megahertz.  However, due to the higher frequencies used, the best PDP-11 were faster than the first IBM PC, but since the IBM PC AT with 8 MHz, they were almost equal to them.##
 
 Edited by Richard BN
 <hr>
