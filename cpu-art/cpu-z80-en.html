@@ -12,9 +12,9 @@
 
 <p>A number of coincidences are interesting.  As in the case of the 6502 the main developer of the Z80 Federico Faggin left a large company, Intel.  After working on the z80 Federico almost did not work with the next generation the Z8000 processor. He left Zilog (founded by him) in the early 80's and never dealt with processors in the future.  He then created several relatively successful startups, which were communication systems, touchpads and digital cameras.  It can be mentioned that in addition to the z80 being with Zilog he had also developed a successful and still-produced Z8 microcontroller.
 
-<p>The Z80 is more convenient for inclusion in computer systems than the 8080.  It requires only one power supply voltage and has built-in support for the regeneration of dynamic memory.  In addition though it is fully compatible with the 8080 it has a lot of new commands, a second set of basic registers and several completely new registers.  It is interesting that Zilog refused to use the 8080 assembler mnemonics, and began to use their own mnemonics more suitable for the extended command system of the z80.  A similar story happened to the Intel x86 assembler in the GNU software world, for some reason they also use their own conventions for writing programs in assembler by default.  The Z80 added support for the overflow flag, Intel officially added support for this flag only in the 8086.  However this flag in the z80 was combined with the parity flag, so you cannot use both flags at the same time as in the 8086.  In the z80 as in the 6502 there are only basic checks of the value of the flag, i.e. there are no checks of two or three flags at once, which is necessary for ##unsigned## comparisons "greater" or "less or equal", as well as for all signed comparisons.  In such cases it is necessary to do several checks, while with the 8086, 6800##, 6809## or PDP-11 one is enough.
+<p>The Z80 is more convenient for inclusion in computer systems than the 8080.  It requires only one power supply voltage and has built-in support for the regeneration of dynamic memory.  In addition though it is fully compatible with the 8080 it has a lot of new commands, a second set of basic registers and several completely new registers.  It is interesting that Zilog refused to use the 8080 assembler mnemonics, and began to use their own mnemonics more suitable for the extended command system of the z80.  A similar story happened to the Intel x86 assembler in the GNU software world, for some reason they also use their own conventions for writing programs in assembler by default.  The Z80 added support for the overflow flag, Intel officially added support for this flag only in the 8086.  However this flag in the z80 was combined with the parity flag, so you cannot use both flags at the same time as in the 8086.  In the z80 as in the 6502 there are only basic checks of the value of the flag, i.e. there are no checks of two or three flags at once, which is necessary for unsigned comparisons "greater" or "less or equal", as well as for all signed comparisons.  In such cases it is necessary to do several checks, while with the 8086, 6800 or PDP-11 one is enough.
 
-<p>Among the new z80's commands, block memory copy commands for 21 cycles per byte are especially impressive, as well as an interesting search for a byte in memory instruction.  ##Similar block instructions for input and output have also been added.## However the EXX instruction is the most interesting it swaps the contents of 48 bytes of register memory, registers BC, DE, HL, with their counterparts in just 4 cycles!  Even the 32-bit ARM will need at least 6 cycles for the same operation.  The remaining additional instructions are not so impressive, although they can sometimes be useful.  Additionally added were the following commands:
+<p>##Among the new z80's commands, block memory copy commands for 21 cycles per byte are especially impressive, as well as an interesting instruction searching for a byte in memory.  Similar block instructions for input and output have also been added.## However the EXX instruction is the most interesting it swaps the contents of 48 bytes of register memory, registers BC, DE, HL, with their counterparts in just 4 cycles!  Even the 32-bit ARM will need at least 6 cycles for the same operation.  The remaining additional instructions are not so impressive, although they can sometimes be useful.  Additionally added were the following commands:
 
 <ul>
 <li>16-bit subtraction with borrow and 16-bit addition with carry for 15 clocks;
@@ -22,15 +22,15 @@
 <li>possibility to read from memory and write to it, using registers BC, DE, SP, IX, IY &ndash; not just HL;
 <li>shifts, rotates and input-output for all 8-bit registers;
 <li>instructions to check, set and reset a bit by its number;
-<li>##relocatable jumps with offsets (JR): an unconditional and conditional jumps for zero and carry flags##;
-<li>a loop instruction##
+<li>relocatable jumps with offsets (JR): an unconditional and conditional jumps for zero and carry flags;
+<li>a loop instruction;
 <li>very unusual instructions for decimal rotations RLD and RRD, similar to which were only for IBM mainframes;
-<li>instructions for input and output using an index register##.
+<li>instructions for input and output using an index register.
 </ul>
 
-##<p>In total, 458 new instructions were added to the 244 instructions of the 8080, and if you count those that were later recognized as almost official, you will also get about fifty new instructions.##
+<p>In total, 458 new instructions were added to the 244 instructions of the 8080, and if you count those that were later recognized as almost official, you will also get about an additional fifty new instructions.
 
-<p>Most new commands are rather slow, but using them right can still make the code somewhat faster and significantly more compact.  This particularly applies to the use of new 16-bit registers IX and IY, which can be used for new addressing modes.  Interestingly, the index registers IX and IY appeared in the Z80 in order to attract the 6800 users to use the Z80 instead!  ##Operations with these index registers must always use byte offset, which is not always necessary, but always slows down these already slow instructions.##
+<p>Most new commands are rather slow, but using them right can still make the code somewhat faster and significantly more compact.  This particularly applies to the use of new 16-bit registers IX and IY, which can be used for new addressing modes.  Interestingly, the index registers IX and IY appeared in the Z80 in order to attract the 6800 users to use the Z80 instead!  Operations with these index registers must always use byte offset, which in theory is not always necessary, but always slow down these already slow instructions.
 
 <p>Many of the 8080's commands in the z80 became faster by one clock and this is a very noticeable acceleration.  ##But the basic command for 16-bit arithmetic, the ADD instruction became slower by one clock.
 Also, commands LD SP,HL and EX (SP),HL, the increment and decrement with memory and 16-bit registers, as well as the input and output operations, became slower. Therefore, codes 8080 are executed on z80, and if faster, then only a little bit.
@@ -39,7 +39,7 @@ Also, commands LD SP,HL and EX (SP),HL, the increment and decrement with memory 
 
 <p>Another unique feature of the Z80 is its freely accessible memory regeneration register.  It can, for example, be used to generate random numbers.##
 
-<p>The system of working with interrupts became ##more varied## than that available at the 8080.  With the z80 you can use both non-maskable interrupts and three modes to work with masked ones:
+<p>##The system of working with interrupts became more varied than that available at the 8080.  With the z80 you can use both non-maskable interrupts and three modes to work with masked ones:
 <ol>
 <li value=0>the same as for the 8080 &ndash; it requires an interrupt controller compatible with the 8080;
 <li>at a fixed address &ndash; this is the easiest, it does not require external circuit support;
