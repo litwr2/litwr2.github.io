@@ -40,4 +40,10 @@ Interestingly, the 80386 development team was distinguished by a peculiar and ov
 
 The built-in cache appeared to be an innovation even though it was a small 256 bytes of capacity, which allowed sometimes to significantly improve the performance because the main dynamic memory could not keep up with the processor.  Although in the general case, such a small cache only slightly affected the performance. 
 
+As an example of an unusual command, you can also point to multiplication, in which, depending on the number of the register used, for the result, you can get either the full 32-bit product, or only its lower 16 bits.
+
+Made in USSR 16-bit home computer (model of 1987) – it is almost PDP-11 compatible
+
+But when compared with other architectures, PDP-11 sometimes shows even better code density in practice!
+
 
