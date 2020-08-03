@@ -12,5 +12,5 @@ table, th, td {
    border-spacing:0px;
 }
 .code {
-    border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px
+    border-width:1px;border-style:solid;border-color:lightgreen;border-radius:2px;padding:1px;white-space:nowrap
 }

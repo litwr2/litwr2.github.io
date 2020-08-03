@@ -12,10 +12,8 @@
 <p>The TMS9900 has only three 16-bit registers: the program counter, the status register and the base register for pseudo-registers.  This processor uses a dedicated 32-byte memory space (a context) as 16 double-byte registers.  Such a way of use of memory is somewhat like the zero page memory in the 6502 architecture.  Using the base register, the TMS9900 can very quickly change the context.  This is similar to the Z80 which has two register contexts.  Processor status flags are distinguished in originality, along with typical flags of carry, zero (equality), overflow, parity, there also are two more unique flags of logical and arithmetic less.  Working with the stack and subroutines resembled the RISC-processors of the incoming future.  There is simply no ready to use stack, but you can create a stack using one of the pseudo-registers.  When a subroutine is called, a new value is selected for the counter and base registers, and all three registers are stored in the pseudo-registers of the new context.  Thus calling a subroutine is more like calling a software interrupt.  The TMS9900 has a built-in interrupt controller designed to work with hardware interrupts of up to 16.
 
 <div align=center>
-<table>
-<tr><td align=center><img src=https://habrastorage.org/webt/bs/ir/lv/bsirlvxf7fobwzwpdcvxkcnousc.jpeg style=width:50%;height:auto>
-<tr><td align=center style=font-size:90%>The first 16-bit home computer &ndash; it has even color sprites!
-</table>
+<p><img src=https://habrastorage.org/webt/bs/ir/lv/bsirlvxf7fobwzwpdcvxkcnousc.jpeg style=width:50%;height:auto>
+<p style=font-size:90%>The first 16-bit home computer &ndash; it has even color sprites!
 </div>
 
 <p>The system of instructions looks very impressive, there are even multiplication and division.  The unique X instruction (a similar instruction exists only for the IBM mainframes) allows you to execute one instruction on any memory address and move on to the next one.  The execution of instructions is rather slow, the fastest instructions require 8 cycles and arithmetic instructions 14 cycles.  However, multiplication (16*16=32) for 52 cycles and division (32/16=16,16) for only 124 cycles were probably the fastest among processors of the 70's.
