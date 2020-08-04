@@ -44,6 +44,13 @@ As an example of an unusual command, you can also point to multiplication, in wh
 
 Made in USSR 16-bit home computer (model of 1987) – it is almost PDP-11 compatible
 
-But when compared with other architectures, PDP-11 sometimes shows even better code density in practice!
+But when compared with other architectures, the PDP-11 sometimes shows even better code density in practice!
 
+This is LCM's PDP-11/70 (Miss Piggy), it still works and is freely available through the network
+
+The IBM 5150 or the first IBM PC
+
+The Apple Lisa - it's strange that the first 68000-based Apple computers (the Lisa and Macintosh) had black-and-white graphics, whereas the eight-bit Apple II computers had colors
+
+To support the use of virtual memory, another processor was required, usually another 68000 was used for this.
 
