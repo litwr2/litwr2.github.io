@@ -1,28 +1,4 @@
-It is surprising that for some reason it is almost impossible to find such criticism in relation to the popular PDP-11, where the restrictions on memory usage are much more stringent.  The cheapest PDP-11s were significantly more expensive than the best personal computers, and the best PDP-11s until the mid-80s were faster than the best IBM PC compatible machines.  The PDP-11s were higher-end computers before the advent of the 80486-based PC and used segmentation...
-
-Similarly, but even simpler, the most popular interrupt mode 1 in the Z80 was later made.
-
-Consider new instructions for the 80186:
-*) bit shifts and rotations, with the argument number - in the 8086, only the number 1 or the CL register can be used.  For argument 1, you can use two types of instructions: fast and short, inherited from the 8086, or generalized, longer and slower for any numeric arguments, which is rather useless;
-*) string commands for working with i/o ports, they are somewhat more powerful than similar ones available in the Z80;
-*) the ENTER and LEAVE instructions - support for working with subroutines in high-level languages.  They know how to work with syntactic nesting of subroutines up to 32 levels - the use of this type of nesting is typical for Pascal language.  However, for Pascal, you probably cannot find a single program where the nesting would be more than 3.  And Pascal itself has been used less and less since then. Here you can see that Motorola also added Pascal support to the 68020, which was later recalled with regret;
-*) the BOUND command to check whether the array index is valid.
-
-Interestingly, the 80386 development team was distinguished by a peculiar and overt religiosity.
-
-The built-in cache appeared to be an innovation even though it was a small 256 bytes of capacity, which allowed sometimes to significantly improve the performance because the main dynamic memory could not keep up with the processor.  Although in the general case, such a small cache only slightly affected the performance. 
-
 As an example of an unusual command, you can also point to multiplication, in which, depending on the number of the register used, for the result, you can get either the full 32-bit product, or only its lower 16 bits.
-
-Made in USSR 16-bit home computer (model of 1987) – it is almost PDP-11 compatible
-
-But when compared with other architectures, the PDP-11 sometimes shows even better code density in practice!
-
-This is LCM's PDP-11/70 (Miss Piggy), it still works and is freely available through the network
-
-The IBM 5150 or the first IBM PC
-
-The Apple Lisa - it's strange that the first 68000-based Apple computers (the Lisa and Macintosh) had black-and-white graphics, whereas the eight-bit Apple II computers had colors
 
 To support the use of virtual memory, another processor was required, usually another 68000 was used for this.
 
@@ -37,4 +13,14 @@ By the way, some computer authorities believe that the first serial personal com
 The IBM 5100, a version with APL support [a caption]
 
 With the advent of the IBM PC architecture, which, as it turned out, for decades determined the mainstream of development for computing, IBM tried in 1983 to combine almost all the best computer technologies in a single product the PC XT/370: their system 370, the IBM PC XT, the Motorola 68000 and Intel 8087. This XT/370 could be used as a smart terminal for working with a mainframe, like a regular IBM XT, or to directly run mainframe software. Interestingly, the XT/370 had support for using virtual memory, which required two 68000s. In 1984, with the introduction of the PC AT, an improved version of the "personal mainframe" AT/370 was released, which in mainframe mode was about twice as fast as the XT/370. This is not the end of the history of such systems, since the 90s, similar products were produced that correspond to the 390 systems. As far as I know, such hardware has not been made for Z systems.
+
+IBM for its mainframes uses a rather unusual business model for today, in which computers are not sold, but are leased. One of the advantages of this model is that it guarantees a constant upgrade of equipment, outdated equipment is automatically replaced with updated one of the corresponding class. This model also has drawbacks. For example, a particularly noticeable disadvantage for those who are engaged in the history of computer technology is that computers that have served their time are almost always disposed of and therefore they are almost impossible to find in any museum.
+
+It was amazing to find a live IBM 4361 system in LCM! However there is reason to believe that this may not be real iron. For some reason, museum visitors have no access to this computer. It is also unclear what model is allegedly represented there, and this is despite the fact that other computers in the museum are identified very accurately. Among the 4361 systems, three models 3, 4, and 5 are known, with model 3 appearing later than models 4 and 5. But the system in the Museum is self-identified as model 1. It is possible that this is a prototype. However, the museum staff did not answer a direct question about help with identification, and this is despite the fact that they answer other and often rather complex questions quite quickly. Some features of code execution timings give grounds, although not absolutely firm, to assume that the emulator is most likely connected to the network. In the summer, the museum, in connection with the covid pandemic, has overtly switched to an emulator... There is still a chance to get to the iron mainframes via the HNET network, but I have not yet succeeded.
+
+But whatever it is, everyone can connect and try to work in much the same way that high-paid professionals have worked since the mid-70s. The prices were such that today it is difficult to believe. For example, an hour of computer time cost more than $20 in the mid-80s and you still had to pay extra for disk space! True, we are talking about the mainframe operating time, not the terminal through which the work was going. This is why, for example, when editing a text, 5 minutes of payment time was rarely taken out of an hour of actual work. The prices for the mainframes themselves were also fantastic. For example, Intel employees recall that in the early 80's they were given only one mainframe to work with. Its performance was 10 MIPS, and the price was about 20 million dollars then, which was three times heavier than today! Interestingly, Intel preferred such computers over the cheaper VAX systems. Now, even a tablet-sized Raspberry Pi at a few dollars can easily produce over 1000 MIPS. By the way, on a Raspberry Pi or almost any modern computer, you can run the IBM/370 emulator, which will work much faster than any IBM system from the 80's or even 90's. However, the emulator needs to be configured and not all useful programs for the IBM/370 are freely available, so free access to a well-tuned system is often the best way to work with the mainframe. Surprisingly, such access programs, 3270 terminal emulators, are available even on mobile phones! By the way, I managed to set up my VM/SP system on the Hercules emulator and deal with the file transfer, but it took at least a week of my time.
+
+The Hercules emulator can emulate the later IBM/390 and IBM/Z systems, but due to problems with the software license, this is much more difficult to do. As an illustration of such problems, I will cite a well-known case when IBM insisted on removing the Emulation section from an already published book! In modern electronic versions of this book, this section does not exist; it can only be found in the printed edition or as a separate file on sites dedicated to free software. The fact is that emulation on regular personal computers since the early 2000s could be noticeably faster than execution on much more expensive mainframes. IBM therefore had to change the licenses for its software so that it can only be legally used on hardware purchased from IBM. Of course, it is not that emulators are faster than the best mainframes, they are only demonstrating a markedly better ratio of performance to cost.
+
+Let's now look at the features of the machine language of systems compatible with the 360. The basic assembler of such systems is called BAL – Basic Assembly Language. Surprisingly, if you believe the rumors about IBM, assembler is still one of the main working programming languages there.
 
