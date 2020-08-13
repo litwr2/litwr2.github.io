@@ -1,3 +1,5 @@
+It is surprising that for some reason it is almost impossible to find such criticism in relation to the popular PDP-11, where the restrictions on memory usage are much more stringent.  The cheapest PDP-11s were significantly more expensive than the best personal computers, and the best PDP-11s until the mid-80s were faster than the best IBM PC compatible machines.  The PDP-11s were higher-end computers before the advent of the 80486-based PC and used segmentation...
+
 Similarly, but even simpler, the most popular interrupt mode 1 in the Z80 was later made.
 
 Consider new instructions for the 80186:
