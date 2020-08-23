@@ -1,4 +1,6 @@
-This is a famous demo for the Amiga 1000, such graphics in 1985 seemed incredible fantasy. This is an image in GIF format, which allows you to show only 256 colors out of 4096 displayed by the real Amiga – other formats for full-color animated graphics are still not well supported [a caption]
+However, the larger size allowed more functionality to be squeezed in.  For example, the 68000 can handle up to 8 external interrupts without an external controller.  The x86 architecture, on the contrary, requires an external interrupt controller (the only very special exception is the 80186).  The data and address buses of the 68000 are not multiplexed, unlike the 8086.  Only with the 80286, Intel abandoned such multiplexing which is slowing computer systems.
+
+This is a famous demo for the Amiga 1000, such graphics in 1985 seemed incredible fantasy. This is an image in GIF format, which allows you to show only 256 colors out of 4096 displayed by the real Amiga – other formats for full-color animated graphics have still not been well supported [a caption]
 
 The IBM System/370-145 with the 2401 tape unit and a printer instead of display, 1971 [a caption]
 
