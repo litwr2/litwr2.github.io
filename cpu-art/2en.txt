@@ -1,3 +1,5 @@
+Although the PDP-11 assembler has a strange exception for the CMP instruction, where operands somehow go like on the Intel x86.
+
 However, the larger size allowed more functionality to be squeezed in.  For example, the 68000 can handle up to 8 external interrupts without an external controller.  The x86 architecture, on the contrary, requires an external interrupt controller (the only very special exception is the 80186).  The data and address buses of the 68000 are not multiplexed, unlike the 8086.  Only with the 80286, Intel abandoned such multiplexing which is slowing computer systems.
 
 Addressing via base and index registers is done on the 68000 at the level of the 8-bit 6800 or Z80, with a single-byte offset – this is somehow completely impractical. On the 8086 offsets are 16 bits, on the ARM or IBM/370 – 12. Even the 6502 can use a 16-bit offset along with indexing.  The normal offset size was only supported from the 68020.  Surprises with the 68k can occur with the unusual loop instruction, which should be passed not the number of repetitions, but a number one less.  The 68k still lacks an instruction like TEST for the 8086.
