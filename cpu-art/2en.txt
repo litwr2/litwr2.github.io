@@ -1,12 +1,18 @@
 However, the larger size allowed more functionality to be squeezed in.  For example, the 68000 can handle up to 8 external interrupts without an external controller.  The x86 architecture, on the contrary, requires an external interrupt controller (the only very special exception is the 80186).  The data and address buses of the 68000 are not multiplexed, unlike the 8086.  Only with the 80286, Intel abandoned such multiplexing which is slowing computer systems.
 
-In fact the Motorola 68k having a more overloaded system of instructions was not able to support it, and in a sense has disappeared from the race.  In addition, Motorola also participated in the development of the PowerPC, which was planned to replace the 68k and this could not but affect the quality of the 68040 development.
-
-Surprisingly, Motorola was still able to release a 68k Pentium-class processor, the 68060 in 1994.  This processor also had problems with floating point arithmetic.  And, most importantly, not a single popular system remained, except for the Commodore Amiga, where the 68060 could find application, but the Commodore company went bankrupt in the same 1994.
-
 Addressing via base and index registers is done on the 68000 at the level of the 8-bit 6800 or Z80, with a single-byte offset – this is somehow completely impractical. On the 8086 offsets are 16 bits, on the ARM or IBM/370 – 12. Even the 6502 can use a 16-bit offset along with indexing.  The normal offset size was only supported from the 68020.  Surprises with the 68k can occur with the unusual loop instruction, which should be passed not the number of repetitions, but a number one less.  The 68k still lacks an instruction like TEST for the 8086.
 
 The 68000, like the ARM or VAX, can use PC as a base, which is very convenient.  The x86 and even the IBM/370 can't do this - support for such addressing appeared only in the x86-64.  Having more registers is also a significant advantage for the 68000 compared to the 8086, although this advantage is only shown when processing 16-and 32-bit data due to the inability of the 68000 to quickly use separate bytes of a 16-bit word.
+
+Sun started producing its own SPARC processors, Silicon Graphics switched to the MIPS processors, Apollo developed its own PRISM processor, HP started using its own PA-RISC processors, ATARI started working with specialized RISC-chips, and Apple was coerced to switch to the PowerPC processors.
+
+In fact the Motorola 68k having a more overloaded system of instructions was not able to support it, and in a sense has disappeared from the race.  In addition, Motorola also participated in the development of the PowerPC, which was planned to replace the 68k and this could not but affect the quality of the 68040 development.
+
+One can only wonder how poorly the management of Motorola was working, as if they themselves did not believe in the future of their processors.
+
+Surprisingly, Motorola was still able to release a 68k Pentium-class processor, the 68060 in 1994.  This processor also had problems with floating point arithmetic.  And, most importantly, not a single popular system remained, except for the Commodore Amiga, where the 68060 could find application, but the Commodore company went bankrupt in the same 1994.
+
+Motorola processors up to and including 1994 were generally quite comparable to the Intel x86 and in some important aspects they were always better.  However, Intel, unlike Motorola, spent a lot of effort to retain its customers and attract new ones.  Moreover in the struggle against its main competitor, Intel sometimes acted rather not kindly.  For instance, it's hard to believe that a big review article in Byte magazine from 9/1985, where about the 68000 is stated without proof that "compared to the 8086/8088, it required a massive software effort to get it to do anything", could appear outside the context of this struggle.  On the other hand, Motorola did everything later and more expensive than Intel.  In addition, Motorola processors clearly lacked originality, too much was copied from DEC and IBM technologies.  Of course, the failure of the 68k was caused by complex reasons, combining both weak strategic marketing and some architectural shortcomings.
 
 This is a famous demo for the Amiga 1000, such graphics in 1985 seemed incredible fantasy. This is an image in GIF format, which allows you to show only 256 colors out of 4096 displayed by the real Amiga – other formats for full-color animated graphics have still not been well supported [a caption]
 
