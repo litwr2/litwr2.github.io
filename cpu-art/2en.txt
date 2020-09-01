@@ -20,35 +20,9 @@ Motorola processors up to and including 1994 were generally quite comparable to 
 
 This is a famous demo for the Amiga 1000, such graphics in 1985 seemed incredible fantasy. This is an image in GIF format, which allows you to show only 256 colors out of 4096 displayed by the real Amiga – other formats for full-color animated graphics have still not been well supported [a caption]
 
-The IBM System/370-145 with the 2401 tape unit and a printer instead of display, 1971. It may be surprising that there was no display in this very expensive system, given that TV sets were mass-produced for over 20 years [a caption]
-
-The IBM 5100, a version with APL support [a caption]
-
-A dynamic demo running on the IBM 4381 emulator in LCM, an emulator of terminal 3270-3 is used [a caption]
-
 One way to work with the Z or 390 systems is to install Linux in an emulator of these systems.  At least Ubuntu and Debian distributions are available for the 390 and Z.  Here it is worth noting that the rapid development of Linux is largely due to significant support from IBM.  In particular, IBM invested a billion dollars in Linux development in 2001.
 
 When used in addressing, register 0 has a special role: it is simply ignored there - this allows you to skip the base and index when calculating the address.
 
 The popular processors 68020 or 80386 also supported 32-bit addresses. [Popular processors the 68020 or 80386 also supported 32-bit addresses.]
-
-Only the Elbrus supercomputers, perhaps because of their connection to the defense industry, survived the "clone invasion", which Dijkstra called the greatest US victory in the Cold war.
-
-As people who worked with mainframes in the USSR recall, domestic clones were distinguished by extremely low reliability and required constant attention from the maintenance staff. While the original American IBM mainframes were among the most reliable computers of their time. Sometimes more than a dozen kilograms of precious metals (gold, platinum, palladium and silver) were put into the Soviet clones, but this did not help to fix the reliability problem. Because of such a large number of highly liquid values, it is difficult to imagine that a working domestic clone could be preserved anywhere.
-
-Interestingly, the chief architect of the IBM/360 left IBM and founded Amdahl Corporation, which for more than two decades specialized in the production of systems compatible with IBM mainframes and at the same time slightly superior in performance and reliability at lower prices. As a result, due to major changes in the mainframe market, Amdahl, like ICL, became part of the Japanese company Fujitsu.
-
-As it was already written above, I managed to set up a working configuration for VM/SP 6. However, it turned out that XEDIT editor is not freely available, and a simple EDIT is too peculiar and inconvenient, so I have to edit the texts on the host. It was also discovered that the standard program for transferring files from a terminal emulator to the mainframe and back was unavailable, which required the use of virtual punch cards for such a transfer. Another unpleasant surprise was found in connection with debugging. The DEBUG command does not support step-by-step execution! While this feature was even available for the DDT debugger for the 8080 processor. It is also surprising, though less critical, that DEBUG is not able to do disassembly, which was often embedded even in the simplest monitors of the 70s processors. Under VM/SP, long line wrapping and line break control characters are not supported at the low level! Therefore, when printing from an assembly language program, you need to format lines manually so that they do not disappear beyond the right edge of the screen, and also take care of filling the last line with finishing spaces. The lack of automatic vertical scrolling is also unusual.
-
-Those who want to work with mainframes for the first time should keep in mind that mainframes are a huge ecosystem, where many familiar concepts can have a different interpretation. For example, there is no simple concept of file. One of the key attributes of a file is its record size, there is nothing like this for Linux or Microsoft Windows files. The files themselves differ in the methods of accessing them and about this was written and may be written non-thin books. It is also unusual that in VM/SP, the disk name is written at the end of the full file name, and the name, extension, and disk are separated by spaces, and the disk name itself is called the file mode for some reason. I would also like to sort out multitasking MVS, as far as I know they never got to it in the USSR.
-
-In general, it is somewhat unexpected that some well-known operating systems that were used on very expensive computers did not support working with file directories, which equated them with the very first and primitive OS for microcomputers, such as CP/M or Commodore DOS. This is why VM/SP was sometimes called CP/M for mainframes. Surprisingly, as far as I know, support for directories in VM/SP has not been introduced, although the last release of the system dates back to 2018. For some reason, working with directories for expensive computers before the 80's was often poorly supported. For example, there was no such support in DEC RT-11 and even one of the best OS for the PDP-11, RSX-11, only supported two-level directories. The most popular IBM operating system until the 2000s was MVS (1974) and even here the directories were only partially made, as in Apple MFS (1984). Although in Unix (1973), MS-DOS (since 1983), or even 8-bit Apple ProDOS (1983), this was all right from the start. The most advanced work with files was offered in VAX/VMS (1977), where in addition to directories, there is even built-in support for file versioning.
-
-Interestingly, the scripting language for VM/SP, MVS and some other IBM operating systems, Rexx, in its reduced form became the language of batch files for the Commodore Amiga.
-
-Mainframe software usually uses only two colors. Color-enabled terminals were used relatively rarely and therefore there were few color programs. There are also few programs with dynamic graphics: frequent screen updates lead to noticeable unpleasant flickering.
-
-In conclusion, I can't help but express my admiration for IBM's technologies. They have always been distinguished by their unique originality and high level. I would especially like to note the very good quality of documentation, which is publicly available even for modern systems. IBM demonstrates tremendous dynamism in technology development, even though it is one of the largest companies in the world. In terms of the number of employees, it is almost equal to Microsoft, Google and Intel taken together!
-
-The theme of mainframes is very vast. Of course, I was able to write only a small part of what it can hold. I would be very grateful for clarification and additional information.
 
