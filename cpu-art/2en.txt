@@ -28,6 +28,8 @@ A dynamic demo running on the IBM 4381 emulator in LCM, an emulator of terminal 
 
 One way to work with the Z or 390 systems is to install Linux in an emulator of these systems.  At least Ubuntu and Debian distributions are available for the 390 and Z.  Here it is worth noting that the rapid development of Linux is largely due to significant support from IBM.  In particular, IBM invested a billion dollars in Linux development in 2001.
 
+When used in addressing, register 0 has a special role: it is simply ignored there - this allows you to skip the base and index when calculating the address.
+
 The popular processors 68020 or 80386 also supported 32-bit addresses. [Popular processors the 68020 or 80386 also supported 32-bit addresses.]
 
 Only the Elbrus supercomputers, perhaps because of their connection to the defense industry, survived the "clone invasion", which Dijkstra called the greatest US victory in the Cold war.
