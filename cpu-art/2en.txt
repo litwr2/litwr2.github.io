@@ -1,1 +1,7 @@
-To be fair, it should be added that officially the memory access cycle for the 68020 and 68030 takes 3 cycles, but in many instructions it actually turns out to be rather 4.
+To be fair, it should be added that officially the memory access period for the 68020 and 68030 takes 3 cycles, but in many instructions it actually turns out to be rather 4.
+
+It can be surprising that the 68030 does not support several instructions of the 68020, for example, CALLM and RTM!
+
+It is also worth noting that the mainframes used channels, specialized processors that made I/O very fast, much faster than it was for most other computers of those years.
+
+Almost all string operations are limited to the maximum string length, no more than 255 bytes, that significantly reduces their power.
