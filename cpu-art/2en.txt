@@ -5,3 +5,17 @@ It can be surprising that the 68030 does not support several instructions of the
 It is also worth noting that the mainframes used channels, specialized processors that made I/O very fast, much faster than it was for most other computers of those years.
 
 Almost all string operations are limited to the maximum string length, no more than 255 bytes, that significantly reduces their power.
+
+Work with the 6502 continued not only at Commodore but also at Western Design Center (WDC) created by Bill Mensch.
+
+It was used in the Apple II starting with model IIe, although the many IIe used NMOS 6502.
+
+From the point of view of programming, the most interesting was the processor 6509 which, albeit in a very primitive form, with the help of only two instructions specially allocated for this purpose and two bytes of the page zero allows addressing up to 1 MB of memory.
+
+The 6502 allows the overflow flag to be set via a hardware signal instead of this instruction.  This way of working with the overflow flag allows you to use a very fast input port, but for programming arithmetic, both setting this flag and clearing it are useless. Therefore, in the 6510 or 7501/8501, they abandoned the special method of setting the overflow flag, but the now completely useless instruction for resetting it remains!
+
+It seems to me that the gradual moving of zero-page memory to registers, the improvement of instruction pipelining, and the gradual expansion of the command system with simultaneous optimization of cycles would allow The Terminator 6502 to remain in the lead in terms of performance until the early 90's.
+
+Despite the great capabilities of Motorola, the 68000 was originally made using a relatively old technology, which was inferior even to the one used in the production of the 6502.
+
+Although it is worth noting that the PC addressing on the 68k is available only for the source operand, it does not work for the destination operand which makes it noticeably less useful.
