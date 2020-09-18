@@ -19,3 +19,35 @@ It seems to me that the gradual moving of zero-page memory to registers, the imp
 Despite the great capabilities of Motorola, the 68000 was originally made using a relatively old technology, which was inferior even to the one used in the production of the 6502.
 
 Although it is worth noting that the PC addressing on the 68k is available only for the source operand, it does not work for the destination operand which makes it noticeably less useful.
+
+Even if you compare the improvements made in the Motorola 6801 over the 6800 or the Intel 8085 over the 8080, they are gigantic compared to those made in the 65C02, and Intel and Motorola made them much earlier.
+
+But it must be admitted that several new instructions turned out to be expected and useful, for instance new addressing modes for BIT or instruction JMP (ABS,X). 
+
+Although again, we must admit that the new instructions allow you to get slightly faster and more compact codes.  Besides that, four relatively rare instructions became sometimes a clock cycle faster on the 65C02.  Additionally,  the 65C02 became to reset the decimal mode flag on interrupt, which allows an interrupt handler to be 2 cycles faster and 1 byte shorter - this tiny improvement illustrates the overall amount of improvements made in the 65C02.
+
+It is worth noting, of course, that WDC was able to create a CMOS processor only a few years after Intel and Motorola made CMOS versions of their 8080 and 680x processors.  In this, it was significantly ahead of Zilog, where the CMOS version of the Z80 was created only by 1987.  However, if CMOS 8085 and Z80 immediately found wide use in mobile computers, the low power consumption 65C02 found its application in computers relatively late, I can only name the Atari Lynx game console, produced since 1989.
+
+The 4510 chip was based on the 65CE02 processor, which in turn is based on the WDC 65C02.
+
+The 6502 uses a simple instruction pipeline that speeds up the execution time of many instructions by 1 clock cycle.
+
+But software interrupts in the 6502 are implemented quite primitively: they use the address for masked interrupts, which requires a rather cumbersome additional software check to distinguish them.
+
+Due to the fact that the ability to handle software interrupts significantly slows down the processing of hardware interrupts, support for software interrupts is often simply not implemented.
+
+Such dual-processor systems were extremely rare.  As an example of such systems, I know of only a few very rare models of Commodore drives.  Instead of the second processor a video controller was usually used, which shared memory with the 6502.
+
+In addition, it was one of the first 16-bit processors manufactured using CMOS technology! 
+
+Bill Mensch was able to provide some support for the development of 6502.  However, the capabilities of one person to support the competitiveness of a processor is clearly not enough.  Bill, as an excellent electronics engineer, was able to provide support for the execution of orders for the 6502 upgrade, but ensuring the independent development of a successful processor required teams.  Someone had to develop an upgrade of the instruction system, someone had to develop new marketing strategies, etc.  In addition, at least 1976-78 years were lost for development, and one person was no longer able to catch up.  In a sense, the WDC created an illusion of well-being around the 6502 development situation and this had a rather negative effect on real development.
+
+The second stack was abandoned in the most popular today the 68k processor, the Coldfire.
+
+A very attractive feature of the 68k architecture is addressing modes with auto-increment and -decrement, which are not available on the x86.  The user stack's independence from interrupts allows data to be used above the top of the stack, which is unthinkable on the 8086.  This very odd and not recommended way of working with the stack is also available on the x86 in multitasking environments, where each task and the system have their own stacks.
+
+It is not surprising, therefore, that in the modern development of the 68k architecture almost all new instructions of the 68020 have been abandoned.  This applies, in particular, to the Coldfire and 68070 processors used in embedded systems.
+
+For some reason, the processors of the 68k architecture did not even try to clone in the USSR, although the Besta computer was developed on the basis of the 68020.
+
+Besides computers of the IBM/360 architecture, there were other mainframes.  In the 60s, American mainframe manufacturers unofficially received a sonorous name of Snow White and the Seven Dwarfs.  It’s probably not hard to guess that Snow White was IBM.  Mainframes of original architectures were also produced in other countries.  The British architecture ICL 1900 is especially worth mentioning.
