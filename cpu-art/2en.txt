@@ -54,4 +54,12 @@ For some reason, the processors of the 68k architecture did not even try to clon
 
 Besides computers of the IBM/360 architecture, there were other mainframes.  In the 60s, American mainframe manufacturers unofficially received a sonorous name of Snow White and the Seven Dwarfs.  It’s probably not hard to guess that Snow White was IBM.  Mainframes of original architectures were also produced in other countries.  The British architecture ICL 1900 is especially worth mentioning.
 
+Ironically, in the official WDC documentation, the "bug" is not called a bug, but rather a quirk.
 
+The presence in the command system of absolutely useless instructions CLV, SEV, CLZ, SEZ, CLN, SEN demonstrates some ill-conceivedness in the details of this system.
+
+It is also interesting that assembler mnemonics for the PDP-11 became the basis for assemblers of the popular processors 680x, 6502, 68k.
+
+It is worth noting that the 680x architecture was heavily influenced by the PDP-11 architecture.  Some concepts of the PDP-11 were copied rather automatically, such as the useless CLV and SEV instructions.
+
+This, in particular, made it impossible to use the same operation to save flags for the 68000 and the later 68k processors.  Thus, you can't save flags as on the x86 (with the PUSHF or SAHF commands) on the 68k in the same way!  Perhaps Motorola should not have made the "MOVE from SR" command privileged, but instead should have changed it so that it always returns fixed information about some system flags in user mode.
