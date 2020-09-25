@@ -63,3 +63,5 @@ It is also interesting that assembler mnemonics for the PDP-11 became the basis 
 It is worth noting that the 680x architecture was heavily influenced by the PDP-11 architecture.  Some concepts of the PDP-11 were copied rather automatically, such as the useless CLV and SEV instructions.
 
 This, in particular, made it impossible to use the same operation to save flags for the 68000 and the later 68k processors.  Thus, you can't save flags as on the x86 (with the PUSHF or SAHF commands) on the 68k in the same way!  Perhaps Motorola should not have made the "MOVE from SR" command privileged, but instead should have changed it so that it always returns fixed information about some system flags in user mode.
+
+A processor compatible with the 6502 and comparable to the eZ80 has not appeared.  Perhaps simply because Zilog has always had better finances than WDC.
