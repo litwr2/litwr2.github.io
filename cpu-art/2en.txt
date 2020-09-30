@@ -65,3 +65,5 @@ It is worth noting that the 680x architecture was heavily influenced by the PDP-
 This, in particular, made it impossible to use the same operation to save flags for the 68000 and the later 68k processors.  Thus, you can't save flags as on the x86 (with the PUSHF or SAHF commands) on the 68k in the same way!  Perhaps Motorola should not have made the "MOVE from SR" command privileged, but instead should have changed it so that it always returns fixed information about some system flags in user mode.
 
 A processor compatible with the 6502 and comparable to the eZ80 has not appeared.  Perhaps simply because Zilog has always had better finances than WDC.
+
+Besides that the 6502 architecture naturally assumes the organization of an additional stack on the zero page &ndash; such a stack is especially good when working with pointers, since the addressing (zp,X) is ideal for such cases.  Of course, the size of such an additional stack is very limited and on many systems can not be more than a few dozen bytes.
