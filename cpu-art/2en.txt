@@ -1,26 +1,8 @@
-To be fair, it should be added that officially the memory access period for the 68020 and 68030 takes 3 cycles, but in many instructions it actually turns out to be rather 4.
-
-It can be surprising that the 68030 does not support several instructions of the 68020, for example, CALLM and RTM!
-
-It is also worth noting that the mainframes used channels, specialized processors that made I/O very fast, much faster than it was for most other computers of those years.
-
-Almost all string operations are limited to the maximum string length, no more than 255 bytes, that significantly reduces their power.
-
-Work with the 6502 continued not only at Commodore but also at Western Design Center (WDC) created by Bill Mensch.
-
-It was used in the Apple II starting with model IIe, although the many IIe used NMOS 6502.
-
-From the point of view of programming, the most interesting was the processor 6509 which, albeit in a very primitive form, with the help of only two instructions specially allocated for this purpose and two bytes of the page zero allows addressing up to 1 MB of memory.
-
-The 6502 allows the overflow flag to be set via a hardware signal instead of this instruction.  This way of working with the overflow flag allows you to use a very fast input port, but for programming arithmetic, both setting this flag and clearing it are useless. Therefore, in the 6510 or 7501/8501, they abandoned the special method of setting the overflow flag, but the now completely useless instruction for resetting it remains!
-
 It seems to me that the gradual moving of zero-page memory to registers, the improvement of instruction pipelining, and the gradual expansion of the command system with simultaneous optimization of cycles would allow The Terminator 6502 to remain in the lead in terms of performance until the early 90's.
 
 Despite the great capabilities of Motorola, the 68000 was originally made using a relatively old technology, which was inferior even to the one used in the production of the 6502.
 
 Although it is worth noting that the PC addressing on the 68k is available only for the source operand, it does not work for the destination operand which makes it noticeably less useful.
-
-Even if you compare the improvements made in the Motorola 6801 over the 6800 or the Intel 8085 over the 8080, they are gigantic compared to those made in the 65C02, and Intel and Motorola made them much earlier.  A number of tiny changes were made in the 65C02, which in particular led to a change in the course of executing several instructions.  These instructions became slower in a cycle, but at the same time they became more correct in some far-fetched academic sense.  We are talking about the mentioned "bug" and instructions for decimal arithmetic.  The latter were "adjusted" so that the oVerflow, Negative, and Zero flags started working "correctly".  However, when working with decimal numbers on the 6502 (and other microprocessors), the sign is not supported and, accordingly, the N and V flags do not make any sense for them.  Only the correction of the Z flag makes some sense, but it is extremely insignificant.  Dozens of new instructions were also added, the absolute majority of which only occupied the code space, adding almost nothing to the capabilities of the 6502, which left fewer opcodes for possible further upgrades.  But it must be admitted that several new instructions turned out to be expected and useful, for instance new addressing modes for BIT or instruction JMP (ABS,X).  Although again, we must admit that the new instructions allow you to get slightly faster and more compact codes.  Besides that, four relatively rare instructions became sometimes a clock cycle faster on the 65C02.  Additionally,  the 65C02 became to reset the decimal mode flag on interrupt, which sometimes allows an interrupt handler to be 2 cycles faster and 1 byte shorter - this tiny improvement illustrates the overall amount of improvements made in the 65C02.
 
 It is worth noting, of course, that WDC was able to create a CMOS processor only a few years after Intel and Motorola made CMOS versions of their 8080 and 680x processors.  In this, it was significantly ahead of Zilog, where the CMOS version of the Z80 was created only by 1987.  However, if CMOS 8085 and Z80 immediately found wide use in mobile computers, the low power consumption 65C02 found its application in computers relatively late, I can only name the Atari Lynx game console, produced since 1989.  It is also worth noting that the introduction of CMOS technology itself is quite a routine process, through which other processors (the x86, 68k, ...) passed almost unnoticed.
 
