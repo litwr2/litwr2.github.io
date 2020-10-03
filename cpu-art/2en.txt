@@ -4,17 +4,21 @@ In addition, it was one of the first 16-bit processors manufactured using CMOS t
 
 Bill Mensch was able to provide some support for the development of 6502.  However, the capabilities of one person to support the competitiveness of a processor is clearly not enough.  Bill, as an excellent electronics engineer, was able to provide support for the execution of orders for the 6502 upgrade, but ensuring the independent development of a successful processor required teams.  Someone had to develop an upgrade of the instruction system, someone had to develop new marketing strategies, etc.  In addition, at least 1976-78 years were lost for development, and one person was no longer able to catch up.  In a sense, the WDC created an illusion of well-being around the 6502 development situation and this had a rather negative effect on real development.
 
+Ironically, in the official WDC documentation, the "bug" is not called a bug, but rather a quirk.
+
+Besides that the 6502 architecture naturally assumes the organization of an additional stack on the zero page - such a stack is especially good when working with pointers, since the addressing (zp,X) is ideal for such cases.  Of course, the size of such an additional stack is very limited and on many systems can not be more than a few dozen bytes.
+
+Besides computers of the IBM/360 architecture, there were other mainframes.  In the 60s, American mainframe manufacturers unofficially received a sonorous name of Snow White and the Seven Dwarfs.  It’s probably not hard to guess that Snow White was IBM.  Mainframes of original architectures were also produced in other countries.  The British architecture ICL 1900 is especially worth mentioning.
+
 The second stack was abandoned in the most popular today the 68k processor, the Coldfire.
 
 A very attractive feature of the 68k architecture is addressing modes with auto-increment and -decrement, which are not available on the x86.  The user stack's independence from interrupts allows data to be used above the top of the stack, which is unthinkable on the 8086.  This very odd and not recommended way of working with the stack is also available on the x86 in multitasking environments, where each task and the system have their own stacks.
 
 It is not surprising, therefore, that in the modern development of the 68k architecture almost all new instructions of the 68020 have been abandoned.  This applies, in particular, to the Coldfire and 68070 processors used in embedded systems.
 
+This, in particular, made it impossible to use the same operation to save flags for the 68000 and the later 68k processors.  Thus, you can't save flags as on the x86 (with the PUSHF or SAHF commands) on the 68k in the same way!  Perhaps Motorola should not have made the "MOVE from SR" command privileged, but instead should have changed it so that it always returns fixed information about some system flags in user mode.
+
 For some reason, the processors of the 68k architecture did not even try to clone in the USSR, although the Besta computer was developed on the basis of the 68020.
-
-Besides computers of the IBM/360 architecture, there were other mainframes.  In the 60s, American mainframe manufacturers unofficially received a sonorous name of Snow White and the Seven Dwarfs.  It’s probably not hard to guess that Snow White was IBM.  Mainframes of original architectures were also produced in other countries.  The British architecture ICL 1900 is especially worth mentioning.
-
-Ironically, in the official WDC documentation, the "bug" is not called a bug, but rather a quirk.
 
 The presence in the command system of absolutely useless instructions CLV, SEV, CLZ, SEZ, CLN, SEN demonstrates some ill-conceivedness in the details of this system.
 
@@ -22,8 +26,7 @@ It is also interesting that assembler mnemonics for the PDP-11 became the basis 
 
 It is worth noting that the 680x architecture was heavily influenced by the PDP-11 architecture.  Some concepts of the PDP-11 were copied rather automatically, such as the useless CLV and SEV instructions.
 
-This, in particular, made it impossible to use the same operation to save flags for the 68000 and the later 68k processors.  Thus, you can't save flags as on the x86 (with the PUSHF or SAHF commands) on the 68k in the same way!  Perhaps Motorola should not have made the "MOVE from SR" command privileged, but instead should have changed it so that it always returns fixed information about some system flags in user mode.
-
 A processor compatible with the 6502 and comparable to the eZ80 has not appeared.  Perhaps simply because Zilog has always had better finances than WDC.
 
-Besides that the 6502 architecture naturally assumes the organization of an additional stack on the zero page &ndash; such a stack is especially good when working with pointers, since the addressing (zp,X) is ideal for such cases.  Of course, the size of such an additional stack is very limited and on many systems can not be more than a few dozen bytes.
+The best DEC processors, for example, the J-11 can use a separate address space for instructions and data, which doubles the size of the address space and does not slow down execution.  The original processors which were made in the USSR could not do such separations.
+
