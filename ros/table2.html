@@ -1,5 +1,6 @@
 <meta charset=utf-8>
 <script src=data-all.js></script>
+<script src=methods-list.js></script>
 <script src=actions-all.js></script>
 
 <style type=text/css>
@@ -13,6 +14,7 @@ table, th, td {
 <script>
 var Data = JSON.parse(json)
 var Data1 = JSON.parse(json)
+var Methods = JSON.parse(json_methods)
 var stdlibSorts = ["heapsort_stl", "radix_bsd", "sradix_bsd", "clib_qsort", "heapsort_bsd", "mergesort_bsd", "stlsort", 
 "stlstable", "spread", "pdq", "spin", "flat_stable", "timsort", "tree_stl", "tree_boost", "qsort_dualpivot"]
 var fastSteadySorts = stdlibSorts.concat(["shell_10/3", "shell_prime_e", "shell_a102549", "shell_prime_10/3", "shell_a102549m", "shell_2.25", "radix8", "radix11", "radix16", "shell_10/3_oms7", "radix8_oms7", "radix8_msd_oms7", "radix8_trie", "timsort"])

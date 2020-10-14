@@ -93,7 +93,7 @@ function drawTable1() {
         if (typeof(ta[i][1]) == "number" && (os == 0 || os == 1 && ta[i][0] in marked || os == 2 && i < 7 || os > 2 && indexSorted[os - 3].indexOf(ta[i][0]) != -1)) {
             text += "<tr><td align=center>" + (++n) + "<input id=" + ta[i][0] + " type=checkbox "
             if (ta[i][0] in marked) text += "checked "
-            text += "onclick=changeCheck(\"" + ta[i][0] + "\")><td>" + ta[i][0]
+            text += "onclick=changeCheck(\"" + ta[i][0] + "\")><td>" + "<a href=" + methods_url + Methods[ta[i][0]] + ">" + ta[i][0] + "</a>"
             for (var k = 0; k < M; ++k) {
                 text += "<td align=right>"
                 var a = ta[i][k + 1]
