@@ -1,2 +1,6 @@
 Earlier, Commodore, for still unclear reasons, left the calculator market.  Also, for unclear reasons, the production of the very promising Commodore LCD laptop computer was abandoned.
 
+Surprisingly, the IBM 5100 with Basic was several times slower than the first cheap personal computers, such as the Apple II.
+
+It all started with the fact that Motorola for unknown reasons refused to support the initiative engineer, Chuck Peddle, who offered to improve the overall rather mediocre 6800 processor, making it faster and, most importantly, much cheaper.  He had to leave the company and continue his work in a small but promising company MOS Technology.  He was able to persuade seven other engineers to follow him, and only one of them subsequently returned to Motorola.  In MOS Technology, they soon prepared two processors, the 6501 and 6502, both of them (like almost all processors of that time) were fabricated using NMOS technology.
+
