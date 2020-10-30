@@ -4,3 +4,5 @@ Surprisingly, the IBM 5100 with Basic was several times slower than the first ch
 
 It all started with the fact that Motorola for unknown reasons refused to support the initiative engineer, Chuck Peddle, who offered to improve the overall rather mediocre 6800 processor, making it faster and, most importantly, much cheaper.  He had to leave the company and continue his work in a small but promising company MOS Technology.  He was able to persuade seven other engineers to follow him, and only one of them subsequently returned to Motorola.  In MOS Technology, they soon prepared two processors, the 6501 and 6502, both of them (like almost all processors of that time) were fabricated using NMOS technology.
 
+Also, the work with the carry in the ADC and SBC commands is somewhat awkwardly implemented, for example, to make addition of two words with the carry on the PDP-11, two commands are needed, while on the x86 or 68k, one is enough. Although on the IBM/370, such an operation requires even three commands.  [in the ADC?, using the ADC?, the?]
+
