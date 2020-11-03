@@ -6,3 +6,6 @@ It all started with the fact that Motorola for unknown reasons refused to suppor
 
 Also, the work with the carry in the ADC and SBC commands is somewhat awkwardly implemented, for example, to make addition of two words with the carry on the PDP-11, two commands are needed, while on the x86 or 68k, one is enough. Although on the IBM/370, such an operation requires even three commands.  [in the ADC?, using the ADC?, the?]
 
+Its performance was 10 MIPS, and its price was about 20 million dollars then, and the dollar value was three times greater than today!  Although this price seems to be some kind of exaggeration.  Typical mainframe prices were in the hundreds of thousands of dollars.  The cheapest mainframes could cost tens of thousands, but the most expensive up to several million.  For example, the Cray-1 supercomputer cost 8 million in 1978, the IBM 4361 model 4 mainframe - about 130 thousand in 1985, the IBM 3081 model QX mainframe - more than 6 million in the same 1985, the IBM 4321 mini-mainframe - more than 80 thousand in 1982.  More details on prices can be found here or here.
+
+It is not difficult to assume that if they simply sold all such assets used in the production of a Soviet mainframe, then for the proceeds, they could buy a reliable American or English mainframe.
