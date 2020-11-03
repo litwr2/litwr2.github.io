@@ -125,7 +125,7 @@ function drawTable1() {
         for (i = 1; i < ar.length; ++i)
             query += ',' + ar[i]
     }
-    document.getElementById("curUrl").innerHTML = location.protocol + '//' + location.hostname + location.pathname + query
+    document.getElementById("curUrl").href = location.protocol + '//' + location.hostname + location.pathname + query
 }
 
 function DataAvg() {
