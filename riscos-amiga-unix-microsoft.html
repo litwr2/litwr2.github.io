@@ -14,12 +14,12 @@
 <tr><th>the `parent' directory<td>^<td>/<td>..<td>..
 <tr><th>output redirection<td> &gt;, 2&gt;<td> &gt;<td> &gt;, 2&gt;<td>&gt;
 <tr><th>empty device<td>null:<td>nil:<td>/dev/null<td>nul
-<tr><th>set <em>var</em> with <em>val</em><td>set <em>var</em> <em>val</em><td><td><em>var</em>=<em>val</em><td>set <em>var</em>=<em>val</em>
+<tr><th>set <em>var</em> with <em>val</em><td>set <em>var</em> <em>val</em><td>setenv <em>var</em> <em>val</em><td><em>var</em>=<em>val</em><td>set <em>var</em>=<em>val</em>
 <tr><th>evalute <em>expr</em><td>eval <em>expr</em><td>eval <em>expr</em><td>$((<em>expr</em>))<td>
 <tr><th><td>cat, lcat, count, ex, lex, info, fileinfo<td>dir, list<td>ls, du<td>dir
 <tr><th><td>dir, up, back<td>cd<td>cd, pushd, popd<td>cd
 <tr><th><td>type, list, print<td>type<td>cat<td>type
-<tr><th><td>dump<td><td>od<td>
+<tr><th><td>dump<td>type<td>od<td>
 <tr><th><td>delete, remove, wipe<td>delete<td>rm<td>del
 <tr><th><td>access, settype<td>protect<td>chmod<td>attrib
 <tr><th><td>copy<td>copy<td>cp<td>copy
@@ -32,8 +32,8 @@
 <tr><th><td>show<td><td>set<td>set
 <tr><th><td>free<td>info<td>df<td>dir
 <tr><th><td>time<td>date<td>date
-<tr><th><td>unset<td><td>unset<td>
+<tr><th><td>unset<td>unsetenv<td>unset<td>
 
 </table>
 </div>
-<p>*<a name=cbm></a> - The same as at CBM DOS :-)
+<p>*<a name=cbm></a> - The same as in CBM DOS :-)
