@@ -760,8 +760,18 @@ ma.push({m8080: "RDEL", o8080: "", mz80: "RL E~RL D", oz80: "4", oc: "18", f8080
 ma.push({m8080: "LDHI", o8080: "byte", mz80: "PUSH HL~LD DE,byte~ADD HL,DE~EX DE,HL~POP HL", oz80: "7", oc: "28", f8080: "", fz80: "", t8080: "", t8085: 10, tz80: "46", sz: "2", x86: "MOV DX,BX~ADD DX,byte", f8088: "", t8088: 6, x86sz: "3-4", m6502: "", f6502: "", t6502: "", sz6502: "", comment: "LD DE,HL+byte", style: 1})
 ma.push({m8080: "LDSI", o8080: "byte", mz80: "PUSH HL~LD HL,byte+2~ADD HL,SP~EX DE,HL~POP HL", oz80: "7", oc: "38", f8080: "", fz80: "", t8080: "", t8085: 10, tz80: "46", sz: 2, x86: "MOV DX,SP~ADD DX,byte", f8088: "", t8088: 6, x86sz: "3-4", m6502: "", f6502: "", t6502: "", sz6502: "", comment: "LD DE,SP+byte", style: 1})
 ma.push({m8080: "LHLX", o8080: "", mz80: "PUSH AF~LD A,(DE)~LD L,A~INC DE~LD A,(DE)~LD H,A~DEC DE~POP AF", oz80: "8", oc: "ED", f8080: "", fz80: "55", t8080: "", t8085: 10, tz80: "36", sz: 1, x86: "MOV BX,DX~MOV BX,[BX]", f8088: "", t8088: 19, x86sz: 4, m6502: "", f6502: "", t6502: "", sz6502: "", comment: "LD HL,(DE)", style: 1})
-ma.push({m8080: "SHLX", o8080: "", mz80: "PUSH AF~LD A,L~LD (DE),A~INC DE~LD A,H~LD (DE),A~DEC DE~POP AF", oz80: "8", oc: "D9", f8080: "", fz80: "55", t8080: "", t8085: 10, tz80: "", sz: 1, x86: "MOV SI,DX~MOV [SI],BX", f8088: "", t8088: 20, x86sz: 4, m6502: "", f6502: "", t6502: "", sz6502: "", comment: "LD (DE),HL", style: 1})
+ma.push({m8080: "SHLX", o8080: "", mz80: "PUSH AF~LD A,L~LD (DE),A~INC DE~LD A,H~LD (DE),A~DEC DE~POP AF", oz80: "8", oc: "D9", f8080: "", fz80: "55", t8080: "", t8085: 10, tz80: "36", sz: 1, x86: "MOV SI,DX~MOV [SI],BX", f8088: "", t8088: 20, x86sz: 4, m6502: "", f6502: "", t6502: "", sz6502: "", comment: "LD (DE),HL", style: 1})
 ma.push({m8080: "RSTV", o8080: "", mz80: "JPO $+5~CALL 40", oz80: 6, oc: "C8", f8080: "", fz80: "", t8080: "", t8085: "6/12", tz80: "10/27", sz: 1, x86: "INTO", f8088: "", t8088: "4/73", x86sz: 1, m6502: "", f6502: "", t6502: "", sz6502: "", comment: "", style: 1})
 ma.push({m8080: "JNX5", o8080: "word", mz80: "JP PE,$+9~JP P,word~JP $+6~JP M,word", oz80: "12", oc: "DD", f8080: "", fz80: "", t8080: "", t8085: "7/10", tz80: "20/30", sz: 3, x86: "JO $+7~JS $+10~JMP word~JNS $+5~JMP word", f8088: "", t8088: "19-35", x86sz: "12", m6502: "", f6502: "", t6502: "", sz6502: "", comment: "for near jumps, the 8088~code is shorter and faster", style: 1})
 ma.push({m8080: "JX5", o8080: "word", mz80: "JP PE,$+9~JP M,word~JP $+6~JP P,word", oz80: "12", oc: "FD", f8080: "", fz80: "", t8080: "", t8085: "7/10", tz80: "20/30", sz: 3, x86: "JO $+7~JNS $+10~JMP word~JS $+5~JMP word", f8088: "", t8088: "19-35", x86sz: "12", m6502: "", f6502: "", t6502: "", sz6502: "", comment: "X5=OF+SF is~internally supported by~the x86 so the direct use~of X5 jumps is redundant", style: 3})
-
+/*
+for(var i = 0; i < ma.length; ++i) {
+    if (ma[i].t8085 == "" || ma[i].tz80 == "" || ma[i].t8085 == ma[i].tz80 || ma[i].mz80.indexOf("~") != -1 || ma[i].oz80.indexOf("near") != -1) continue;
+    x8080 = ""
+    if (ma[i].o8080 != "") x8080 = " " + ma[i].o8080
+    x8080.replace("far", "word")
+    ma[i].oz80.replace("far", "word")
+    s = ma[i].m8080 + x8080 + " [" + ma[i].t8085 + "] - " + ma[i].mz80 + " " + ma[i].oz80 + " [" + ma[i].tz80 + "]"
+    console.log(s)
+}
+*/
