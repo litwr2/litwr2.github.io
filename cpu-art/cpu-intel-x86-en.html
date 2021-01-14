@@ -96,7 +96,7 @@
 <li>shifts of double values by SHLD, SHRD &ndash; similar commands are available on the IBM mainframes.
 </ul>
 
-<p>The x86 processors before the appearance of the 80386 could use only short, with an offset of one-byte, conditional jumps &ndash; this was often not enough.  With the 80386 it became possible to use offset of two or four bytes, and despite the fact that the code of new jumps became two or three times longer, the time of its execution remained the same as in previous, short jumps.
+<p>The x86 processors before the appearance of the 80386 could use only short, with an offset of one-byte, conditional jumps &ndash; this was often not enough.  With the 80386 it became possible to use offset of two or four bytes, and despite the fact that the code of new jumps became two or three times longer, the time of its execution remained the same as in previous, short jumps.  However, not everything was done perfectly: perhaps for protected mode it was worth using 16-bit offsets instead of the almost useless 8-bit ones.
 
 <p>The support for debugging was radically improved by the introduction of 4 hardware breakpoints, using them it became possible to stop programs even on memory addresses that may not be changed.
 
