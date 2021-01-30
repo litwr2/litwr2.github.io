@@ -165,6 +165,7 @@ function drawTabs() {
             break
         case "Hornet":
             s += "it is a 80186 compatible processor with low power consumption"
+            break
         case "H1806BM2":
             s += "it is the CMOS K1801BM2"
         }
@@ -277,6 +278,8 @@ ma.push({computer: "Commodore +4/NTSC", OS: "ROM Basic", driver: "plus4-10", con
 ma.push({computer: "Amstrad CPC6128", OS: "CP/M 2.2", driver: "cpm22bios-11-cpc6128", connection: "display", t100: 2.15, t1000: 182.6, t3000: 1626.58, maxd: 5988, source: "ep128emu version 2.0.9.1", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_CPC", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/cpc6128-cpm22.png"})
 ma.push({computer: "Amstrad CPC6128", OS: "CP/M 3", driver: "cpc-cpm3-8", connection: "display", t100: 2.34, t1000: 190.94, t3000: 1684.76, maxd: 8660, source: "ep128emu version 2.0.9.1", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_CPC", cpu100: 2.03, cpu1000: 186.57, cpu3000: 1673.75, fixed: false, screenshot: "rp/cpc6128-cpm3.png"})
 ma.push({computer: "Amstrad PCW8256", OS: "CP/M 3", driver: "cpm22bdos-11-pcw8256", connection: "display", t100: 2.08, t1000: 189.9, t3000: 1700, maxd: 8660, source: "CP/M Box 1.8.5", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_PCW", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/pcw8256.png"})
+ma.push({computer: "Atari 800XL/NTSC", OS: "ROM Basic", driver: "atari800xl-1", connection: "display", t100: 1.99, t1000: 190.82, t3000: 1702.9, maxd: 4356, source: "atari800 version 4.1.0", estimation: false, comment: "", cpu: "6502", freq: 1.79, year: 1983, href: "https://en.wikipedia.org/wiki/Atari_8-bit_family", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/atari800xl-ntsc.png"})
+ma.push({computer: "Atari 800XL/PAL", OS: "ROM Basic", driver: "atari800xl-1", connection: "display", t100: 1.98, t1000: 191.16, t3000: 1705.68, maxd: 4356, source: "atari800 version 4.1.0", estimation: false, comment: "", cpu: "6502", freq: 1.77, year: 1983, href: "https://en.wikipedia.org/wiki/Atari_8-bit_family", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/atari800xl-pal.png"})
 ma.push({computer: "MSX 1, 2, 2+", OS: "ROM Basic", driver: "msx-7", connection: "display", t100: 2.27, t1000: 205.57, t3000: 1839.12, maxd: 3000, source: "openmsx 0.13.0", estimation: false, comment: "Sanyo MPC-25FD", cpu: "Z80", freq: 3.58, year: 1983, href: "https://en.wikipedia.org/wiki/MSX", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/msx-basic.png"})
 ma.push({computer: "MSX 1, 2, 2+", OS: "MSX DOS", driver: "cpm22bdos-11-msx", connection: "display", t100: 2.38, t1000: 210.12, t3000: 1874.48, maxd: 7488, source: "openmsx 0.13.0", estimation: false, comment: "Sanyo MPC-25FD", cpu: "Z80", freq: 3.58, year: 1983, href: "https://en.wikipedia.org/wiki/MSX", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/msx-dos.png"})
 ma.push({computer: "&#x411;K0011", OS: "&#x411;K0010 OS", driver: "bk11-7", connection: "display", t100: 2.73, t1000: 240.05, t3000: 2143, maxd: 4412, source: "real iron (thanks to Manwe)", estimation: false, comment: "", cpu: "K1801BM1", freq: 4, year: 1989, href: "https://en.wikipedia.org/wiki/Electronika_BK", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bk0011m.png"})
@@ -354,6 +357,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>plus4-10<td>6531
 <tr><td>c64-9<td>6597
 <tr><td>c128-9<td>6597
+<tr><td>atari800xl-1<td>6005+1113=7118
 </table>
 <td width=20px style=border-style:none>
 <td style=border-style:none>* it is a sum of Asssember + Basic code sizes.<br>
@@ -365,7 +369,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
 <p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
-<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-42.tar.bz2>v42 [176 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-42.tar.bz2>v43 [179 KB]</a>) pack.
 <p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a> <script>document.write(mirror())</script>
 <script>
 drawTabs()
