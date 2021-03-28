@@ -256,7 +256,7 @@ ma.push({computer: "&#x423;KH&#x426;", OS: "RT11SJ 5.02", driver: "rt11-eis-9of"
 ma.push({computer: "Dragon 32", OS: "ROM Basic", driver: "dragon-6309-3", connection: "display", t100: 0.44, t1000: 41.7, t3000: 374, maxd: 3176, source: "real iron (thanks to robcfg)", estimation: false, comment: "XRoar 0.34.1 0.45/41.7/374", cpu: "6309", freq: 1.78, year: 1982, href: "https://en.wikipedia.org/wiki/Dragon_32/64", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/dragon32-6309.png"})
 ma.push({computer: "IBM PC 5150", OS: "DOS", driver: "ibmpc-7", connection: "display", t100: 0.63, t1000: 46.24, t3000: 394.85, maxd: 9264, source: "real iron (thanks to modem7)", estimation: true, comment: "pce-ibmpc version 20140222-4b05f0c to real iron ratio is 1:1.206 for 3000, 1:1.193 for 1000, 1:1.031 for 100 ", cpu: "8088", freq: 4.77, year: 1981, href: "http://oldcomputers.net/ibm5150.html", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "Tiki-100 (8088 board)", OS: "DOS", driver: "msdos-7-tiki100", connection: "display", t100: 0.82, t1000: 52.82, t3000: 456.84, maxd: 9260, source: "real iron (thanks to per)", estimation: true, comment: "", cpu: "8088", freq: 4, year: 1984, href: "https://en.wikipedia.org/wiki/Tiki_100", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
-ma.push({computer: "TI-99/4A (E/A+32KB RAM)", OS: "Basic", driver: "ti99-4a-1", connection: "display", t100: 1.02, t1000: 69.13, t3000: 600.35, maxd: 3504, source: "Classic99 QI1399.037", estimation: false, comment: "", cpu: "TMS9900", freq: 3, year: 1981, href: "https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/ti99-4a.png"})
+ma.push({computer: "TI-99/4A (E/A+32KB RAM)", OS: "Basic", driver: "ti99-4a-2ea", connection: "display", t100: 1.02, t1000: 69.13, t3000: 600.35, maxd: 3504, source: "Classic99 QI1399.037", estimation: false, comment: "", cpu: "TMS9900", freq: 3, year: 1981, href: "https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/ti99-4a.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "ROM Basic", driver: "bbc-5", connection: "display", t100: 0.78, t1000: 77.2, t3000: 691, maxd: 3216, source: "real iron (thanks to BigEd and Kieran)", estimation: true, comment: "B-em to real iron ratio is 1:1.0214 for 1000, lower for more digits ", cpu: "6502", freq: 4, year: 1986, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "VAX 11/730", OS: "BSD 4.3", driver: "vax-bsd-1", connection: "tcp/ip", t100: 1.5, t1000: 87.2, t3000: 737, maxd: 9244, source: "real iron (thanks to LCM+L)", estimation: false, comment: "1.499/87.179/736.891", cpu: "KA730", freq: 3.7, year: 1982, href: "https://gunkies.org/wiki/VAX-11/730", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "&#x414;BK-2M", OS: "RT11SJ (Y) 05.04", driver: "rt11-noeis-6", connection: "display", t100: 1.02, t1000: 89.9, t3000: 803, maxd: 6260, source: "real iron (thanks to MiX)", estimation: true, comment: "1.02/89.92/841.28", cpu: "K1801BM3", freq: 6, year: 1987, href: "https://en.wikipedia.org/wiki/DVK", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: true, screenshot: ""})
@@ -338,7 +338,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>vax-vms-2<td>915**
 <tr><td>bbc-pandora-2<td>992
 <tr><td>bbc-panos-2<td>1044
-<tr><td>ti99-4a-1<td>536+631=1167*
+<tr><td>ti99-4a-2ea<td>520+626=1146*
 <tr><td>pdp11-unix7-noeis-1<td>1258&#176;
 <tr><td>dragon-4<td>812+489=1301*
 <tr><td>bk11-7<td>1446
@@ -372,7 +372,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
 <p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
-<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-48.tar.bz2>v48 [183 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-49.tar.bz2>v49 [184 KB]</a>) pack.
 <p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a> <script>document.write(mirror())</script>
 <script>
 drawTabs()
