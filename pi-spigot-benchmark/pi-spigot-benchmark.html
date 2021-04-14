@@ -107,9 +107,9 @@ function drawTabs() {
         if (ma[i].href != "") s += "<a href=" + ma[i].href + ">"
         s += ma[i].computer
         if (ma[i].href != "") s += "</a>"
-        s += ",<br>" + ma[i].cpu + ", " + ma[i].freq
-        if (ma[i].computer == "Dragon 32" || ma[i].computer.indexOf("Tandy CoCo") == 0) s += "*"
-        s += " MHz<td align=center>" + ma[i].OS + "<br>" + ma[i].connection + "<td align=center>" + ma[i].driver + "<td align=center>"
+        s += ",<br>" + ma[i].cpu + ", " + ma[i].freq + " MHz"
+        if (ma[i].computer == "Dragon 32" || ma[i].computer.indexOf("Tandy CoCo") == 0) s += "<sup>1</sup>"
+        s += "<td align=center>" + ma[i].OS + "<br>" + ma[i].connection + "<td align=center>" + ma[i].driver + "<td align=center>"
         if (ma[i].cpu100 < 0)
             s += prepres(format, ma[i].t100, Math.round(cpu(1000, k1(ma[i].t1000, ma[i].t3000)))/100, Math.round((ma[i].t100 - cpu(1000, k1(ma[i].t1000, ma[i].t3000))/100)*100)/100)
         else
@@ -165,6 +165,9 @@ function drawTabs() {
             break
         case "Hornet":
             s += "it is a 80186 compatible processor with low power consumption"
+            break
+        case "TMS9995":
+            s += "all official instruction timings use 1/4 of the CPU freq as the base, so ER may be regarded as 4 times less"
             break
         case "H1806BM2":
             s += "it is the CMOS K1801BM2"
@@ -235,6 +238,7 @@ ma.push({computer: "Commodore SuperCPU-64/NTSC", OS: "ROM Basic", driver: "c64-9
 ma.push({computer: "Amiga 500/PAL + fast RAM", OS: "WB", driver: "amiga-4", connection: "display", t100: 0.42, t1000: 19.7, t3000: 164, maxd: 9252, source: "FS-UAE 2.6.2", estimation: false, comment: "", cpu: "68000", freq: 7.09, year: 1987, href: "https://en.wikipedia.org/wiki/Amiga_500", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "Amiga 500/NTSC", OS: "WB", driver: "amiga-4", connection: "display", t100: 0.42, t1000: 19.93, t3000: 165.83, maxd: 9252, source: "FS-UAE 2.8.0", estimation: false, comment: "", cpu: "68000", freq: 7.14, year: 1987, href: "https://en.wikipedia.org/wiki/Amiga_500", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/amiga500-ntsc.png"})
 ma.push({computer: "Amiga 500/PAL", OS: "WB", driver: "amiga-4", connection: "display", t100: 0.44, t1000: 20, t3000: 167, maxd: 9252, source: "FS-UAE 2.6.2", estimation: false, comment: "", cpu: "68000", freq: 7.09, year: 1987, href: "https://en.wikipedia.org/wiki/Amiga_500", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/amiga500-pal.png"})
+ma.push({computer: "Geneve 9640 NTSC", OS: "MDOS", driver: "geneve-mdos-1", connection: "display", t100: 0.31, t1000: 20.25, t3000: 175.14, maxd: 8528, source: "MAME 0.229", estimation: false, comment: "", cpu: "TMS9995", freq: 12, year: 1987, href: "https://en.wikipedia.org/wiki/Geneve_9640", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/geneve-mdos.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "Pandora", driver: "bbc-pandora-2", connection: "display", t100: 0.24, t1000: 21.3, t3000: 190, maxd: 9188, source: "real iron (thanks to Chris)", estimation: true, comment: "", cpu: "32016", freq: 6, year: 1985, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bbc-micro-acorn-pandora.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "PanOS", driver: "bbc-panos-2", connection: "display", t100: 0.28, t1000: 21.6, t3000: 191, maxd: 9264, source: "real iron (thanks to Chris)", estimation: true, comment: "", cpu: "32016", freq: 6, year: 1985, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bbc-micro-acorn-panos.png"})
 ma.push({computer: "MSX turbo R", OS: "ROM Basic", driver: "msx-7", connection: "display", t100: 0.25, t1000: 22.25, t3000: 197.77, maxd: 3264, source: "openmsx 0.13.0", estimation: false, comment: "Panasonic FS-A1ST", cpu: "R800", freq: 7.16, year: 1990, href: "https://en.wikipedia.org/wiki/MSX", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/msx-turbor.png"})
@@ -256,7 +260,7 @@ ma.push({computer: "&#x423;KH&#x426;", OS: "RT11SJ 5.02", driver: "rt11-eis-9of"
 ma.push({computer: "Dragon 32", OS: "ROM Basic", driver: "dragon-6309-3", connection: "display", t100: 0.44, t1000: 41.7, t3000: 374, maxd: 3176, source: "real iron (thanks to robcfg)", estimation: false, comment: "XRoar 0.34.1 0.45/41.7/374", cpu: "6309", freq: 1.78, year: 1982, href: "https://en.wikipedia.org/wiki/Dragon_32/64", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/dragon32-6309.png"})
 ma.push({computer: "IBM PC 5150", OS: "DOS", driver: "ibmpc-7", connection: "display", t100: 0.63, t1000: 46.24, t3000: 394.85, maxd: 9264, source: "real iron (thanks to modem7)", estimation: true, comment: "pce-ibmpc version 20140222-4b05f0c to real iron ratio is 1:1.206 for 3000, 1:1.193 for 1000, 1:1.031 for 100 ", cpu: "8088", freq: 4.77, year: 1981, href: "http://oldcomputers.net/ibm5150.html", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "Tiki-100 (8088 board)", OS: "DOS", driver: "msdos-7-tiki100", connection: "display", t100: 0.82, t1000: 52.82, t3000: 456.84, maxd: 9260, source: "real iron (thanks to per)", estimation: true, comment: "", cpu: "8088", freq: 4, year: 1984, href: "https://en.wikipedia.org/wiki/Tiki_100", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
-ma.push({computer: "TI-99/4A (E/A+32KB RAM)", OS: "Basic", driver: "ti99-4a-2ea", connection: "display", t100: 1.02, t1000: 69.13, t3000: 600.35, maxd: 3504, source: "Classic99 QI1399.037", estimation: false, comment: "", cpu: "TMS9900", freq: 3, year: 1981, href: "https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/ti99-4a.png"})
+ma.push({computer: "TI-99/4A NTSC (E/A+32KB RAM)", OS: "Basic", driver: "ti99-4a-2ea", connection: "display", t100: 1.02, t1000: 69.13, t3000: 600.35, maxd: 3504, source: "Classic99 QI1399.037", estimation: false, comment: "", cpu: "TMS9900", freq: 3, year: 1981, href: "https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/ti99-4a.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "ROM Basic", driver: "bbc-5", connection: "display", t100: 0.78, t1000: 77.2, t3000: 691, maxd: 3216, source: "real iron (thanks to BigEd and Kieran)", estimation: true, comment: "B-em to real iron ratio is 1:1.0214 for 1000, lower for more digits ", cpu: "6502", freq: 4, year: 1986, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "VAX 11/730", OS: "BSD 4.3", driver: "vax-bsd-1", connection: "tcp/ip", t100: 1.5, t1000: 87.2, t3000: 737, maxd: 9244, source: "real iron (thanks to LCM+L)", estimation: false, comment: "1.499/87.179/736.891", cpu: "KA730", freq: 3.7, year: 1982, href: "https://gunkies.org/wiki/VAX-11/730", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "&#x414;BK-2M", OS: "RT11SJ (Y) 05.04", driver: "rt11-noeis-6", connection: "display", t100: 1.02, t1000: 89.9, t3000: 803, maxd: 6260, source: "real iron (thanks to MiX)", estimation: true, comment: "1.02/89.92/841.28", cpu: "K1801BM3", freq: 6, year: 1987, href: "https://en.wikipedia.org/wiki/DVK", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: true, screenshot: ""})
@@ -313,7 +317,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <p>
 <table border=1 id=tab1></table>
 <br>
-<p>*The automatic DRAM regeneration doesn't work at this clock (@1.78MHz) so it is possible that some hardware and software can't work with this speed.  So, for normal system work, the maximum clock frequency is about 1.34 MHz, or 75% of that that used for the results given in the table.
+<p><sup>1</sup>The automatic DRAM regeneration doesn't work at this clock (@1.78MHz) so it is possible that some hardware and software can't work with this speed.  So, for normal system work, the maximum clock frequency is about 1.34 MHz, or 75% of that that used for the results given in the table.
 <br>
 <p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time (CPU time only without IO) of the calculation of 3000 digits by the CPU frequency.  The ER values are gotten for pi-spigot which uses base 16-bit integer arithmetic.  The best ER value for each CPU is taken.  The ER value reflects the efficiency of a CPU electronics.
 <table border=1 id=tab2></table>
@@ -337,6 +341,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>amiga-4<td>904
 <tr><td>vax-vms-2<td>915**
 <tr><td>bbc-pandora-2<td>992
+<tr><td>geneve-mdos-1<td>1001**
 <tr><td>bbc-panos-2<td>1044
 <tr><td>ti99-4a-2ea<td>520+626=1146*
 <tr><td>pdp11-unix7-noeis-1<td>1258&#176;
@@ -360,7 +365,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>plus4-10<td>6531
 <tr><td>c64-9<td>6597
 <tr><td>c128-9<td>6597
-<tr><td>atari800xl-2<td>6084+1113=7197
+<tr><td>atari800xl-2<td>6084+1113=7197*
 </table>
 <td width=20px style=border-style:none>
 <td style=border-style:none>* it is a sum of Asssember + Basic code sizes.<br>
@@ -372,7 +377,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
 <p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
-<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-49.tar.bz2>v49 [184 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-50.tar.bz2>v50 [186 KB]</a>) pack.
 <p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a> <script>document.write(mirror())</script>
 <script>
 drawTabs()
