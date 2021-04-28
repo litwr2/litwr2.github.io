@@ -161,13 +161,16 @@ function drawTabs() {
             s += "it shows slower performance than the ARM1 because tested systems have more delays with RAM"
             break
         case "K1801BM1":
-            s += "the tested systems use a very slow RAM interface, with the pefect one the speed would be &#x2248;4700"
+            s += "tested systems use a very slow RAM interface, with the pefect one the ER would be &#x2248;" + Math.round(era[i].er/12*8)
             break
         case "R800":
             s += "its internal frequency is 4 times higher, this gives us ER=" + Math.round(4*era[i].er) + ", i.e. more than for the Z80"
             break
         case "Hornet":
             s += "it is a 80186 compatible processor with low power consumption"
+            break
+        case "TMS9900":
+            s += "it uses 4 phases of its clock frequency, so its ER is rather 4 times greater = " + Math.round(4*era[i].er)
             break
         case "H1806BM2":
             s += "it is the CMOS K1801BM2"
