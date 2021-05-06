@@ -337,56 +337,57 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <p>
 <table border=1 id=tab3></table>
 <br>
-<p>The next table contains the sizes of the programs.
+<p>The next table contains the sizes of the main loops and the whole programs.
 <table style=border-style:none><tr><td style=border-style:none>
 <table border=1>
-<tr><th>Program<th>Size
-<tr><td>pc386-7<td>623
-<tr><td>msdos-5<td>635&ndash;640
-<tr><td>pdp11-unix7-eis-1<td>636&#176;
-<tr><td>ibmpc-7<td>654
-<tr><td>ibm370cms-1<td>750
-<tr><td>atarist-5<td>767
-<tr><td>dragon-6309-3<td>281+496=777*
-<tr><td>atarist30-5<td>769
-<tr><td>vax-bsd-1<td>816&#176;
-<tr><td>rt11-eis-12of<td>869**
-<tr><td>amiga-10<td>892
-<tr><td>amiga1200-10<td>896
-<tr><td>vax-vms-2<td>915**
-<tr><td>bbc-pandora-2<td>992
-<tr><td>geneve-mdos-1<td>1001**
-<tr><td>bbc-panos-2<td>1044
-<tr><td>ti99-4a-2ea<td>520+626=1146*
-<tr><td>pdp11-unix7-noeis-1<td>1258&#176;
-<tr><td>dragon-4<td>812+489=1301*
-<tr><td>bk11-7<td>1446
-<tr><td>bk10-7<td>1446
-<tr><td>rt11-noeis-7<td>1476**
-<tr><td>arm2-1<td>1504
-<tr><td>arm1-4<td>1680
-<tr><td>scpu64-5<td>1994
-<tr><td>bbc-z80-3<td>1792+292=2084*
-<tr><td>msx-3<td>1799+460=2265*
-<tr><td>cpm22bios-7<td>2270&ndash;2283
-<tr><td>cpc-cpm3-6<td>2288
-<tr><td>cpc-5<td>1804+579=2383*
-<tr><td>tandy100-1<td>2054+378=2432*
-<tr><td>cpm22bdos-7<td>2266&ndash;2548
-<tr><td>cpm22bios-8080-2<td>2804
-<tr><td>zx-1<td>4666***
-<tr><td>vic20-1<td>6341
-<tr><td>bbc-5<td>6052+395=6447*
-<tr><td>plus4-10<td>6531
-<tr><td>c64-9<td>6597
-<tr><td>c128-9<td>6597
-<tr><td>atari800xl-2<td>6084+1113=7197*
+<tr><th>Program<th>CPU<th>Main loop<th>Total
+<tr><td>vax-bsd-1<td>VAX<td align=right>34<td align=right>816<sup>*4</sup>
+<tr><td>vax-vms-2<td>VAX<td align=right>34<td align=right>915<sup>*2</sup>
+<tr><td>ibm370cms-1<td>IBM/370<td align=right>36<td align=right>750
+<tr><td>bbc-pandora-2<td>32016<td align=right>37<td align=right>992
+<tr><td>bbc-panos-2<td>32016<td align=right>37<td align=right>1044
+<tr><td>atarist-5<td>68000<td align=right>50<td align=right>767
+<tr><td>amiga-10<td>68000<td align=right>50<td align=right>892
+<tr><td>msdos-5<td>8086<td align=right>54<td align=right>635&mdash;640
+<tr><td>ibmpc-7<td>8086<td align=right>54<td align=right>654
+<tr><td>atarist30-5<td>68020<td align=right>56<td align=right>769
+<tr><td>amiga1200-10<td>68020<td align=right>56<td align=right>896
+<tr><td>pc386-7<td>80386<td align=right>57<td align=right>623
+<tr><td>geneve-mdos-1<td>TMS9900<td align=right>62<td align=right>1001<sup>*2</sup>
+<tr><td>ti99-4a-2ea<td>TMS9900<td align=right>62<td align=right>520+626=1146<sup>*1</sup>
+<tr><td>dragon-6309-4<td>6309<td align=right>97<td align=right>281+496=777<sup>*1</sup>
+<tr><td>pdp11-unix7-eis-1<td>PDP-11/EIS<td align=right>170<td align=right>636<sup>*4</sup>
+<tr><td>rt11-eis-12of<td>PDP-11/EIS<td align=right>170<td align=right>869<sup>*2</sup>
+<tr><td>dragon-4<td>6309<td align=right>303<td align=right>810+489=1299<sup>*1</sup>
+<tr><td>arm2-1<td>ARM2<td align=right>516<td align=right>1504
+<tr><td>arm1-4<td>ARM1<td align=right>540<td align=right>1680
+<tr><td>bk11-7<td>PDP-11<td align=right>646<td align=right>1446
+<tr><td>bk10-7<td>PDP-11<td align=right>646<td align=right>1446
+<tr><td>pdp11-unix7-noeis-1<td>PDP-11<td align=right>734<td align=right>1258<sup>*4</sup>
+<tr><td>rt11-noeis-7<td>PDP-11<td align=right>734<td align=right>1476<sup>*2</sup>
+<tr><td>scpu64-5<td>65816<td align=right>250+768=1018<sup>*5</sup><td align=right>1994
+<tr><td>bbc-z80-3<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>1792+292=2084<sup>*1</sup>
+<tr><td>msx-3<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>1799+460=2265<sup>*1</sup>
+<tr><td>cpm22bios-7<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2270&mdash;2283
+<tr><td>cpc-cpm3-6<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2288
+<tr><td>cpc-5<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>1804+579=2383<sup>*1</sup>
+<tr><td>cpm22bdos-7<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2266&mdash;2548
+<tr><td>zx-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>4666<sup>*3</sup>
+<tr><td>tandy100-1<td>8085<td align=right>992+768=1760<sup>*5</sup><td align=right>2054+378=2432<sup>*1</sup>
+<tr><td>cpm22bios-8080-2<td>8080<td align=right>1285+768=2053<sup>*5</sup><td align=right>2804
+<tr><td>vic20-1<td>6502<td align=right>4864+768=5632<sup>*5</sup><td align=right>6341
+<tr><td>bbc-5<td>6502<td align=right>4864+768=5632<sup>*5</sup><td align=right>6052+395=6447<sup>*1</sup>
+<tr><td>plus4-10<td>6502<td align=right>4864+768=5632<sup>*5</sup><td align=right>6531
+<tr><td>c64-9<td>6502<td align=right>4864+768=5632<sup>*5</sup><td align=right>6597
+<tr><td>c128-9<td>6502<td align=right>4864+768=5632<sup>*5</sup><td align=right>6597
+<tr><td>atari800xl-2<td>6502<td align=right>4864+768=5632<sup>*5</sup><td align=right>6084+1113=7197<sup>*1</sup>
 </table>
 <td width=20px style=border-style:none>
-<td style=border-style:none>* it is a sum of Asssember + Basic code sizes.<br>
-** it is a size of the pure code without a header<br>
-*** it is a size of the TAP-file<br>
-&#176; it is a size of the assembler + C code without a loader and C-libraries
+<td style=border-style:none><sup>*1</sup> it is a sum of Asssember + Basic code sizes.<br>
+<sup>*2</sup> it is a size of the pure code without a header<br>
+<sup>*3</sup> it is a size of the TAP-file<br>
+<sup>*4</sup> it is a size of the assembler + C code without a loader and C-libraries<br>
+<sup>*5</sup> code size + the size of multiplication lookup table
 </table>
 <br>
 <!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
