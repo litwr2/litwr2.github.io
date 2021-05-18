@@ -55,31 +55,26 @@ function mirror() {
         s += "github.io/pi-spigot-benchmark"
     return s + "/pi-spigot-benchmark.html>Mirror</a>"
 }
-function k1(t1000, t3000) {
-    return (t3000 - 3*t1000)/2625000.0
-}
-function k2(t1000, t3000) {
-    return (2253*t1000 - 251*t3000)/375000.0
-}
-function cpu(n, k1) {
-    return 7*(n+4)*n*k1/16
-}
-function io(n, k2) {
-    return n*k2/4
-}
-function prepres(opt, total, cpu, io) {
+function prepres(opt, total, cpu, io, format) {
+    var r
+    var so = "", sc = ""
+    if (format > 0) {
+        so = "<span style=color:"
+        if (format == 1) so += "darkblue>"; else so += "red>"
+        sc = "</span>"
+    }
     if (opt == 0)
        return total
     else if (opt == 1)
-       return cpu
+       return so + cpu + sc
     else if (opt == 2)
-       return io
+       return  so + io + sc
     else if (opt == 3)
-       return cpu + "+<br>" + io
+       return so + cpu + "+<br>" + io + sc
     else if (opt == 4)
-       return total + "/<br>" + cpu
+       return total + "/<br>" + so + cpu + sc
     else
-       return total + "/<br>" + io
+       return total + "/<br>" + so + io + sc
 }
 function updateData(query) {
     if (document.getElementById("optionFormat").value != format) {
@@ -99,8 +94,10 @@ function drawTabs() {
     }
     document.getElementById("optionFormat").innerHTML = s
     s = "<tr><th rowspan=2>#<th rowspan=2>Computer<th rowspan=2>OS/Output<th rowspan=2>Program<br>version<th colspan=3>Digits<th rowspan=2>Max<br>digits<th rowspan=2>Source of data<tr><th>100<th>1000<th>3000"
+    var icpu3000 = Array()
     for(var i = 0; i < ma.length; ++i) {
         var tabc = ""
+        icpu3000.push(i)
         if (i < 99) tabc = "&nbsp;"
         if (i < 9) tabc += "&nbsp;"
         s += "<tr><td>" + "<tt>" + tabc + (i + 1) + "</tt>"
@@ -113,26 +110,48 @@ function drawTabs() {
         s += ",<br>" + ma[i].cpu + ", " + ma[i].freq + " MHz"
         if (ma[i].computer == "Dragon 32" || ma[i].computer.indexOf("Tandy CoCo") == 0) s += "<sup>1</sup>"
         s += "<td align=center>" + ma[i].OS + "<br>" + ma[i].connection + "<td align=center>" + ma[i].driver + "<td align=center>"
-        if (ma[i].cpu100 < 0)
-            s += prepres(format, ma[i].t100, Math.round(cpu(1000, k1(ma[i].t1000, ma[i].t3000)))/100, Math.round((ma[i].t100 - cpu(1000, k1(ma[i].t1000, ma[i].t3000))/100)*100)/100)
-        else
-            s += prepres(format, ma[i].t100, Math.round(ma[i].cpu100*100)/100, Math.round((ma[i].t100 - ma[i].cpu100)*100)/100)
-        if (internalTest) {
-            var v = Math.round((cpu(100, k1(ma[i].t1000, ma[i].t3000)) + io(100, k2(ma[i].t1000, ma[i].t3000)))*100)/100
-            var t = Math.abs(v - ma[i].t100)*100
-            if (ma[i].t100 != 0) t = t/ma[i].t100
-            s += ", <b>" + v + ", " + Math.round(t*100)/100 + "</b>"
+        if (ma[i].cpu100 < 0 || internalTest) {
+            var maxd = 1e9
+            var rc3000, rc1000, rc100
+            var ri100, ri1000, ri3000
+            var c1000, i1000
+            var ko1 = 3, ko2 = 63072.0/7024
+            do {
+                c1000 = (ma[i].t3000 - ko1*ma[i].t1000)/(ko2 - ko1)
+                i1000 = ma[i].t1000 - c1000
+                if (i1000 < 0.01) ko2 += 0.02
+            } while (i1000 < 0.01 && ko2 < 11)
+            for (var kx = 91; kx <= 121;  kx += 1) {
+                var c100 = c1000/kx
+                var i100 = ma[i].t100 - c100
+                if (i1000 <= 0.04) {i100 = 0; c100 = ma[i].t100}
+                if (Math.abs(i100*10 - i1000) < maxd && i100 < i1000 && i100 >= 0) {
+                    maxd = Math.abs(i100*10 - i1000)
+                    rc3000 = ko2*c1000
+                    ri3000 = ma[i].t3000 - rc3000
+                    rc1000 = c1000
+                    ri1000 = i1000
+                    rc100 = c100
+                    ri100 = i100
+                }
+            }
+            var t = 1
+            if (ko2 > 63072.0/7024 || ma[i].fixed) t = 2
+            s += prepres(format, ma[i].t100, Math.round(rc100*100)/100, Math.round(ri100*100)/100, t)
+            s += "<td align=center>"
+            s += prepres(format, ma[i].t1000, Math.round(rc1000*100)/100, Math.round(ri1000*100)/100, t)
+            s += "<td align=center>"
+            s += prepres(format, ma[i].t3000, icpu3000[i] = Math.round(rc3000*100)/100, Math.round(ri3000*100)/100, t)
         }
-        s += "<td align=center>"
-        if (ma[i].cpu1000 < 0)
-            s += prepres(format, ma[i].t1000, Math.round(cpu(1000, k1(ma[i].t1000, ma[i].t3000))*100)/100, Math.round((ma[i].t1000 - cpu(1000, k1(ma[i].t1000, ma[i].t3000)))*100)/100)
-        else
-            s += prepres(format, ma[i].t1000, Math.round(ma[i].cpu1000*100)/100, Math.round((ma[i].t1000 - ma[i].cpu1000)*100)/100)
-        s += "<td align=center>"
-        if (ma[i].cpu3000 < 0)
-            s += prepres(format, ma[i].t3000, ma[i].cpu3000 = Math.round(cpu(3000, k1(ma[i].t1000, ma[i].t3000))*100)/100, Math.round((ma[i].t3000 - cpu(3000, k1(ma[i].t1000, ma[i].t3000)))*100)/100)
-        else
-            s += prepres(format, ma[i].t3000, Math.round(ma[i].cpu3000*100)/100, Math.round((ma[i].t3000 - ma[i].cpu3000)*100)/100)
+        else {
+            var t = 0
+            if (ma[i].fixed) t = 2
+            s += prepres(format, ma[i].t100, Math.round(ma[i].cpu100*100)/100, Math.round((ma[i].t100 - ma[i].cpu100)*100)/100, t)
+            s += "<td align=center>"
+            s += prepres(format, ma[i].t1000, Math.round(ma[i].cpu1000*100)/100, Math.round((ma[i].t1000 - ma[i].cpu1000)*100)/100, t)
+            s += "<td align=center>"
+            s += prepres(format, ma[i].t3000, icpu3000[i] = Math.round(ma[i].cpu3000*100)/100, Math.round((ma[i].t3000 - ma[i].cpu3000)*100)/100, t) 
+        }
         s += "<td>" + ma[i].maxd + "<td align=center>" + ma[i].source
         if (ma[i].estimation) s += "<br>&amp; estimation"
         if (ma[i].comment != "")
@@ -140,17 +159,19 @@ function drawTabs() {
                 s += "<br>" + ma[i].comment
             else
                 s += "<!--" + ma[i].comment + "-->"
+        if (internalTest && ma[i].cpu100 >= 0)
+            s += "<br><span style=color:green>" + ma[i].cpu100 + ' ' + ma[i].cpu1000 + ' ' + ma[i].cpu3000 + "</span>"
     }
     document.getElementById("tab1").innerHTML = s
     s = "<tr><th>Rank<th>CPU<th>ER<th>Comments"
     var er = Object()
     for(var i = 0; i < ma.length; ++i)
         if (ma[i].cpu in er) {
-            if (ma[i].freq*ma[i].cpu3000 < er[ma[i].cpu])
-                er[ma[i].cpu] = ma[i].freq*ma[i].cpu3000
+            if (ma[i].freq*icpu3000[i] < er[ma[i].cpu])
+                er[ma[i].cpu] = ma[i].freq*icpu3000[i]
         }
         else
-            er[ma[i].cpu] = ma[i].freq*ma[i].cpu3000
+            er[ma[i].cpu] = ma[i].freq*icpu3000[i]
     var era = Array()
     for (var obj in er) era.push({cpu: obj, er: er[obj]})
     era.sort(function(a, b){ return a.er - b.er })
@@ -193,7 +214,7 @@ function drawTabs() {
     document.getElementById("tab3").innerHTML = s
 }
 var ma = []
-ma.push({computer: "Acorn RiscPC StrongARM", OS: "RiscOS", driver: "arm2-1", connection: "display", t100: 0.00, t1000: 0.16, t3000: 1.41, maxd: 9144, source: "real iron (thanks to paulv)", estimation: true, comment: "0.00/0.15/1.48", cpu: "StrongARM", freq: 203, year: 1996, href: "https://en.wikipedia.org/wiki/RiscPC", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: true, screenshot: ""})
+ma.push({computer: "Acorn RiscPC StrongARM", OS: "RiscOS", driver: "arm2-1", connection: "display", t100: 0.00, t1000: 0.15, t3000: 1.48, maxd: 9144, source: "real iron (thanks to paulv)", estimation: false, comment: "0.00/0.15/1.48", cpu: "StrongARM", freq: 203, year: 1996, href: "https://en.wikipedia.org/wiki/RiscPC", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "VAX 7000-640", OS: "OpenVMS 7.3", driver: "vax-vms-2", connection: "tcp/ip", t100: 0.01, t1000: 0.45, t3000: 3.75, maxd: 9228, source: "real iron (thanks to to LCM+L)", estimation: false, comment: "0.01/0.45/3.75", cpu: "KA7AA/NVAX+", freq: 90.9, year: 1992, href: "https://gunkies.org/wiki/VAX_7000_Model_600", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/vax7000-640-vms.png"})
 ma.push({computer: "VAX 4000 model 100A", OS: "OpenVMS 6.1", driver: "vax-vms-2", connection: "terminal", t100: 0.01, t1000: 0.54, t3000: 4.7, maxd: 9228, source: "real iron (thanks to DECtechGuy)", estimation: false, comment: "0.01/0.54/4.7", cpu: "KA52/NVAX", freq: 72, year: 1993, href: "https://en.wikipedia.org/wiki/VAX_4000#VAX_4000_Model_100A", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "MicroVAX 3100 model 85", OS: "OpenVMS 7.3", driver: "vax-vms-2", connection: "terminal", t100: 0.01, t1000: 0.77, t3000: 6.82, maxd: 9228, source: "real iron (thanks to to g4ugm)", estimation: false, comment: "0.01/0.74/6.93", cpu: "KA55/NVAX", freq: 62.5, year: 1994, href: "https://en.wikipedia.org/wiki/MicroVAX#MicroVAX_3100_Series", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
@@ -279,7 +300,7 @@ ma.push({computer: "Tiki-100 (8088 board)", OS: "DOS", driver: "msdos-7-tiki100"
 ma.push({computer: "TI-99/4A (E/A+32KB RAM)/NTSC", OS: "Basic", driver: "ti99-4a-2ea", connection: "display", t100: 1.02, t1000: 69.13, t3000: 600.35, maxd: 3504, source: "Classic99 QI1399.037", estimation: false, comment: "", cpu: "TMS9900", freq: 3, year: 1981, href: "https://en.wikipedia.org/wiki/Texas_Instruments_TI-99/4A", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/ti99-4a.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "ROM Basic", driver: "bbc-5", connection: "display", t100: 0.78, t1000: 77.2, t3000: 691, maxd: 3216, source: "real iron (thanks to BigEd and Kieran)", estimation: true, comment: "B-em to real iron ratio is 1:1.0214 for 1000, lower for more digits ", cpu: "6502", freq: 4, year: 1986, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "VAX 11/730", OS: "BSD 4.3", driver: "vax-bsd-1", connection: "tcp/ip", t100: 1.5, t1000: 87.2, t3000: 737, maxd: 9244, source: "real iron (thanks to LCM+L)", estimation: false, comment: "1.499/87.179/736.891", cpu: "KA730", freq: 3.7, year: 1982, href: "https://gunkies.org/wiki/VAX-11/730", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
-ma.push({computer: "&#x414;BK-2M", OS: "RT11SJ (Y) 05.04", driver: "rt11-noeis-6", connection: "display", t100: 1.02, t1000: 89.9, t3000: 803, maxd: 6260, source: "real iron (thanks to MiX)", estimation: true, comment: "1.02/89.92/841.28", cpu: "K1801BM3", freq: 6, year: 1987, href: "https://en.wikipedia.org/wiki/DVK", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: true, screenshot: ""})
+ma.push({computer: "&#x414;BK-2M", OS: "RT11SJ (Y) 05.04", driver: "rt11-noeis-6", connection: "display", t100: 1.02, t1000: 89.92, t3000: 841.28, maxd: 6260, source: "real iron (thanks to MiX)", estimation: false, comment: "1.02/89.92/841.28", cpu: "K1801BM3", freq: 6, year: 1987, href: "https://en.wikipedia.org/wiki/DVK", cpu100: 0.95, cpu1000: 89.36, cpu3000: 839.6, fixed: true, screenshot: ""})  //cpu100, ... are taken from eis-approx
 ma.push({computer: "BBC Micro (TUBE)", OS: "ROM Z80 Basic", driver: "bbc-z80-4", connection: "display", t100: 1.05, t1000: 96.5, t3000: 865.12, maxd: 6252, source: "real iron (thanks to BigEd)", estimation: true, comment: "B-em to real iron ratio is 1:1.3394 ", cpu: "Z80", freq: 6, year: 1984, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bbc-micro-acorn-z80-basic.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "CP/M", driver: "cpm22bios-11-acorn", connection: "display", t100: 1.06, t1000: 96.6, t3000: 866, maxd: 8220, source: "real iron (thanks to BigEd)", estimation: true, comment: "B-em to real iron ratio is 1:1.3394", cpu: "Z80", freq: 6, year: 1984, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bbc-micro-acorn-z80-cpm.png"})
 ma.push({computer: "BBC Micro (TUBE)", OS: "ROM Basic", driver: "bbc-5", connection: "display", t100: 1.07, t1000: 106.4, t3000: 952, maxd: 3216, source: "real iron (thanks to BigEd and hoglet)", estimation: true, comment: "Beebem to real iron ratio is 1:1.0494", cpu: "6502", freq: 3, year: 1984, href: "https://en.wikipedia.org/wiki/BBC_Micro", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
@@ -308,7 +329,7 @@ ma.push({computer: "&#x411;K0011", OS: "&#x411;K0010 OS", driver: "bk11-7", conn
 ma.push({computer: "&#x411;K0010", OS: "ROM Monitor", driver: "bk10-7", connection: "display", t100: 2.86, t1000: 252.33, t3000: 2253.44, maxd: 3824, source: "real iron (thanks to Manwe)", estimation: false, comment: "", cpu: "K1801BM1", freq: 3, year: 1985, href: "https://en.wikipedia.org/wiki/Electronika_BK", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bk0010.png"})
 ma.push({computer: "Amstrad CPC6128", OS: "CP/M 2.2", driver: "cpm22bios-8080-2-cpc", connection: "display", t100: 2.89, t1000: 250.38, t3000: 2234.35, maxd: 5916, source: "ep128emu 2.0.9.1", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_CPC", cpu100: 2.69, cpu1000: 248.37, cpu3000: 2228.22, fixed: false, screenshot: "rp/cpc6128-cpm22-8080.png"})
 ma.push({computer: "&#x411;K0011", OS: "RT11SJ", driver: "rt11-noeis-9", connection: "display", t100: 3.28, t1000: 275.62, t3000: 2450.22, maxd: 5460, source: "gid BK emulator v3.10", estimation: false, comment: "", cpu: "K1801BM1", freq: 4, year: 1989, href: "https://en.wikipedia.org/wiki/Electronika_BK", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/bk0011m-rt11.png"})
-ma.push({computer: "Commodore VIC-20 (29KB RAM)/PAL", OS: "ROM Basic", driver: "vic20-1", connection: "display", t100: 2.8, t1000: 278.4, t3000: 2488.5, maxd: 3108, source: "VICE 3.3", estimation: false, comment: "", cpu: "6502", freq: 1.11, year: 1981, href: "https://en.wikipedia.org/wiki/Commodore_VIC-20", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/vic20-pal.png"})
+ma.push({computer: "Commodore VIC-20 (29KB RAM)/PAL", OS: "ROM Basic", driver: "vic20-1", connection: "display", t100: 2.8, t1000: 278.4, t3000: 2488.5, maxd: 3108, source: "VICE 3.3", estimation: false, comment: "", cpu: "6502", freq: 1.11, year: 1981, href: "https://en.wikipedia.org/wiki/Commodore_VIC-20", cpu100: 2.75, cpu1000: 277.42, cpu3000: 2485.02, fixed: false, screenshot: "rp/vic20-pal.png"})
 ma.push({computer: "Tandy TRS-80 model 100", OS: "ROM Basic", driver: "tandy100-2", connection: "display", t100: 3.25, t1000: 291.58, t3000: 2563.17, maxd: 4128, source: "real iron (thanks to Twospruces &amp; micahcowan)", estimation: false, comment: "", cpu: "80C85", freq: 2.4576, year: 1983, href: "https://en.wikipedia.org/wiki/TRS-80_Model_100", cpu100: 3.06, cpu1000: 281.96, cpu3000: 2529.41, fixed: false, screenshot: "rp/tandy100.jpg"})
 ma.push({computer: "Commodore 64/NTSC", OS: "ROM Basic", driver: "c64-9", connection: "display", t100: 3.05, t1000: 301.6, t3000: 2699, maxd: 6360, source: "VICE 3.0", estimation: false, comment: "", cpu: "6502", freq: 1.02, year: 1982, href: "https://en.wikipedia.org/wiki/Commodore_64", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/c64-ntsc.png"})
 ma.push({computer: "Commodore VIC-20 (29KB RAM)/NTSC", OS: "ROM Basic", driver: "vic20-1", connection: "display", t100: 3.05, t1000: 302.2, t3000: 2701.2, maxd: 3108, source: "VICE 3.3", estimation: false, comment: "", cpu: "6502", freq: 1.02, year: 1981, href: "https://en.wikipedia.org/wiki/Commodore_VIC-20", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/vic20-ntsc.png"})
@@ -331,7 +352,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <p>CPU frequencies given are maximum available (known to me) for computers listed below.  They are actual frequencies used during measurements.
 <p>FORMAT:
 <select id=optionFormat onchange=updateData()>
-</select> Data for CPU and IO timing parts are calculated, so they are only some approximations.  They are less accurate for display outputs because timings for the vertical scrolling are not taken into account.  They have also some small deviations (about 5%) for tcp/ip connections because of not linear timing for the char output in this case.  For some systems, the data was acquired from hardware though.
+</select> Data for CPU and IO timing parts are calculated, so they are only some approximations.  They are less accurate for display outputs because timings for the vertical scrolling are not taken into account.  They have also some small deviations (about 5%) for tcp/ip connections because of not linear timing for the char output in this case.  For some systems, the data was acquired from hardware.  Approximated results are shown in blue.  The red color is used in cases where the approximation is based on heuristics.
 <p>
 <table border=1 id=tab1></table>
 <br>
