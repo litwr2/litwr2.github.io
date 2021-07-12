@@ -1,11 +1,13 @@
 var methods_url = "https://github.com/litwr2/research-of-sorting/blob/master/"
-var json_methods = '{"array*1": "array.cpp",\
+var json_methods = '{\
+"array*1": "array.cpp",\
 "array*2": "array.cpp",\
 "array*3": "array.cpp",\
 "array*5": "array.cpp",\
 "array*7": "array.cpp",\
 "bubble": "bubble.cpp",\
 "clib_qsort": "std.cpp",\
+"combo": "combo.cpp",\
 "flat_stable": "boost.cpp",\
 "hash": "hash.cpp",\
 "hashbt": "hashtree.cpp",\
@@ -22,6 +24,8 @@ var json_methods = '{"array*1": "array.cpp",\
 "qsort_hoare_tco": "quick-hoare.cpp",\
 "qsort_lomuto": "quick-lomuto.cpp",\
 "qsort_no_pivot": "quick-np.cpp",\
+"qsort_safe": "quick-safe-insertion.cpp",\
+"qsort_safe_nss": "quick-safe-insertion-nss.cpp",\
 "radix11": "radix.cpp",\
 "radix11_msd": "radix-msd.cpp",\
 "radix16": "radix.cpp",\
