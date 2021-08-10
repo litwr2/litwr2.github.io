@@ -2,6 +2,15 @@
 <script src=main.js></script>
 <div id=maindoc align=center>
 <script>
+var query = new URLSearchParams(window.location.search)
+if (query.has('cpu1')) {
+    for (var i = 0; i < ntabs.length; i++)
+        if (ntabs[i] == query.get('cpu1').toUpperCase()) idx[0] = i
+}
+if (query.has('cpu2')) {
+    for (var i = 0; i < ntabs.length; i++)
+        if (ntabs[i] == query.get('cpu2').toUpperCase()) idx[1] = i
+}
 generate_page()
 document.write(html)
 </script>

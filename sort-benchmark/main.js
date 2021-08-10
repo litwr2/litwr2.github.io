@@ -20,6 +20,7 @@ function opchange(n) {
     idx[n] = document.getElementById("cpu" + n).value
     generate_page()
     document.getElementById("maindoc").innerHTML = html
+    window.location = location.protocol + '//' + location.hostname + location.pathname + "?cpu1=" + ntabs[idx[0]] + "&cpu2=" + ntabs[idx[1]]
 }
 function generate_page() {
     gi = 0
