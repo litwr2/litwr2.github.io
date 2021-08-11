@@ -6,18 +6,18 @@ var h1 = ["quick", "quick-nr", "shell", "selection", "insertion", "radix-8"]
 var h2 = ["random-1", "random-2", "2-values", "reversed", "ordered", "constant"]
 var h3 = ["random-1", "random-2", "4-values", "kill-qs-r", "kill-qs-l", "reversed", "ordered", "constant"]
 function form100(a1, a2) {
-    var s = ""
+    var s
     if (a2 == 0 || a1 == 0) s = a1 + ":" + a2; else {
-        s = Math.round(a1/a2*100)/100
-        if (s*100%100 == 0) s += '.00'
-        else if (s*10%10 == 0) s += '0'
+        s = Math.round(a1/a2*100)
+        if (s%100 == 0) s = s/100 + '.00'
+        else if (s%10 == 0) s = s/100 + '0'
+        else s /= 100
     }
     return s
 }
 function oneline(h, n) {
-    var gil = gi + n
     html += "<tr><th>" + h
-    for (;gi < gil;gi++) html += "<td align=right>" + form100(tabs[idx[0]][gi],tabs[idx[1]][gi])
+    for (;gi < gi + n--; gi++) html += "<td align=right>" + form100(tabs[idx[0]][gi],tabs[idx[1]][gi])
     html += "\n"
 }
 function opchange(n) {
