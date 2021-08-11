@@ -7,7 +7,11 @@ var h2 = ["random-1", "random-2", "2-values", "reversed", "ordered", "constant"]
 var h3 = ["random-1", "random-2", "4-values", "kill-qs-r", "kill-qs-l", "reversed", "ordered", "constant"]
 function form100(a1, a2) {
     var s = ""
-    if (a2 == 0) s = a1 + "/0"; else s = Math.round(a1/a2*100)/100
+    if (a2 == 0 || a1 == 0) s = a1 + ":" + a2; else {
+        s = Math.round(a1/a2*100)/100
+        if (s*100%100 == 0) s += '.00'
+        else if (s*10%10 == 0) s += '0'
+    }
     return s
 }
 function oneline(h, n) {
@@ -72,5 +76,5 @@ function generate_page() {
     for (var k = 1; k <= h3.length; k++) oneline(h3[k - 1], 5)
     html += "</table>\n"
 }
-generate_page()
+//generate_page()
 //console.log(html)
