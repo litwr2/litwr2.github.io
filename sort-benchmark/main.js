@@ -18,8 +18,8 @@ function oneline(h, n) {
 }
 function opchange(n) {
     idx[n] = document.getElementById("cpu" + n).value
-    generate_page()
-    document.getElementById("maindoc").innerHTML = html
+    //generate_page()
+    //document.getElementById("maindoc").innerHTML = html
     window.location = location.protocol + '//' + location.hostname + location.pathname + "?cpu1=" + ntabs[idx[0]] + "&cpu2=" + ntabs[idx[1]]
 }
 function generate_page() {
@@ -73,4 +73,4 @@ function generate_page() {
     html += "</table>\n"
 }
 generate_page()
-console.log(html)
+//console.log(html)
