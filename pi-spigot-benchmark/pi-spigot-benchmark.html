@@ -359,7 +359,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <h1 style=color:green>The number &#x3c0; calculation by spigot algorithm benchmark</h1>
 <p>The table below consists of the best results for the listed computers. It is open for the further expansion.  So if anybody has faster implementation of <a href=http://www.z88dk.org/wiki/doku.php?id=libnew:examples:pi>spigot algorithm</a> for one of systems listed below then please inform the author of this page (to vol.litwr&nbsp;at gmail dot&nbsp;com) and it should be updated.  The same is true for the results of other systems missed in the table.
 <p>This algorithm speed depends very much on the speed of integer division.  So systems with hardware division have a big advantage.
-<p>The results are time intervals in seconds for the calculation of 100, 1000, 3000 digits.  They also contain the upper limits to the number of digits for the programs used.  The data are sorted by time for 3000 digits.
+<p>The results are time intervals in seconds for the calculation of 100, 1000, 3000 digits.  They also contain the upper limits to the number of digits for programs used.  The data are sorted by time for 3000 digits.
 <p>Every program is satisfying four restrictions: 1) it measures time; 2) it uses an OS function to print digits, it prints 4 digits a time synchronously with the calculation of them; 3) it uses less than 64 KB RAM for the code and data; 4) it utilizes all available RAM below 64 KB limit to get the maximum number of calculated digits, so it is forbidden to restrict artificially the maximum number of digits.
 <p>CPU frequencies given are maximum available (known to me) for computers listed below.  They are actual frequencies used during measurements.
 <p>FORMAT:
@@ -372,7 +372,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <br>
 <p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time (CPU time only without IO) of the calculation of 3000 digits by the CPU frequency.  The ER values are gotten for pi-spigot which uses base 16-bit integer arithmetic.  The best ER value for each CPU is taken.  The ER value reflects the efficiency of a CPU electronics.
 <table border=1 id=tab2></table>
-<p>The next table contains the details about the tested systems in the chronological order.
+<p>The next table contains details about the tested systems in the chronological order.
 <p>
 <table border=1 id=tab3></table>
 <br>
@@ -411,8 +411,8 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>cpm22bios-7<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2270&mdash;2283
 <tr><td>trsdos-m1-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2284
 <tr><td>trsdos-m3-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2286
+<tr><td>cpc-cpm3-10<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2287
 <tr><td>trsdos-m4-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2299
-<tr><td>cpc-cpm3-6<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2288
 <tr><td>cpc-5<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>1804+579=2383<sup>*1</sup>
 <tr><td>cpm22bdos-7<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2266&mdash;2548
 <tr><td>zx-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>4666<sup>*3</sup>
@@ -437,7 +437,6 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <sup>*7</sup> it is a sum of Asssember + Basic + header/loader code sizes.<br>
 </table>
 <br>
-<!--<p>Some systems have the variants of the demo for them but they have no the test results.  It is because the emulators are inaccurate too much for these systems. :( So please help to gather results for them by hardware.-->
 <p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
 <p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-59.tar.bz2>v59 [201 KB]</a>) pack.
