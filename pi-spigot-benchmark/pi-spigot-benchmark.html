@@ -323,6 +323,7 @@ ma.push({computer: "Amstrad CPC6128", OS: "CP/M 2.2", driver: "cpm22bios-11-cpc6
 ma.push({computer: "Amstrad CPC6128", OS: "CP/M 3", driver: "cpc-cpm3-8", connection: "display", t100: 2.34, t1000: 190.94, t3000: 1692.58, maxd: 8660, source: "ep128emu 2.0.9.1", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_CPC", cpu100: 2.03, cpu1000: 186.57, cpu3000: 1681.93, fixed: false, screenshot: "rp/cpc6128-cpm3.png"})
 ma.push({computer: "Amstrad CPC6128", OS: "CP/M 3", driver: "cpc-cpm3-8", connection: "disk", t100: 3.23, t1000: 190.21, t3000: 1688.42, maxd: 8660, source: "ep128emu 2.0.9.1", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_CPC", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/cpc6128-cpm3.png"})
 ma.push({computer: "Amstrad PCW8256", OS: "CP/M 3", driver: "cpm22bdos-11-pcw8256", connection: "display", t100: 2.08, t1000: 189.9, t3000: 1700, maxd: 8660, source: "CP/M Box 1.8.5", estimation: false, comment: "", cpu: "Z80", freq: 4, year: 1985, href: "https://en.wikipedia.org/wiki/Amstrad_PCW", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/pcw8256.png"})
+ma.push({computer: "ABC 802", OS: "ROM Basic", driver: "abc800-1", connection: "display", t100: 2.12, t1000: 193.87, t3000: 1737.66, maxd: 3072, source: "MAME/MESS 0.229", estimation: false, comment: "", cpu: "Z80", freq: 3, year: 1981, href: "https://en.wikipedia.org/wiki/ABC_800", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/abc802.png"})
 ma.push({computer: "Atari 800XL/NTSC", OS: "ROM Basic", driver: "atari800xl-6", connection: "display", t100: 1.9, t1000: 185.5, t3000: 1655.99, maxd: 4536, source: "atari800 4.2.0", estimation: false, comment: "", cpu: "6502", freq: 1.79, year: 1983, href: "https://en.wikipedia.org/wiki/Atari_8-bit_family", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/atari800xl-ntsc.png"})
 ma.push({computer: "Atari 800XL/PAL", OS: "ROM Basic", driver: "atari800xl-6", connection: "display", t100: 1.93, t1000: 187.1, t3000: 1670.48, maxd: 4536, source: "atari800 4.2.0", estimation: false, comment: "", cpu: "6502", freq: 1.77, year: 1983, href: "https://en.wikipedia.org/wiki/Atari_8-bit_family", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/atari800xl-pal.png"})
 ma.push({computer: "MSX 1, 2, 2+", OS: "ROM Basic", driver: "msx-7", connection: "display", t100: 2.27, t1000: 205.57, t3000: 1839.12, maxd: 3000, source: "openmsx 0.13.0", estimation: false, comment: "Sanyo MPC-25FD", cpu: "Z80", freq: 3.58, year: 1983, href: "https://en.wikipedia.org/wiki/MSX", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/msx-basic.png"})
@@ -417,6 +418,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>cpc-5<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>1804+579=2383<sup>*1</sup>
 <tr><td>cpm22bdos-7<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>2266&mdash;2548
 <tr><td>zx-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>4666<sup>*3</sup>
+<tr><td>abc800-1<td>Z80<td align=right>748+768=1516<sup>*5</sup><td align=right>1804+579=4684<sup>*8</sup>
 <tr><td>tandy100-1<td>8085<td align=right>992+768=1760<sup>*5</sup><td align=right>2054+378=2432<sup>*1</sup>
 <tr><td>cpm22bios-8080-2<td>8080<td align=right>1285+768=2053<sup>*5</sup><td align=right>2804
 <tr><td>vic20-3<td>6502<td align=right>2353+768=3121<sup>*5*6</sup><td align=right>[3497+264+2]=3773<sup>*7</sup>
@@ -436,11 +438,12 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <sup>*5</sup> code size + the size of multiplication lookup table<br>
 <sup>*6</sup> the 6502 code may be shorter (1871+768=2639) &ndash; this makes it 1-2% slower<br>
 <sup>*7</sup> it is a sum of Asssember + Basic + header/loader code sizes.<br>
+<sup>*8</sup> it is a size of Basic text that contains embedded ML-code.<br>
 </table>
 <br>
 <p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
-<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-60.tar.bz2>v60 [203 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-61.tar.bz2>v61 [206 KB]</a>) pack.
 <p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a> <script>document.write(mirror())</script>
 <script>
 drawTabs()
