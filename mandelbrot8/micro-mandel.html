@@ -1,0 +1,127 @@
+<head>
+<title>Fast Mandelbrot for Micros</title>
+<style type=text/css>
+td {text-align: right}
+table, th, td {
+   border-width:thin;
+   border-style:solid;
+   border-color:green;
+   border-spacing:0px;
+}
+</style>
+</head>
+<body bgcolor=lightgreen>
+<div align=center>
+<h1 align=center>Superfast Mandelbrot benchmark results</h1>
+
+<p>The 8th generations of this Mandelbrot are available <a href=https://litwr2.github.io/mandelbrot8/mandelbrot.html>here</a>.
+
+<p>All systems use the same algorithm that calculates 128x256 dots of Mandelbrot.  They also use almost the same ways to visualize it.  Every dot is encoded with 4 bits.  So all systems have to output exactly 16 KB of graphical data for every picture.  Detailed information about graphic modes used is in the next table (the number in paratheses is the effective CPU frequency).
+
+<table border=1>
+<tr><th>#
+<th>System
+<th>Video mode
+<th>Comments
+<tr><th>1<td style=text-align:center>&#x411;K0010, K1801BM1@3(2) MHz<td>512x256, monochrome<td>4x1 texture/pixel
+<tr><th>2<td style=text-align:center>"<td>256x256, 4 colors<td>2x1 texture/pixel
+<tr><th>3<td style=text-align:center>Amstrad CPC 4, Z80@4(3.2) MHz<td>256x256, 4 colors<td>2x1 texture/pixel
+<tr><th>4<td style=text-align:center>"<td>128x256, 16 colors<td>
+<tr><th>5<td style=text-align:center>BBC Micro, 6502@2 MHz<td>256x256, 4 colors<td>2x1 texture/pixel
+<tr><th>6<td style=text-align:center>"<td>128x256, 16 colors<td>
+<tr><th>7<td style=text-align:center>Commodore +4 (PAL), 6502@1.7 (1) MHz<td>128x256, 4 colors<td>2 flashing dots/pixel
+<tr><th>8<td style=text-align:center>IBM PC (EGA), 8088@4.8 MHz<td>128x256, 16 colors<td>
+<tr><th>9<td style=text-align:center>Amiga 500 (PAL), 68000@7.1 MHz<td>128x256, 16 colors<td>
+</table>
+
+<p>The next table shows timings for drawing of pictures #1-16.
+<table border=1>
+<tr><th>#
+<th>C+4
+<th>&#x411;K<br>0010
+<th>CPC 16<br>colors
+<th>CPC 4<br>colors
+<th>BBC<br>Micro<br>16 colors
+<th>BBC<br>Micro<br>4 colors
+<tr><td> 1<td> 5.02<td> 3.65<td> 2.81<td> 3.02<td> 2.40<td> 2.50
+<tr><td> 2<td> 5.76<td> 3.90<td> 3.18<td> 3.39<td> 2.77<td> 2.88
+<tr><td> 3<td> 6.68<td> 4.21<td> 3.63<td> 3.84<td> 3.24<td> 3.34
+<tr><td> 4<td> 8.16<td> 4.72<td> 4.38<td> 4.58<td> 4.00<td> 4.11
+<tr><td> 5<td> 9.66<td> 5.24<td> 5.14<td> 5.35<td> 4.77<td> 4.87
+<tr><td> 6<td>12.40<td> 6.17<td> 6.50<td> 6.71<td> 6.16<td> 6.27
+<tr><td> 7<td>15.86<td> 7.36<td> 8.25<td> 8.46<td> 7.94<td> 8.04
+<tr><td> 8<td>23.10<td> 9.82<td>11.87<td>12.08<td>11.63<td>11.74
+<tr><td> 9<td>31.02<td>12.53<td>15.85<td>16.06<td>15.68<td>15.79
+<tr><td>10<td>37.10<td>14.60<td>18.90<td>19.11<td>18.78<td>18.88
+<tr><td>11<td>41.48<td>16.10<td>21.10<td>21.31<td>21.02<td>21.12
+<tr><td>12<td>42.06<td>16.29<td>21.37<td>21.58<td>21.31<td>21.42
+<tr><td>13<td>40.94<td>15.91<td>20.81<td>21.02<td>20.75<td>20.86
+<tr><td>14<td>39.68<td>15.48<td>20.18<td>21.39<td>20.11<td>20.21
+<tr><td>15<td>38.46<td>15.05<td>19.54<td>19.75<td>19.47<td>19.58
+<tr><td>16<td>37.16<td>14.61<td>18.89<td>19.10<td>18.81<td>18.92
+<tr><td>total<td>394.54<td>165.64<td>202.4<td>206.75<td>198.84<td>200.53
+</table>
+
+<p>The next table shows the timings for faster computers.
+<table border=1>
+<tr><th>#
+<th>&#x411;K<br>0011
+<th>Amiga<br>500
+<th>IBM PC<br>5160 EGA
+<tr><th> 1<td> 3.42<td> 0.98<td> 1.54
+<tr><th> 2<td> 3.64<td> 1.06<td> 1.61
+<tr><th> 3<td> 3.93<td> 1.14<td> 1.74
+<tr><th> 4<td> 4.38<td> 1.28<td> 1.96
+<tr><th> 5<td> 4.85<td> 1.42<td> 2.14
+<tr><th> 6<td> 5.70<td> 1.64<td> 2.53
+<tr><th> 7<td> 6.67<td> 1.96<td> 2.96
+<tr><th> 8<td> 9.01<td> 2.60<td> 3.98
+<tr><th> 9<td>11.46<td> 3.32<td> 5.05
+<tr><th>10<td>13.34<td> 3.86<td> 5.93
+<tr><th>11<td>14.70<td> 4.26<td> 6.54
+<tr><th>12<td>14.87<td> 4.30<td> 6.59
+<tr><th>13<td>14.53<td> 4.20<td> 6.46
+<tr><th>14<td>14.14<td> 4.08<td> 6.26
+<tr><th>15<td>13.75<td> 3.96<td> 6.10
+<tr><th>16<td>13.35<td> 3.86<td> 5.94
+<tr><th>total<td>151.74<td>43.92<td>67.3
+</table>
+
+<p>Emulators were used to get these results: BK2010 v0.5 for the BK0010, GID v3.10 for the BK0011M, plus4emu v1.2.9.2 for the Commodore+4, ep128emu v2.0.9.1 for the Amstrad CPC, FS-UAE 3.0.5 for the Amiga 500, pce-ibmpc version 20140222-4b05f0c for the IBM PC 5160 EGA.
+
+<p>The next table contains approximate values of efficiency reciprocals (ER) for the tested CPUs. These values are calculated by multiplication of the total time of the calculation of 16 first Mandelbrot pictures by the effective CPU frequency.  The ER value reflects the efficiency of CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
+
+<table border=1>
+<tr align=center><th>Rank <th>Processor <th>The effective<br>frequency <th>ER
+<tr align=center><th>1 <td>68000 <td>7.1 <td>312
+<tr align=center><th>2 <td>8088 <td>4.8 <td>323
+<tr align=center><th>3 <td>K1801BM1 <td>2 <td>331
+<tr align=center><th>4 <td>6502 <td>1/2 <td>396
+<tr align=center><th>5 <td>Z80 <td>3.2 <td>647
+</table>
+
+<p>It is also iteresting to compare the code density for this task.  Two values are provided for this: the total program size and the size of the main loop.
+
+<table border=1>
+<tr>
+<th>Rank
+<th>Platform
+<th>CPU
+<th>Program Size
+<th>Main loop Size
+<tr align=center><th>1 <td style=text-align:center>&#x411;K <td>T-11 <td>800 <td>32
+<tr align=center><th>2 <td style=text-align:center>IBM PC <td>8088 <td>997 <td>49
+<tr align=center><th>3 <td style=text-align:center>Amiga <td>68000 <td>2372 <td>54
+<tr align=center><th>4 <td style=text-align:center>Amstrad, 16c <td>Z80 <td>980 <td>74
+<tr align=center><th>5 <td style=text-align:center>Amstrad, 4c <td>Z80 <td>1011 <td>74
+<tr align=center><th>6 <td style=text-align:center>BBC Micro, 16c <td>6502 <td>1284 <td>138
+<tr align=center><th>7 <td style=text-align:center>BBC Micro, 4c <td>6502 <td>1316 <td>138
+<tr align=center><th>8 <td style=text-align:center>Plus4 <td>6502 <td>1925 <td>138
+</table>
+
+<p>Sources for all these programs are available at <a href=https://github.com/litwr2/rosetta-mandelbrot>github</a>. You also can download their executables.
+
+<p>If anybody finds a way to speed up these implementations of Mandelbrot calculations, or just creates new implementations, please inform me and I should update this page.  Send your reports to zliztwr@yzandex.ru but remove all z from the address.
+
+</div>
+</body>
