@@ -109,6 +109,8 @@ function drawTabs() {
         if (ma[i].href != "") s += "</a>"
         s += ",<br>" + ma[i].cpu + ", " + ma[i].freq + " MHz"
         if (ma[i].computer == "Dragon 32" || ma[i].computer.indexOf("Tandy CoCo 2") == 0) s += "<sup>1</sup>"
+        if (ma[i].computer.indexOf("MC-10") != -1) s += "<sup>2</sup>"
+        if (ma[i].computer.indexOf("TI-99/4") != -1) s += "<sup>3</sup>"
         s += "<td align=center>" + ma[i].OS + "<br>" + ma[i].connection + "<td align=center>" + ma[i].driver + "<td align=center>"
         if (ma[i].cpu100 < 0 || internalTest) {
             var maxd = 1e9
@@ -343,6 +345,7 @@ ma.push({computer: "Commodore 64/PAL", OS: "ROM Basic", driver: "c64-13", connec
 ma.push({computer: "Apple IIgs", OS: "Applesoft Basic", driver: "apple2gs-1", connection: "display", t100: 0.78, t1000: 72.18, t3000: 648.95, maxd: 4788, source: "MAME 0.229", estimation: false, comment: "", cpu: "65816", freq: 2.86, year: 1986, href: "https://en.wikipedia.org/wiki/Apple_IIgs", cpu100: 0.77, cpu1000: 71.95, cpu3000: 647.98, fixed: false, screenshot: "rp/apple2gs.png"})
 ma.push({computer: "Apple IIc+", OS: "Applesoft Basic", driver: "apple2c-65c02-2", connection: "display", t100: 0.78, t1000: 76.67, t3000: 685.45, maxd: 4676, source: "MAME 0.229", estimation: false, comment: "", cpu: "65C02", freq: 4, year: 1988, href: "https://en.wikipedia.org/wiki/Apple_IIc_Plus", cpu100: 0.75, cpu1000: 76.53, cpu3000: 685.52, fixed: false, screenshot: "rp/apple2c+.png"})
 ma.push({computer: "Apple IIgs", OS: "Applesoft Basic", driver: "apple2c-65c02-2", connection: "display", t100: 1.1, t1000: 109.9, t3000: 983.45, maxd: 4676, source: "MAME 0.229", estimation: false, comment: "", cpu: "65816", freq: 2.86, year: 1986, href: "https://en.wikipedia.org/wiki/Apple_IIgs", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
+ma.push({computer: "Tandy TRS-80 MC-10", OS: "ROM Basic", driver: "mc10-1", connection: "display", t100: 3.15, t1000: 290.12, t3000: 2603.81, maxd: 2288, source: "XRoar 1.0.7", estimation: false, comment: "", cpu: "6803", freq: 0.895, year: 1983, href: "https://en.wikipedia.org/wiki/TRS-80_MC-10", cpu100: 3.15, cpu1000: 289.68, cpu3000: 2602.31, fixed: false, screenshot: "rp/mc-10.png"})
 ma.push({computer: "Apple IIc", OS: "Applesoft Basic", driver: "apple2c-65c02-2", connection: "display", t100: 3.1, t1000: 305.33, t3000: 2729.72, maxd: 4676, source: "MAME 0.229", estimation: false, comment: "", cpu: "65C02", freq: 1.02, year: 1984, href: "https://en.wikipedia.org/wiki/Apple_IIc", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/apple2c.png"})
 ma.push({computer: "Apple IIe", OS: "Applesoft Basic", driver: "apple2e-2", connection: "display", t100: 3.17, t1000: 311.58, t3000: 2784.5, maxd: 4748, source: "MAME 0.229", estimation: false, comment: "", cpu: "6502", freq: 1.02, year: 1983, href: "https://en.wikipedia.org/wiki/Apple_IIe", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: ""})
 ma.push({computer: "Kop&#x432;e&#x442;", OS: "CP/M 2.2", driver: "cpm22bios-8080-3-korvet", connection: "display", t100: 3.56, t1000: 323.36, t3000: 2896.42, maxd: 7560, source: "real iron (thanks to Sancho45)", estimation: false, comment: "emu 1.01 difference is below below 0.55%", cpu: "8080", freq: 2.5, year: 1987, href: "https://en.wikipedia.org/wiki/Corvette_(computer)", cpu100: -1, cpu1000: -1, cpu3000: -1, fixed: false, screenshot: "rp/korvet.png"})
@@ -373,6 +376,8 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <table border=1 id=tab1></table>
 <br>
 <p><sup>1</sup>The automatic DRAM regeneration doesn't work at this clock (@1.78MHz) so it is possible that some hardware and software can't work with this speed.  So, for normal system work, the maximum clock frequency is about 1.34 MHz, or 75% of that that used for the results given in the table.
+<p><sup>2</sup>This computer has only 20 KB of RAM.  So the result for 3000 digits is an approximation.  Theoretically the MC-10 can use up to 36 KB of RAM but this computer was manufactored for too short period and a proper memory expansion was not made for it.
+<p><sup>3</sup>This system doesn't have a ROM routine to print characters on its screen, so this driver contains such a routine.
 <br>
 <p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time (CPU time only without IO) of the calculation of 3000 digits by the CPU frequency.  The ER values are gotten for pi-spigot which uses base 16-bit integer arithmetic.  The best ER value for each CPU is taken.  The ER value reflects the efficiency of a CPU electronics.
 <table border=1 id=tab2></table>
@@ -396,12 +401,13 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>atarist-9<td>68000<td align=right>56<td align=right>730
 <tr><td>amiga-13<td>68000<td align=right>56<td align=right>816
 <tr><td>pc386-8<td>80386<td align=right>57<td align=right>624
-<tr><td>geneve-mdos-1<td>TMS9900<td align=right>62<td align=right>1001<sup>*2</sup>
+<tr><td>geneve-mdos-1<td>TMS9995<td align=right>62<td align=right>1001<sup>*2</sup>
 <tr><td>ti99-4a-2ea<td>TMS9900<td align=right>62<td align=right>520+626=1146<sup>*1</sup>
 <tr><td>dragon-6309-4<td>6309<td align=right>97<td align=right>281+496=777<sup>*1</sup>
 <tr><td>pdp11-unix7-eis-1<td>PDP-11/EIS<td align=right>170<td align=right>636<sup>*4</sup>
 <tr><td>rt11-eis-12of<td>PDP-11/EIS<td align=right>170<td align=right>869<sup>*2</sup>
 <tr><td>dragon-6<td>6809<td align=right>303<td align=right>810+484=1294<sup>*1</sup>
+<tr><td>mc10-1<td>6803<td align=right>338<td align=right>2516<sup>*8</sup>
 <tr><td>arm2-1<td>ARM2<td align=right>516<td align=right>1504
 <tr><td>arm1-4<td>ARM1<td align=right>540<td align=right>1680
 <tr><td>bk11-7<td>PDP-11<td align=right>646<td align=right>1446
@@ -433,7 +439,9 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>apple2c-65c02-2<td>65C02<td align=right>2866+768=3634<sup>*5*6</sup><td align=right>4234+432=4666<sup>*1</sup>
 </table>
 <td width=20px style=border-style:none>
-<td style=border-style:none><sup>*1</sup> it is a sum of Asssember + Basic code sizes.<br>
+<td style=border-style:none>
+Square brackets combine part sizes that are parts of one file.<br>
+<sup>*1</sup> it is a sum of Asssember + Basic code sizes.<br>
 <sup>*2</sup> it is a size of the pure code without a header<br>
 <sup>*3</sup> it is a size of the TAP-file<br>
 <sup>*4</sup> it is a size of the assembler + C code without a loader and C-libraries<br>
@@ -443,9 +451,9 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <sup>*8</sup> it is a size of Basic text that contains embedded ML-code.<br>
 </table>
 <br>
-<p>Thanks a lot for people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
+<p>Thanks a lot to the people who helped: bqt, ivagor, perestoronin, BigEd, tricky, MMS, Thorham, meynaf, ...
 <hr>
-<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-61.tar.bz2>v61 [206 KB]</a>) pack.
+<p>Download the latest sources and executables (<a href=http://litwr2.atspace.eu/pi/pipack-62.tar.xz>v62 [171 KB]</a>) pack.
 <p><a href=https://github.com/litwr2/rosetta-pi-spigot>Sources</a> <a href=http://litwr2.atspace.eu/pi/pipacks.html>Archive</a> <script>document.write(mirror())</script>
 <script>
 drawTabs()
