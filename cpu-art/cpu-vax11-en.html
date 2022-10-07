@@ -43,6 +43,8 @@ LDR R7,[R7]<br>
 ADD R0,R6<br>
 STR R0,[R7]</tt>
 
+<p>However, it is worth noting that the VAX instruction has most likely never been used in any program.  This example well illustrates the problem of having too large a set of instructions and addressing methods &ndash; most instructions are simply almost never used.  This problem became critical when by the 90s there was a transition from the microcode implementation of instructions to the fast, without delays implementation.
+
 <p>Unlike the IBM/370, PDP-11 or 68k, the VAX instructions are not required to have an even length and can, like the x86 instructions, be from one byte long.  This, the ability to use offsets of different sizes (8, 16, or 32 bits) and the presence of a large variety of different commands and addressing methods allow VAX codes to be among the best in density.
 
 <p>However the VAX-11 is a very slow system for its class and price.  Even the super-simple 6502 at 4 MHz could outrun the slowest family member VAX-11/730.  The fastest VAX-11 systems &ndash; huge cabinets and "whole furniture sets" &ndash; was at the same level of speed as the first PC AT's.  When the 80286 appeared it became clear that the days of the VAX-11 were numbered and even the slowdown of the development of systems based on the 80286 could not change anything fundamentally.  The straightforward people from Acorn having made the ARM in 1985 without hiding anything, said that the ARM is much cheaper and much faster.  The VAX-11 however remained relevant until the early 90's, while still having some advantages over the PC, in particular faster systems for working with disks.
