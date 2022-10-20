@@ -379,7 +379,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <div align=center>
 <h1 style=color:green>The number &#x3c0; calculation by spigot algorithm benchmark</h1>
 <p>The table below consists of the best results for the listed computers. It is open for the further expansion.  So if anybody has faster implementation of <a href=http://www.z88dk.org/wiki/doku.php?id=libnew:examples:pi>spigot algorithm</a> for one of systems listed below then please inform the author of this page (to vol.litwr&nbsp;at gmail dot&nbsp;com) and it should be updated.  The same is true for the results of other systems missed in the table.
-<p>This algorithm speed depends very much on the speed of integer division.  So systems with hardware division have a big advantage.
+<p>This algorithm speed depends very much on the speed of integer division.  So systems with hardware division have a big advantage.  The algoritm computations are 16/32-bit with unsigned integers, it gives advantages to 16/32-systems.
 <p>The results are time intervals in seconds for the calculation of 100, 1000, 3000 digits.  They also contain the upper limits to the number of digits for programs used.  The data are sorted by time for 3000 digits.
 <p>Every program is satisfying four restrictions: 1) it measures time; 2) it uses an OS function to print digits, it prints 4 digits a time synchronously with the calculation of them; 3) it uses less than 64 KB RAM for the code and data; 4) it utilizes all available RAM below 64 KB limit to get the maximum number of calculated digits, so it is forbidden to restrict artificially the maximum number of digits.
 <p>CPU frequencies given are maximum available (known to me) for computers listed below.  They are actual frequencies used during measurements.
