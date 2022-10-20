@@ -94,7 +94,7 @@ function res1(s1, t1){
 <tr><td>16<td>22<td>[-2.51, -0.03] <td>[-0.75, 0.75]
 </table>
 
-<p>All systems also provide timing information.  The next table shows timings for drawing of pictures #1-16.  Column "nc" shows timing only for video output, without the Mandelbrot calculation.
+<p>All systems also provide timing information.  The next table shows timings for drawing of pictures #1-16.  Column "nc" shows timing only for video output, without the Mandelbrot calculation.  The algorithm uses 16-bit signed arithmetic, so 16/32-bit systems have an advantage.
 <table border=1>
 <tr><th rowspan=2>#
 <th>C+4
@@ -225,12 +225,13 @@ function res1(s1, t1){
 <tr align=center><th>4 <td style=text-align:center>Amiga <td>68000 <td>2360 <td>" <td>"
 <tr align=center><th>5 <td style=text-align:center>Amstrad, 16c <td>Z80 <td>979 <td>54 <td>37
 <tr align=center><th>6 <td style=text-align:center>Amstrad, 4c <td>Z80 <td>1016 <td>" <td>"
-<tr align=center><th>7 <td style=text-align:center>Corvette, color<td>8080 <td>1057 <td>84 <td>66
-<tr align=center><th>8 <td style=text-align:center>Corvette, planar<td>8080 <td>1102 <td>" <td>"
-<tr align=center><th>9 <td style=text-align:center>Archimedes<td>ARM2 <td>1342 <td>100 <td>25
-<tr align=center><th>10 <td style=text-align:center>BBC Micro, 16c <td>6502 <td>1271 <td>131 <td>81
-<tr align=center><th>11 <td style=text-align:center>BBC Micro, 4c <td>6502 <td>1303 <td>" <td>"
-<tr align=center><th>12 <td style=text-align:center>Plus4 <td>6502 <td>1624 <td>"<td>"
+<tr align=center><th>7 <td style=text-align:center>Apple IIgs <td>65816 <td>1285 <td>73 <td>39
+<tr align=center><th>8 <td style=text-align:center>Corvette, color<td>8080 <td>1057 <td>84 <td>66
+<tr align=center><th>9 <td style=text-align:center>Corvette, planar<td>8080 <td>1102 <td>" <td>"
+<tr align=center><th>10<td style=text-align:center>Archimedes<td>ARM2 <td>1342 <td>100 <td>25
+<tr align=center><th>11 <td style=text-align:center>BBC Micro, 16c <td>6502 <td>1271 <td>131 <td>81
+<tr align=center><th>12 <td style=text-align:center>BBC Micro, 4c <td>6502 <td>1303 <td>" <td>"
+<tr align=center><th>13 <td style=text-align:center>Plus4 <td>6502 <td>1624 <td>"<td>"
 </table>
 
 <p>The QL code consists of two Basic programs which generate and use ML code.
