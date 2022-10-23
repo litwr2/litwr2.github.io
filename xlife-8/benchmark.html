@@ -1,0 +1,149 @@
+<html>
+<HEAD>
+<META NAME=keywords lang=en CONTENT="cellular automaton, xlife, artificial life, laboratory">
+<META NAME=author CONTENT="Vladimir Lidovski">
+<META NAME=copyright CONTENT="&copy; 2016 Vladimir Lidovski">
+<TITLE>XLIFE-8</TITLE>
+</HEAD>
+<body background=../bunnies.png>
+<div align=center>
+<h1>Xlife-8 benchmark results</h1>
+<img src=xlife8-benchmark126x108-small.png>
+</div>
+<p>This pattern was designed to test the speed of 8 bit version of XLife program, its size is 126x108.  The pattern should be placed at coordinates (1,1) to get the same results.  The next table shows the speed in generations per second for different screen modes (pc means pseudocolor mode).<br><br>
+
+<table border=1>
+<tr>
+<th>
+<th>v5 Commodore +4 PAL
+<th>v5 Commodore +4 NTSC
+<th>v5 Amstrad CPC6128
+<th>v3 &#x42d;&#x43b;e&#x43a;&#x442;po&#x43d;&#x438;&#x43a;a &#x411;K-0011
+<th>v2 IBM PC-5150 CGA
+<th>v2 IBM PC AT @6MHz CGA
+<th>v2 IBM PC AT @6MHz 0WS CGA
+<th>v1 Amiga 500 PAL
+<th>v1 Amiga 500 PAL fast RAM
+<th>v1 Amiga 1200 PAL
+<th>v1 Amiga 1200 PAL fast RAM
+<tr align=center>
+<th>blank <td>2.85 <td>2.88 <td>2.34 <td>1.44 <td>3.68 <td>9.01 <td>13.55 <td>7.40 <td>7.55 <td>14.02 <td>27.20
+<tr align=center>
+<th>zoom out <td>1.65 <td>1.50 <td>1.77 <td>1.30 <td>3.35 <td>7.87 <td>11.74 <td>6.94 <td>7.07 <td>13.47 <td>25.48
+<tr align=center>
+<th>zoom out pc <td>1.47 <td>1.34 <td>1.48 <td>1.08 <td>2.97 <td>6.95 <td>10.42 <td>5.51 <td>5.60 <td>11.21 <td>20.82
+<tr align=center>
+<th>zoom in <td>1.78 <td>1.61 <td>2.04 <td>1.33 <td>3.36 <td>8.10 <td>12.09 <td>6.76 <td>6.92 <td>13.12 <td>24.46
+<tr align=center>
+<th>zoom in pc <td>1.72 <td>1.57 <td>2.00 <td>1.29 <td>3.32 <td>7.89 <td>11.47 <td>6.63 <td>6.77 <td>12.92 <td>23.88
+</table>
+
+<p>The calculations are 8-bit.  They intensively use bitwise instructions and lookup tables.  The 68k and PDP-11 processors are not good for such computations.
+<p>The Commodore +4 has the 6502 CPU running at 0.89-1.7 MHz without wait states.  The average frequency of this CPU with the standard screen mode is about 1.11 MHz (PAL) or 1.01 MHz (NTSC).
+<p>The Amstrad CPC 6128 has the z80 CPU running at 4 MHz.  Wait states make the actual frequency close to 3.19 MHz.
+<p>The Elektronika BK0011 has the K1801VM1 (the PDP-11 architecture) 16-bit CPU running at 4 MHz.  RAM access wait states eat about 40% of the CPU power.  So the actual frequency is close to 2.4 MHz.
+<p>These results demonstrate that the +4's CPU in the standard screen mode at 1.11 MHz is slower than the CPC's at 3.19 MHz but +4's video is faster.  The BK0011 demonstrates the fast 16-bit video but its CPU is slow to work with 8-bit data.  The BK0011 may show the best results at 160x192 mode with the very big patterns.
+<p>The final 6502:z80 speed ratio with equal frequencies and no wait states is close to 2.3 to 1.
+<p>The results for the z80:K1801VM1 speed ratio is close to 1.2 to 1.
+<p>The first IBM PC used the 8088 CPU at 4.77 MHz.  The results show that it is not too fast.  It is only about slightly faster than the z80 and about 2.2 times slower than the 6502 at the same frequency.  The first IBM PC AT uses the 80286 at 6 MHz, it uses 2 wait states when a memory access occurs and this slows down the CPU quite much.  If we want to get the true 80286 speed we need to use memory without wait states.
+<p>The Commodore Amiga 500 uses the 68000 CPU at 7.09 MHz (PAL) or 7.16 MHz (NTSC).  The results show that the 68000 is approximately 1.2 faster than the 8088 at the same frequency.  The 80286:68020 speed ratio is shown equal approximately to 2.2 - it is surprising that the 68020 was so slow.  The 68020 is so slow because the stock A1200 doesn't have fast RAM.  If the A1200 uses fast RAM it becomes about 95% faster making the 80286:68020 speed ratio close to 1.2 &ndash; it is not much surprising for byte computations.
+
+<p>The next table contains approximate values of efficiency reciprocals (ER). These values are calculated by multiplication of the time of the calculation of 100 generations in screen blank mode by the effective CPU frequency. The ER value reflects the efficiency of a CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
+
+<div align=center>
+<table border=1>
+<tr align=center><th> Rank<th>Processor <th>The effective<br>frequency <th>ER
+<tr align=center><td>1 <td>80286 <td>6 <td>44
+<tr align=center><td>2 <td>68020 <td>14.2 <td>52
+<tr align=center><td>4 <td>6502 <td>1.7 <td>59
+<tr align=center><td>3 <td>68000 <td>7.1 <td>106
+<tr align=center><td>5 <td>8088 <td>4.8 <td>130
+<tr align=center><td>6 <td>Z80 <td>3.2 <td>137
+<tr align=center><td>7 <td>K1801BM1 <td>2.3 <td>160
+</table>
+</div>
+
+<p>It can be interesting to compare Xlife-8 performance with the performance of other programs.  <a href=http://aminet.net/package/game/misc/axlife12>AXlife v1.2</a> is a port of Xlife v2.0 for the Amiga.  It uses 1x magnification instead of zoom out mode, and 16x magnification instead of zoom in mode.  AXlife, like Xlife v2.0, doesn't support pseudocolor mode.
+<div align=center>
+<table border=1>
+<tr>
+<th>
+<th>the stock A1200
+<th>the A1200 with<br>fast RAM
+<tr align=center>
+<th>blank <td>15.92 <td>30.48
+<tr align=center>
+<th>zoom out <td>&#x2248;3.5 <td>&#x2248;5.5
+<tr align=center>
+<th>zoom in <td>&#x2248;7.6 <td>&#x2248;11.4
+</table>
+</div>
+<p>AXlife shows performance about 10% faster than Xlife-8 for the Amiga when visualization is disabled &ndash; it is rather because of larger lookup tables used in AXLife.  However AXlife uses slow system functions for dot drawing which makes AXlife much slower than Xlife-8 when the generation is visualized.
+<p>Emulators were used to get all these results.
+<div align=center>
+<p><table border=1>
+<tr><th>Machine <th>Emulator
+<tr><td style=text-align:left>&#x411;K0011M <td align=right>GID v3.10
+<tr><td style=text-align:left>Commodore+4 <td align=right>plus4emu v1.2.10
+<tr><td style=text-align:left>Amstrad CPC<td align=right>ep128emu v2.0.11
+<tr><td style=text-align:left>Amiga 500 <td align=right>FS-UAE 3.1.68
+<tr><td style=text-align:left>Amiga 1200 <td align=right>FS-UAE 3.1.68
+<tr><td style=text-align:left>IBM PC 5150<td align=right>pce-ibmpc 20220925-371414f8
+<tr><td style=text-align:left>IBM PC AT<td align=right>pcem 17
+</table>
+</div>
+<p>The pattern is available for downloads <a href=benchmark126X108.tar.bz2>here</a>.
+<br><hr><br>
+
+<p>All ports of Xlife-8 share the same algorithm implementations.  Some variety is only imposed by the difference in graphic hardware and io systems.  The next table contains sizes of executable code for all Xlife-8 implementations.  This is exactly total sizes of all instructions.  This table may be used as an illustration for <b>code density</b> for different CPU.  This code mostly does manipulations with 8-bit data.
+<div align=center>
+<table border=1>
+<tr>
+<th>Port
+<th>CPU
+<th>Code Size
+<th>Program Size
+<th>'Generate' Size
+<tr align=center>
+<th>Commodore +4, v5 <td>6502 <td>14486 <td>60062 <td>2506
+<tr align=center>
+<th>Amstrad CPC6128, v5 <td>Z80 <td>15326 <td>48345 <td>2060
+<tr align=center>
+<th>&#x42d;&#x43b;e&#x43a;&#x442;po&#x43d;&#x438;&#x43a;a &#x411;K-0011, v3 <td>T-11 <td>14420 <td>48722 <td>2484
+<tr align=center>
+<th>IBM PC, v2 <td>8088 <td>12942 <td>63517 <td>1994
+<tr align=center>
+<th>Commodore Amiga, v1 <td>68000 <td>20690 <td>118516 <td>2080
+</table>
+</div>
+<p>Program sizes can't be use for code density measurements because the Amiga and IBM PC use larger universes for cells, programs can have "holes", etc.  The 8086 shows an excellent code density while the 68000 shows a rather poor result for this 8-bit processing code.  This inferior result for the 68000 is caused partially by larger code for text printing.  A more objective result may be given by comparison of sizes of the same subroutine.  So sizes of key subroutines `generate' are provided too.  However due to BCD arithmetic used in the DEC T11 code for this procedure, the code for the PDP-11 is unexpectedly large.
+<br><hr><br>
+<p>It may be interesting to check the speed of one <b>modern system</b> with this pattern.  I used the AMD Phenom(tm) II X4 955 @3.2GHz based PC to get the next results.  <a href=../../xlife.php>Xlife</a> uses 4x magnification instead of zoom out mode, and 64x magnification instead of zoom in mode.
+<br><br>
+
+<div align=center>
+<table border=1>
+<tr>
+<th>
+<th>Xlife v7<br>Linux
+<th>Xlife-8 v2<br>FreeDOS
+<th>Xlife-8 v2<br>FreeDOS<br>Virtualbox<br>Linux
+<th>Xlife-8 v2<br>DosBox<br>Linux
+<tr align=center>
+<th>blank <td>&#x2248;68300 <td>&#x2248;24000 <td>&#x2248;24000 <td>526.32
+<tr align=center>
+<th>zoom out <td>&#x2248;54100 <td>&#x2248;1430 <td>&#x2248;500 <td>462.96
+<tr align=center>
+<th>zoom out pc <td>&#x2248;55100 <td>&#x2248;1140 <td>&#x2248;330 <td>396.83
+<tr align=center>
+<th>zoom in <td>&#x2248;53800 <td>&#x2248;3510 <td>&#x2248;1100 <td>476.19
+<tr align=center>
+<th>zoom in pc <td>&#x2248;54500 <td>&#x2248;3510 <td>&#x2248;1100 <td>462.96
+</table>
+</div>
+
+<p>Xlife v7, in the hash algorithm mode, can show virtally almost any superfast speed, for instance more than billions of billion...
+<br><hr><br>
+<p><a href=xlife8.html>The main Xlife-8 page</a>
+</body>
+</html>
