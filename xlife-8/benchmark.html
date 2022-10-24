@@ -41,13 +41,12 @@
 <p>The calculations are 8-bit.  They intensively use bitwise instructions and lookup tables.  The 68k and PDP-11 processors are not good for such computations.
 <p>The Commodore +4 has the 6502 CPU running at 0.89-1.7 MHz without wait states.  The average frequency of this CPU with the standard screen mode is about 1.11 MHz (PAL) or 1.01 MHz (NTSC).
 <p>The Amstrad CPC 6128 has the z80 CPU running at 4 MHz.  Wait states make the actual frequency close to 3.19 MHz.
-<p>The Elektronika BK0011 has the K1801VM1 (the PDP-11 architecture) 16-bit CPU running at 4 MHz.  RAM access wait states eat about 40% of the CPU power.  So the actual frequency is close to 2.4 MHz.
-<p>These results demonstrate that the +4's CPU in the standard screen mode at 1.11 MHz is slower than the CPC's at 3.19 MHz but +4's video is faster.  The BK0011 demonstrates the fast 16-bit video but its CPU is slow to work with 8-bit data.  The BK0011 may show the best results at 160x192 mode with the very big patterns.
+<p>The Elektronika BK0011 has the K1801VM1 (the PDP-11 architecture) 16-bit CPU running at 4 MHz.  RAM access wait states eat about 40% of the CPU power.  So the actual frequency is close to 2.3 MHz.
+<p>These results demonstrate that the +4's CPU in the standard screen mode at 1.11 MHz is slower than the CPC's at 3.19 MHz but +4's video is faster.  The BK0011 demonstrates the fast 16-bit video but its CPU is slow to work with 8-bit data.  The BK0011 may show the best results at 160x192 mode with very big patterns.
 <p>The final 6502:z80 speed ratio with equal frequencies and no wait states is close to 2.3 to 1.
 <p>The results for the z80:K1801VM1 speed ratio is close to 1.2 to 1.
 <p>The first IBM PC used the 8088 CPU at 4.77 MHz.  The results show that it is not too fast.  It is only about slightly faster than the z80 and about 2.2 times slower than the 6502 at the same frequency.  The first IBM PC AT uses the 80286 at 6 MHz, it uses 2 wait states when a memory access occurs and this slows down the CPU quite much.  If we want to get the true 80286 speed we need to use memory without wait states.
-<p>The Commodore Amiga 500 uses the 68000 CPU at 7.09 MHz (PAL) or 7.16 MHz (NTSC).  The results show that the 68000 is approximately 1.2 faster than the 8088 at the same frequency.  The 80286:68020 speed ratio is shown equal approximately to 2.2 - it is surprising that the 68020 was so slow.  The 68020 is so slow because the stock A1200 doesn't have fast RAM.  If the A1200 uses fast RAM it becomes about 95% faster making the 80286:68020 speed ratio close to 1.2 &ndash; it is not much surprising for byte computations.
-
+<p>The Commodore Amiga 500 uses the 68000 CPU at 7.09 MHz (PAL) or 7.16 MHz (NTSC).  The results show that the 68000 is approximately 1.2 faster than the 8088 at the same frequency.  The 80286:68020 speed ratio is shown equal approximately to 1.2 &ndash; it is not much surprising for byte computations.
 <p>The next table contains approximate values of efficiency reciprocals (ER). These values are calculated by multiplication of the time of the calculation of 100 generations in screen blank mode by the effective CPU frequency. The ER value reflects the efficiency of a CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
 
 <div align=center>
@@ -96,6 +95,7 @@
 <br><hr><br>
 
 <p>All ports of Xlife-8 share the same algorithm implementations.  Some variety is only imposed by the difference in graphic hardware and io systems.  The next table contains sizes of executable code for all Xlife-8 implementations.  This is exactly total sizes of all instructions.  This table may be used as an illustration for <b>code density</b> for different CPU.  This code mostly does manipulations with 8-bit data.
+
 <div align=center>
 <table border=1>
 <tr>
@@ -116,6 +116,7 @@
 <th>Commodore Amiga, v1 <td>68000 <td>20690 <td>118516 <td>2080
 </table>
 </div>
+
 <p>Program sizes can't be use for code density measurements because the Amiga and IBM PC use larger universes for cells, programs can have "holes", etc.  The 8086 shows an excellent code density while the 68000 shows a rather poor result for this 8-bit processing code.  This inferior result for the 68000 is caused partially by larger code for text printing.  A more objective result may be given by comparison of sizes of the same subroutine.  So sizes of key subroutines `generate' are provided too.  However due to BCD arithmetic used in the DEC T11 code for this procedure, the code for the PDP-11 is unexpectedly large.
 <br><hr><br>
 <p>It may be interesting to check the speed of one <b>modern system</b> with this pattern.  I used the AMD Phenom(tm) II X4 955 @3.2GHz based PC to get the next results.  <a href=../../xlife.php>Xlife</a> uses 4x magnification instead of zoom out mode, and 64x magnification instead of zoom in mode.
