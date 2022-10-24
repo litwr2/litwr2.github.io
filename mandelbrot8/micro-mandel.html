@@ -52,22 +52,22 @@ function res1(s1, t1){
 <th>Video mode
 <th>Window
 <th>Comments
-<tr><th>1<td style=text-align:center>&#x411;K0010, K1801BM1@3(<span id=bk10fq>2</span>) MHz<td>512x256, monochrome<td>512x256x1 <td>4x1 texture/pixel
-<tr><th>2<td style=text-align:center>"<td>256x256, 4 colors<td>256x256x4 <td>2x1 texture/pixel
-<tr><th>3<td style=text-align:center>&#x411;K0011, K1801BM1@4(<span id=bk11fq>2.3</span>) MHz<td>256x256, 4 colors<td>"<td>"
-<tr><th>4<td style=text-align:center>Amstrad CPC 4, Z80@4(<span id=cpc>3.2</span>) MHz<td>"<td>"<td>"
-<tr><th>5<td style=text-align:center>"<td>128x256, 16 colors<td>128x256x16<td>
-<tr><th>6<td style=text-align:center>BBC Micro, 6502@<span id=bbc>2</span> MHz<td>256x256, 4 colors<td>256x256x4 <td>2x1 texture/pixel
-<tr><th>7<td style=text-align:center>"<td>128x256, 16 colors<td>128x256x16 <td>
-<tr><th>8<td style=text-align:center>Commodore +4 (PAL), 6502@1.7 (<span id=plus4>1</span>) MHz<td>160x256, 4 colors<td>"<td>2 flashing dots/pixel
-<tr><th>9<td style=text-align:center>IBM PC XT (EGA), 8088@<span id=pcxt>4.8</span> MHz<td>640x350, 16 colors<td>"<td>
-<tr><th>10<td style=text-align:center>IBM PC AT (EGA), 80286@<span id=pcat>6</span> MHz, 0WS<td>"<td>"<td>
-<tr><th>11<td style=text-align:center>Amiga 500 (PAL), 68000@<span id=a500>7.1</span> MHz<td>320x256, 16 colors<td>"<td>
-<tr><th>12<td style=text-align:center>Amiga 1200 (PAL), 68020@<span id=a1200q>14.2</span> MHz<td>"<td>"<td>
-<tr><th>13<td style=text-align:center>Acorn Archimedes 305, ARM2@<span id=archi>8</span> MHz<td>"<td>"<td>
-<tr><th>14<td style=text-align:center>Sinclair QL, 68008@<span id=ql>7.5M</span> MHz<td>256x256, 16 colors<td>"<td>
-<tr><th>15<td style=text-align:center>Corvette, 8080@<span id=corv>2.5</span> MHz<td>512x256, 8 colors<td>256x256x4 <td>2x1 texture/pixel
-<tr><th>16<td style=text-align:center>Apple IIgs, 65816@2.9(<span id=iigs>2.5</span>) MHz<td>320x200, 16 colors<td>256x128x16 <td>rotated image
+<tr><th rowspan=2>1<td style=text-align:center rowspan=2>&#x411;K0010, K1801BM1@3(<span id=bk10fq>2</span>) MHz<td>512x256, monochrome<td>512x256x1 <td>4x1 texture/pixel
+<tr><td rowspan=3>256x256, 4 colors<td rowspan=3>256x256x4 <td>2x1 texture/pixel
+<tr><th>2<td style=text-align:center>&#x411;K0011, K1801BM1@4(<span id=bk11fq>2.3</span>) MHz<td>"
+<tr><th  rowspan=2>3<td style=text-align:center rowspan=2>Amstrad CPC 4, Z80@4(<span id=cpc>3.2</span>) MHz<td>"
+<tr><td>128x256, 16 colors<td>128x256x16<td>
+<tr><th rowspan=2>4<td style=text-align:center rowspan=2>BBC Micro, 6502@<span id=bbc>2</span> MHz<td>256x256, 4 colors<td>256x256x4 <td>2x1 texture/pixel
+<tr><td>128x256, 16 colors<td rowspan=8>128x256x16 <td>
+<tr><th>5<td style=text-align:center>Commodore +4 (PAL), 6502@1.7 (<span id=plus4>1</span>) MHz<td>160x256, 4 colors<td>2 flashing dots/pixel
+<tr><th>6<td style=text-align:center>IBM PC XT (EGA), 8088@<span id=pcxt>4.8</span> MHz<td rowspan=2>640x350, 16 colors<td>
+<tr><th>7<td style=text-align:center>IBM PC AT (EGA), 80286@<span id=pcat>6</span> MHz, 0WS<td>
+<tr><th>8<td style=text-align:center>Amiga 500 (PAL), 68000@<span id=a500>7.1</span> MHz<td rowspan=3>320x256, 16 colors<td>
+<tr><th>9<td style=text-align:center>Amiga 1200 (PAL), 68020@<span id=a1200q>14.2</span> MHz<td>
+<tr><th>10<td style=text-align:center>Acorn Archimedes 305, ARM2@<span id=archi>8</span> MHz<td>
+<tr><th>11<td style=text-align:center>Sinclair QL, 68008@<span id=ql>7.5M</span> MHz<td>256x256, 16 colors<td>
+<tr><th>12<td style=text-align:center>Corvette, 8080@<span id=corv>2.5</span> MHz<td>512x256, 8 colors<td>256x256x4 <td>2x1 texture/pixel
+<tr><th>13<td style=text-align:center>Apple IIgs, 65816@2.9(<span id=iigs>2.5</span>) MHz<td>320x200, 16 colors<td>256x128x16 <td>rotated image
 </table>
 
 <p>The Mandelbrot algorithm uses the next parameters for the first 16 visualizations.
@@ -181,15 +181,15 @@ function res1(s1, t1){
 <tr><td style=text-align:left>BBC Master <td>b-em v-ec63538
 <tr><td style=text-align:left>Amiga 500 <td>FS-UAE 3.0.5
 <tr><td style=text-align:left>Amiga 1200 <td>FS-UAE 3.1.68
-<tr><td style=text-align:left>IBM PC XT EGA <td>pcem 17
-<tr><td style=text-align:left>IBM PC AT EGA <td>pcem 17
+<tr><td style=text-align:left>IBM PC XT EGA <td rowspan=2>pcem 17
+<tr><td style=text-align:left>IBM PC AT EGA
 <tr><td style=text-align:left>Acorn Archimedes 305 <td>Arculator v2.1
 <tr><td style=text-align:left>Sinclair QL <td>QemuLator 3.4
 <tr><td style=text-align:left>Corvette <td>emu80 v4.0.396
 <tr><td style=text-align:left>Apple IIgs <td>MAME v0.239
 </table>
 
-<p>Qemulator appears to be about 7% faster than real hardware.  So the unexpanded QL results are adjusted with this 7%.  Real QL results have been provided by mk79.  A lot of thanks to him.  The data is also used for the QL with external memory.  It seems that pcem is also about 7% faster than the real IBM PC but I have only indirect information about this so I didn't apply any correction to data from pcem.
+<p>Qemulator appears to be about 7% faster than real hardware.  So the unexpanded QL results are adjusted with this 7%.  Real QL results have been provided by mk79.  A lot of thanks to him.  The data is also used for the QL with external memory.  It seems that pcem is also about 7% faster than the real IBM PC XT/AT but I have only indirect information about this so I didn't apply any correction to data from pcem.
 
 <p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
