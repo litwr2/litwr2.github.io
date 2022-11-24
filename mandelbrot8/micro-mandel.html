@@ -11,39 +11,57 @@ table, th, td {
 }
 </style>
 <script>
-function sum(t, c) {
-   var s = 0
-   for (var r = 1; r <= 16; r++)
-      s += parseFloat(document.getElementById(t + (c < 10 ? "0" + c : c) + (r < 10 ? "0" + r : r)).innerHTML)
-   return Math.trunc(s*100)/100
+var ma = []
+//ma.push({computer: "", year: 0, cpu: "", freq: 0, efreq: 0, OS: "", video_mode: "", window_mode: "", variant: "", version: 0, tnc: .0, t: [.0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0], source: "", href: "https://en.wikipedia.org/wiki/", screenshot: "", comments: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Commodore +4", year: 1987, cpu: "6502", freq: 1.7, efreq: 1, OS: "ROM Basic", video_mode: "160x256 4c", window_mode: "", variant: "interlaced/flashing", version: 5, tnc: 1.11, t: [4.66, 5.36, 6.21, 7.59, 9.02, 11.58, 14.84, 21.62, 29.08, 34.78, 38.88, 39.40, 38.34, 37.16, 35.98, 34.74], source: "iron", comments: "", href: "https://en.wikipedia.org/wiki/Commodore_Plus/4", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "&#x411;K0010", year: 1985, cpu: "K1801VM", freq: 3, efreq: 2, OS: "ROM Monitor", video_mode: "256x256 4c", window_mode: "", variant: "", version: 2, tnc: 0.42, t: [3.63, 3.89, 4.20, 4.70, 5.22, 6.15, 7.34, 9.81, 12.51, 14.59, 16.09, 16.27, 15.89, 15.46, 15.04, 14.59], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0010", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "CPC (16 colors)", year: 0, cpu: "Z80", freq: 4, efreq: 3.2, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.83, t: [2.55, 2.86, 3.22, 3.82, 4.44, 5.54, 6.95, 9.89, 13.10, 15.56, 17.34, 17.56, 17.11, 16.60, 16.09, 15.56], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amstrad_CPC", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "CPC (4 colors)", year: 0, cpu: "Z80", freq: 4, efreq: 3.2, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 1.02, t: [2.75, 3.05, 3.41, 4.02, 4.63, 5.74, 7.15, 10.08, 13.30, 15.76, 17.54, 17.76, 17.31, 16.80, 16.28, 15.76], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amstrad_CPC", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "BBC Micro (16 colors)", year: 0, cpu: "6502", freq: 2, efreq: 2, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.41, t: [2.21, 2.57, 3.00, 3.71, 4.43, 5.73, 7.39, 10.83, 14.61, 17.50, 19.59, 19.85, 19.32, 18.72, 18.11, 17.49], source: "", comments: "", href: "https://en.wikipedia.org/wiki/BBC_Micro", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "BBC Micro (4 colors)", year: 0, cpu: "6502", freq: 2, efreq: 2, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.51, t: [2.32, 2.68, 3.11, 3.82, 4.54, 5.84, 7.50, 10.94, 14.72, 17.62, 19.71, 19.96, 19.43, 18.83, 18.23, 17.60], source: "", comments: "", href: "https://en.wikipedia.org/wiki/BBC_Micro", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Corvette (color mode)", year: 0, cpu: "8080", freq: 2.5, efreq: 2.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 2.01, t: [5.00, 5.54, 6.22, 7.32, 8.44, 10.46, 13.04, 18.42, 24.30, 28.72, 32.06, 32.46, 31.62, 30.70, 29.76, 28.78], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Corvette_(computer)", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Corvette (planar mode)", year: 0, cpu: "8080", freq: 2.5, efreq: 2.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 2.38, t: [5.38, 5.92, 6.60, 7.66, 8.82, 10.84, 13.42, 18.78, 24.66, 29.16, 32.42, 32.82, 32.02, 31.06, 30.12, 29.16], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Corvette_(computer)", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Sanyo MPC-25FD (interlaced)", year: 0, cpu: "Z80", freq: 3.58, efreq: 2.6, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 0.66, t: [2.82, 3.18, 3.65, 4.38, 5.15, 6.55, 8.30, 11.97, 15.98, 19.05, 21.28, 21.57, 21.00, 20.37, 19.72, 19.07], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Sanyo MPC-25FD (rotated)", year: 0, cpu: "Z80", freq: 3.58, efreq: 2.6, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 1.18, t: [3.35, 3.70, 4.17, 4.92, 5.68, 7.07, 8.83, 12.48, 16.50, 19.58, 21.80, 22.08, 21.52, 20.88, 20.23, 19.58], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "&#x411;K0011", year: 0, cpu: "K1801VM1", freq: 4, efreq: 2.3, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.38, t: [3.40, 3.63, 3.91, 4.37, 4.84, 5.68, 6.76, 8.99, 11.45, 13.32, 14.69, 14.85, 14.51, 14.12, 13.73, 13.33], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0011M", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Amiga 500", year: 0, cpu: "68000", freq: 7.1, efreq: 7.1, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.49, t: [0.86, 0.90, 0.98, 1.08, 1.22, 1.42, 1.70, 2.28, 2.90, 3.36, 3.72, 3.76, 3.68, 3.58, 3.46, 3.38], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_500", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "IBM PC XT EGA (mode 0)", year: 0, cpu: "8088", freq: 4.77, efreq: 4.77, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 1.06, t: [1.85, 1.97, 2.13, 2.38, 2.64, 3.11, 3.71, 4.95, 6.31, 7.36, 8.11, 8.21, 8.02, 7.80, 7.59, 7.37], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer_XT", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "IBM PC XT EGA (mode 2)", year: 0, cpu: "8088", freq: 4.77, efreq: 4.77, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.85, t: [1.64, 1.77, 1.93, 2.18, 2.44, 2.91, 3.51, 4.75, 6.11, 7.15, 7.91, 8.00, 7.82, 7.60, 7.38, 7.16], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer_XT", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Acorn Archimedes 305", year: 0, cpu: "ARM2", freq: 8, efreq: 8, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.02, t: [0.12, 0.14, 0.17, 0.21, 0.25, 0.32, 0.41, 0.59, 0.80, 0.96, 1.07, 1.09, 1.06, 1.03, 0.99, 0.96], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Acorn_Archimedes", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "QL", year: 0, cpu: "68008", freq: 7.5, efreq: 4.3, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.75, t: [1.94, 2.16, 2.39, 2.61, 3.18, 3.91, 4.83, 6.75, 8.82, 10.42, 11.60, 11.75, 11.45, 11.13, 10.79, 10.45], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Sinclair_QL", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "QL (external RAM)", year: 0, cpu: "68008", freq: 7.5, efreq: 7.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.48, t: [1.14, 1.26, 1.38, 1.50, 1.83, 2.23, 2.77, 3.86, 5.03, 5.96, 6.63, 6.71, 6.54, 6.37, 6.16, 5.97], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Sinclair_QL", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Amiga 1200", year: 0, cpu: "68020", freq: 14.2, efreq: 0, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.18, t: [0.30, 0.32, 0.34, 0.38, 0.42, 0.50, 0.60, 0.78, 1.00, 1.16, 1.28, 1.28, 1.26, 1.24, 1.20, 1.18], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_1200", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Amiga 1200 (fast RAM)", year: 0, cpu: "68020", freq: 14.2, efreq: 14.2, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.15, t: [0.24, 0.26, 0.28, 0.30, 0.34, 0.40, 0.48, 0.62, 0.80, 0.92, 1.02, 1.04, 1.00, 0.98, 0.96, 0.94], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_1200", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "IBM PC AT EGA (mode 0)", year: 0, cpu: "80286", freq: 6, efreq: 6, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.31, t: [0.52, 0.55, 0.59, 0.65, 0.72, 0.84, 0.99, 1.30, 1.64, 1.91, 2.10, 2.12, 2.07, 2.02, 1.97, 1.91], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "IBM PC AT EGA (mode 2)", year: 0, cpu: "80286", freq: 6, efreq: 6, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.29, t: [0.50, 0.53, 0.57, 0.63, 0.70, 0.81, 0.96, 1.28, 1.62, 1.88, 2.07, 2.10, 2.05, 2.00, 1.94, 1.89], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Apple II gs", year: 0, cpu: "65816", freq: 2.86, efreq: 2.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 0.42, t: [1.20, 1.33, 1.52, 1.80, 2.08, 2.62, 3.28, 4.67, 6.18, 7.35, 8.18, 8.28, 8.07, 7.83, 7.58, 7.33], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Apple_IIGS", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Panasonic FS-1GT (interlaced)", year: 0, cpu: "R800", freq: 7.1, efreq: 7.1, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 0.18, t: [0.52, 0.55, 0.62, 0.73, 0.83, 1.03, 1.27, 1.78, 2.35, 2.78, 3.10, 3.13, 3.05, 2.97, 2.87, 2.78], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Panasonic FS-1GT (rotated)", year: 0, cpu: "R800", freq: 7.1, efreq: 7.1, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.47, t: [0.80, 0.85, 0.90, 1.02, 1.12, 1.32, 1.57, 2.08, 2.65, 3.08, 3.40, 3.43, 3.37, 3.27, 3.18, 3.08], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
+
+function p00(x) {
+   var v = Math.round(x*100)/100
+   if (Math.round(v*100)%100 == 0) v = v + "00"
+   else if (Math.round(v*100)%10 == 0) v = v + "0"
+   return v
 }
-function sum0(t, c) {
-   var s = 0
-   for (var r = 1; r <= 16; r++)
-      s += parseFloat(document.getElementById(t + (c < 10 ? "0" + c : c) + (r < 10 ? "0" + r : r)).innerHTML)
-   s -= parseFloat(document.getElementById(t + (c < 10 ? "0" + c : c) + "00").innerHTML)*16
-   return Math.trunc(s*100)/100
+
+for (var i = 0; i < ma.length; i++) {
+   var v = 0
+   for (var k = 0; k < 16; k++) v += ma[i].t[k]
+   ma[i].tsum = v
+   ma[i].psum = v - ma[i].tnc*16
 }
-function sum1(t, c) {
-   return Math.trunc(((sum(t, c) - sum0(t, c))/sum(t, c))*10000)/100
-}
-function res2(s1, s2, t1, t2){
-   var a1 = Math.round(parseFloat(document.getElementById(s1).innerHTML)*parseFloat(document.getElementById(t1).innerHTML))
-   var a2 = Math.round(parseFloat(document.getElementById(s2).innerHTML)*parseFloat(document.getElementById(t2).innerHTML))
-   document.write("<td>" +  (a1 < a2 ? a1 : a2))
-}
-function res1(s1, t1){
-   document.write("<td>" +  Math.round(parseFloat(document.getElementById(s1).innerHTML)*parseFloat(document.getElementById(t1).innerHTML)))
-}
-function rank(name, lines) {
-   var s = [], d = []
-   for (var i = 1; i < lines; i++) s.push([parseFloat(document.getElementById(name + (i < 10 ? "0" + i : i) + 17).innerHTML), i - 1])
-   s.sort(function(a, b) { return a[0] - b[0] })
-//debugger
-   for (var i = 0; i < s.length; i++) d[s[i][1]] = i + 1
-   for (var i = 0; i < d.length; i++) document.write("<td>" + d[i])
-//      for (var j = 0; j < s.length; j++)
-//         if (i == s[j][1]) { document.write("<td>" + (j + 1)); break }
+
+ma.sort(function(a, b){ return a.tsum - b.tsum })
+
+function findER(a) {
+   var v = Infinity, k
+   for (i = 0; i < ma.length; i++) {
+      var e = ma[i].efreq
+      if (e == 0) e = ma[i].freq
+      if (a == ma[i].cpu && v > ma[i].psum*e) { v = ma[i].psum*e; k = ma[i].efreq }
+   }
+   document.write("<td>" + Math.round(k*100)/100 + "<td>" + Math.round(v))
 }
 </script>
 </head>
@@ -64,7 +82,7 @@ function rank(name, lines) {
 <tr><th rowspan=2>1<td style=text-align:center rowspan=2>&#x411;K0010, K1801BM1@3(<span id=bk10fq>2</span>) MHz<td>512x256, monochrome<td>512x256x1 <td>4x1 texture/pixel
 <tr><td rowspan=3>256x256, 4 colors<td rowspan=3>256x256x4 <td rowspan=3>2x1 texture/pixel
 <tr><th>2<td style=text-align:center>&#x411;K0011, K1801BM1@4(<span id=bk11fq>2.3</span>) MHz
-<tr><th  rowspan=2>3<td style=text-align:center rowspan=2>Amstrad CPC 4, Z80@4(<span id=cpc>3.2</span>) MHz
+<tr><th  rowspan=2>3<td style=text-align:center rowspan=2>Amstrad CPC, Z80@4(<span id=cpc>3.2</span>) MHz
 <tr><td>128x256, 16 colors<td>128x256x16<td>
 <tr><th rowspan=2>4<td style=text-align:center rowspan=2>BBC Micro, 6502@<span id=bbc>2</span> MHz<td>256x256, 4 colors<td>256x256x4 <td>2x1 texture/pixel
 <tr><td>128x256, 16 colors<td rowspan=8>128x256x16 <td>
@@ -108,87 +126,23 @@ The Sanyo MPC-25FD is a typical MSX2 computer.  The Panasonic FS-A1GT is an MSX 
 <tr><td>16<td>22<td>[-2.51, -0.03] <td>[-0.75, 0.75]
 </table>
 
-<p>All systems also provide timing information.  The next table shows timings for drawing of pictures #1-16.  Column "nc" shows timing only for video output, without the Mandelbrot calculation.  The algorithm uses 16-bit signed arithmetic, so 16/32-bit systems have an advantage.
+<p>All systems also provide timing information.  The next table shows timings for drawing of pictures #1-16.  Column "nc" shows timing only for video output, without the Mandelbrot calculation.  The algorithm uses 16-bit signed arithmetic, so 16/32-bit systems have an advantage.  Column "v" shows the program version number.  Column "Gr %" presents the part of total time that is spent on the graphic output.
 <table border=1>
-<tr><th rowspan=2>#
-<th>C+4
-<th>&#x411;K<br>0010
-<th>CPC 16<br>colors
-<th>CPC 4<br>colors
-<th>BBC<br>Micro<br> 16 colors
-<th>BBC<br>Micro<br> 4 colors
-<th>Corvette<br>8 colors<br>color mode
-<th>Corvette<br>4 colors<br>planar mode
-<th>Sanyo<br>MPC-25FD<br>interlaced
-<th>Sanyo<br>MPC-25FD<br>rotated
-<tr><th>v5<th colspan=3>v2<th colspan=2>v3<th colspan=3>v1<th>v2
-<tr><th>nc<td id=b0100> 1.11<td id=b0200> 0.42<td id=b0300> 0.83<td id=b0400> 1.02<td id=b0500> 0.41<td id=b0600> 0.51<td id=b0700> 2.01<td id=b0800> 2.38<td id=b0900> 0.66<td id=b1000> 1.18
-<tr><th> 1<td id=b0101> 4.66<td id=b0201> 3.63<td id=b0301> 2.55<td id=b0401> 2.75<td id=b0501> 2.21<td id=b0601> 2.32<td id=b0701> 5.00<td id=b0801> 5.38<td id=b0901> 2.82<td id=b1001> 3.35
-<tr><th> 2<td id=b0102> 5.36<td id=b0202> 3.89<td id=b0302> 2.86<td id=b0402> 3.05<td id=b0502> 2.57<td id=b0602> 2.68<td id=b0702> 5.54<td id=b0802> 5.92<td id=b0902> 3.18<td id=b1002> 3.70
-<tr><th> 3<td id=b0103> 6.21<td id=b0203> 4.20<td id=b0303> 3.22<td id=b0403> 3.41<td id=b0503> 3.00<td id=b0603> 3.11<td id=b0703> 6.22<td id=b0803> 6.60<td id=b0903> 3.65<td id=b1003> 4.17
-<tr><th> 4<td id=b0104> 7.59<td id=b0204> 4.70<td id=b0304> 3.82<td id=b0404> 4.02<td id=b0504> 3.71<td id=b0604> 3.82<td id=b0704> 7.32<td id=b0804> 7.66<td id=b0904> 4.38<td id=b1004> 4.92
-<tr><th> 5<td id=b0105> 9.02<td id=b0205> 5.22<td id=b0305> 4.44<td id=b0405> 4.63<td id=b0505> 4.43<td id=b0605> 4.54<td id=b0705> 8.44<td id=b0805> 8.82<td id=b0905> 5.15<td id=b1005> 5.68
-<tr><th> 6<td id=b0106>11.58<td id=b0206> 6.15<td id=b0306> 5.54<td id=b0406> 5.74<td id=b0506> 5.73<td id=b0606> 5.84<td id=b0706>10.46<td id=b0806>10.84<td id=b0906> 6.55<td id=b1006> 7.07
-<tr><th> 7<td id=b0107>14.84<td id=b0207> 7.34<td id=b0307> 6.95<td id=b0407> 7.15<td id=b0507> 7.39<td id=b0607> 7.50<td id=b0707>13.04<td id=b0807>13.42<td id=b0907> 8.30<td id=b1007> 8.83
-<tr><th> 8<td id=b0108>21.62<td id=b0208> 9.81<td id=b0308> 9.89<td id=b0408>10.08<td id=b0508>10.83<td id=b0608>10.94<td id=b0708>18.42<td id=b0808>18.78<td id=b0908> 11.97<td id=b1008> 12.48
-<tr><th> 9<td id=b0109>29.08<td id=b0209>12.51<td id=b0309>13.10<td id=b0409>13.30<td id=b0509>14.61<td id=b0609>14.72<td id=b0709>24.30<td id=b0809>24.66<td id=b0909> 15.98<td id=b1009> 16.50
-<tr><th>10<td id=b0110>34.78<td id=b0210>14.59<td id=b0310>15.56<td id=b0410>15.76<td id=b0510>17.50<td id=b0610>17.62<td id=b0710>28.72<td id=b0810>29.16<td id=b0910> 19.05<td id=b1010> 19.58
-<tr><th>11<td id=b0111>38.88<td id=b0211>16.09<td id=b0311>17.34<td id=b0411>17.54<td id=b0511>19.59<td id=b0611>19.71<td id=b0711>32.06<td id=b0811>32.42<td id=b0911> 21.28<td id=b1011> 21.80
-<tr><th>12<td id=b0112>39.40<td id=b0212>16.27<td id=b0312>17.56<td id=b0412>17.76<td id=b0512>19.85<td id=b0612>19.96<td id=b0712>32.46<td id=b0812>32.82<td id=b0912> 21.57<td id=b1012> 22.08
-<tr><th>13<td id=b0113>38.34<td id=b0213>15.89<td id=b0313>17.11<td id=b0413>17.31<td id=b0513>19.32<td id=b0613>19.43<td id=b0713>31.62<td id=b0813>32.02<td id=b0913> 21.00<td id=b1013> 21.52
-<tr><th>14<td id=b0114>37.16<td id=b0214>15.46<td id=b0314>16.60<td id=b0414>16.80<td id=b0514>18.72<td id=b0614>18.83<td id=b0714>30.70<td id=b0814>31.06<td id=b0914> 20.37<td id=b1014> 20.88
-<tr><th>15<td id=b0115>35.98<td id=b0215>15.04<td id=b0315>16.09<td id=b0415>16.28<td id=b0515>18.11<td id=b0615>18.23<td id=b0715>29.76<td id=b0815>30.12<td id=b0915> 19.72<td id=b1015> 20.23
-<tr><th>16<td id=b0116>34.74<td id=b0216>14.59<td id=b0316>15.56<td id=b0416>15.76<td id=b0516>17.49<td id=b0616>17.60<td id=b0716>28.78<td id=b0816>29.16<td id=b0916> 19.07<td id=b1016> 19.58
-<tr><th>total<script>for(var k=1;k<11;k++)document.write("<td id=b"+(k<10?"0"+k:k)+"17>"+sum("b",k))</script>
-<tr><th>/calc<script>for(var k=1;k<11;k++)document.write("<td id=b"+(k<10?"0"+k:k)+"18>"+sum0("b",k))</script>
-<tr><th>/gr%<script>for(var k=1;k<11;k++)document.write("<td id=b"+(k<10?"0"+k:k)+"19>"+sum1("b",k))</script>
-<tr><th>rank<script>rank("b",11)</script>
+<script>
+document.write("<tr><th>#<th>System<th>v<th>nc")
+for (var k = 1; k <= 16; k++) document.write("<th>" + k)
+document.write("<th>Total<th>CPU<th>Gr %")
+for (var i = 0; i < ma.length; i++) {
+   document.write("<tr><th>" + (i + 1) + "<td style=text-align:left>" + ma[i].computer + "<td>" + ma[i].version + "<td>" + p00(ma[i].tnc))
+   for (var k = 0; k < 16; k++) document.write("<td>" + p00(ma[i].t[k]))
+   document.write("<td>" + p00(ma[i].tsum) + "<td>" + p00(ma[i].psum) + "<td>" + p00(100*(1-ma[i].psum/ma[i].tsum)))
+}
+</script>
 </table>
 
-<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.
+<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  The Apple IIgs has to use slower way to draw images because its graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes the Apple IIgs graphic performance about 10% lower.  The results show that the Amiga 1200 with fast RAM might be faster than the Archimedes 305 if the Amiga used fast chunky graphics instead of slower planar.
 
-<p>The next table shows the timings for faster computers.
-<table border=1>
-<tr><th rowspan=2>#
-<th>&#x411;K<br>0011
-<th>Amiga<br>500
-<th>IBM PC<br>XT EGA<br>mode 0
-<th>IBM PC<br>XT EGA<br>mode 2
-<th>Acorn<br>Archime-<br>des 305
-<th>QL
-<th>QL<br>external<br>RAM
-<th>Amiga<br>1200
-<th>Amiga<br>1200<br>fast RAM
-<th>IBM PC<br>AT EGA<br>mode 0
-<th>IBM PC<br>AT EGA<br>mode 2
-<th>Apple<br>IIgs
-<th>Panasonic<br>FS-1GT<br>interlaced
-<th>Panasonic<br>FS-1GT<br>rotated
-<tr><th colspan=4>v3 <th colspan=3>v2 <th colspan=4>v3 <th colspan=2>v1 <th>v2
-<tr><th>nc<td id=a0100> 0.38<td id=a0200> 0.49<td id=a0300> 1.06<td id=a0400> 0.85<td id=a0500> 0.02<td id=a0600> 0.75<td id=a0700> 0.48<td id=a0800> 0.18<td id=a0900> 0.15<td id=a1000> 0.31<td id=a1100> 0.29<td id=a1200> 0.42<td id=a1300> 0.18<td id=a1400> 0.47
-<tr><th> 1<td id=a0101> 3.40<td id=a0201> 0.86<td id=a0301> 1.85<td id=a0401> 1.64<td id=a0501> 0.12<td id=a0601> 1.94<td id=a0701> 1.14<td id=a0801> 0.30<td id=a0901> 0.24<td id=a1001> 0.52<td id=a1101> 0.50<td id=a1201> 1.20<td id=a1301> 0.52<td id=a1401> 0.80
-<tr><th> 2<td id=a0102> 3.63<td id=a0202> 0.90<td id=a0302> 1.97<td id=a0402> 1.77<td id=a0502> 0.14<td id=a0602> 2.16<td id=a0702> 1.26<td id=a0802> 0.32<td id=a0902> 0.26<td id=a1002> 0.55<td id=a1102> 0.53<td id=a1202> 1.33<td id=a1302> 0.55<td id=a1402> 0.85
-<tr><th> 3<td id=a0103> 3.91<td id=a0203> 0.98<td id=a0303> 2.13<td id=a0403> 1.93<td id=a0503> 0.17<td id=a0603> 2.39<td id=a0703> 1.38<td id=a0803> 0.34<td id=a0903> 0.28<td id=a1003> 0.59<td id=a1103> 0.57<td id=a1203> 1.52<td id=a1303> 0.62<td id=a1403> 0.90
-<tr><th> 4<td id=a0104> 4.37<td id=a0204> 1.08<td id=a0304> 2.38<td id=a0404> 2.18<td id=a0504> 0.21<td id=a0604> 2.61<td id=a0704> 1.50<td id=a0804> 0.38<td id=a0904> 0.30<td id=a1004> 0.65<td id=a1104> 0.63<td id=a1204> 1.80<td id=a1304> 0.73<td id=a1404> 1.02
-<tr><th> 5<td id=a0105> 4.84<td id=a0205> 1.22<td id=a0305> 2.64<td id=a0405> 2.44<td id=a0505> 0.25<td id=a0605> 3.18<td id=a0705> 1.83<td id=a0805> 0.42<td id=a0905> 0.34<td id=a1005> 0.72<td id=a1105> 0.70<td id=a1205> 2.08<td id=a1305> 0.83<td id=a1405> 1.12
-<tr><th> 6<td id=a0106> 5.68<td id=a0206> 1.42<td id=a0306> 3.11<td id=a0406> 2.91<td id=a0506> 0.32<td id=a0606> 3.91<td id=a0706> 2.23<td id=a0806> 0.50<td id=a0906> 0.40<td id=a1006> 0.84<td id=a1106> 0.81<td id=a1206> 2.62<td id=a1306> 1.03<td id=a1406> 1.32
-<tr><th> 7<td id=a0107> 6.76<td id=a0207> 1.70<td id=a0307> 3.71<td id=a0407> 3.51<td id=a0507> 0.41<td id=a0607> 4.83<td id=a0707> 2.77<td id=a0807> 0.60<td id=a0907> 0.48<td id=a1007> 0.99<td id=a1107> 0.96<td id=a1207> 3.28<td id=a1307> 1.27<td id=a1407> 1.57
-<tr><th> 8<td id=a0108> 8.99<td id=a0208> 2.28<td id=a0308> 4.95<td id=a0408> 4.75<td id=a0508> 0.59<td id=a0608> 6.75<td id=a0708> 3.86<td id=a0808> 0.78<td id=a0908> 0.62<td id=a1008> 1.30<td id=a1108> 1.28<td id=a1208> 4.67<td id=a1308> 1.78<td id=a1408> 2.08
-<tr><th> 9<td id=a0109>11.45<td id=a0209> 2.90<td id=a0309> 6.31<td id=a0409> 6.11<td id=a0509> 0.80<td id=a0609> 8.82<td id=a0709> 5.03<td id=a0809> 1.00<td id=a0909> 0.80<td id=a1009> 1.64<td id=a1109> 1.62<td id=a1209> 6.18<td id=a1309> 2.35<td id=a1409> 2.65
-<tr><th>10<td id=a0110>13.32<td id=a0210> 3.36<td id=a0310> 7.36<td id=a0410> 7.15<td id=a0510> 0.96<td id=a0610>10.42<td id=a0710> 5.96<td id=a0810> 1.16<td id=a0910> 0.92<td id=a1010> 1.91<td id=a1110> 1.88<td id=a1210> 7.35<td id=a1310> 2.78<td id=a1410> 3.08
-<tr><th>11<td id=a0111>14.69<td id=a0211> 3.72<td id=a0311> 8.11<td id=a0411> 7.91<td id=a0511> 1.07<td id=a0611>11.60<td id=a0711> 6.63<td id=a0811> 1.28<td id=a0911> 1.02<td id=a1011> 2.10<td id=a1111> 2.07<td id=a1211> 8.18<td id=a1311> 3.10<td id=a1411> 3.40
-<tr><th>12<td id=a0112>14.85<td id=a0212> 3.76<td id=a0312> 8.21<td id=a0412> 8.00<td id=a0512> 1.09<td id=a0612>11.75<td id=a0712> 6.71<td id=a0812> 1.28<td id=a0912> 1.04<td id=a1012> 2.12<td id=a1112> 2.10<td id=a1212> 8.28<td id=a1312> 3.13<td id=a1412> 3.43
-<tr><th>13<td id=a0113>14.51<td id=a0213> 3.68<td id=a0313> 8.02<td id=a0413> 7.82<td id=a0513> 1.06<td id=a0613>11.45<td id=a0713> 6.54<td id=a0813> 1.26<td id=a0913> 1.00<td id=a1013> 2.07<td id=a1113> 2.05<td id=a1213> 8.07<td id=a1313> 3.05<td id=a1413> 3.37
-<tr><th>14<td id=a0114>14.12<td id=a0214> 3.58<td id=a0314> 7.80<td id=a0414> 7.60<td id=a0514> 1.03<td id=a0614>11.13<td id=a0714> 6.37<td id=a0814> 1.24<td id=a0914> 0.98<td id=a1014> 2.02<td id=a1114> 2.00<td id=a1214> 7.83<td id=a1314> 2.97<td id=a1414> 3.27
-<tr><th>15<td id=a0115>13.73<td id=a0215> 3.46<td id=a0315> 7.59<td id=a0415> 7.38<td id=a0515> 0.99<td id=a0615>10.79<td id=a0715> 6.16<td id=a0815> 1.20<td id=a0915> 0.96<td id=a1015> 1.97<td id=a1115> 1.94<td id=a1215> 7.58<td id=a1315> 2.87<td id=a1415> 3.18
-<tr><th>16<td id=a0116>13.33<td id=a0216> 3.38<td id=a0316> 7.37<td id=a0416> 7.16<td id=a0516> 0.96<td id=a0616>10.45<td id=a0716> 5.97<td id=a0816> 1.18<td id=a0916> 0.94<td id=a1016> 1.91<td id=a1116> 1.89<td id=a1216> 7.33<td id=a1316> 2.78<td id=a1416> 3.08
-<tr><th>total<script>for(var k=1;k<15;k++)document.write("<td id=a"+(k<10?"0"+k:k)+"17>"+sum("a",k))</script>
-<tr><th>/calc<script>for(var k=1;k<15;k++)document.write("<td id=a"+(k<10?"0"+k:k)+"18>"+sum0("a",k))</script>
-<tr><th>/gr%<script>for(var k=1;k<15;k++)document.write("<td id=a"+(k<10?"0"+k:k)+"19>"+sum1("a",k))</script>
-<tr><th>rank<script>rank("a",15)</script>
-</table>
-
-<p>Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  The Apple IIgs has to use slower way to draw images because its graphics incapable to show 256 raster lines like other computers.  I can estimate that this makes the Apple IIgs graphic performance about 20% lower.
+<p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
 <p>Emulators were used to get these results.
 
@@ -213,24 +167,22 @@ The Sanyo MPC-25FD is a typical MSX2 computer.  The Panasonic FS-A1GT is an MSX 
 
 <p>Qemulator appears to be about 7% faster than real hardware.  So the unexpanded QL results are adjusted with this 7%.  Real QL results have been provided by mk79.  A lot of thanks to him.  The data is also used for the QL with external memory.  It seems that pcem is also about 7% faster than the real IBM PC XT/AT but I have only indirect information about this so I didn't apply any correction to data from pcem.
 
-<p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
-
-<p>The next table contains approximate values of efficiency reciprocals (ER) for the tested CPUs.  These values are calculated by multiplication of the total time of the Mandelbrot calculations for 16 first Mandelbrot pictures by the effective CPU frequency.  The ER value reflects the efficiency of CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
+<p>The next table contains approximate values of efficiency reciprocals (ER) for the tested CPUs at effecive frequencies (EF) given.  These values are calculated by multiplication of the total time of the Mandelbrot calculations for 16 first Mandelbrot pictures by the effective CPU frequency.  The ER value reflects the efficiency of CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
 
 <table border=1>
-<tr align=center><th>Rank <th>Processor <th>ER
-<tr align=center><th>1 <td>ARM2 <script>res1("archi", "a0518")</script>
-<tr align=center><th>2 <td>80286 <script>res2("pcat", "pcat", "a1018", "a1118")</script>
-<tr align=center><th>3 <td>68020 <script>res2("a1200q", "a1200q", "a0818", "a0918")</script>
-<tr align=center><th>4 <td>65816 <script>res1("iigs", "a1218")</script>
-<tr align=center><th>5 <td>R800 <script>res1("turbor", "a1318")</script>
-<tr align=center><th>6 <td>68000 <script>res1("a500", "a0218")</script>
-<tr align=center><th>7 <td>8088 <script>res2("pcxt", "pcxt", "a0318", "a0418")</script>
-<tr align=center><th>8 <td>K1801BM1 <script>res2("bk10fq", "bk11fq", "b0118", "a0118")</script>
-<tr align=center><th>9 <td>6502 <script>res2("plus4", "bbc", "b0118", "b0518")</script>
-<tr align=center><th>10<td>68008 <script>res2("ql", "ql", "a0618", "a0718")</script>
-<tr align=center><th>11<td>Z80 <script>res2("cpc", "cpc", "b0318", "b0418")</script>
-<tr align=center><th>12<td>8080 <script>res2("corv", "corv", "b0718", "b0818")</script>
+<tr align=center><th>Rank <th>Processor <th>Year <th>EF<th>ER
+<tr align=center><th>1 <td>ARM2 <td>1987 <script>findER("ARM2")</script>
+<tr align=center><th>2 <td>80286 <td>1982 <script>findER("80286")</script>
+<tr align=center><th>3 <td>68020 <td>1984 <script>findER("68020")</script>
+<tr align=center><th>4 <td>65816 <td>1982 <script>findER("65816")</script>
+<tr align=center><th>5 <td>R800 <td>1990 <script>findER("R800")</script>
+<tr align=center><th>6 <td>68000 <td>1979 <script>findER("68000")</script>
+<tr align=center><th>7 <td>8088 <td>1978 <script>findER("8088")</script>
+<tr align=center><th>8 <td>K1801BM1 <td>1981 <script>findER("K1801VM1")</script>
+<tr align=center><th>9 <td>6502 <td>1975 <script>findER("6502")</script>
+<tr align=center><th>10<td>68008 <td>1982 <script>findER("68008")</script>
+<tr align=center><th>11<td>Z80 <td>1976 <script>findER("Z80")</script>
+<tr align=center><th>12<td>8080 <td>1974 <script>findER("8080")</script>
 </table>
 
 <p>It is also interesting to compare the code density for this task.  Two values are provided for this: the total program size and the size of the main loop.
@@ -249,7 +201,7 @@ The Sanyo MPC-25FD is a typical MSX2 computer.  The Panasonic FS-A1GT is an MSX 
 <tr align=center><th>5 <td style=text-align:center>Amiga <td>68000 <td>2360 
 <tr align=center><th>6 <td style=text-align:center>Amstrad, 16c <td>Z80 <td>979 <td rowspan=4>54 <td rowspan=4>37
 <tr align=center><th>7 <td style=text-align:center>Amstrad, 4c <td>Z80 <td>1016 
-<tr align=center><th>8 <td style=text-align:center>MSX2, rotated <td>Z80 <td>1169 
+<tr align=center><th>8 <td style=text-align:center>MSX2, rotated <td>Z80 <td>1462 
 <tr align=center><th>9 <td style=text-align:center>MSX2, interlaced <td>Z80 <td>1532 
 <tr align=center><th>10<td style=text-align:center>Apple IIgs <td>65816 <td>1282 <td>73 <td>39
 <tr align=center><th>11<td style=text-align:center>Corvette, color<td>8080 <td>1057 <td rowspan=2>84 <td rowspan=2>66
