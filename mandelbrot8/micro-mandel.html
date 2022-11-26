@@ -40,7 +40,7 @@ ma.push({computer: "Panasonic FS-1GT (rotated)", year: 0, cpu: "R800", freq: 7.1
 
 function p00(x) {
    var v = Math.round(x*100)/100
-   if (Math.round(v*100)%100 == 0) v = v + "00"
+   if (Math.round(v*100)%100 == 0) v = v + ".00"
    else if (Math.round(v*100)%10 == 0) v = v + "0"
    return v
 }
@@ -88,7 +88,7 @@ function findER(a) {
 <tr><td>128x256, 16 colors<td rowspan=8>128x256x16 <td>
 <tr><th>5<td style=text-align:center>Commodore +4 (PAL), 6502@1.7 (<span id=plus4>1</span>) MHz<td>160x256, 4 colors<td>2 flashing dots/pixel
 <tr><th>6<td style=text-align:center>IBM PC XT (EGA), 8088@<span id=pcxt>4.8</span> MHz<td rowspan=2>640x350, 16 colors<td>
-<tr><th>7<td style=text-align:center>IBM PC AT (EGA), 80286@<span id=pcat>6</span> MHz, 0WS<td>
+<tr><th>7<td style=text-align:center>IBM PC AT (EGA), 80286@<span id=pcat>6</span> MHz, 0ws<td>
 <tr><th>8<td style=text-align:center>Amiga 500 (PAL), 68000@<span id=a500>7.1</span> MHz<td rowspan=3>320x256, 16 colors<td>
 <tr><th>9<td style=text-align:center>Amiga 1200 (PAL), 68020@<span id=a1200q>14.2</span> MHz<td>
 <tr><th>10<td style=text-align:center>Acorn Archimedes 305, ARM2@<span id=archi>8</span> MHz<td>
