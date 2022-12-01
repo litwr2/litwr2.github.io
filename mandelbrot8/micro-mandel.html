@@ -137,25 +137,93 @@ The Sanyo MPC-25FD is a typical MSX2 computer.  The Panasonic FS-A1GT is an MSX 
 <table border=1>
 <script>
 ma.sort(function(a, b){ return a.tsum - b.tsum })
-document.write("<tr><th>#<th>System<th>v<th>nc")
+document.write("<tr><th>#<th>System<br>CPU<br>Video [Window]<th>v<th>nc")
 for (var k = 1; k <= 8; k++) document.write("<th>" + (2*k-1) + "/" + (2*k))
-document.write("<th>Total<br>CPU<br>Gr %<th>Source<br>Comments")
+document.write("<th>Total<br>CPU<br>Gr&nbsp;%<th>Source<br>Comments")
+var r = []
 for (var i = 0; i < ma.length; i++) {
-   document.write("<tr><th>" + (i + 1) + "<td style=text-align:left><a href=" + ma[i].href + ">" + ma[i].computer + "</a>")
-   if (ma[i].variant != "") document.write(" (" + ma[i].variant + ")")
-   document.write("<br>" + ma[i].cpu + "@" + ma[i].freq)
-   if (ma[i].freq != ma[i].efreq) document.write("(" + ma[i].efreq + ")")
-   document.write("MHz<br>" + ma[i].video_mode)
-   if (ma[i].window != ma[i].video_mode) document.write(" [" + ma[i].window + "]")
-   document.write("<td>" + ma[i].version + "<td>" + p00(ma[i].tnc))
-   for (var k = 0; k < 8; k += 1) document.write("<td>" + p00(ma[i].t[2*k]) + "<br>" + p00(ma[i].t[2*k + 1]))
-   document.write("<td>" + p00(ma[i].tsum) + "<br>" + p00(ma[i].psum) + "<br>" + p00(100*(1-ma[i].psum/ma[i].tsum)) + "<td>" + ma[i].source)
-   if (ma[i].comments != "") document.write(",<br>" + ma[i].comments)
+   var v = "<a href=" + ma[i].href + ">" + ma[i].computer + "</a>"
+   var v1 = []
+   var v2 = ma[i].source
+   if (ma[i].variant != "") v += " (" + ma[i].variant + ")"
+   v += "<br>" + ma[i].cpu + "@" + ma[i].freq
+   if (ma[i].freq != ma[i].efreq) v += "(" + ma[i].efreq + ")"
+   v += "MHz<br>" + ma[i].video_mode
+   if (ma[i].window != ma[i].video_mode) v += " [" + ma[i].window + "]"
+   for (var k = 0; k < 8; k += 1) v1.push(p00(ma[i].t[2*k]) + "<br>" + p00(ma[i].t[2*k + 1]))
+   if (ma[i].comments != "") v2 += ",<br>" + ma[i].comments
+   r.push({id: v, v0: 1, tnc0: 1, v1: v1, v10:1, tcg: p00(ma[i].tsum) + "<br>" + p00(ma[i].psum) + "<br>" + p00(100*(1-ma[i].psum/ma[i].tsum)), tcg0: 1, sc: v2, sc0: 1})
+}
+for (var i = 0; i < ma.length; i++) {
+   var k = i
+   if (r[i].v0 != 0) {
+      while (k + 1 < r.length && ma[k].version == ma[k + 1].version) k++
+      if (k > i) {
+         r[i].v0 = k - i + 1
+         for (var j = i + 1; j <= k; j++) r[j].v0 = 0
+      }
+   }
+   if (r[i].tnc0 != 0) {
+       k = i
+       while (k + 1 < r.length && ma[k].tnc == ma[k + 1].tnc) k++
+       if (k > i) {
+          r[i].tnc0 = k - i + 1
+          for (var j = i + 1; j <= k; j++) r[j].tnc0 = 0
+       }
+   }
+   if (r[i].v10 != 0) {
+       k = i
+       while (k + 1 < r.length && r[k].v1[0] == r[k + 1].v1[0] && r[k].v1[1] == r[k + 1].v1[1] && r[k].v1[2] == r[k + 1].v1[2] && r[k].v1[3] == r[k + 1].v1[3] && r[k].v1[4] == r[k + 1].v1[4] && r[k].v1[5] == r[k + 1].v1[5] && r[k].v1[6] == r[k + 1].v1[6] && r[k].v1[7] == r[k + 1].v1[7]) k++
+       if (k > i) {
+          r[i].v10 = k - i + 1
+          for (var j = i + 1; j <= k; j++) r[j].v10 = 0
+       }
+   }
+   if (r[i].tcg0 != 0) {
+       k = i
+       while (k + 1 < r.length && r[k].tcg == r[k + 1].tcg) k++
+       if (k > i) {
+          r[i].tcg0 = k - i + 1
+          for (var j = i + 1; j <= k; j++) r[j].tcg0 = 0
+       }
+   }
+   if (r[i].sc0 != 0) {
+       k = i
+       while (k + 1 < r.length && r[k].sc == r[k + 1].sc) k++
+       if (k > i) {
+          r[i].sc0 = k - i + 1
+          for (var j = i + 1; j <= k; j++) r[j].sc0 = 0
+       }
+   }
+}
+for (var i = 0; i < ma.length; i++) {
+   document.write("<tr><th>" + (i + 1) + "<td style=text-align:left>" + r[i].id)
+   if (r[i].v0 > 1) document.write("<td rowspan=" + r[i].v0 + ">")
+   if (r[i].v0 == 1) document.write("<td>")
+   if (r[i].v0 != 0) document.write(ma[i].version)
+
+   if (r[i].tnc0 > 1) document.write("<td rowspan=" + r[i].tnc0 + ">")
+   if (r[i].tnc0 == 1) document.write("<td>")
+   if (r[i].tnc0 != 0) document.write(p00(ma[i].tnc))
+
+   for (var k = 0; k < 8; k++) {
+      if (r[i].v10 > 1) document.write("<td rowspan=" + r[i].v10 + ">")
+      if (r[i].v10 == 1) document.write("<td>")
+      if (r[i].v10 != 0) document.write(r[i].v1[k])
+   }
+
+   if (r[i].tcg0 > 1) document.write("<td rowspan=" + r[i].tcg0 + ">")
+   if (r[i].tcg0 == 1) document.write("<td>")
+   if (r[i].tcg0 != 0) document.write(r[i].tcg)
+
+   if (r[i].sc0 > 1) document.write("<td rowspan=" + r[i].sc0 + ">")
+   if (r[i].sc0 == 1) document.write("<td>")
+   if (r[i].sc0 != 0) document.write(r[i].sc)
 }
 </script>
 </table>
 
-<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  The Apple IIgs has to use slower way to draw images because its graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes the Apple IIgs graphic performance about 30-40% lower.
+<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  The Apple IIgs has to use a slower way to draw images because its graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes the Apple IIgs graphic performance about 30-40% lower.
 
 <p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
