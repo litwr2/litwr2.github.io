@@ -12,31 +12,50 @@ table, th, td {
 </style>
 <script>
 var ma = []
-//ma.push({computer: "", year: 0, cpu: "", freq: 0, efreq: 0, OS: "", video_mode: "", window_mode: "", variant: "", version: 0, tnc: .0, t: [.0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0], source: "", href: "https://en.wikipedia.org/wiki/", screenshot: "", comments: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Commodore +4", year: 1987, cpu: "6502", freq: 1.7, efreq: 1, OS: "ROM Basic", video_mode: "160x256 4c", window_mode: "", variant: "interlaced/flashing", version: 5, tnc: 1.11, t: [4.66, 5.36, 6.21, 7.59, 9.02, 11.58, 14.84, 21.62, 29.08, 34.78, 38.88, 39.40, 38.34, 37.16, 35.98, 34.74], source: "iron", comments: "", href: "https://en.wikipedia.org/wiki/Commodore_Plus/4", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "&#x411;K0010", year: 1985, cpu: "K1801VM", freq: 3, efreq: 2, OS: "ROM Monitor", video_mode: "256x256 4c", window_mode: "", variant: "", version: 2, tnc: 0.42, t: [3.63, 3.89, 4.20, 4.70, 5.22, 6.15, 7.34, 9.81, 12.51, 14.59, 16.09, 16.27, 15.89, 15.46, 15.04, 14.59], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0010", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "CPC (16 colors)", year: 0, cpu: "Z80", freq: 4, efreq: 3.2, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.83, t: [2.55, 2.86, 3.22, 3.82, 4.44, 5.54, 6.95, 9.89, 13.10, 15.56, 17.34, 17.56, 17.11, 16.60, 16.09, 15.56], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amstrad_CPC", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "CPC (4 colors)", year: 0, cpu: "Z80", freq: 4, efreq: 3.2, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 1.02, t: [2.75, 3.05, 3.41, 4.02, 4.63, 5.74, 7.15, 10.08, 13.30, 15.76, 17.54, 17.76, 17.31, 16.80, 16.28, 15.76], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amstrad_CPC", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "BBC Micro (16 colors)", year: 0, cpu: "6502", freq: 2, efreq: 2, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.41, t: [2.21, 2.57, 3.00, 3.71, 4.43, 5.73, 7.39, 10.83, 14.61, 17.50, 19.59, 19.85, 19.32, 18.72, 18.11, 17.49], source: "", comments: "", href: "https://en.wikipedia.org/wiki/BBC_Micro", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "BBC Micro (4 colors)", year: 0, cpu: "6502", freq: 2, efreq: 2, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.51, t: [2.32, 2.68, 3.11, 3.82, 4.54, 5.84, 7.50, 10.94, 14.72, 17.62, 19.71, 19.96, 19.43, 18.83, 18.23, 17.60], source: "", comments: "", href: "https://en.wikipedia.org/wiki/BBC_Micro", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Corvette (color mode)", year: 0, cpu: "8080", freq: 2.5, efreq: 2.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 2.01, t: [5.00, 5.54, 6.22, 7.32, 8.44, 10.46, 13.04, 18.42, 24.30, 28.72, 32.06, 32.46, 31.62, 30.70, 29.76, 28.78], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Corvette_(computer)", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Corvette (planar mode)", year: 0, cpu: "8080", freq: 2.5, efreq: 2.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 2.38, t: [5.38, 5.92, 6.60, 7.66, 8.82, 10.84, 13.42, 18.78, 24.66, 29.16, 32.42, 32.82, 32.02, 31.06, 30.12, 29.16], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Corvette_(computer)", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Sanyo MPC-25FD (interlaced)", year: 0, cpu: "Z80", freq: 3.58, efreq: 2.6, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 0.66, t: [2.82, 3.18, 3.65, 4.38, 5.15, 6.55, 8.30, 11.97, 15.98, 19.05, 21.28, 21.57, 21.00, 20.37, 19.72, 19.07], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Sanyo MPC-25FD (rotated)", year: 0, cpu: "Z80", freq: 3.58, efreq: 2.6, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 1.18, t: [3.35, 3.70, 4.17, 4.92, 5.68, 7.07, 8.83, 12.48, 16.50, 19.58, 21.80, 22.08, 21.52, 20.88, 20.23, 19.58], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "&#x411;K0011", year: 0, cpu: "K1801VM1", freq: 4, efreq: 2.3, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.38, t: [3.40, 3.63, 3.91, 4.37, 4.84, 5.68, 6.76, 8.99, 11.45, 13.32, 14.69, 14.85, 14.51, 14.12, 13.73, 13.33], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0011M", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Amiga 500", year: 0, cpu: "68000", freq: 7.1, efreq: 7.1, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.49, t: [0.86, 0.90, 0.98, 1.08, 1.22, 1.42, 1.70, 2.28, 2.90, 3.36, 3.72, 3.76, 3.68, 3.58, 3.46, 3.38], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_500", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "IBM PC XT EGA (mode 0)", year: 0, cpu: "8088", freq: 4.77, efreq: 4.77, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 1.06, t: [1.85, 1.97, 2.13, 2.38, 2.64, 3.11, 3.71, 4.95, 6.31, 7.36, 8.11, 8.21, 8.02, 7.80, 7.59, 7.37], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer_XT", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "IBM PC XT EGA (mode 2)", year: 0, cpu: "8088", freq: 4.77, efreq: 4.77, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.85, t: [1.64, 1.77, 1.93, 2.18, 2.44, 2.91, 3.51, 4.75, 6.11, 7.15, 7.91, 8.00, 7.82, 7.60, 7.38, 7.16], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer_XT", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Acorn Archimedes 305", year: 0, cpu: "ARM2", freq: 8, efreq: 8, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.02, t: [0.12, 0.14, 0.17, 0.21, 0.25, 0.32, 0.41, 0.59, 0.80, 0.96, 1.07, 1.09, 1.06, 1.03, 0.99, 0.96], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Acorn_Archimedes", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "QL", year: 0, cpu: "68008", freq: 7.5, efreq: 4.3, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.75, t: [1.94, 2.16, 2.39, 2.61, 3.18, 3.91, 4.83, 6.75, 8.82, 10.42, 11.60, 11.75, 11.45, 11.13, 10.79, 10.45], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Sinclair_QL", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "QL (external RAM)", year: 0, cpu: "68008", freq: 7.5, efreq: 7.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.48, t: [1.14, 1.26, 1.38, 1.50, 1.83, 2.23, 2.77, 3.86, 5.03, 5.96, 6.63, 6.71, 6.54, 6.37, 6.16, 5.97], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Sinclair_QL", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Amiga 1200", year: 0, cpu: "68020", freq: 14.2, efreq: 0, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.18, t: [0.30, 0.32, 0.34, 0.38, 0.42, 0.50, 0.60, 0.78, 1.00, 1.16, 1.28, 1.28, 1.26, 1.24, 1.20, 1.18], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_1200", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Amiga 1200 (fast RAM)", year: 0, cpu: "68020", freq: 14.2, efreq: 14.2, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.15, t: [0.24, 0.26, 0.28, 0.30, 0.34, 0.40, 0.48, 0.62, 0.80, 0.92, 1.02, 1.04, 1.00, 0.98, 0.96, 0.94], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_1200", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "IBM PC AT EGA (mode 0)", year: 0, cpu: "80286", freq: 6, efreq: 6, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.31, t: [0.52, 0.55, 0.59, 0.65, 0.72, 0.84, 0.99, 1.30, 1.64, 1.91, 2.10, 2.12, 2.07, 2.02, 1.97, 1.91], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "IBM PC AT EGA (mode 2)", year: 0, cpu: "80286", freq: 6, efreq: 6, OS: "", video_mode: "", window_mode: "", variant: "", version: 3, tnc: 0.29, t: [0.50, 0.53, 0.57, 0.63, 0.70, 0.81, 0.96, 1.28, 1.62, 1.88, 2.07, 2.10, 2.05, 2.00, 1.94, 1.89], source: "", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Apple II gs", year: 0, cpu: "65816", freq: 2.86, efreq: 2.5, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 0.42, t: [1.20, 1.33, 1.52, 1.80, 2.08, 2.62, 3.28, 4.67, 6.18, 7.35, 8.18, 8.28, 8.07, 7.83, 7.58, 7.33], source: "", comments: "", href: "https://en.wikipedia.org/wiki/Apple_IIGS", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Panasonic FS-1GT (interlaced)", year: 0, cpu: "R800", freq: 7.1, efreq: 7.1, OS: "", video_mode: "", window_mode: "", variant: "", version: 1, tnc: 0.18, t: [0.52, 0.55, 0.62, 0.73, 0.83, 1.03, 1.27, 1.78, 2.35, 2.78, 3.10, 3.13, 3.05, 2.97, 2.87, 2.78], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
-ma.push({computer: "Panasonic FS-1GT (rotated)", year: 0, cpu: "R800", freq: 7.1, efreq: 7.1, OS: "", video_mode: "", window_mode: "", variant: "", version: 2, tnc: 0.47, t: [0.80, 0.85, 0.90, 1.02, 1.12, 1.32, 1.57, 2.08, 2.65, 3.08, 3.40, 3.43, 3.37, 3.27, 3.18, 3.08], source: "", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0})
+//ma.push({computer: "", year: 0, cpu: "", freq: 0, efreq: 0, OS: "", video_mode: "", window: "", variant: "", version: 0, tnc: .0, t: [.0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0, .0], source: "", href: "https://en.wikipedia.org/wiki/", screenshot: "", comments: "", main: 0, tsum: .0, psum: .0})
+ma.push({computer: "Commodore +4", year: 1984, cpu: "6502", freq: 1.7, efreq: 1, OS: "ROM Basic", video_mode: "160x256:4c", window: "128x256:4c", variant: "flashing", version: 5, tnc: 1.11, t: [4.66, 5.36, 6.21, 7.59, 9.02, 11.58, 14.84, 21.62, 29.08, 34.78, 38.88, 39.40, 38.34, 37.16, 35.98, 34.74], source: "iron", comments: "2 flashing dots/pixel", href: "https://en.wikipedia.org/wiki/Commodore_Plus/4", screenshot: "2x1 texture/pixel", main: 0, tsum: .0, psum: .0, n: 5})
+ma.push({computer: "&#x411;K0010", year: 1985, cpu: "K1801BM1", freq: 3, efreq: 2, OS: "ROM Monitor", video_mode: "256x256:4c", window: "256x256:4c", variant: "color", version: 2, tnc: 0.42, t: [3.63, 3.89, 4.20, 4.70, 5.22, 6.15, 7.34, 9.81, 12.51, 14.59, 16.09, 16.27, 15.89, 15.46, 15.04, 14.59], source: "BK2010 v0.5", comments: "2x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0010", screenshot: "", main: 0, tsum: .0, psum: .0, n: 1})
+ma.push({computer: "&#x411;K0010", year: 1985, cpu: "K1801BM1", freq: 3, efreq: 2, OS: "ROM Monitor", video_mode: "512x256:2c", window: "512x256:2c", variant: "monochrome", version: 2, tnc: 0.42, t: [3.63, 3.89, 4.20, 4.70, 5.22, 6.15, 7.34, 9.81, 12.51, 14.59, 16.09, 16.27, 15.89, 15.46, 15.04, 14.59], source: "BK2010 v0.5", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0010", screenshot: "", main: 0, tsum: .0, psum: .0, n: 1})
+ma.push({computer: "Amstrad CPC", year: 1984, cpu: "Z80", freq: 4, efreq: 3.2, OS: "ROM Basic", video_mode: "128x256:16c", window: "128x256:16c", variant: "16 colors", version: 2, tnc: 0.83, t: [2.55, 2.86, 3.22, 3.82, 4.44, 5.54, 6.95, 9.89, 13.10, 15.56, 17.34, 17.56, 17.11, 16.60, 16.09, 15.56], source: "iron", comments: "", href: "https://en.wikipedia.org/wiki/Amstrad_CPC", screenshot: "", main: 0, tsum: .0, psum: .0, n: 3})
+ma.push({computer: "Amstrad CPC", year: 1984, cpu: "Z80", freq: 4, efreq: 3.2, OS: "ROM Basic", video_mode: "256x256:4c", window: "256x256:4c", variant: "4 colors", version: 2, tnc: 1.02, t: [2.75, 3.05, 3.41, 4.02, 4.63, 5.74, 7.15, 10.08, 13.30, 15.76, 17.54, 17.76, 17.31, 16.80, 16.28, 15.76], source: "iron", comments: "2x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Amstrad_CPC", screenshot: "", main: 0, tsum: .0, psum: .0, n: 3})
+ma.push({computer: "BBC Micro", year: 1981, cpu: "6502", freq: 2, efreq: 2, OS: "ROM Basic", video_mode: "128x256:16c", window: "128x256:16c", variant: "16 colors", version: 3, tnc: 0.41, t: [2.21, 2.57, 3.00, 3.71, 4.43, 5.73, 7.39, 10.83, 14.61, 17.50, 19.59, 19.85, 19.32, 18.72, 18.11, 17.49], source: "b-em v-ec63538", comments: "", href: "https://en.wikipedia.org/wiki/BBC_Micro", screenshot: "", main: 0, tsum: .0, psum: .0, n: 4})
+ma.push({computer: "BBC Micro", year: 1981, cpu: "6502", freq: 2, efreq: 2, OS: "ROM Basic", video_mode: "256x256:4c", window: "256x256:4c", variant: "4 colors", version: 3, tnc: 0.51, t: [2.32, 2.68, 3.11, 3.82, 4.54, 5.84, 7.50, 10.94, 14.72, 17.62, 19.71, 19.96, 19.43, 18.83, 18.23, 17.60], source: "b-em v-ec63538", comments: "2x1 texture/pixel", href: "https://en.wikipedia.org/wiki/BBC_Micro", screenshot: "", main: 0, tsum: .0, psum: .0, n: 4})
+ma.push({computer: "Corvette", year: 1985, cpu: "8080", freq: 2.5, efreq: 2.5, OS: "CP/M", video_mode: "512x256:8c", window: "256x256:4c", variant: "color mode", version: 1, tnc: 2.01, t: [5.00, 5.54, 6.22, 7.32, 8.44, 10.46, 13.04, 18.42, 24.30, 28.72, 32.06, 32.46, 31.62, 30.70, 29.76, 28.78], source: "emu80 v4.0.396", comments: "2x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Corvette_(computer)", screenshot: "", main: 0, tsum: .0, psum: .0, n: 12})
+ma.push({computer: "Corvette", year: 1985, cpu: "8080", freq: 2.5, efreq: 2.5, OS: "CP/M", video_mode: "512x256:8c", window: "256x256:8c", variant: "planar mode", version: 1, tnc: 2.38, t: [5.38, 5.92, 6.60, 7.66, 8.82, 10.84, 13.42, 18.78, 24.66, 29.16, 32.42, 32.82, 32.02, 31.06, 30.12, 29.16], source: "emu80 v4.0.396", comments: "2x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Corvette_(computer)", screenshot: "", main: 0, tsum: .0, psum: .0, n: 12})
+ma.push({computer: "Sanyo MPC-25FD", year: 1985, cpu: "Z80", freq: 3.58, efreq: 2.8, OS: "ROM Basic", video_mode: "256x384i:16c", window: "128x256:16c", variant: "interlaced", version: 1, tnc: 0.66, t: [2.82, 3.18, 3.65, 4.38, 5.15, 6.55, 8.30, 11.97, 15.98, 19.05, 21.28, 21.57, 21.00, 20.37, 19.72, 19.07], source: "openMSX 0.15.0", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0, n: 14})
+ma.push({computer: "Sanyo MPC-25FD", year: 1985, cpu: "Z80", freq: 3.58, efreq: 2.8, OS: "ROM Basic", video_mode: "256x192:176c", window: "256x128:16c", variant: "rotated", version: 2, tnc: 1.18, t: [3.35, 3.70, 4.17, 4.92, 5.68, 7.07, 8.83, 12.48, 16.50, 19.58, 21.80, 22.08, 21.52, 20.88, 20.23, 19.58], source: "openMSX 0.15.0", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0, n: 14})
+ma.push({computer: "&#x411;K0011", year: 1989, cpu: "K1801BM1", freq: 4, efreq: 2.3, OS: "BK0010 emu", video_mode: "256x256:4c", window: "256x256:4c", variant: "color", version: 3, tnc: 0.38, t: [3.40, 3.63, 3.91, 4.37, 4.84, 5.68, 6.76, 8.99, 11.45, 13.32, 14.69, 14.85, 14.51, 14.12, 13.73, 13.33], source: "GID v3.10", comments: "2x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0011M", screenshot: "", main: 0, tsum: .0, psum: .0, n: 2})
+ma.push({computer: "&#x411;K0011", year: 1989, cpu: "K1801BM1", freq: 4, efreq: 2.3, OS: "BK0010 emu", video_mode: "512x256:2c", window: "512x256:2c", variant: "monochrome", version: 3, tnc: 0.38, t: [3.40, 3.63, 3.91, 4.37, 4.84, 5.68, 6.76, 8.99, 11.45, 13.32, 14.69, 14.85, 14.51, 14.12, 13.73, 13.33], source: "GID v3.10", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Electronika_BK#BK-0011M", screenshot: "", main: 0, tsum: .0, psum: .0, n: 2})
+ma.push({computer: "Amiga 500", year: 1987, cpu: "68000", freq: 7.1, efreq: 7.1, OS: "WB", video_mode: "320x256:16c", window: "128x256:16c", variant: "", version: 3, tnc: 0.49, t: [0.86, 0.90, 0.98, 1.08, 1.22, 1.42, 1.70, 2.28, 2.90, 3.36, 3.72, 3.76, 3.68, 3.58, 3.46, 3.38], source: "FS-UAE 3.0.5", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_500", screenshot: "", main: 0, tsum: .0, psum: .0, n: 8})
+ma.push({computer: "IBM PC XT EGA", year: 1984, cpu: "8088", freq: 4.77, efreq: 4.77, OS: "DOS", video_mode: "640x350:16c", window: "128x256:16c", variant: "mode 0", version: 3, tnc: 1.06, t: [1.85, 1.97, 2.13, 2.38, 2.64, 3.11, 3.71, 4.95, 6.31, 7.36, 8.11, 8.21, 8.02, 7.80, 7.59, 7.37], source: "pcem 17", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer_XT", screenshot: "", main: 0, tsum: .0, psum: .0, n: 6})
+ma.push({computer: "IBM PC XT EGA", year: 1984, cpu: "8088", freq: 4.77, efreq: 4.77, OS: "DOS", video_mode: "640x350:16c", window: "128x256:16c", variant: "mode 2", version: 3, tnc: 0.85, t: [1.64, 1.77, 1.93, 2.18, 2.44, 2.91, 3.51, 4.75, 6.11, 7.15, 7.91, 8.00, 7.82, 7.60, 7.38, 7.16], source: "pcem 17", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer_XT", screenshot: "", main: 0, tsum: .0, psum: .0, n: 6})
+ma.push({computer: "Acorn Archimedes 305", year: 1987, cpu: "ARM2", freq: 8, efreq: 8, OS: "RiscOS", video_mode: "320x256:16c", window: "128x256:16c", variant: "", version: 2, tnc: 0.02, t: [0.13, 0.15, 0.18, 0.22, 0.26, 0.34, 0.43, 0.63, 0.85, 1.02, 1.14, 1.16, 1.13, 1.09, 1.06, 1.02], source: "Arculator v2.1", comments: "", href: "https://en.wikipedia.org/wiki/Acorn_Archimedes", screenshot: "", main: 0, tsum: .0, psum: .0, n: 10})
+ma.push({computer: "Sinclair QL", year: 1984, cpu: "68008", freq: 7.5, efreq: 4.3, OS: "ROM Basic", video_mode: "256x256:16c", window: "128x256:16c", variant: "", version: 2, tnc: 0.75, t: [1.94, 2.16, 2.39, 2.61, 3.18, 3.91, 4.83, 6.75, 8.82, 10.42, 11.60, 11.75, 11.45, 11.13, 10.79, 10.45], source: "QemuLator 3.4<br>(adjusted)", comments: "", href: "https://en.wikipedia.org/wiki/Sinclair_QL", screenshot: "", main: 0, tsum: .0, psum: .0, n: 11})
+ma.push({computer: "Sinclair QL external RAM", year: 1985, cpu: "68008", freq: 7.5, efreq: 7.5, OS: "ROM Basic", video_mode: "256x256:16c", window: "256x256:16c", variant: "", version: 2, tnc: 0.48, t: [1.14, 1.26, 1.38, 1.50, 1.83, 2.23, 2.77, 3.86, 5.03, 5.96, 6.63, 6.71, 6.54, 6.37, 6.16, 5.97], source: "QemuLator 3.4<br>(adjusted)", comments: "", href: "https://en.wikipedia.org/wiki/Sinclair_QL", screenshot: "", main: 0, tsum: .0, psum: .0, n: 11})
+ma.push({computer: "Amiga 1200", year: 1993, cpu: "68020", freq: 14.2, efreq: 14.2, OS: "WB", video_mode: "320x256:16c", window: "128x256:16c", variant: "", version: 3, tnc: 0.18, t: [0.30, 0.32, 0.34, 0.38, 0.42, 0.50, 0.60, 0.78, 1.00, 1.16, 1.28, 1.28, 1.26, 1.24, 1.20, 1.18], source: "FS-UAE 3.1.68", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_1200", screenshot: "", main: 0, tsum: .0, psum: .0, n: 9})
+ma.push({computer: "Amiga 1200 fast RAM", year: 1993, cpu: "68020", freq: 14.2, efreq: 14.2, OS: "WB", video_mode: "320x256:16c", window: "128x256:16c", variant: "", version: 3, tnc: 0.15, t: [0.24, 0.26, 0.28, 0.30, 0.34, 0.40, 0.48, 0.62, 0.80, 0.92, 1.02, 1.04, 1.00, 0.98, 0.96, 0.94], source: "FS-UAE 3.1.68", comments: "", href: "https://en.wikipedia.org/wiki/Amiga_1200", screenshot: "", main: 0, tsum: .0, psum: .0, n: 9})
+ma.push({computer: "IBM PC AT EGA", year: 1984, cpu: "80286", freq: 6, efreq: 6, OS: "DOS", video_mode: "640x350:16c", window: "128x256:16c", variant: "mode 0", version: 3, tnc: 0.31, t: [0.52, 0.55, 0.59, 0.65, 0.72, 0.84, 0.99, 1.30, 1.64, 1.91, 2.10, 2.12, 2.07, 2.02, 1.97, 1.91], source: "pcem 17", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT", screenshot: "", main: 0, tsum: .0, psum: .0, n: 7})
+ma.push({computer: "IBM PC AT EGA", year: 1984, cpu: "80286", freq: 6, efreq: 6, OS: "DOS", video_mode: "640x350:16c", window: "128x256:16c", variant: "mode 2", version: 3, tnc: 0.29, t: [0.50, 0.53, 0.57, 0.63, 0.70, 0.81, 0.96, 1.28, 1.62, 1.88, 2.07, 2.10, 2.05, 2.00, 1.94, 1.89], source: "pcem 17", comments: "", href: "https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT", screenshot: "", main: 0, tsum: .0, psum: .0, n: 7})
+ma.push({computer: "Apple II gs", year: 1986, cpu: "65816", freq: 2.86, efreq: 2.5, OS: "ROM Basic", video_mode: "320x200:16c", window: "256x128:16c", variant: "rotated", version: 1, tnc: 0.42, t: [1.20, 1.33, 1.52, 1.80, 2.08, 2.62, 3.28, 4.67, 6.18, 7.35, 8.18, 8.28, 8.07, 7.83, 7.58, 7.33], source: "MAME v0.239", comments: "", href: "https://en.wikipedia.org/wiki/Apple_IIGS", screenshot: "", main: 0, tsum: .0, psum: .0, n: 13})
+ma.push({computer: "Panasonic FS-1GT", year: 1991, cpu: "R800", freq: 7.1, efreq: 7, OS: "ROM Basic", video_mode: "256x384i:16c", window: "128x256:16c", variant: "interlaced", version: 1, tnc: 0.18, t: [0.52, 0.55, 0.62, 0.73, 0.83, 1.03, 1.27, 1.78, 2.35, 2.78, 3.10, 3.13, 3.05, 2.97, 2.87, 2.78], source: "openMSX 0.15.0", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0, n: 15})
+ma.push({computer: "Panasonic FS-1GT", year: 1991, cpu: "R800", freq: 7.1, efreq: 7, OS: "ROM Basic", video_mode: "256x192:16c", window: "256x128:16c", variant: "rotated", version: 2, tnc: 0.47, t: [0.80, 0.85, 0.90, 1.02, 1.12, 1.32, 1.57, 2.08, 2.65, 3.08, 3.40, 3.43, 3.37, 3.27, 3.18, 3.08], source: "openMSX 0.15.0", comments: "", href: "https://en.wikipedia.org/wiki/MSX", screenshot: "", main: 0, tsum: .0, psum: .0, n: 15})
+ma.push({computer: "Geneve 9640", year: 1987, cpu: "TMS9995", freq: 12, efreq: 12, OS: "MDOS", video_mode: "256x192:16c", window: "256x128:16c", variant: "rotated", version: 1, tnc: 0.81, t: [1.23, 1.29, 1.38, 1.51, 1.66, 1.91, 2.23, 2.90, 3.61, 4.18, 4.58, 4.63, 4.53, 4.41, 4.29, 4.18], source: "MAME v0.239", comments: "", href: "https://en.wikipedia.org/wiki/Geneve_9640", screenshot: "", main: 0, tsum: .0, psum: .0, n: 16})
+ma.push({computer: "Geneve 9640", year: 1987, cpu: "TMS9995", freq: 12, efreq: 12, OS: "MDOS", video_mode: "256x384i:16c", window: "128x256:16c", variant: "interlaced", version: 1, tnc: 0.36, t: [0.78, 0.84, 0.93, 1.06, 1.21, 1.46, 1.78, 2.45, 3.16, 3.73, 4.13, 4.18, 4.08, 3.96, 3.85, 3.73], source: "MAME v0.239", comments: "", href: "https://en.wikipedia.org/wiki/Geneve_9640", screenshot: "", main: 0, tsum: .0, psum: .0, n: 16})
+
+var cpu = []
+cpu.push({id: "ARM2", year: 1987})
+cpu.push({id: "80286", year: 1982})
+cpu.push({id: "68020", year: 1984})
+cpu.push({id: "65816", year: 1982})
+cpu.push({id: "R800", year: 1990})
+cpu.push({id: "68000", year: 1979})
+cpu.push({id: "8088", year: 1978})
+cpu.push({id: "K1801BM1", year: 1981})
+cpu.push({id: "6502", year: 1975})
+cpu.push({id: "68008", year: 1982})
+cpu.push({id: "TMS9995", year: 1981})
+cpu.push({id: "Z80", year: 1976})
+cpu.push({id: "8080", year: 1974})
 
 function p00(x) {
    var v = Math.round(x*100)/100
@@ -52,16 +71,18 @@ for (var i = 0; i < ma.length; i++) {
    ma[i].psum = v - ma[i].tnc*16
 }
 
-ma.sort(function(a, b){ return a.tsum - b.tsum })
-
 function findER(a) {
    var v = Infinity, k
-   for (i = 0; i < ma.length; i++) {
+   for (var i = 0; i < ma.length; i++) {
       var e = ma[i].efreq
-      if (e == 0) e = ma[i].freq
       if (a == ma[i].cpu && v > ma[i].psum*e) { v = ma[i].psum*e; k = ma[i].efreq }
    }
-   document.write("<td>" + Math.round(k*100)/100 + "<td>" + Math.round(v))
+   return Math.round(v)
+}
+
+function findfirst(c, v) {
+    for (var i = 0; i < ma.length; i++)
+        if (ma[i][c] == v) return i
 }
 </script>
 </head>
@@ -71,34 +92,20 @@ function findER(a) {
 
 <p>Visualizations of the 8th generations of this Mandelbrot are available <a href=https://litwr2.github.io/mandelbrot8/mandelbrot.html>here</a>.
 
-<p>All systems use the same algorithm that calculates 128x256 dots of Mandelbrot.  They also use almost the same ways to visualize it.  Every dot is encoded with 4 bits.  So all systems have to output exactly 16 KB of graphical data for every picture.  Detailed information about graphic modes used is in the next table (the number in parentheses is the effective CPU frequency).
-
-<table border=1>
-<tr><th>#
-<th>System
-<th>Video mode
-<th>Window
-<th>Comments
-<tr><th rowspan=2>1<td style=text-align:center rowspan=2>&#x411;K0010, K1801BM1@3(<span id=bk10fq>2</span>) MHz<td>512x256, monochrome<td>512x256x1 <td>4x1 texture/pixel
-<tr><td rowspan=3>256x256, 4 colors<td rowspan=3>256x256x4 <td rowspan=3>2x1 texture/pixel
-<tr><th>2<td style=text-align:center>&#x411;K0011, K1801BM1@4(<span id=bk11fq>2.3</span>) MHz
-<tr><th  rowspan=2>3<td style=text-align:center rowspan=2>Amstrad CPC, Z80@4(<span id=cpc>3.2</span>) MHz
-<tr><td>128x256, 16 colors<td>128x256x16<td>
-<tr><th rowspan=2>4<td style=text-align:center rowspan=2>BBC Micro, 6502@<span id=bbc>2</span> MHz<td>256x256, 4 colors<td>256x256x4 <td>2x1 texture/pixel
-<tr><td>128x256, 16 colors<td rowspan=8>128x256x16 <td>
-<tr><th>5<td style=text-align:center>Commodore +4 (PAL), 6502@1.7 (<span id=plus4>1</span>) MHz<td>160x256, 4 colors<td>2 flashing dots/pixel
-<tr><th>6<td style=text-align:center>IBM PC XT (EGA), 8088@<span id=pcxt>4.8</span> MHz<td rowspan=2>640x350, 16 colors<td>
-<tr><th>7<td style=text-align:center>IBM PC AT (EGA), 80286@<span id=pcat>6</span> MHz, 0ws<td>
-<tr><th>8<td style=text-align:center>Amiga 500 (PAL), 68000@<span id=a500>7.1</span> MHz<td rowspan=3>320x256, 16 colors<td>
-<tr><th>9<td style=text-align:center>Amiga 1200 (PAL), 68020@<span id=a1200q>14.2</span> MHz<td>
-<tr><th>10<td style=text-align:center>Acorn Archimedes 305, ARM2@<span id=archi>8</span> MHz<td>
-<tr><th>11<td style=text-align:center>Sinclair QL, 68008@<span id=ql>7.5M</span> MHz<td>256x256, 16 colors<td>
-<tr><th>12<td style=text-align:center>Corvette, 8080@<span id=corv>2.5</span> MHz<td>512x256, 8 colors<td>256x256x4 <td>2x1 texture/pixel
-<tr><th>13<td style=text-align:center>Apple IIgs, 65816@2.9(<span id=iigs>2.5</span>) MHz<td>320x200, 16 colors<td>256x128x16 <td>rotated image
-<tr><th rowspan=2>14<td style=text-align:center rowspan=2>Sanyo MPC-25FD, Z80@<span id=msx2>3.58MHz</span>, 1-2ws<td>256x384, 16 colors<td>128x256x16 <td>interlaced mode
-<tr><td>256x192, 16 colors<td>256x128x16 <td>rotated image
-<tr><th rowspan=2>15<td style=text-align:center rowspan=2>Panasonic FS-A1GT, R800@<span id=turbor>7.16MHz</span>, 0ws<td>256x384, 16 colors<td>128x256x16 <td>interlaced mode
-<tr><td>256x192, 16 colors<td>256x128x16 <td>rotated image
+<p>All systems use the same algorithm that calculates 128x256 dots of Mandelbrot.  They also use almost the same ways to visualize it.  Every dot is encoded with 4 bits.  So all systems have to output exactly 16 KB of graphical data for every picture.  The next systems have been tested.
+<table border>
+<tr><th>#<th>System<th>Year
+<script>
+ma.sort(function(a, b){ return a.computer < b.computer ? -1 : (a.computer > b.computer ? 1 : 0) })
+var nt = []
+nt.push({system: ma[0].computer, year: ma[0].year})
+for (var i = 1; i < ma.length; i++) {
+   if (ma[i].computer == ma[i - 1].computer) continue
+   nt.push({system: ma[i].computer, year: ma[i].year})
+}
+nt.sort(function(a, b){ return a.year != b.year ? a.year - b.year : (a.computer < b.computer ? -1 : (a.computer > b.computer ? 1 : 0))})
+for (var i = 0; i < nt.length; i++) document.write("<tr><th>" + (i + 1) + "<td style=text-align:left>" + nt[i].system + "<td>" + nt[i].year)
+</script>
 </table>
 The Sanyo MPC-25FD is a typical MSX2 computer.  The Panasonic FS-A1GT is an MSX turboR computer.
 
@@ -126,64 +133,44 @@ The Sanyo MPC-25FD is a typical MSX2 computer.  The Panasonic FS-A1GT is an MSX 
 <tr><td>16<td>22<td>[-2.51, -0.03] <td>[-0.75, 0.75]
 </table>
 
-<p>All systems also provide timing information.  The next table shows timings for drawing of pictures #1-16.  Column "nc" shows timing only for video output, without the Mandelbrot calculation.  The algorithm uses 16-bit signed arithmetic, so 16/32-bit systems have an advantage.  Column "v" shows the program version number.  Column "Gr %" presents the part of total time that is spent on the graphic output.
+<p>All systems also provide timing information.  The next table shows timings for drawing of pictures #1-16.  Column "nc" shows timing only for video output, without the Mandelbrot calculation.  The algorithm uses 16-bit signed arithmetic, so 16/32-bit systems have an advantage.  Column "v" shows the program version number.  Value "Gr %" presents the part of total time that is spent on the graphic output.   The number in parentheses after @ is the approximated effective CPU frequency.
 <table border=1>
 <script>
+ma.sort(function(a, b){ return a.tsum - b.tsum })
 document.write("<tr><th>#<th>System<th>v<th>nc")
-for (var k = 1; k <= 16; k++) document.write("<th>" + k)
-document.write("<th>Total<th>CPU<th>Gr %")
+for (var k = 1; k <= 8; k++) document.write("<th>" + (2*k-1) + "/" + (2*k))
+document.write("<th>Total<br>CPU<br>Gr %<th>Source<br>Comments")
 for (var i = 0; i < ma.length; i++) {
-   document.write("<tr><th>" + (i + 1) + "<td style=text-align:left>" + ma[i].computer + "<td>" + ma[i].version + "<td>" + p00(ma[i].tnc))
-   for (var k = 0; k < 16; k++) document.write("<td>" + p00(ma[i].t[k]))
-   document.write("<td>" + p00(ma[i].tsum) + "<td>" + p00(ma[i].psum) + "<td>" + p00(100*(1-ma[i].psum/ma[i].tsum)))
+   document.write("<tr><th>" + (i + 1) + "<td style=text-align:left><a href=" + ma[i].href + ">" + ma[i].computer + "</a>")
+   if (ma[i].variant != "") document.write(" (" + ma[i].variant + ")")
+   document.write("<br>" + ma[i].cpu + "@" + ma[i].freq)
+   if (ma[i].freq != ma[i].efreq) document.write("(" + ma[i].efreq + ")")
+   document.write("MHz<br>" + ma[i].video_mode)
+   if (ma[i].window != ma[i].video_mode) document.write(" [" + ma[i].window + "]")
+   document.write("<td>" + ma[i].version + "<td>" + p00(ma[i].tnc))
+   for (var k = 0; k < 8; k += 1) document.write("<td>" + p00(ma[i].t[2*k]) + "<br>" + p00(ma[i].t[2*k + 1]))
+   document.write("<td>" + p00(ma[i].tsum) + "<br>" + p00(ma[i].psum) + "<br>" + p00(100*(1-ma[i].psum/ma[i].tsum)) + "<td>" + ma[i].source)
+   if (ma[i].comments != "") document.write(",<br>" + ma[i].comments)
 }
 </script>
 </table>
 
-<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  The Apple IIgs has to use slower way to draw images because its graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes the Apple IIgs graphic performance about 10% lower.  The results show that the Amiga 1200 with fast RAM might be faster than the Archimedes 305 if the Amiga used fast chunky graphics instead of slower planar.
+<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  The Apple IIgs has to use slower way to draw images because its graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes the Apple IIgs graphic performance about 30-40% lower.
 
 <p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
-<p>Emulators were used to get these results.
+<p>Qemulator appears to be about 7% faster than real hardware.  So the QL results are adjusted according results provided by mk79.  It seems that pcem is also about 7% faster than the real IBM PC XT/AT but I have only indirect information about this so I didn't apply any correction to data from pcem.
 
-<p><table>
-<tr><th>Machine <th>Emulator
-<tr><td style=text-align:left>&#x411;K0010 <td>BK2010 v0.5
-<tr><td style=text-align:left>&#x411;K0011M <td>GID v3.10
-<tr><td style=text-align:left>Commodore+4 <td>plus4emu v1.2.10
-<tr><td style=text-align:left>Amstrad CPC<td>ep128emu v2.0.11
-<tr><td style=text-align:left>BBC Master <td>b-em v-ec63538
-<tr><td style=text-align:left>Amiga 500 <td>FS-UAE 3.0.5
-<tr><td style=text-align:left>Amiga 1200 <td>FS-UAE 3.1.68
-<tr><td style=text-align:left>IBM PC XT EGA <td rowspan=2>pcem 17
-<tr><td style=text-align:left>IBM PC AT EGA
-<tr><td style=text-align:left>Acorn Archimedes 305 <td>Arculator v2.1
-<tr><td style=text-align:left>Sinclair QL <td>QemuLator 3.4
-<tr><td style=text-align:left>Corvette <td>emu80 v4.0.396
-<tr><td style=text-align:left>Apple IIgs <td>MAME v0.239
-<tr><td style=text-align:left>Sanyo MPC-25FD<td rowspan=2>openMSX 0.15.0
-<tr><td style=text-align:left>Panasonic FS-A1GT
-</table>
-
-<p>Qemulator appears to be about 7% faster than real hardware.  So the unexpanded QL results are adjusted with this 7%.  Real QL results have been provided by mk79.  A lot of thanks to him.  The data is also used for the QL with external memory.  It seems that pcem is also about 7% faster than the real IBM PC XT/AT but I have only indirect information about this so I didn't apply any correction to data from pcem.
-
-<p>The next table contains approximate values of efficiency reciprocals (ER) for the tested CPUs at effecive frequencies (EF) given.  These values are calculated by multiplication of the total time of the Mandelbrot calculations for 16 first Mandelbrot pictures by the effective CPU frequency.  The ER value reflects the efficiency of CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
+<p>The next table contains approximate values of efficiency reciprocals (ER) for the tested CPUs at effecive frequencies.  These values are calculated by multiplication of the total time of the Mandelbrot calculations for the 16 first Mandelbrot pictures by the effective CPU frequency.  The ER value reflects the efficiency of CPU electronics, it gives the reciprocal of the CPU performance at 1 MHz.
 
 <table border=1>
-<tr align=center><th>Rank <th>Processor <th>Year <th>EF<th>ER
-<tr align=center><th>1 <td>ARM2 <td>1987 <script>findER("ARM2")</script>
-<tr align=center><th>2 <td>80286 <td>1982 <script>findER("80286")</script>
-<tr align=center><th>3 <td>68020 <td>1984 <script>findER("68020")</script>
-<tr align=center><th>4 <td>65816 <td>1982 <script>findER("65816")</script>
-<tr align=center><th>5 <td>R800 <td>1990 <script>findER("R800")</script>
-<tr align=center><th>6 <td>68000 <td>1979 <script>findER("68000")</script>
-<tr align=center><th>7 <td>8088 <td>1978 <script>findER("8088")</script>
-<tr align=center><th>8 <td>K1801BM1 <td>1981 <script>findER("K1801VM1")</script>
-<tr align=center><th>9 <td>6502 <td>1975 <script>findER("6502")</script>
-<tr align=center><th>10<td>68008 <td>1982 <script>findER("68008")</script>
-<tr align=center><th>11<td>Z80 <td>1976 <script>findER("Z80")</script>
-<tr align=center><th>12<td>8080 <td>1974 <script>findER("8080")</script>
+<tr align=center><th>Rank <th>Processor <th>Year <th>ER
+<script>
+for (var i = 0; i < cpu.length; i++)
+   document.write("<tr><th>" + (i + 1) + "<td>" + cpu[i].id + "<td>" + cpu[i].year + "<td>" + findER(cpu[i].id))
+</script>
 </table>
+The actual frequency of the R800 is 28.4 MHz, so its ER might be set to <script>i = findfirst("cpu", "R800"); document.write(Math.round(4*ma[i].efreq*ma[i].psum))</script>.
 
 <p>It is also interesting to compare the code density for this task.  Two values are provided for this: the total program size and the size of the main loop.
 
@@ -195,21 +182,23 @@ for (var i = 0; i < ma.length; i++) {
 <th rowspan=2>Program size
 <th colspan=2>Main loop size<tr><th>bytes<th>LOC
 <tr align=center><th>1 <td style=text-align:center>&#x411;K <td>T-11 <td>806 <td>32 <td>13
-<tr align=center><th>2 <td style=text-align:center>IBM PC (mode 2)<td>8088 <td>847 <td rowspan=4>46 <td rowspan=4>20
-<tr align=center><th>3 <td style=text-align:center>IBM PC (mode 0)<td>8088 <td>947
-<tr align=center><th>4 <td style=text-align:center>QL <td>68008 <td>2029 
-<tr align=center><th>5 <td style=text-align:center>Amiga <td>68000 <td>2360 
-<tr align=center><th>6 <td style=text-align:center>Amstrad, 16c <td>Z80 <td>979 <td rowspan=4>54 <td rowspan=4>37
-<tr align=center><th>7 <td style=text-align:center>Amstrad, 4c <td>Z80 <td>1016 
-<tr align=center><th>8 <td style=text-align:center>MSX2, rotated <td>Z80 <td>1462 
-<tr align=center><th>9 <td style=text-align:center>MSX2, interlaced <td>Z80 <td>1532 
-<tr align=center><th>10<td style=text-align:center>Apple IIgs <td>65816 <td>1282 <td>73 <td>39
-<tr align=center><th>11<td style=text-align:center>Corvette, color<td>8080 <td>1057 <td rowspan=2>84 <td rowspan=2>66
-<tr align=center><th>12<td style=text-align:center>Corvette, planar<td>8080 <td>1102 
-<tr align=center><th>13<td style=text-align:center>Archimedes<td>ARM2 <td>1342 <td>100 <td>25
-<tr align=center><th>14 <td style=text-align:center>BBC Micro, 16c <td>6502 <td>1271 <td rowspan=3>131 <td rowspan=3>81
-<tr align=center><th>15 <td style=text-align:center>BBC Micro, 4c <td>6502 <td>1303 
-<tr align=center><th>16 <td style=text-align:center>Plus4 <td>6502 <td>1624 
+<tr align=center><th>2 <td style=text-align:center>Geneve 9640, interlaced <td>TMS9995 <td>1632 <td rowspan=2>36 <td rowspan=2>14
+<tr align=center><th>3 <td style=text-align:center>Geneve 9640, rotated <td>TMS9995 <td>1774
+<tr align=center><th>4 <td style=text-align:center>IBM PC (mode 2)<td>8088 <td>847 <td rowspan=4>46 <td rowspan=4>20
+<tr align=center><th>5 <td style=text-align:center>IBM PC (mode 0)<td>8088 <td>947
+<tr align=center><th>6 <td style=text-align:center>QL <td>68008 <td>2029 
+<tr align=center><th>7 <td style=text-align:center>Amiga <td>68000 <td>2360
+<tr align=center><th>8 <td style=text-align:center>Amstrad, 16c <td>Z80 <td>979 <td rowspan=4>54 <td rowspan=4>37
+<tr align=center><th>9 <td style=text-align:center>Amstrad, 4c <td>Z80 <td>1016 
+<tr align=center><th>10<td style=text-align:center>MSX2, rotated <td>Z80 <td>1378 
+<tr align=center><th>11<td style=text-align:center>MSX2, interlaced <td>Z80 <td>1424 
+<tr align=center><th>12<td style=text-align:center>Apple IIgs <td>65816 <td>1282 <td>73 <td>39
+<tr align=center><th>13<td style=text-align:center>Corvette, color<td>8080 <td>1057 <td rowspan=2>84 <td rowspan=2>66
+<tr align=center><th>14<td style=text-align:center>Corvette, planar<td>8080 <td>1102 
+<tr align=center><th>15<td style=text-align:center>Archimedes<td>ARM2 <td>1342 <td>100 <td>25
+<tr align=center><th>16 <td style=text-align:center>BBC Micro, 16c <td>6502 <td>1271 <td rowspan=3>131 <td rowspan=3>81
+<tr align=center><th>17 <td style=text-align:center>BBC Micro, 4c <td>6502 <td>1303 
+<tr align=center><th>18 <td style=text-align:center>Plus4 <td>6502 <td>1624 
 </table>
 
 <p>The QL code consists of two Basic programs which generate and use ML code.
