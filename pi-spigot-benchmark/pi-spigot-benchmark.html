@@ -200,7 +200,7 @@ function drawTabs() {
         }
     }
     document.getElementById("tab2").innerHTML = s
-    s = "<tr><th>Year<th>System"
+    s = "<tr><th>#<th>Year<th>System"
     var sy = Object()
     for(var i = 0; i < ma.length; ++i) {
         var id = "key" + ma[i].computer.replace(/\/(PAL|NTSC).*$/, "") + ":" + ma[i].cpu
@@ -212,7 +212,7 @@ function drawTabs() {
         sya.push({year: ma[sy[obj]].year, system: ma[sy[obj]].computer.replace(/\/(PAL|NTSC).*$/, "") + ", " + ma[sy[obj]].cpu + ", " + ma[sy[obj]].freq + " MHz"})
     sya.sort(function(a, b){ if (a.year != b.year) return a.year - b.year; return a.system < b.system ? -1 : 0 })
     for (var i = 0; i < sya.length; i++)
-        s += "<tr><td align=center>" + sya[i].year + "<td align=center>" + sya[i].system
+        s += "<tr><td>" + (i + 1) + "<td align=center>" + sya[i].year + "<td align=center>" + sya[i].system
     document.getElementById("tab3").innerHTML = s
 }
 var ma = []
@@ -409,7 +409,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <br>
 <p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time (CPU time only without IO) of the calculation of 3000 digits by the CPU frequency.  The ER values are gotten for pi-spigot which uses base 16-bit integer arithmetic.  The best ER value for each CPU is taken.  The ER value reflects the efficiency of a CPU electronics.
 <table border=1 id=tab2></table>
-<p>The next table contains details about the tested systems in the chronological order.
+<p>The next table contains details about the tested systems in a chronological order.
 <p>
 <table border=1 id=tab3></table>
 <br>
