@@ -110,6 +110,7 @@ function drawTabs() {
         s += ",<br>" + ma[i].cpu + ", " + ma[i].freq + " MHz"
         if (ma[i].computer == "Dragon 32" || ma[i].computer.indexOf("Tandy CoCo 2") == 0) s += "<sup>1</sup>"
         if (ma[i].computer.indexOf("MC-10") != -1) s += "<sup>2</sup>"
+        if (ma[i].computer.indexOf("PC-9821") != -1) s += "<sup>4</sup>"
         if (ma[i].computer.indexOf("TI-99/4") != -1) s += "<sup>3</sup>"
         s += "<td align=center>" + ma[i].OS + "<br>" + ma[i].connection + "<td align=center>" + ma[i].driver + "<td align=center>"
         if (ma[i].cpu100 < 0 || internalTest) {
@@ -406,6 +407,7 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <p><sup>1</sup>The automatic DRAM regeneration doesn't work at this clock (@1.78MHz) so it is possible that some hardware and software can't work with this speed.  So, for normal system work, the maximum clock frequency is about 1.34 MHz, or 75% of that that used for the results given in the table.
 <p><sup>2</sup>This computer has only 20 KB of RAM.  So the result for 3000 digits is an approximation.  Theoretically the MC-10 can use up to 36 KB of RAM but this computer was manufactored for too short period and a proper memory expansion was not made for it.
 <p><sup>3</sup>This system doesn't have a ROM routine to print characters on its screen, so this driver contains such a routine.
+<p><sup>4</sup>The PC-98 standart system timer accuracy is only 1s.  So tenths and hundredths of second are approximations.
 <br>
 <p>The results above allow to calculate CPU efficiency for 1 Mhz.  The next table contains approximate values of efficiency reciprocals (ER).  These values are calculated by multiplication of the time (CPU time only without IO) of the calculation of 3000 digits by the CPU frequency.  The ER values are gotten for pi-spigot which uses base 16-bit integer arithmetic.  The best ER value for each CPU is taken.  The ER value reflects the efficiency of a CPU electronics.
 <table border=1 id=tab2></table>
