@@ -1,0 +1,32 @@
+<head>
+<title>Amstrad CPC</title>
+<style type=text/css>
+p {color:black; font-weight: bold; font-size: 110%; background: rgba(0,255,255,0.8)}
+h1 {color:black; font-weight: bold; font-size: 140%; background: rgba(0,255,255,0.8)}
+code {color:blue; font-weight: bold; font-size: 120%; background: rgba(0,255,255,0.8)}
+a {color:green}
+</style>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var items = 4
+var data = ["<p name=np4 id=np4><a href=cpc/np4cpc.html>Notepad+4, CPC6128 edition</a>.",
+"<p name=xlife8 id=xlife8>32/64-bit <a href=xlife/xlife4cpc.html>Xlife</a> ported to 8 bit world!",
+"<p name=pi id=pi>The number &#x3c0; calculator is <a href=pi/pi-spigot-benchmark.html>here</a> (sources are included).",
+"<p name=mandelbrot id=mandelbrot><a href=cpc/mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses the fastest known Mandelbrot set computation routine for the Z80."
+]
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+</script>
+</head>
+<body background=cpc/Amstrad-logo.gif style=background-attachment:fixed>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+<br><br><br>
+</body>
+

@@ -1,0 +1,21 @@
+<html>
+
+<head>
+<title>Commodore +4 Basic Cross-Compiler with Italian flavor</title>
+</head>
+
+<body background=../cbm2.gif bgproperties=fixed>
+<b>
+<h1>Commodore +4 Basic Cross-Compiler with Italian flavor</h1>
+<p>It is very fast to work with integers, strings and pseudo-reals.  The pseudo-real number occupies 3 bytes and has range from -2<sup>23</sup> to 2<sup>23</sup>-1.  They've replaced the original 5 bytes Commodore real numbers.  FOR-statement may be used with the integer.  Graphics is still not supported. The generated code is rather big in size so don't use it for a text larger than 20&ndash;30 KB.
+<p>The next keywords are fully supported: ABS, AND, ASC, ATN, CHAR, CHR$, CLOSE, CLR, CMD, COLLECT, COLOR, COPY, DATA, DEC, DEF, DO, DS, DS$, ELSE, END, EXIT, EXP, FN, FOR, FRE, GET, GET#, GETKEY, GO, GOSUB, GOTO, HEADER, HEX$, IF, INPUT, INPUT#, INSTR, INT, JOY, KEY, LEFT$, LEN, LET, LOG, LOCATE, LOOP, MONITOR, MID$, NEW, NOT, ON, OR, OPEN, PEEK, PI, POKE, POS, PRINT, PRINT#, PUDEF, RCLR, RDOT, READ, REM, RENAME, RESTORE, RETURN, RGR, RIGHT$, RLUM, RUN, SAVE, SCNCLR, SCRATCH, SGN, SOUND, SPC, ST, STEP, STR$, SYS, TAB, THEN, TI, TI$, TO, UNTIL, USING, VAL, VERIFY, VOL, WAIT, WHILE.
+<p>The next keywords have support with some limitations: DIM (no variables allowed in the dimensions definition), DIRECTORY (only for units number &lt; 10), LOAD (works only with compiled and ML data/programs), NEXT (no multiple NEXT allowed for one FOR), TRAP (it is not removed automatically after the 1st error catched).
+<p>The next keywords use ROM parsing code and therefore they may be slow: KEY, DIRECTORY, USING.
+<p>The next keywords are not supported: BOX, CIRCLE, CONT, COS, DRAW, EL, ER, ERR$, GRAPHIC, GSHAPE,  PAINT, RESUME, RND, SCALE, SIN, SSHAPE, STOP, TAN, TROFF, TRON, USR.
+<p>The next keywords can't be supported by any compiler: AUTO, BACKUP, DELETE, DLOAD, DSAVE, HELP, LIST, RENUMBER.
+<p>USAGE: <code style=background-color:yellow;opacity:0.7;>cbccwif BASIC-TEXT-FILE >ASSEMBER-TEXT-FILE</code>
+<p>Use a text file not a prg-file.  Use, for example, PETCAT from <a href=http://vice-emu.sourceforge.net/>VICE emulator distribution</a> to convert a PRG-file to a plain text file.  <code style=background-color:yellow;opacity:0.7;>PETCAT -3 -o TEXT-FILE PRG-FILE</code> makes the trick.
+<p>The produced assembler text should be converted to a prg-file by <a href=http://style64.org/release/tmpx-v1.1.0-style>TMPX assembler</a>. <code style=background-color:yellow;opacity:0.7;>TMPX ASSEMBER-TEXT-FILE</code> makes this convertion. The inc/mac/s-files from the cbccwif-distribution must be situated in the same directory as ASSEMBER-TEXT-FILE.
+<p>If you have a Basic program in the plain text format and you want to try it with the built-in interpreter use PETCAT: <code style=background-color:yellow;opacity:0.7;>PETCAT -w3 -o PRG-FILE TEXT-FILE</code>.
+<p>The compiler v0.03 is available via <a href=rcbccwif-src-0.03.tar.bz2>sources (25K)</a>, <a href=rcbccwif-0.03.tar.bz2>a build for Microsoft Windows (362K)</a> and <a href=https://sourceforge.net/p/cbm-3-5-basic-compiler/cbccwif/HEAD/tree/>a Subversion repo</a>.
+</b>

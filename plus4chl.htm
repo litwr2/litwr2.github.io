@@ -1,0 +1,270 @@
+<html>
+<body>
+
+<h2 align=center>Changes List</h2>
+
+<p>The next bugs fixed and features added since version 1.00 of this emulator 
+during 1997/98:
+
+<ul>
+<li>debugger can't hang computer after g or p command in long execution
+sequence
+<li>q debugger command returns to the non-debugger mode of execution and
+G debugger command turns emulator in the debugger mode
+<li>button End correctly works in menus
+<li>added analog joysticks support
+<li>screen size sets to 320x207
+<li>TED algorithm slightly modified
+</ul>
+
+<p>bugs fixed in v1.12 (XI-2002)
+
+<ul>
+<li>made correct kernal $FCxx page fix
+<li>made correct loading of PRG-files with tape origin, like PACMANIA
+</ul>
+
+<p>features of v1.14
+
+<ul>
+<li>added full range of joysticks emulation options
+<li>vertical synchronization set to 50.1Hz (early it was 54.6Hz)
+<li>added possibility to use the underscore symbol in the filenames in the
+menus
+</ul>
+
+<p>features of v1.15
+
+<ul>
+<li>it's the last version of emulator which can run at 100% speed at P100
+</ul>
+
+<p>features of v1.16 (III-2003)
+
+<ul>
+<li>improved interrupts handling &mdash; it does possible to run <em>Icicle 
+Works</em> without problems
+<li>added poor digital sound effects support (that reached by reducing delays
+after writing to AdLib ports and may create problems with very old cards)
+<li>it's the last version of the emulator which can run at 100% speed at P133
+</ul>
+
+<p>features of v1.17 (IV-2003)
+
+<ul>
+<li>added PC speaker sound support &mdash; this does possible to hear digital 
+sound effects (use F5 to change sound hardware) and does impossible to run the
+emulator from Microsoft Windows
+<li>added O (watchpOint) command to the debugger
+<li>added speed regulation to the menus
+<li>completely rewritten synchronization codes (now it based on the timer
+    37.3KHz interrupt)
+<li>added support for mouse buttons to the emulator
+<li>fixed some minor bugs
+</ul>
+
+<p>features of v1.18 (V-2003)
+
+<ul>
+<li>first version for free assembler (FASM) under GNU GPL
+<li>fixed some bugs
+</ul>
+
+<p>features of v1.19 (VII-2003)
+
+<ul>
+<li>better hardware interrupts handling algorithm (old one could cause crash
+of menus subsystem and hanging of computer with DR-DOS, Free-DOS, and
+PTS-DOS, but worked good on Microsoft MS-DOS!)
+<li>better synchronization code
+<li>renamed KERNEL.ROM to KERNAL.ROM
+<li>fixed several bugs in the debugger
+<li>added some little improvements to the TED subroutine (that cause better
+look of the games <em>Squirm</em>, <em>Jailbreak</em>, ...)
+<li>menus: added DELETE command (it can't remove read-only files) and one
+navigation bug fixed
+<li>it's first named version of the emulator (`Navsegda?' in Russian)
+<li>slightly improved PC speaker sound code
+<li>better drive letters handling
+<li>CD-ROMs support added
+<li>improved LED (lock keys indicators) handling
+</ul>
+
+<p>features of v1.20 (VII-2003)
+
+<ul>
+<li>joysticks and sound states saved now in C2F
+</ul>
+
+<p>features of v1.21 (VIII-2003)
+
+<ul>
+<li>fixed some bugs, added some minor improvements
+<li>added tape utilities CTF2WAV, CTF2TAP, and WAV2CTF
+</ul>
+
+<p>features of v1.22 (IX-2003)
+
+<ul>
+<li>fixed some bugs, added some minor improvements
+</ul>
+
+<p>features of v1.23 (XI-2003)
+
+<ul>
+<li>fixed BRK instruction, BASIC 7.0 cartridge is now supported
+</ul>
+
+<p>features of v1.24 (II-2004)
+
+<ul>
+<li>added hardware reset function
+<li>fixed some bugs
+</ul>
+
+<p>features of v1.25 (VI-2004)
+
+<ul>
+<li>added nearly exact timing. Three write only cycles for CPU during DMA are
+still not emulated
+<li>fixed some bugs
+</ul>
+
+<p>features of v1.26 (VII-2004)
+
+<ul>
+<li>added several minor improvements
+<li>fixed some bugs
+</ul>
+
+<p>features of v1.27 (VIII-2004)
+
+<ul>
+<li>fixed bug which caused impossibility to load read-only files from 
+menu &mdash; this did files from boot diskette (cbm264c) unloadable
+</ul>
+
+<p>features of v1.28 (X-2004)
+
+<ul>
+<li>added poor disk drive (device #8 only) support by interception of
+$FFD5 calls. It becomes possible to use LOAD and DLOAD. This makes more than
+1/3 of D64-images usable
+<li>the file deletion is intercepted by "Are you sure?" question now
+<li>fixed some minor bugs
+</ul>
+
+<p>features of v1.29 (XII-2004)
+
+<ul>
+<li>slightly improved disk drive support (this makes more than
+40% of D64-images usable)
+<li>added some minor improvements
+</ul>
+
+<p>v1.31 (VIII-2005)
+
+<ul>
+<li>added nearly full support for the disk drives (this makes
+more than 90% of D64-images usable), but evade turbo-loaders
+<li>added some minor improvements
+</ul>
+
+<p>v1.32 (I-2006)
+
+<ul>
+<li>added DOS write commands for the D64-images (SAVE, PRINT, COLLECT, ...)
+<li>established 99.9% exactness in the TED/CPU cooperative activity &mdash;
+that made possible to see all (?) FLIs &mdash; this improvement made the
+emulator about 14% slower
+<li>commands GL (goto line) and Y (TED cycle) are added to the debugger
+<li>fixed many minor bugs
+</ul>
+
+<p>v1.33 (V-2006)
+
+<ul>
+<li>fixed some bugs
+</ul>
+
+<p>v1.34 (IX-2006)
+
+<ul>
+<li>added support for different screen sizes &mdash; many VGA and VESA 
+modes became available &mdash; this slow the emulator down
+by 5-30% (it is still possible to run the emulator at 100% speed at 
+Pentium-200 without frames skipping)
+<li>added frame skipping mechanism. It can speed the emulator up to 50%
+<li>added CFG-file support. This file is named 
+PLUS4.CFG and contains information about video card mode, frame skipping 
+and music card
+<li>code became compatible with newest versions of FASM
+</ul>
+
+<p>v1.35 (II-2007)
+
+<ul>
+<li>improved datasette emulation code: removed <em>surprizing</em> message
+"assign a file ...", added direct TAP format support, ...;
+<li>fixed some disk drive emulation errors (thanks to SVS of Fire);
+<li>added command line parameter support &mdash; it made possible to
+use a PRG file for autoload (this feature was requested by Ninja / The
+Dreams);
+<li>provided proper emulation of the bit 1 of the TED $1e register;
+<li>fixed some minor bugs;
+<li>THIS VERSION CONTAINS BUG WHICH MAY CORRUPT D64-IMAGES - DON'T USE IT!
+</ul>
+
+<p>v1.36 (III-2007)
+
+<ul>
+<li>some IEC emulation errors are removed
+</ul>
+
+
+<p>v1.37 (VIII-2007)
+
+<ul>
+<li>added possibility to use advanced command line options;
+<li>added support for the relative files at D64-images (this allows to run
+SVS BALsys from a D64-file);
+<li>fixed some bugs
+</ul>
+
+
+<p>v1.38 (IX-2007)
+
+<ul>
+<li>added possibility to use ROM and CFG files in the command line options;
+<li>fixed some bugs
+</ul>
+
+
+<p>v1.39 (XII-2007)
+
+<ul>
+<li>added possibility to set video mode in the command line
+options;
+<li>fixed one bug in the IEC error channel emulation
+</ul>
+
+
+<p>v1.40 (XII-2007)
+
+<ul>
+<li>added Sound Blaster support;
+<li>removed error which caused wrong loading of some C2F-files from cmd line;
+<li>added possibility to select sound hardware from the command line
+</ul>
+
+<p>v1.41 (I-2008)
+
+<ul>
+<li>improved Sound Blaster support;
+<li>fixed one little TED bug;
+</ul>
+
+
+</body>
+</html>
+

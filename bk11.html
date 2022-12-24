@@ -1,0 +1,34 @@
+<head>
+<title>PDP-11/&#x411;K</title>
+<style type=text/css>
+p {color:white}
+a {color:lightgreen}
+</style>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var items = 7
+var data = ["<p>The limited cross-linker v2 for MACRO11 PDP-11 assembler (<a href=bk/bklinker2.tgz>gzipped sources, 2K</a>), it produces BIN-files.",
+"<p><a href=bk/np4bk.html>Notepad+4, the &#x411;K0011 edition</a>",
+"<p><a href=bk/rbkbasic.html>Reduced Basic cross-compiler</a>",
+"<p>32/64-bit <a href=xlife/xlife4bk.html>Xlife</a> ported to the 8/16-bit world!",
+"<p>The number &#x3c0; calculator is <a href=pi/pi-spigot-benchmark.html>here</a> (the sources are included).  There are  versions for the &#x411;K0010, the &#x411;K0011, RT-11, and RSX-11.",
+"<p name=mandelbrot id=mandelbrot><a href=bk/mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses the fastest known Mandelbrot set computation routine for the PDP-11 architecture.",
+"<p name=htbkw id=htbkw>A small demo, an animated picture <a href=https://www.pouet.net/prod.php?which=90353>Hello the &#x411;K World!</a>"]
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+</script>
+</head>
+<body background=bk/bk11m-logo.png style="background-attachment:fixed;background-size:342px 152px">
+
+<div align=center>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+<br><br><br>
+</div>
+</body>

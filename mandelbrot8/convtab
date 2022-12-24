@@ -1,0 +1,8 @@
+awk 'BEGIN {r = 0}
+{
+   c = 1
+   while (sub("<td>", "<td id=a" sprintf("%02d",c++) sprintf("%02d",r) ">"));
+//   sub("<td id=b00[0123456789]{2}>", "<td>")
+   print
+   r++
+}' $1 >$2

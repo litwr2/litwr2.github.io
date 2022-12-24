@@ -1,0 +1,38 @@
+<body background=../cbm2.gif>
+<p>To use enhanced quicksort you must first load and run it, for example<br>
+DLOAD"ENHANCEDSORT"<br>
+RUN<br>
+This program is the first file on the disk so you can also invoke it by CommodoreKey+Run/Stop.
+
+<p>Then you may use a call<br>
+SYS4145,N,START<br>
+to sort your string array where N is a number of elements to sort and START is the first element in the range of elements to sort. For example,<br>
+SYS4145,N,A$(0)<br>
+means to sort N elements of array A$ from index 0 to index N-1. You may use any arithmetic expression in place of N, you may also use any arithmetic expression in place of any array index.
+
+<p>You can load your program, for instance<br>
+LOAD"A-BASIC-PRG",unit#<br>
+that may contain the SYS in it.
+
+<p>A demo program, which uses the SYS, can be loaded with<br>
+LOAD"TEST-EQSORT",8<br>
+and started with RUN. You may change the seed for the random number generator in line 20. This program also contains a non-recursive quicksort routine implemented in Basic (lines 5000-5300).
+
+<p>This disk also contains a simple TXT/SEQ-file viewer that has name SEQREADER.
+
+<h1>History of this distribution disk</h1>
+<h2>Version 3</h2>
+<ul>
+<li>TEST-EQSORT: added a non-recursive quicksort;
+<li>TEST-EQSORT: added a new filling method;
+<li>TEST-EQSORT: done some fixes and improvements;
+<li>READ-ME: updated.
+</ul>
+
+<h2>Version 2</h2>
+<ul>
+<li>ENHANCEDSORT: fixed an error;
+<li>TEST-EQSORT: done some fixes and improvements;
+<li>READ-ME: updated.
+</ul>
+</body>

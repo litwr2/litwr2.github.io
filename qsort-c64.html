@@ -1,0 +1,51 @@
+<body background=cbm2.gif>
+<p>To use enhanced quicksort you must first load it with<br>
+LOAD"ENHANCED",unit#,1
+
+<p>Then you may use a call<br>
+SYS49152,N,START<br>
+to sort your string array where N is a number of elements to sort and START is the first element in the range of elements to sort. For example,<br>
+SYS49152,N,A$(0)<br>
+means to sort N elements of array A$ from index 0 to index N-1. You may use any arithmetic expression in place of N, you may also use any arithmetic expression in place of any array index.
+
+<p>You can also load your program, for instance<br>
+LOAD"A-BASIC-PRG",unit#<br>
+that may contain the SYS in it.
+
+<p>If you want to use Ultrasort or Lightningsort, use<br>
+LOAD"ULTRASORT",unit#,1<br>
+or<br>
+LOAD"LIGHTNINGSORT",unit#,1<br>
+respectively as the first step.
+
+<p>A demo program, which uses the SYS, is the first on the disk. Load it with<br>
+LOAD"TEST-QSORTS",8<br>
+and RUN. If you need to use another unit number, edit line 20 before the first run. You may also change the seed for the random number generator in this line. This program also contains a non-recursive quicksort implemented in Basic (lines 5000-5300).
+
+<p>This disk contains a simple TXT/SEQ-file viewer that has name SEQREADER &ndash; use it, for example, to read file READ-ME. This disk also contains the original sources of Ultrasort, Lightningsort, and testing program &ndash; their files have names which end with -ORIG.
+
+<p>ATTENTION!!! The original Lightningsort uses zp location at $53 and this sometimes may slow the garbage collector down much or even hangs it. This can be fixed by the use of another zp locations instead of $52-$53, for instance at $5c-$5d. You can add the next lines<br>
+<code>202 if k<>2 goto190<br>
+204 if asc(k$)=82 then k$=chr$(92)<br>
+206 if asc(k$)=83 then k$=chr$(93)<br>
+</code>
+to TEST-QSORTS and this fixes Lightningsort. You may also just replace all byte values $52 or $53 with $5c/$5d correspondingly in the original Lightningsort code. As it was stated afore, there are many options, not just $5c/$5d.
+
+<p>There is an easier and shorter way to fix the original Lightningsort. We need just to preserve a value at $53 before the SYS-call and then restore it, for example we can add PEEK and POKE around the SYS, <code>I=PEEK(83):SYS...:POKE83,I</code>. The current version of TEST-QSORTS already contains this fix.
+
+<h1>History of this distribution disk</h1>
+<h2>Version 3</h2>
+<ul>
+<li>TEST-QSORTS: added a non-recursive quicksort;
+<li>TEST-QSORTS: the bug in Lightningsort is patched;
+<li>TEST-QSORTS: added a new filling method;
+<li>TEST-QSORTS: done some fixes and improvements;
+<li>READ-ME: updated.
+</ul>
+
+<h2>Version 2</h2>
+<ul>
+<li>TEST-QSORTS: done some fixes and improvements;
+<li>READ-ME: updated.
+</ul>
+</body>

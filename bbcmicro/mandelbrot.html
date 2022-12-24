@@ -1,0 +1,26 @@
+<head>
+<title>Superfast Mandelbrot generator for the BBC Micro</title>
+<style type=text/css>
+p {color:red; font-weight: bold; font-size: 150%; background: rgba(255,255,0,0.9)}
+h1 {color:red; font-weight: bold; font-size: 150%; background: rgba(255,255,0,0.9)}
+code {color:blue; font-weight: bold; font-size: 170%; background: rgba(255,255,0,0.9)}
+a {color:green}
+</style>
+</head>
+<body background=../bbc-micro-logo.jpg>
+<div align=center>
+<h1>Superfast Mandelbrot generator v3</h1>
+<h2><img src=https://litwr2.github.io/mandelbrot8/mandel8-bbc-16.gif> <img src=https://litwr2.github.io/mandelbrot8/mandel8-bbc-4.png></h2>
+<b>
+<p>It is based on an algorithm published on <a href=https://www.pouet.net/prod.php?which=87739>pouet</a> in 2021.  One its implementation uses 16 color mode and another uses 4 color mode and textures to simulate 8 colors.  Generated pictures are 128x256 and 256x256 raster images respectively.  It is very likely that this algoritm implementation is the fastest known Mandelbrot set computation routine for the 6502.
+
+<p>A zipped dsk-image is <a href=mandel-bbc-v3.tar.xz>here</a>: use <code>*LOAD M4</code> or <code>*LOAD M16</code> to get 4 (8 because of dithering) or 16 (8 + flashing) color programs respectively.  Start any of them with <code>CALL3584</code>.
+
+<p>Sources are available on <a href=https://github.com/litwr2/rosetta-mandelbrot/tree/main/bbcmicro>github</a>.
+
+<p>This program starts from 0xE00 because it needs 11.5 KB RAM for a lookup table, 16 KB RAM for video and 1 KB for its code.  So if you want to run it on the BBC Micro where PAGE is above 0xE00 you will need to use some trick.
+
+<p>This program uses video memory directly so it can't be used with the 2nd co-pro.
+</b>
+</div>
+</body>

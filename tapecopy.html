@@ -1,0 +1,46 @@
+<body>
+<div align=center>
+<h1>TAPECOPY</h1><br>
+
+<p>This program main purpose is to move programs from tapes to disks.
+It knows all turboloader's formats known in 1989 in Poland or Russia.
+It may be also used to move data from WAV files using appropriate 
+emulators. Tapecopy may also copy programs from one tape to another 
+(or to the same in the 'forever?' emulator), saving is always performed 
+in the standard format. 
+
+<h2>User Manual</h2>
+
+<p>Tapecopy uses very simple unfriendly interface. 
+
+<p>To leave main screen with the program title press RUN/STOP.
+
+<p>Screen must become filled with @. Now insert a tape in the datasette or 
+attach a tape image to an emulator. Press PLAY on datasette (don't wait 
+appropriate message!).
+
+<p>Wait until tape motor stops and border becomes filled with fast changed 
+colors. Press STOP on datasette. Press any key. (If used tape to tape 
+copying then press PLAY & RECORD on datasette).
+
+<p>Wait until a message appears on screen. This message has following 
+structure: first 16 symbols is filename, next 4 hex digits forms start 
+address of copied program (it's irrelevant for BASIC programs), next 4 hex 
+digits forms beginning address of copied program, next 4 hex digits forms 
+ending address (-3 for BASIC?) of copied program, last 4 hex digits is a 
+format/loader identification sequence.
+
+<p>Press STOP on datasette if needed.
+
+<p>Press any key. The copying may be repeated with next program.
+
+<p>NOTE. Transferred to disk (or tape) programs may require special loader. 
+Tapecopy is unable to find exact beginning and ending of the programs 
+instead that it fills all memory with 0 and after loading a program detects 
+first and last nonzero bytes. This technique may give some first or last
+zero bytes lost. In most cases it may be ignored. Mentioned special 
+loader has to fill all memory ($800-$fcff) with 0 then loads a program and 
+then starts it using known address.
+
+</div>
+</body>

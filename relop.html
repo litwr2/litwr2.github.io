@@ -1,0 +1,40 @@
+<style>
+td, th {
+    text-align: center;
+}
+table {
+   border-width:thin;
+   border-style:solid;
+   border-color:green;
+   border-spacing:0px;
+}
+</style>
+<div align=center>
+<h1>Conditionals for the 68k, PDP11, x86</h1>
+<table border=1>
+<tr><th>Type<th>Relation<th>68k<th>PDP11<th>x86
+<tr><td rowspan=8>signed<td rowspan=2>&#x2265;<td style=border-bottom:0>GE<td style=border-bottom:0>GE<td style=border-bottom:0>GE, NL
+<tr><td style=border-top:0>SV&#x2228;&#xAC;S&#xAC;V<td style=border-top:0>S+V=0<td style=border-top:0>S=V
+<tr><td rowspan=2>&gt;<td style=border-bottom:0>GT<td style=border-bottom:0>GT<td style=border-bottom:0>G, NLE
+<tr><td style=border-top:0>SV&#xAC;Z&#x2228;&#xAC;S&#xAC;V&#xAC;Z<td style=border-top:0>Z&#x2228;(S+V)=0<td style=border-top:0>Z=0 and S=V
+<tr><td rowspan=2>&#x2264;<td style=border-bottom:0>LE<td style=border-bottom:0>LE<td style=border-bottom:0>LE, NG
+<tr><td style=border-top:0>Z&#x2228;S&#xAC;V&#x2228;&#xAC;SV<td style=border-top:0>Z&#x2228;(S+V)=1<td style=border-top:0>Z=1 or S&#x2260;V
+<tr><td rowspan=2>&lt;<td style=border-bottom:0>LT<td style=border-bottom:0>LT<td style=border-bottom:0>L, NGE
+<tr><td style=border-top:0>S&#xAC;V&#x2228;&#xAC;SV<td style=border-top:0>S+V=1<td style=border-top:0>S&#x2260;V
+
+<tr><td rowspan=8>unsigned<td rowspan=2>&#x2265;<td style=border-bottom:0>HS, CC<td style=border-bottom:0>HIS, CC<td style=border-bottom:0>AE, NB, NC
+<tr><td style=border-top:0>&#xAC;C<td style=border-top:0>C=0<td style=border-top:0>C=0
+<tr><td rowspan=2>&gt;<td style=border-bottom:0>HI<td style=border-bottom:0>HI<td style=border-bottom:0>A, NBE
+<tr><td style=border-top:0>&#xAC;C&#xAC;Z<td style=border-top:0>C=0 and Z=0<td style=border-top:0>C=0 and Z=0
+<tr><td rowspan=2>&#x2264;<td style=border-bottom:0>LS<td style=border-bottom:0>LOS<td style=border-bottom:0>NA, BE
+<tr><td style=border-top:0>C&#x2228;Z<td style=border-top:0>C&#x2228;Z=1<td style=border-top:0>C=1 or Z=1
+<tr><td rowspan=2>&lt;<td style=border-bottom:0>LO, CS<td style=border-bottom:0>LO, CS<td style=border-bottom:0>B, NAE, C
+<tr><td style=border-top:0>C<td style=border-top:0>C=1<td style=border-top:0>C=1
+
+<tr><td rowspan=4>both<td rowspan=2>=<td style=border-bottom:0>EQ<td style=border-bottom:0>EQ<td style=border-bottom:0>E, Z
+<tr><td style=border-top:0>Z<td style=border-top:0>Z=1<td style=border-top:0>Z=1
+<tr><td rowspan=2>&#x2260;<td style=border-bottom:0>NE<td style=border-bottom:0>NE<td style=border-bottom:0>NE, NZ
+<tr><td style=border-top:0>&#xAC;Z<td style=border-top:0>Z=0<td style=border-top:0>Z=0
+</table
+</div>
+

@@ -1,0 +1,28 @@
+<head>
+<title>Sinclair QL</title>
+<style type=text/css>
+p {color:darkred;background:yellow}
+a {color:red}
+</style>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var data = ["<p name=pi id=pi>The number &#x3c0; calculator is <a href=../pi/pi-spigot-benchmark.html>here</a> with the assembler sources.",
+"<p name=mandelbrot id=mandelbrot><a href=mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses a very fast Mandelbrot set computation routine for the 68008."]
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+var items = data.length
+</script>
+</head>
+<body background=ibm-logo.jpg style=background-attachment:fixed>
+<div align=center>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+<br><br><br>
+</div>
+</body>

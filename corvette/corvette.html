@@ -1,0 +1,31 @@
+<head>
+<title>Corvette/Kop&#x432;e&#x442;</title>
+<style type=text/css>
+p {color:darkred;background:rgba(255,255,0,0.9)}
+a {color:red}
+</style>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var data = ["<p name=pi id=pi>The number &#x3c0; calculator is <a href=../pi/pi-spigot-benchmark.html>here</a> with the assembler sources.",
+"<p name=mandelbrot id=mandelbrot><a href=mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses a very fast Mandelbrot set computation routine for the 8080.",
+"<p name=treas id=treas>Several <a href=ti/ti.html>screenshots</a> from Treasure Island game",
+"<p name=kcpmtools id=kcpmtools><a href=korvet-def.txt>An additional text</a> for the configuration file (<i>diskdefs</i>) of the <i>cpmtools</i> package for the work with the Corvette disk images",
+"<p name=cfd id=cfd>Corvette format detector, it can be used along with <i>cpmtools</i> for the more convinient work with the Corvette disk images (<a href=cfd.c.txt>C source code</a>)",
+"<p name=pal id=pal>A utility that shows the palette and allows to change the background (<a href=showpal.pas.txt>an Express Pascal source code</a>)"]
+var items = data.length
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+</script>
+</head>
+<body background=corvette.jpg style=background-attachment:fixed>
+<div align=center>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+</div>
+</body>

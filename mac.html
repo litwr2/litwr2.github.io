@@ -1,0 +1,24 @@
+<head>
+<title>Apple Macintosh</title>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var data = ["<p>The number &#x3c0; calculator is <a href=pi/pi-spigot-benchmark.html>here</a> (the sources are included).  It is tested under MacOS (versions 1.1&ndash;7.5.5)."]
+var items = data.length
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+</script>
+</head>
+<body background=Apple-Logo.png style=background-attachment:fixed>
+
+<div align=center>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+<br><br><br>
+</div>
+</body>

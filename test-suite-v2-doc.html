@@ -1,0 +1,258 @@
+<pre>
+C+4 Emulator Test Suite v2 - Public Domain, no Copyright
+  based on c64 Test Suite v2.15
+
+The purpose of the C+4 Emulator Test Suite is
+- to help C+4 emulator authors to improve the compatibility
+- to ensure that updated emulators have no new bugs in old code parts
+
+The suite are a few hundred C+4 programs which check the details of the C+4
+they are running on.  The suite runs automated and stops only if it has
+detected an error.
+
+That the suite doesn't stop on my C16 (PAL, 16KB RAM) + 64HDD (X1541) proves
+that the suite has no bugs.  That the same suite doesn't stop on an emulator
+proves that this particular emulator is compatible to my C16 regarding every
+tested detail.  Of course, the emulator may still have bugs in parts which are
+not tested by the suite.  There may also be a difference between your C16/+4
+and my C16.
+
+While the Test Suite is running, the Datasette should be disconnected.  Needs
+about 70 min to complete.
+
+The source code for C64 has been developed with MACRO(SS)ASS+ by Wolfram
+Roemhild.  I used Macro Ass+ improved by mr. Mind in 1993 (Turbo-Ass Mac+
+extended version (c) Omicron).  You may use C64 or C64 emulator to compile
+sources.  Other options are C+4 Csory's Turbo Macro Assembler convertion or
+TMPx.  The program BRANCHWRAP had no source in the original Test Suite for
+C64.
+
+///////////////////////////////////////////////////////////////////////////////
+The sequence of the test calls
+
+disk1:
+ START LDAB LDAZ LDAZX LDAA LDAAX LDAAY LDAIX LDAIY STAZ STAZX STAA STAAX
+STAAY STAIX STAIY LDXB LDXZ LDXZY LDXA LDXAY STXZ STXZY STXA LDYB LDYZ
+LDYZX LDYA LDYAX STYZ STYZX STYA TAXN TAYN TXAN TYAN TSXN TXSN PHAN PLAN
+PHPN PLPN INXN INYN DEXN DEYN INCZ INCZX INCA INCAX DECZ DECZX DECA
+DECAX ASLN ASLZ ASLZX ASLA ASLAX LSRN LSRZ LSRZX LSRA LSRAX ROLN ROLZ
+ROLZX ROLA ROLAX RORN RORZ RORZX RORA RORAX ANDB ANDZ ANDZX ANDA ANDAX
+ANDAY ANDIX ANDIY ORAB ORAZ ORAZX ORAA ORAAX ORAAY ORAIX ORAIY EORB EORZ
+EORZX EORA EORAX EORAY EORIX EORIY CLCN SECN CLDN SEDN CLIN SEIN CLVN
+ADCB ADCZ ADCZX ADCA ADCAX ADCAY ADCIX ADCIY SBCB SBCZ SBCZX SBCA SBCAX
+SBCAY SBCIX SBCIY CMPB CMPZ CMPZX CMPA CMPAX CMPAY CMPIX CMPIY CPXB CPXZ
+CPXA CPYB CPYZ CPYA BITZ BITA BRKN RTIN JSRW RTSN JMPW JMPI -NEXTDISK
+
+disk2:
+BEQR BNER BMIR BPLR BCSR BCCR BVSR BVCR NOPN NOPB NOPZ NOPZX NOPA
+NOPAX ASOZ ASOZX ASOA ASOAX ASOAY ASOIX ASOIY RLAZ RLAZX RLAA RLAAX
+RLAAY RLAIX RLAIY LSEZ LSEZX LSEA LSEAX LSEAY LSEIX LSEIY RRAZ RRAZX
+RRAA RRAAX RRAAY RRAIX RRAIY DCMZ DCMZX DCMA DCMAX DCMAY DCMIX DCMIY
+INSZ INSZX INSA INSAX INSAY INSIX INSIY LAXZ LAXZY LAXA LAXAY LAXIX LAXIY
+AXSZ AXSZY AXSA AXSIX ALRB ARRB SBXB SHAAY SHAIY SHXAY SHYAX SHSAY LXAB
+ANEB ANCB LASAY SBCB(EB) TRAP1 TRAP2 TRAP3 TRAP4 TRAP8 TRAP9 TRAP10 TRAP11
+TRAP12 TRAP13 TRAP14 TRAP15 TRAP16 BRANCHWRAP MMUFETCH CPUTIMING
+
+
+///////////////////////////////////////////////////////////////////////////////
+Program _START - some 6510 basic commands, just as an insurance
+
+
+///////////////////////////////////////////////////////////////////////////////
+Programs LDAb to SBCb(EB) - 6510 command function
+
+addressing modes
+-----------------------------------
+n   none (implied and accu)
+b   byte (immediate)
+w   word (absolute for JMP and JSR)
+z   zero page
+zx  zero page,x
+zy  zero page,y
+a   absolute
+ax  absolute,x
+ay  absolute,y
+i   indirect (JMP)
+ix  (indirect,x)
+iy  (indirect),y
+r   relative
+
+Display:
+before  data  accu xreg yreg  flags  sp
+after   data  accu xreg yreg  flags  sp
+right   data  accu xreg yreg  flags  sp
+
+Either press STOP or any other key to continue.
+
+All 256 opcodes are tested except HLTn (02 12 22 32 42 52 62 72 92 B2 D2 F2).
+
+Indexed addressing modes count the index registers from 00 to FF.
+
+JMPi (xxFF) is tested.
+
+Single operand commands: 256 data combinations from 00 to FF multiplied by 256
+flag combinations.
+
+Two operand commands: 256 data combinations 00/00, 00/11, ... FF/EE, FF/FF
+multiplied by 256 flag combinations.
+
+LASay, SHAay, SHAiy, SHXay, SHYax and SHSay are executed only in the y
+border.  These commands cause unpredictable results at c64 when a DMA comes
+between the command byte and the operand.  It is left unchanged for c+4.
+
+SHAay, SHAiy, SHXay, SHYax and SHSay are tested on a data address xxFF only.
+When the hibyte of the indexed address needs adjustment, these commands will
+write to different locations, depending on the data written.
+
+
+///////////////////////////////////////////////////////////////////////////////
+Programs TRAP* - 7501 IO traps, page boundaries and wrap arounds
+
+ #  code  data  zd  zptr   aspect tested
+-----------------------------------------------------------------------------
+ 1  3000  31C0  F7  F7/F8  basic functionality
+ 2  2FFE  31C0  F7  F7/F8  4k boundary within 3 byte commands
+ 3  2FFF  31C0  F7  F7/F8  4k boundary within 2 and 3 byte commands
+ 4  FF0D  31C0  F7  F7/F8  IO traps for code fetch
+ 8  3000  FF0E  F7  F7/F8  IO trap adjustment in ax, ay and iy addressing
+ 9  3000  31C0  02  F7/F8  wrap around in zx and zy addressing
+10  3000  31C0  00  F7/F8  IO traps for 8 bit data access
+11  3000  31C0  F7  02/03  wrap around in ix addressing
+12  3000  0FF0  F7  FF/00  wrap around and IO trap for pointer accesses
+13  3000  0002  F7  F7/F8  64k wrap around in ax, ay and iy addressing
+14  3000  0000  F7  F7/F8  64k wrap around plus IO trap
+15  2FFE  0FF0  00  FF/00  1-14 all together as a stress test
+16  FFFE  ----  --  --/--  64k boundary within 3 byte commands
+
+In the program TRAP16, the locations of data, zerodata and zeroptr depend on
+the addressing mode.  The CPU port at 00/01 is not able to hold all 256 bit
+combinations.
+
+Display:
+after   data  accu xreg yreg  flags
+right   data  accu xreg yreg  flags
+
+If all displayed values match, some other aspect is wrong, e.g. the stack
+pointer or data on stack.
+
+All 256 commands are tested except HLTn. Registers before:
+data   1B (00 01 10 11)
+accu   C6 (11 00 01 10)
+xreg   B1 (10 11 00 01)
+yreg   6C (01 10 11 00)
+flags  00
+
+The code length is 6 bytes maximum (SHSay).
+
+When the lowbyte of the data address is less than C0, SHAay, SHAiy, SHXay,
+SHYax and SHSay aren't tested.  Those commands don't handle the address
+adjustment correctly.
+
+Relative jumps are tested in 4 combinations: offset 01 no jump, offset 01
+jump, offset 80 no jump, offset 80 jump.  For the offset 80, a RTS is written
+to the location at code - 7E.
+
+
+///////////////////////////////////////////////////////////////////////////////
+Program BRANCHWRAP - Forward branches from FFxx to 00xx
+
+Backward branches from 00xx to FFxx were already tested in TRAP16.
+
+
+///////////////////////////////////////////////////////////////////////////////
+Program MMUFETCH - 6510 code fetching while memory configuration changes
+
+An example is the code sequence STA $FF3E : BRK in RAM at Axxx.  Because
+STA $FF3E maps the Basic ROM, the BRK will never get executed.
+
+addr  sequence
+---------------------
+8776  RAM-Basic-RAM
+CBC0  RAM-Kernal-RAM
+
+///////////////////////////////////////////////////////////////////////////////
+Program CPUTIMING - 6510 timing whole commands
+
+Display:
+xx command byte
+clocks  #measured
+right   #2
+
+#1  #2  command or addressing mode
+--------------------------------------
+2   2   n
+2   2   b
+3   3   Rz/Wz
+5   5   Mz
+4   8   Rzx/Rzy/Wzx/Wzy
+6   10  Mzx/Mzy
+4   4   Ra/Wa
+6   6   Ma
+4   8   Rax/Ray (same page)
+5   9   Rax/Ray (different page)
+5   9   Wax/Way
+7   11  Max/May
+6   8   Rix/Wix
+8   10  Mix/Miy
+5   7   Riy (same page)
+6   8   Riy (different page)
+6   8   Wiy
+8   10  Miy
+2   18  r+00 same page not taken
+3   19  r+00 same page taken
+3   19  r+7F same page taken
+4   20  r+01 different page taken
+4   20  r+7F different page taken
+3   19  r-03 same page taken
+3   19  r-80 same page taken
+4   20  r-03 different page taken
+4   20  r-80 different page taken
+7   7   BRKn
+3   3   PHAn/PHPn
+4   4   PLAn/PLPn
+3   3   JMPw
+5   5   JMPi
+6   6   JSRw
+6   6   RTSn
+6   6   RTIn
+
+#1 = command execution time without overhead
+#2 = displayed value including overhead for measurement
+R/W/M = Read/Write/Modify
+
+
+This program was considerably rewritten for C+4.  It is possible to
+compile its source under C+4 with C+4 port of Turbo Assembler.  It works
+under single clock mode.
+
+///////////////////////////////////////////////////////////////////////////////
+Keyboard:
+Run/stop - stop if error, any other key to continue
+///////////////////////////////////////////////////////////////////////////////
+
+Thanks to SVS and Gaia.
+
+Thanks to creators of TMPx (the Turbo Macro Pro cross assembler by Style),
+the original C64 Turbo Macro Assembler and its C+4 conversion, plus4emu, 
+CBM Command, and 64HDD.
+
+To do...
+
+Tests for IRQ, IMR, and timers are not converted.  Tests for TED/ACIA/PIO/...
+are missed. :-( Feel free to add them!
+
+NEW IN VERSION 2 FOR C16/+4
+
+All tests are rewritten, fixed and converted to C+4 Turbo Macro Assembler V2.0
+extended Version format
+
+Added new tests: ANEB, LXAB, TRAP4, TRAP8, TRAP15
+
+Added support for ANE, LXA in all TRAPs
+
+Added sources for BRANCHWRAP
+
+Converted TRAP12 and TRAP16 to support C16/116 with 16 KB RAM
+
+Converted TRAP10, TRAP14, and TRAP16 to support C1541
+</pre>

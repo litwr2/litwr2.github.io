@@ -1,0 +1,30 @@
+<head>
+<title>IBM PC 5150</title>
+<style type=text/css>
+p {color:darkred;background:rgba(255,255,0,0.9)}
+a {color:red}
+</style>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var items = 5
+var data = ["<p name=pi id=pi>The number &#x3c0; calculator is <a href=../pi/pi-spigot-benchmark.html>here</a> with the assembler sources.  It may run also with any IBM PC with DOS compatible OS.",
+"<p name=np4 id=np4><a href=np4ibmpc.html>Notepad+4, IBM PC edition</a>.",
+"<p name=xlife8 id=xlife8>32/64-bit <a href=../xlife/retro/xlife4ibmpc.html>Xlife</a> ported to 8/16-bit world!",
+"<p name=mandelbrot id=mandelbrot><a href=mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses the fastest known Mandelbrot set computation routine for the 8088/8086.",
+"<p name=doswin id=doswin><a href=../dos.html>Software for DOS and Microsoft Windows Console</a>"]
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+</script>
+</head>
+<body background=ibm-logo.jpg style=background-attachment:fixed>
+<div align=center>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+</div>
+</body>

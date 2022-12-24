@@ -1,0 +1,26 @@
+<head>
+<title>Commodore Amiga 500/600/1200</title>
+<script>
+var query = new URLSearchParams(window.location.search)
+var showopt = 0
+var items = 3
+var data = ["<p name=pi id=pi><a href=pi/pi-spigot-benchmark.html>The number &#x3c0; calculator</a> (the sources are included).",
+"<p name=xlife8 id=xlife><a href=xlife/retro/xlife4amiga.html>Xlife-8 - a cellular automaton laboratory</a>.",
+"<p name=mandelbrot id=mandelbrot><a href=amiga/mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses the fastest known Mandelbrot set computation routine for the 68000."]
+if (query.has('item')) {
+    showopt = query.get('item')
+    if (showopt < 0 || showopt > items) showopt = 0
+}
+</script>
+</head>
+<body background=cbm2.gif style=background-attachment:fixed>
+<div align=center>
+<script>
+for (var i = 1; i <= items; ++i)
+    if (showopt == 0 || showopt == i)
+        document.write(data[i - 1])
+</script>
+<br><br><br>
+</div>
+</body>
+
