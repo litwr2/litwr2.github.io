@@ -1,0 +1,65 @@
+<head>
+<title>Commodore symbols and Unicode</title>
+<META NAME=keywords CONTENT="Lidovski, Unicode, PETSCII, Commodore, C64, PET, CBM">
+<META NAME=copyright CONTENT="2005 Vladimir Lidovski">
+<META NAME=language CONTENT=english>
+</head>
+
+<body background=cbm2.gif bgproperties=fixed>
+
+<p>See the article <a href=c16cg.pdf>CBM 16/+4/116/64 character 
+generator and Unicode (pdf, 110K)</a> (it also is 
+<a href=http://plus4world.powweb.com/pubs/c16cg/c16cg.pdf>here</a>) and 
+the page 
+<a href=http://www.df.lth.se/~triad/krad/recode/petscii.html>PETSCII to 
+Unicode mapping</a>.
+
+<p>The mentioned above page documents contain a lot of useful information but 
+also several inaccuracies:
+
+<ol>
+
+<li>It considers c64/16/+4 box drawing symbols as <em>light</em> but they are 
+<em>heavy</em>. They are <em>light</em> only for vic-20.
+
+<li>Some symbols names and Unicode numbers do not match - unicode 0x2501 is 
+<em>heavy</em> not <em>light</em> as in the <tt>petscii*.txt</tt> files.
+
+<li>The value of shift for the box drawing vertical and horizontal symbols is 
+twice greater than it should be. 
+
+<li>The symbols of quadrants (unicodes 0x2596-0x259e) aren't present in the 
+mappings files.
+
+<li>It's very hard to see the <em>medium shade</em> symbol in the symbol 
+similar to part of chessboard.
+
+</ol>
+
+<p>The main disadvantage of proposed by the second article Unicode mapping 
+is using of <em>private use area</em>. This is the same as using of IP 
+Internet address reserved for private use (10.*.*.* or 192.168.*.* etc.) for 
+access to the real WWW.
+
+<p>The best solution will be the registration of the unique Commodore symbols 
+as the part of the probable "8-bits computers compatibility" code chart.
+
+<p>Two bytes area of Unicode is already nearly completely full so for this 
+new chapter only 3 bytes codes may be really allocated.
+
+<p>Some Commodore symbols are not easy to identify. One of this is "Check 
+mark" or "Square root" symbol. The mention collision is reflected even in the 
+official Unicode code charts &mdash; see "Dingbats" or "Mathematical Operators" 
+charts of Unicode. It's more probable that in the CBM character generator 
+this symbol means "Check mark".
+
+<p>The basis idea of Unicode mapping is to create the possibility of exact text 
+conversion between any computer systems. The mapping of control 
+characters has significantly less importance for this task.
+
+<p>The commodore code 160 may be mapped as "unbreakable space" symbol (0x00a0).
+<br><br>
+
+<hr>
+<br>
+</body>
