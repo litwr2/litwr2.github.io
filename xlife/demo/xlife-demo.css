@@ -1,0 +1,177 @@
+#history1 {
+ position:absolute;
+ top:230px;
+ left:40px; }
+#history2 {
+ position:absolute;
+ top:10px;
+ left:36%; }
+#historytext {
+ position:absolute;
+ top:10px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:200px;
+ width:30%; }
+#pseudocolortext {
+ position:absolute;
+ top:680px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#pseudocolor1 {
+ position:absolute;
+ top:670px;
+ left:40%; }
+#pseudocolor2 {
+ position:absolute;
+ top:670px;
+ left:72%; }
+#topologytext {
+ position:absolute;
+ top:1070px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#topology1 {
+ position:absolute;
+ top:1360px;
+ left:20%; }
+#topology2 {
+ position:absolute;
+ top:1360px;
+ left:50%; }
+#topology3 {
+ position:absolute;
+ top:1050px;
+ left:42%; }
+#maniptext {
+ position:absolute;
+ top:1860px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#manip1 {
+ position:absolute;
+ top:1800px;
+ left:40%; }
+#wiretext {
+ position:absolute;
+ top:2400px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#wire1 {
+ position:absolute;
+ top:2350px;
+ left:40%; }
+#pdtext {
+ position:absolute;
+ top:2870px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#pd1 {
+ position:absolute;
+ top:2840px;
+ left:50%; }
+#structtext {
+ position:absolute;
+ top:3460px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#struct1 {
+ position:absolute;
+ top:3320px;
+ left:42%; background-color:yellow;
+ border-width:4px;
+ border-style:inset;
+ color: blue;
+ border-color:green;
+ text-align:left;
+ font-size:12px;
+ font-family:monospace;
+ height:680px;
+ width:50%; }
+#speedtext {
+ position:absolute;
+ top:4160px;
+ left:2%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#speed1 {
+ position:absolute;
+ top:4120px;
+ left:34%; }
+#accesstext {
+ position:absolute;
+ top:4560px;
+ left:12%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }
+#opentext {
+ position:absolute;
+ top:4560px;
+ left:46%; background-color:#a0a0a0;
+ border-width:4px;
+ border-style:inset;
+ color: black;
+ border-color:blue;
+ text-align: center;
+ font-size:16px;
+ height:240px;
+ width:30%; }

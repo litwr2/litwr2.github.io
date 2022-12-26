@@ -1,0 +1,138 @@
+<head>
+<META http-equiv=Content-Type content="text/html; charset=koi8-r">
+<META NAME=keywords lang=en CONTENT="cellular automaton, xlife, artificial life, laboratory, demo">
+<META NAME=author CONTENT="Vladimir Lidovski">
+<META NAME=copyright CONTENT="&copy; 2011 Vladimir Lidovski">
+<title>XLife demo</title>
+<link href=xlife-demo.css rel=stylesheet type=text/css>
+</head>
+<body style=background-color:pink>
+<div id=historytext>
+<h1>History for any 2-state automaton</h1>
+<p>The history is toggled by a single keypress.
+</div>
+<div id=history1>
+<img src=00.gif>
+</div>
+<div id=history2>
+<img src=03.gif>
+</div>
+<div id=pseudocolortext>
+<h1>Pseudocolor modes for any 2-state automaton</h1>
+<p>These modes show new and deleted cells in the different colors.
+</div>
+<div id=pseudocolor1>
+<img src=04.gif>
+</div>
+<div id=pseudocolor2>
+<img src=05.gif>
+</div>
+<div id=topologytext>
+<h1>Topology</h1>
+<p>Torus and plain are supported now. It is possible also to use any form of plain for 
+the bounded grid with 2-state automata in the history mode.
+</div>
+</div>
+<div id=topology1>
+<img src=06.gif>
+</div>
+<div id=topology2>
+<img src=07.gif>
+</div>
+</div>
+<div id=topology3>
+<img src=08.gif>
+</div>
+<div id=maniptext>
+<h1>Very fast patterns transformation</h1>
+<p>It is possible to rotate, to flip, to generate, to copy, etc.
+</div>
+<div id=manip1>
+<img src=10.gif>
+</div>
+<div id=wiretext>
+<h1>Wireframe</h1>
+<p>It is useful to add a new pattern to the cell's space with this feature.
+</div>
+<div id=wire1>
+<img src=11.gif>
+</div>
+<div id=pdtext>
+<h1>Prisoner's Dilemma Models</h1>
+<p>Defectors and cooperators competition.
+</div>
+<div id=pd1>
+<img src=12.gif>
+</div>
+<div id=structtext>
+<h1>Patterns in the structured format</h1>
+<p>It is possible to use macros to set up the pattern space.
+</div>
+<div id=struct1>
+<pre>
+#C Normally when you load this file you get a Gosper glider gun,
+#C (:gosper) but two glider compounds (:p60) and (:p120) are
+#C also available
+#C
+#I :gosper
+
+#B gosper
+#C The classic period-30 glider gun by William R. Gosper. 
+#C This is made of two of a pattern
+#C know as the "queen bee", which
+#C sometimes occurs naturally,
+#C whose debris can be deleted on 
+#C the sides by blocks or eaters.
+#C But a collision in the center
+#C can, as seen here, miraculously 
+#C form a glider. Just one of these
+#C moving back and forth is called
+#C piston (see the p30 in OSCSPN2).
+#K p30 glidergun
+#I :gghalf -30 -15 0 1 0
+#I :gghalf -7 -17 2 -1 5
+#E
+
+#B gghalf
+#I still:block -6 0 0 1 0
+#I shuttle:queenbee 2 0 2 1 0
+#E
+
+#B p60
+#C p60: A pair of Gosper guns that emits gliders with period 60.
+#K p60 glidergun
+#I :gosper 24 0 3 1 0
+#I :gosper 18 -3 3 -1 3
+#E
+
+#B p120
+#C p120: A foursome of Gosper guns that emits gliders with period 120
+#C An interesting detail of the p120 is that it operates by repeated
+#C creation and destruction of an eater at one of the glider stream
+#C intersections.
+#K p120 glidergun
+#I :p60 -40 0 0 1 3
+#I :p60 40 3 2 -1 0
+</pre>
+</div>
+<div id=speedtext>
+<h1>Fast speed</h1>
+<p>for the step-by-step evolution with 2-state, generated, or wireworld 
+rules. The speed is extremely fast for the chaotic and exploding patterns
+and bounded grid.
+</div>
+<div id=speed1>
+<img src=14.gif>
+</div>
+<div id=accesstext>
+<h1>Quick access</h1>
+<p>The markers, the scaling, to find next object and to goto coordinates procedures allow fast pattern space navigation.
+</div>
+<div id=opentext>
+<h1>This is an open project</h1>
+<p>Tests, suggestions, bug reports, etc are welcome.<hr>
+<div align=center>
+<table><tr><td><tt>vol.litwr</tt><td><tt>@</tt><td><tt>gmail.com</tt></table>
+</div>
+</div>
+<body>
