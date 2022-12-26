@@ -1,0 +1,366 @@
+<body background=bunnies.png>
+<pre>
+Changes to 6.0:
+        * Added support (colors, conversions) for up to 16-states automata
+
+        * Added limited support for the Moore neighborhood (wireworld, brian's 
+          brain)
+
+        * Added support for 2:1, 4:1, and 8:1 scales (like at v3.5/5.3)--fixed
+          bugs around scaling in v3.5/5.3
+
+        * Added n (next) command which allows to find far objects
+
+        * Added d (duplicate) command to copy tentative pattern
+
+        * Added (, [, { and ), ], } commands to mark positions and to jump to 
+          these positions (v3.5/5.3)
+
+        * Added % (set density for randomly filled rectangle), ^ (set random 
+          generator seed), 0 (find median), J (jump), i (select save image 
+          format), u (undo pattern manipulations), <, > (smooth speed regulation) 
+          commands (v3.5/5.3)
+
+        * Fixed prisoner's dilemma mode
+
+        * Fixed mouse actions (pickup pattern feature by button 3 is working 
+          now, button 3 click makes center of screen--realizes the screen 
+          movement)
+
+        * Fixed commands V, B, p, h, a, O, and . (center universe)--these
+          commands (with exception of a) were also fixed at v5.3
+
+        * Improved commands c, l, G, B, N, R, V, S, and ? (help)
+
+        * Improved W command and related loadsript matters (v5.3)
+
+        * Added support for 'nosymmetries' keyword for the rule files
+
+        * The 'passive' form is ignored in the rules file--all empty
+          transitions are generated instead
+
+        * Enchanced the window title to show scale value
+
+        * Added a new #T form for the pattern files. It sets rules, e.g., 
+          #T 1.85$0 or #T /2 (v5.3)
+
+        * Added support for #M form -- RLE (v5.3, but extended for n-states
+          as in Golly)
+
+        * Added support for #D form -- (v3.5/5.3)
+
+        * Fixed behaviors of #A form
+
+        * Fixed tricky error which causes autostart of the active cells 
+          generation during loading of #A or #R patterns
+
+        * Fixed resize window (v5.3)
+
+        * Added support for loading of long lines (more than BUFSIZ characters)
+          with #P forms
+
+        * Added support for #C format line (pattern comment may be seen 
+          by V command), increased comments storage capacity up to 256 lines 
+          (like v3.5/5.3)
+
+        * Fixed load rules from file function--it may load files with long
+          comments now
+
+        * Failure of #U causes interrupt of load pattern process and error 
+          messages
+
+        * Increased window for coordinates
+
+        * Created install procedure instructions in HOW-TO-INSTALL
+
+        * Updated xlife manpage
+
+        * Updated Imakefile
+
+        * Created file TODO
+
+        * Added rules & patterns for byl, seeds, brian's brain, wireworld, 
+          chou-reggia, langton loop (8-states) and ant (10-states), evoloop 
+          (9/10-states), and sexyloop (10/12-states) automata
+
+        * Updated file 'codd.r' by information from Codd2.table
+
+        * Updated Life patterns and files HACKINGS, PATTERNS, INSTALL,
+          README, ... (v5.3)
+
+        * Added support for Tcl/Tk-widget to load file (it is possible to 
+          ignore this feature and to use old ways) by l command
+
+        * Added converters from RLE (patterns) and TABLE (rules) formats. 
+          Surprizingly r-format for rules is often more compact (up to 50%) 
+          than table-format.  Pattern converter is written on Ruby.  Rules 
+          converter is written on Sed and Awk.  The letters from A to F 
+          should be used for the states from 10 to 15 in the files with 
+          rules or patterns.  The converters from v5.3 (anthologize,
+          dehenselize) are also added
+
+        * Removed alone lifeconv and collect utilities.  They are integrated
+          with xlife now
+
+        * Updated lifesearch utility (v5.3).  Removed lifesrcdumb separate man
+          page.  Created a link to lifesrc man page instead. Updated lifesrc
+          man page
+
+Changes to 6.1:
+        * Added support for autoscaling during pattern loading (v5.3)
+
+        * Wrong rule at #T form will break the loading of a pattern
+
+        * Added support for the generations rules (Brian's brain, Star
+          Wars, ...), e.g., /2/3 or 345/2/4
+
+        * Added support for loading patterns in LIF, RLE, CELLS, and
+          (limited) MCL formats
+
+        * Added L (reload), # (wireframe pattern), b (show bounding box),  M
+          (toggle grid mesh) commands (v5.3)
+
+        * Added support for #K form (v5.3)
+
+        * Provided automatic addition of .r extension to a filename with rules
+
+Change to 6.2:
+        * Improved hash realization, added H command to adjust hash. XLife's become
+          capable to handle the big patterns, e.g., `golly-constructor' (Codd rules), 
+          Universal Turing Machine,  or even `caterpillar'
+
+        * Increased evolution speed
+
+        * Removed `lifesrc' utility. It's become a separate program. See
+          http://members.tip.net.au/%7Edbell/programs/lifesrc-3.8.tar.gz
+
+        * Added $ (show changes) command (v5.3)
+
+        * Added format signature line to save file.  It is `##XLife'. This
+          line begins the file
+
+        * Added various small improvements
+
+        * Realized multicolor mode for the 2-state automata.  Added `*'
+          command to toggle this mode.  It differs from pseudocolor mode of
+          v5.3--It doesn't show killed cells
+
+        * Enhanced G command.  It may be used with active pattern (like `n' 
+          in v5.3)
+
+Changes to 6.3:
+        * Improved support of MCL format
+
+        * Scaling to 1024:1 (-10) is supported
+
+        * Fast work with big pattern (fixed RLE format load bug)
+
+        * Added command `j' (set jump/step for command go)
+
+        * Added command '/' (show quantity of cells of the different kinds for 
+          n-state mode)
+
+Changes to 6.4:
+        * Added support for the torus (anchor ring) or the plain area.  The new
+          command `T' selects the topology.  The directives `#T' and `#U' may 
+          be extended by the topology information.  This information maybe also
+          added with `R' and 'F' commands
+
+        * Added support for the history of 2-state automata.  The new command
+          '@' will toggle history.  The directive `#T' may be extended by the
+          activating history suffix.  This suffix (`+' at the end of string
+          determinating rules) may be also added with `R' command
+
+        * Added support for the rules with born 0 condition
+
+        * Added support for two pseudocolor modes.  The new command 'E' will
+          rotate modes.  One of them is identical to presented at v5.3
+
+        * Added `v' command.  It views the internal variables
+
+        * Added 'x' command to change pivot of tentative points position
+
+        * Added '~' (display only change mode) command (v5.3)
+
+        * Added 'K' (clear comments) command (v5.3)
+
+        * Realized mouse wheel support (it can change scale now)
+
+        * Enhanced search of a file with rules.  The search is performed in 
+          all subdirectories of the default directories.  This affects `F'
+          and `l' commands
+
+        * Improved support for MCL-format (#BOARD, #WRAP, and #SPEED work now)
+
+        * Increased speed of n-state evolution by 50% but it is still relatively
+          slow
+
+        * XLife window may recognize keyboard events with any position of mouse
+          now
+
+        * Improved 'V' (view comments) command
+
+        * Removed special 2-bit mode (STATEBITS=1)--this antique code was not
+          supported even by v5.0 or v5.3
+
+        * Removed 'H' command
+
+        * Added many minor improvements
+
+Changes to 6.5:
+        * Added support for up to 256 states for the generated rules and up
+          to 64 states for the table rules
+
+        * Added 'P' command to toggle oscillator check mode.  The evolution
+          will be stopped if a cycle will be detected (this is the
+          enhancement of 'p' at v5.3)
+
+        * Added additional pseudocolor mode
+
+        * Added Xlib based very fast io widget instead of optional Tcl/Tk
+          load widget.  This widget allows to enter a filename by keyboard
+          like old good Xlife of 90s.  It may be used to save and to load
+
+        * Help screen may be used as menu
+
+        * Improved '/' command.  Information about cell count added to the
+          coordinate window
+
+        * Added shifted commands for the slower universe scrolling
+
+        * Added 'Y' command to yank out the active space
+
+        * Added 'X' command to load a palette file.  The directive '#X'
+          should be used to set a palette file to load for the selected
+          pattern.  The palette if one is available will be loaded
+          automatically for a pattern in the RLE-format
+
+        * Added 'Z' command to restore standard palette
+
+        * Added 'k' command to pick up color from the pattern space
+
+        * Fixed 'a' command
+
+        * Added support for #CXRLE directive of rle-format.  Added support
+          for the optional offsets at #M directive of pattern file in l-format
+
+        * History mode saves initial pattern and counts only for the live
+          cells now
+
+        * History mode begins to use a special palette for it
+
+        * Added possibility to change any state color by the right mouse click
+
+        * Restored support for the `passive' keyword in the files with rules.
+          It maybe used in the form `passive 0' to force manual input for the
+          unknown transition
+
+        * Added support for -display command line option (v5.3)
+
+        * Deleted 'i' command. Its functionality is transfered to the
+          save/load widget
+
+        * Added several Makefiles for the different OS
+
+        * Added rules & patterns for Perrier loops (64 states), HPP
+          (34 states), SDSR loops, and Devore automata
+
+        * Rewritten table2r utility
+
+        * Added many minor improvements and fixes
+
+Changes to 6.5.4:
+        * Added support for the initial xlife .life format
+
+Changes to 6.5.5:
+        * Better scrolling
+
+        * Fixed h-command
+
+Changes to 6.6:
+        * Added pseudocolor mode which replaces changes only mode
+
+        * Realized framebuffer which allows smoother scrolling and a bit speeds
+          up general performance
+
+        * Speeded up about 10% of the evolution performance for the generated
+          and n-state rules
+
+        * Modified `j' command.  It allows to enter explicit jump value now
+
+        * Removed multicolor mode
+
+        * Removed code of PROF sections
+
+        * Fixed accidental error (at v6.5.4) which doesn't allow to load some
+          structured patterns
+
+        * Added minor improvements
+
+Changes to 6.6.1:
+        * Fixed an error with b0 rules and the historical mode
+
+        * Fixed ancient code at clear_pattern()
+
+        * Fixed an error with framebuffer
+
+Changes to 6.7:
+        * Implemented additional history record mode for any kind of
+          automaton (use `H' command).  This is a very fast mode
+
+        * Changed `P' command.  It only checks current pattern and finds its
+          frequency now.  This command becomes fast.  For example it may now
+          check White Whale (its period is 160000346) during several minutes
+          or Golly Ants (34322) during several seconds
+
+        * Added `Tab' command to change state of tentative pattern.  It is
+          useful with multirules pattern
+
+        * Added support for `B0...8/S0...8' rules notation
+
+        * Added speed display.  It is toggled by `*'-command
+
+        * Added support for Moore neighborhood for n-state automata
+
+        * Added support for `rotate4reflect' symmetry
+
+        * Realized `i'-command to set up the evolution timer.  This is almost the
+          same command as `n'-command at Xlife v5.0/5.3
+
+        * Improved wireframe mode
+
+        * Improved scrolling
+
+        * Accelerated framebuffer
+
+        * Added rules & patterns for Tempesti loop, LifeHistory (it is about
+          15 times slower than life+), Bank I/II/III/IV automata
+
+        * Updated `table2r' utility
+
+        * Created `gen-multirules' utility
+
+        * Added minor fixes & improvements
+
+Changes to 7.0 (still beta):
+        * Support for three hashlife algorithms is added (use it by `z'-command);
+
+        * The algorithms for the step-by-step evolution was a bit changed, the
+          evolution has become slightly faster
+
+        * Added some support for multicore hardware
+
+        * Added opportunity to use the standard C++ hash array or binary tree
+          instead of a bit faster but requiring more memory build-in hash
+
+        * Added build of debian package support (make deb-bin)
+
+        * Added minor fixes & improvements
+
+</pre>
+
+<p>Author of these changes: Vladimir Lidovski
+<table><tr><td>(vol.litwr<td> @<td> gmail.com)</table>
+<p>Hash Algorithm and large numbers support were realized by Yaroslav Zotov
+<table><tr><td>(zotovyaa<td> @<td> mail.ru)</table>
+</body>
