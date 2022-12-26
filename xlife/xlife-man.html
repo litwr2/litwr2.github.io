@@ -1,0 +1,1299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML><HEAD><TITLE>Man page of Xlife</TITLE>
+</HEAD><BODY background=bunnies.png>
+<H1>Xlife</H1>
+Section: Games and Demos (6)<BR><A HREF="#index">Index</A>
+<A HREF="/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME</H2>
+
+Xlife - Conway's Game of Life and other cellular automata, for X
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNTAX</H2>
+
+<B>xlife</B>
+
+[<B>-display</B> <I>disp</I>] [<B>-geometry</B> <I>string</I>]
+[<B>-l</B> <I>pattern-lib</I>] [<I>patternfile</I>]
+<P>
+
+<B>lifeconv</B>
+
+<B>-ACDIMPRSpv?</B> [<B>-l</B> <I>pattern-lib</I>] [<B>-g</B> <I>n</I>] <I>file</I>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+<I>Xlife</I>
+
+brings up a single window in which the user may experiment interactively with
+cellular automata.  In its default mode, the program helps the user play with
+John Horton Conway's `Life' game.
+<P>
+By default Xlife will run in a window taking up 4/5ths of your screen; you can
+use your window manager's Zoom or Resize feature to make it fill the whole
+screen.  This window is a viewport on a universe which is effectively unbounded
+(4.2 billion on a side).  Exactly the universe is a big torus.
+<P>
+If an initial pattern is specified, it will be loaded on startup, before Xlife 
+accepts commands.
+<P>
+The <B>-geometry</B> option sets the Xlife window size and position as per usual for
+X applications.  The <B>-display</B> option sets the display to use; overrides the
+DISPLAY environment variable.  The <B>-l</B> option allows you to specify a
+pattern list library-file for name matching (default is `named-patterns').
+<P>
+<B>lifeconv</B>
+
+is a format-conversion utility that translates between several different
+file formats for saving patterns.  It takes a pattern file argument and
+writes the conversion to standard output.  Conversion options are described
+in the LOAD FILE FORMAT section below.  The <B>-g</B> option permits you to evolve
+a loaded pattern for a given number of generations before saving.  The <B>-l</B>
+option is the same as above.  The <B>-?</B> option shows the usage summary.  The
+<B>-v</B> option outputs version information and exits.
+<P>
+A utility <B>table2r</B> may convert table-format file with rules to r-format.
+This utility is written in awk.
+<P>
+<A NAME="lbAE">&nbsp;</A>
+<H2>COMMANDS</H2>
+
+<DL COMPACT>
+<DT><B>Tab</B><DD>
+Change state 1 cells of tentative pattern to active state.  It is useful for
+the creation of multirules pattern.
+<DT><B>!</B><DD>
+Place random cells on the area of the universe on the screen.
+<DT><B>#</B><DD>
+Change tentative-display mode.  By default the tentative-pattern cells are
+displayed in normal state colors but with a bounding box.  In the alternate
+(`wireframe') mode, tentative-pattern cells are displayed as open rectangles
+in the load-box color, but with no bounding box.  Wireframe mode is useful
+when you are trying to match a loadscript to a template active pattern.  It is
+also useful to compare two patterns.
+<DT><B>$</B><DD>
+Toggle running display of changed-cell count in per-generation status line.
+This count makes evolution slightly slower.
+<DT><B>%</B><DD>
+Set a percentage density for a randomly filled area.  Default is 90%.
+<DT><B>(&nbsp;[&nbsp;{</B><DD>
+Set a marker at current mouse position.  There are three markers, one for
+each of these characters.
+<DT><B>)&nbsp;]&nbsp;}</B><DD>
+Go to a marker (make it the current mouse position).  The marker jumped
+to by each closing bracket is that set by the corresponding open-bracket 
+command.
+<DT><B>*</B>,<B>=</B><DD>
+Toggle showing of speed in the number of generations per second.
+<DT><B>+</B>,<B>=</B><DD>
+Zoom the view in, magnifying the area around the mouse cursor.  At zoom scale 
+N, cells are two to the power N pixels wide; the default cell size is scale 4, 
+16 pixels on a side.  Scale range is -10 to 6; at scales -1, -2 and -3 a single
+pixel represents the logical or of a square sample of 4, 16, and 64 pixels 
+respectively.  The same effect has the movement of mouse wheel up.
+<DT><B>;</B>,<B>:</B><DD>
+These commands allow to use CPU threads.  The second one adds a thread and the
+first removes.  The threads are only supported for 2-state automata now.
+<DT><B>&lt;</B><DD>
+Slow down evolution; increase delay  by 10 msec.
+<DT><B>&gt;</B><DD>
+Speed up evolution; decrease delay by 10 msec.
+<DT><B>-</B><DD>
+Zoom the view out.  The same effect has the movement of mouse wheel down.
+<DT><B>.</B><DD>
+Center the universe view on the cursor (also Button 3 in normal mode).
+<DT><B>/</B><DD>
+Show quantity of cells of different kinds (colors).
+<DT><B>0</B><DD>
+Center the median position of the live boxes.
+<DT><B>1,End</B><DD>
+Move your view of the universe diagonally down and left.
+<DT><B>2,Down</B><DD>
+Move your view of the universe down.
+<DT><B>3,PageDown</B><DD>
+Move your view of the universe diagonally down and right.
+<DT><B>4,Left</B><DD>
+Move your view of the universe left.
+<DT><B>5</B><DD>
+Center the universe on the screen (based on average position of the cells).
+<DT><B>6,Right</B><DD>
+Move your view of the universe right.
+<DT><B>7,Home</B><DD>
+Move your view of the universe diagonally up and left.
+<DT><B>8,Up</B><DD>
+Move your view of the universe up.
+<DT><B>9,PageUp</B><DD>
+Move your view of the universe diagonally up and right.
+<DT><B>?</B><DD>
+Help for xlife. This help may be used as a menu.
+<DT><B>@</B><DD>
+Toggle 2-state automata history.  The history provided by addition of 5 new states:
+the new cell state 2 means that this cell is dead but was alive earlier, the
+new states 3 and 4 mean marked ON and OFF respectively (they may be changed to each
+other so they will always remain marked), the new state 5 means `start ON' (becomes
+normal marked OFF cell, the state 3, when it dies), the new state 6 means `boundary
+OFF' (can never turn ON).  The history may be also activated by addition of `+'
+suffix to the string determinating rules.
+<DT><B>A</B><DD>
+Add comments.
+<DT><B>B</B><DD>
+Benchmark.  Enter number of generations and get time.  This is also the fastest mode
+of the evolution.
+<DT><B>C</B><DD>
+Clear the universe and discard current load script.  If there is a boxed pattern,
+clear that instead.
+<DT><B>D</B><DD>
+Discard current load script, including any tentative pattern,
+but leave cell population intact.  (Helpful for using an old pattern as
+a template to construct a load script).
+<DT><B>E</B><DD>
+Rotate pseudocolor display modes for 2-state automaton.  In display mode 0
+(the default) all live cells are displayed normally.  In display mode 1,
+new cells are shown in state 2 color.  In display mode 2, new cells are shown
+in state 2 color and dying ones in state 3 color.  In display mode 3, dying
+cells are shown in state 3 color.  In display mode 3, only cells changed from
+the previous generation are shown (whether alive or dead).  Has no effect
+on N-state automata or a tentative pattern.  It has also no effect when scale
+is below 8:1.
+<DT><B>F</B><DD>
+Load n-state rules from a given file (see the N-STATE SUPPORT section below).
+The file with rules may be given by absolute path or just by name of the rules.
+In the latter case all subdirectories of the default directories will be searched.
+<DT><B>G</B><DD>
+Generate tentative loaded or active pattern for one or more steps.
+<DT><B>H</B><DD>
+Toggle history record mode.  It is fast mode for any type of automaton.  Use `h',
+`j', or `B' commands to make it much faster.  This mode uses colors 266 and 267.
+These colors maybe changed by `X' command.
+<DT><B>I</B><DD>
+Force tentative pattern to be incorporated into main pattern 
+(automatic with g, h, o, l, and W commands).
+<DT><B>J</B><DD>
+Jump to (x,y) location - make it the current mouse position.
+<DT><B>K</B><DD>
+Discard comments associates with current pattern.  It also clears #K line.
+<DT><B>L</B><DD>
+Immediately  reload,  at  the cursor, a copy of the last pattern loaded.
+<DT><B>M</B><DD>
+Toggle display of a grid mesh overlaying the board.
+<DT><B>N</B><DD>
+Change the file's internal name.
+<DT><B>O</B><DD>
+Set current mouse position to be the origin of displayed coordinates.
+<DT><B>P</B><DD>
+Toggle the oscillation check mode.  The `g' command evolution stops whenever it
+detects an oscilator in this mode.  This command compares the starting pattern
+with the next patterns.  So it just checks whether a given pattern is an oscillator.
+<DT><B>Q</B><DD>
+Quit
+<DT><B>R</B><DD>
+Change the (2-state) rules in &quot;stays alive on&quot;/&quot;born on&quot; or B0..8/S0..8 format.
+The standard rules are 23/3 (alive on two or three neighbors, birth on three
+neighbors for an empty cell) or B3/S23 or S23/B3.  Its possible to use third
+component which must be number between 3 and 256.  This number sets age limit
+for the cells.  So /2/3 establishes Brian's
+Brain rules and 345/2/4 - Star Wars'.  Alternatively, enable a payoff matrix
+with the syntax &lt;float&gt;$&lt;float&gt; as described in the PRISONER'S DILEMMA section.
+It is possible to use named rules.  The words &quot;life&quot;, &quot;seeds&quot;, &quot;wireworld&quot;,
+&quot;lifehistory&quot;, &quot;life+&quot;, and &quot;brian&quot; (for &quot;brian's brain&quot;) are recognized.
+<DT><B>S</B><DD>
+Save the universe to a file adding extension `.l', along with
+any comments created via `A'.  If there is currently
+a boxed pattern, only the boxed pattern is saved.  It is possible to select
+a format for the saved pattern.  See section MAIN LOAD FILE FORMAT for the
+details.
+<DT><B>T</B><DD>
+Set up the topology.  It is possible to select the rectangular area with
+connected edges (anchor ring, tore) or the rectangular plain.  The letter
+`Q' (quasiplain) means very big torus - this is the default mode.  The letter
+`T' means limited torus and the letter `P' means limited plain.  You should
+enter rectangle's width and height in the latter cases.  The sizes of the
+rectangle will be rounded up to the multiples of 8.  The size 0 means
+pseudoinfinity.  The bounded area center is the initial origin of coordinates.
+For example, `T16,0', `T8x8', `P0,64', `T4096,4096', `T8X512', `P400*400', `Q'
+may be used to set up the topology.  It is possible to use previous setup.  If
+`T512,512' topology is used then the set `64x' will set `T64*512'.  You may
+set bordered plain with any form for the 2-state automata in the history
+mode - you should draw borders with 6th color.
+<DT><B>U</B><DD>
+Undo load of tentative pattern.
+<DT><B>V</B><DD>
+View comments.
+<DT><B>W</B><DD>
+Write (and flush from memory) script of loaded patterns 
+into a file with `.l' extension.  When loaded,
+this script corresponds the earliest ancestor of current 
+pattern that can be reconstructed from loaded patterns (it does not include
+changes made with mouse: flips, rotates, and moves).
+<DT><B>X</B><DD>
+Load palette from a file with extension .colors (default).  This file consists of
+lines of text.  Any blank lines or lines starting with `#' are ignored.  The
+specification of the RGB colors for one or more states should use the lines like
+these:
+<BR>
+
+color=1    0    0  255  #0000ff
+<BR>
+
+color=2  255    0    0
+<BR>
+
+color=4  255  255    0  cyan
+<BR>
+
+color=5  255    0  255
+<DT><B>Y</B><DD>
+Yank out active pattern.  If tentative one exists then move tentative
+pattern to the universe.
+<DT><B>Z</B><DD>
+Restore default palette.
+<DT><B>^</B><DD>
+Set seed for random number generator.
+<DT><B>a</B><DD>
+Add n-state transition - 6 digits (one old state, one for each orthogonal
+neighborhood cell, and one new state) or filled S(N*C)R form.  The 
+new rule will be logged to the file <B>new.transitions</B> (this requires
+write permission for the directory with last loaded pattern).
+<DT><B>b</B><DD>
+Display the xmin/xmax and ymin/ymax values of the live cells.
+<DT><B>c</B><DD>
+Toggle showing of cell count.  Active cell count makes evolution a bit slower.
+<DT><B>d</B><DD>
+Duplicate tentative pattern.  Allows to create multiple copies of the same
+object interactively.  Just press `d' and then mouse button 1.
+<DT><B>f</B><DD>
+Set evolution speed for `g' to high (no delay between evolutions), the default.
+<DT><B>g</B><DD>
+Toggle running the game.  Evolve/Stop.  Incorporate any tentative pattern.
+Then step through generations until something exceptional happens, like still
+life or stability or a key pressed or possible oscillation detection (the last
+only if a `P' period check is set) or like an `i' timer running out.
+<DT><B>h</B><DD>
+(Hide) stop displaying after each generation, does not iconify.  This mode
+maybe up to several times faster than established by g-command.  However
+j-command with proper step gives faster speed and more comfortable output.
+<DT><B>i</B><DD>
+Set up timer.  Set the maximum number of generations to perform for following
+`g' or other evolution commands.  A zero value (the default) is interpreted as
+&quot;never stop&quot;.  This command is very similar to 'G'.
+<DT><B>j</B><DD>
+Set jump length (step) for the command `g'.  The value 0 or 1 means no jump.
+The greater value means faster speed.
+<DT><B>k</B><DD>
+Pick up color from the pattern's cell.
+<DT><B>l</B><DD>
+Load (actually add) pattern to the universe from a file with extension `.l'
+(default), `.life', `.rle', `.mcl', `.lif', or `.cells'.  This lets you
+overlay multiple saved states to make for some interesting
+effects.  Loaded pattern is (default) initially considered tentative, and
+may be manipulated in various ways before incorporating it into main
+pattern. (To indicate this, it's surrounded by a bounding box.)
+Clear the universe if you want to start from scratch.
+It is possible either to select pattern at the widget list directly
+or to enter pattern name - this will start the search for the
+requested pattern at current and library directories.  There are two
+modes to load patterns.  The first mode is direct.  It directly
+place pattern to the active pattern space. Directly loaded pattern isn't
+added to the save script.  The second mode is tentative.  It allows pattern
+manipulations before its addition to the pattern space.
+<DT><B>m</B><DD>
+Set evolution speed for `g' to medium (250 msec delay).
+<DT><B>n</B><DD>
+Goto next object.  This command allows to find far ships, etc.
+<DT><B>o</B><DD>
+Incorporate any tentative pattern, then forward one generation.
+<DT><B>p</B><DD>
+Toggle running display of mouse position.  Position is only for 
+reference during a session, and does not effect 
+coordinates of saved points.
+<DT><B>r</B><DD>
+Redraw the screen.
+<DT><B>s</B><DD>
+Set evolution speed for `g' to slow speed (500 msec delay).
+<DT><B>t</B><DD>
+Test n-state transition.  Enter 5 digits (start state and 4 neighbors 
+states), get result state.
+<DT><B>u</B><DD>
+Undo manipulations of the tentative pattern, but not the load (tentative
+pattern is restored to the original position and indentation).
+<DT><B>v</B><DD>
+View internal variable values and other information.
+<DT><B>x</B><DD>
+Change pivot position of the tentative points to the current
+position of the mouse.
+<DT><B>z</B><DD>
+Switch to the hash algorithm. You have to choose one of three variants of
+this algorithm.  You can't use the history record with this mode.  You also
+can meet other restrictions with the hash mode.
+<P>
+</DL>
+<A NAME="lbAF">&nbsp;</A>
+<H2>COMMANDS IN SHIFT MODE</H2>
+
+<B>PageUp</B>, <B>PageDown</B>, <B>Home</B>, <B>End</B>, <B>1</B>, <B>2</B>,
+<B>3</B>, <B>4</B>, <B>6</B>, <B>7</B>, <B>8</B>, <B>9</B> and cursor keys move
+the universe faster.
+<P>
+<A NAME="lbAG">&nbsp;</A>
+<H2>COMMANDS FOR WIDGET</H2>
+
+<B>PageUp</B>, <B>PageDown</B>, <B>Home</B>, and <B>End</B> keys scroll the list.
+<B>Esc</B> key makes exit from the widget.  <B>Shift-PageUp</B> key sets upper
+directory.  <B>Left</B> and <B>Right</B> cursor keys or <B>Tab</B> move the
+active position to the previous/next widget item.  <B>Up</B> and <B>Down</B>
+cursor keys move the active position within the list.  Printable symbols
+maybe used to type filename.  <B>Return</B> key is used to activate the widget
+item.  <B>Backspace</B> and <B>Delete</B> keys remove last inputted character.
+<P>
+<A NAME="lbAH">&nbsp;</A>
+<H2>MOUSE WHEEL</H2>
+
+controls vertical scrolling of the universel. It also scrolls the list with the
+widget.
+<P>
+<A NAME="lbAI">&nbsp;</A>
+<H2>BUTTON BINDINGS IN NORMAL MODE</H2>
+
+<DL COMPACT>
+<DT><B>1</B><DD>
+Activate a cell at the cursor, giving it the currently selected state.  In a 
+2-state automaton cells are always activated with state 1.  In an N-state
+automaton, you pick your current color as described in N-STATE SUPPORT below.
+<DT><B>2</B><DD>
+Delete a cell at the cursor (force it to state 0).  To clear a region select it 
+by mouse and press C.
+<DT><B>3</B><DD>
+Erase any previous selection box.  If you drag the cursor with button 3
+held down, then release it, the rectangle between the press and release
+points is boxed and made tentative (as though it had just been loaded
+and not yet incorporated).  The tentative pattern can then be moved,
+flipped, and rotated before re-incorporating it.  If you've just clicked
+at a tile then this tile becomes the center of the screen.
+<P>
+</DL>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>BUTTON BINDINGS WITH TENTATIVE PATTERN LOADED</H2>
+
+<DL COMPACT>
+<DT><B>1</B><DD>
+Move pattern to current position.
+<DT><B>2</B><DD>
+Flip pattern about its x-axis.
+<DT><B>3</B><DD>
+Rotate pattern clockwise about its origin.
+<P>
+</DL>
+<A NAME="lbAK">&nbsp;</A>
+<H2>BUTTON BINDINGS WITH STATE WINDOW</H2>
+
+<DL COMPACT>
+<DT><B>1</B><DD>
+Select state.
+<DT><B>2</B><DD>
+Set color for the state.
+<DT><DD>
+<P>
+</DL>
+<A NAME="lbAL">&nbsp;</A>
+<H2>WIDGET OPTIONS</H2>
+
+<A NAME="lbAM">&nbsp;</A>
+<H3><B>Load pattern</B> and <B>Load pattern part</B> modes</H3>
+
+The radio buttons choose direct or tentative mode.  The direct mode sets
+to load pattern directly into the active space.  This removes previous
+pattern. The tentative mode (default) sets to load pattern into tentative
+space.  This allows to tranform a pattern before the addition to the active
+pattern.
+<P>
+<A NAME="lbAN">&nbsp;</A>
+<H3><B>Save pattern</B> mode</H3>
+
+The radio buttons allow to specify one of A D I M P R S.  For details on the
+A D I M P R formats, see the LOAD FILE FORMAT section below; `S' format is a
+sequence of P blocks, one for each blob in the picture, with appropriate
+offsets for each.
+<P>
+<A NAME="lbAO">&nbsp;</A>
+<H3><B>Save script</B> mode</H3>
+
+Two radio buttons are for collected or plain format. The plain format is just
+a list of inclusions.  The collected one resolves all inclusions in the saved
+file.  See the PATTERN INCLUSION section below for more details.
+<P>
+<A NAME="lbAP">&nbsp;</A>
+<H2>MAIN LOAD FILE FORMAT</H2>
+
+A .l image file is an ordinary text file consisting of lines terminated by
+the newline character.  It is interpreted as one or more image sections
+separated by section lines beginning with `#'.  Lines led by `##' are
+considered as hidden comments and ignored.
+<P>
+Some format directives may use the offsets which are useful with direct
+load mode and with I-format.  These offsets are ignored in the tentative
+load mode.
+<P>
+Each image section is interpreted according to the format letter following its
+section line #.  The format letters are:
+<P>
+<A NAME="lbAQ">&nbsp;</A>
+<H3><B>A</B> - Absolute</H3>
+
+Each following line is interpreted as an absolute (x,y) coordinate pair for a
+cell to be put in state 1 (default).  This format is deprecated and should not
+be used for new patterns.  However it is default - it is used in absence of
+any format directive.  The -A option of
+<B>lifeconv</B>
+
+emits it.
+<P>
+<A NAME="lbAR">&nbsp;</A>
+<H3><B>B&nbsp;name</B> and <B>E</B> - Pattern blocks</H3>
+
+Patterns enclosed by #B &lt;name&gt; and #E lines are skipped
+when loading a whole file, but may be accessed by adding
+:&lt;name&gt; to the file name.  They are useful for bundling related patterns 
+into the same file.  Access is by sequentially skipping lines not in the 
+block, so excessive numbers of blocks in the same file may slow down the
+loading process.  Pattern blocks may not be nested.
+<P>
+Relative image sections (D, I, M, P, ...) are normally drawn with 0,0 at the
+center of the universe.  This may be changed by including a
+pair of whitespace-separated integers after the format character.  If this is
+done, these will be interpreted as a pair of x and y offsets, and the image
+section will be drawn with its upper left corner displaced by those offsets.
+<P>
+A leading image section with no header line is treated as though it had a `#A'
+header.  Thus, version 1.00 image files will load properly.
+<P>
+<A NAME="lbAS">&nbsp;</A>
+<H3><B>C</B> - Comment</H3>
+
+Lines beginning with &quot;C&quot; are comments that the user may have automatically
+written to the save file, and which may be viewed from within Xlife.
+<P>
+<A NAME="lbAT">&nbsp;</A>
+<H3><B>D&nbsp;[xoff&nbsp;[yoff]]</B> - Relative to the previous coordinate pair</H3>
+
+Each following line is interpreted as a (x,y) coordinate pair relative to the
+previous one, for a non-empty cell.  The first is relative to the default
+(0,0) or if they are given to (xoff, yoff).  The -D option of <B>lifeconv</B>
+emits it.
+<P>
+<A NAME="lbAU">&nbsp;</A>
+<H3><B>I&nbsp;[xoff&nbsp;[yoff&nbsp;[rotate&nbsp;[flip&nbsp;[delay]]]]]</B> - include</H3>
+
+A #I line should have whitespace-separated fields after the #I consisting of a
+pattern name and five optional integer parameters 
+(x, y offsets, rotation, flip, and delay as defined in 
+section on inclusion, below). 
+The named pattern is loaded as if it had been included in the image at this 
+point with the given transformation applied.  The
+offsets, if present, displace the load point of the pattern relative to the
+center of the pattern space.  The include facility is useful for assembling
+`sampler' collections of interesting patterns, as well as maintaining
+structured representations of complex patterns.  See also PATTERN INCLUSION
+and STRUCTURED PATTERN EDITING sections.
+<P>
+<A NAME="lbAV">&nbsp;</A>
+<H3><B>K&nbsp;outcome&nbsp;string</B> - special comment</H3>
+
+This string should define the results of the evolution of the pattern.
+<P>
+<A NAME="lbAW">&nbsp;</A>
+<H3><B>M&nbsp;[xsize,&nbsp;ysize] [xoff&nbsp;[yoff]]</B> - run-length encoding with</H3>
+
+optional sizes and offsets.  The sizes are ignored by the current version of
+xlife.  Only the characters <B>b</B>, <B>$</B>, <B>!</B>, the
+letters from <B>A</B> to <B>X</B> and from <B>o</B> to <B>y</B>, and
+the digits <B>0</B> until <B>9</B> should
+appear except whitechars which are ignored.  The data is ordered a row at a
+time from top to bottom, and each row is ordered left to right.  A <B>$</B>
+represents the end of each row and an optional <B>!</B> represents the end of
+the pattern.  For two-state rules, a <B>b</B> represents an off cell, and an
+<B>o</B> represents an on cell.  For rules with more than two states, a <B>.</B>
+represents a zero state; states 1..24 are represented by <B>A</B>..<B>X</B>;
+states 25..48 by <B>pA</B>..<B>pX</B>; states 49..72 by <B>qA</B>..<B>qX</B>;
+241..255 by <B>yA</B>..<B>yO</B>.  The pattern reader is flexible and will permit
+<B>b</B> and <B>.</B> interchangeably and <B>o</B> and <B>A</B> interchangeably.
+Any of state character can be led ahead by a positive integer, which then is
+interpretated as the repettion of that character.  Any illegal character will
+be interpretated as whitechar and ignored.  The -M option of <B>lifeconv</B>
+emits this format.
+<P>
+<A NAME="lbAX">&nbsp;</A>
+<H3><B>N</B> - Name</H3>
+
+This line contains the internal name of the pattern (which may differ from the
+the name of the file.
+<P>
+<A NAME="lbAY">&nbsp;</A>
+<H3><B>O</B> - Owner</H3>
+
+This line contains information on the person who wrote the file, it is written
+in the form: id &quot;name&quot;@machine date, for example.
+<P>
+<BR>&nbsp;#0&nbsp;jb7m&nbsp;&quot;Jon&nbsp;C.&nbsp;R.&nbsp;Bennett&quot;@sushi.andrew.cmu.edu&nbsp;Fri&nbsp;Jan&nbsp;12&nbsp;18:25:54&nbsp;1990
+<P>
+A <B>0</B> (zero) may be used instead of <B>O</B> (xlife generates it during
+<B>S</B> command execution).
+<P>
+Note: This timestamp line has changed format at least three times since
+Xlife 1.0.  It is probably not wise to try and parse these unless you see
+known format version ID (on the first line of the file).
+<P>
+<A NAME="lbAZ">&nbsp;</A>
+<H3><B>P&nbsp;[xoff&nbsp;[yoff]]</B> - Picture with optional offset coordinate pair.</H3>
+
+Each line in the section is interpreted as a scan line of a relative image.
+Each <B>*</B> character turns the corresponding cell on.  All other characters
+leave the corresponding cell off.  For multi-state automata, characters may
+be letters, @, ~, and digits, with '*' corresponding to 1.   The -P option of
+<B>lifeconv</B>
+
+emits this format.
+<P>
+<P>
+<A NAME="lbBA">&nbsp;</A>
+<H3><B>R&nbsp;[xoff&nbsp;[yoff]]</B> - Relative with optional offsets</H3>
+
+Each following line is interpreted as a (x,y) coordinate pair relative to the
+center of the pattern space.  These relative image sections are normally drawn
+with 0,0 on the center of the pattern space.  This may be
+changed by including a pair of whitespace-separated integers after the format
+character.  If this is done, these will be interpreted as a pair of x and y
+offsets, and the image section will be drawn with its upper left corner
+displaced from the cursor position by those offsets.  The -R option of
+<B>lifeconv</B> emits this format.
+<P>
+<P>
+<A NAME="lbBB">&nbsp;</A>
+<H3><B>T&nbsp;survivedigits/borndigits</B> - Set new transition rules</H3>
+
+This line defines a new set of 2-state rules.  <B>survivedigits</B> and
+<B>borndigits</B> are each a sublist of digits out of the range 0 up to 8,
+counting the number of neighbours when the central cell in the neighbourhood
+survives/is born to state ON.  For example the default and classical rules for
+Conway's <I>Game of Life</I> are: #T 23/3.  You may use also named rules like
+with `R' command: `wireworld', `seeds', `life', `lifehistory' or `life+',
+`brian'.  It is possible to add topology after `:'.  For example,
+`life+:T200,200' means Life with History rules at the torus grid.  You may
+also use rules definition in `B0...8/S0...8' notation, where the digits after B
+specify the counts of live neighbors necessary for a cell to be born in the
+next generation, and the digits after S specify the counts of live neighbors
+necessary for a cell to survive to the next generation.
+<P>
+<A NAME="lbBC">&nbsp;</A>
+<H3><B>U&nbsp;filename</B> - Use</H3>
+
+Format is #U followed by a <B>filename</B>. It loads a rule-set file just as
+if the user had typed in the name.  If the named file is already loaded, it
+will not be reloaded.  It is possible to add topology after `:' like with `#T'
+directive.
+<P>
+<A NAME="lbBD">&nbsp;</A>
+<H3><B>X&nbsp;filename</B> - palette for the piXels</H3>
+
+It loads a palette-set file with given name.
+<P>
+More section formats may be added in the future. 
+<P>
+<A NAME="lbBE">&nbsp;</A>
+<H2>PATTERN INCLUSION</H2>
+
+The #I command, as described above, has the following format:
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>#I &lt;pattern&gt; &lt;x&gt; &lt;y&gt; &lt;rotate&gt; &lt;flip&gt; &lt;delay&gt;<BR>
+<P>
+Any prefix of fields that includes a pattern name is acceptable, with the
+natural defaults (no delay, no flip, no rotate, no y or x offset).
+<P>
+In the above
+<DL COMPACT>
+<DT>&lt;pattern&gt;<DD>
+is a pattern name (described below);
+<DT>&lt;x&gt;,&lt;y&gt;<DD>
+are integers representing horizontal and vertical offsets; and
+<DT>&lt;rotate&gt;<DD>
+is an integer that specifies the number of times the pattern is rotated
+90 degrees clockwise around the origin.  Any rotation value (positive or 
+negative) is acceptable, as all are taken mod 4 (true mod, not &quot;%&quot;).
+<DT>&lt;flip&gt;<DD>
+is a multiplier (1 or -1) for the y coordinate that specifies a flip 
+about the x-axis.  Other integers are accepted and silently mapped  to 1.
+<DT>&lt;delay&gt;<DD>
+is an integer specifying the number of generations to perform before 
+loading the pattern (negative values have same effect as 0). 
+<P>
+Note that all of the transformations applied to an included pattern are taken 
+relative to the pattern that includes it.  Thus, loading an assemblage of
+included patterns works as one would expect.
+<P>
+A pattern name takes one of the following three forms:
+<DT>&lt;file&gt;<DD>
+include whole file &lt;file&gt; (like old format)
+<DT>&lt;file&gt;:&lt;name&gt;<DD>
+include pattern block &lt;name&gt; in &lt;file&gt; 
+<DT>:&lt;name&gt;<DD>
+include pattern block &lt;name&gt; in current file 
+<P>
+(Note that &lt;file&gt;: is not allowed.)
+<DT><DD>
+<P>
+A file may also include literal or pattern blocks.
+A pattern block is a pattern given in any acceptable format between a line
+containing &quot;#B &lt;name&gt;&quot; and another line containing &quot;#E&quot;.  Pattern blocks
+are skipped when including a whole file.
+<P>
+(Note that pattern blocks cannot be nested.)
+<P>
+</DL>
+<P>
+
+The -I and -C options of <B>lifeconv</B> may be useful for collecting 
+inclusions from multiple files into a single self-contained file.
+<P>
+
+When you save a pattern in `I' mode, the program automatically does a pattern
+analysis to detect `blobs' (completely connected regions of live cells).
+Repeated blobs are recognized, even if they are rotated or reflected.  
+If there is only one blob, the save output is identical to #P
+format.  Otherwise the output is a list of blobs followed by #I lines
+that will recreate the saved pattern.  This has two advantages:
+duplicate blobs are only written once, and common pattern elements
+are recognized and named (so the save file is also a census).  
+<P>
+The elements container for this recognition is the file &quot;named-patterns&quot;
+(or file selected by -l option at startup).  It specifies the name of a file
+containing the names of patterns to be recognized and named when doing I-format
+(structured) saves.  A leading slash distinguishes an absolute pathname;
+otherwise the relative name is searched for beneath the LIFEPATH or default
+directories (as for a pattern file).  Each line of this file contains up to
+three fields; a pattern name, a pattern file or file:block reference (as for
+the `l' command) and a cycle length.  When the cycle length is 0, only one
+recognition template is generated from each entry; when it is nonzero, one
+is generated for each step in the cycle (with steps after 0 distinguished by a
+number suffix on the name).  Thus, for example, an entry that reads
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>glider<TT>&nbsp;&nbsp;</TT>ss:glider<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>2<BR>
+<P>
+Will generate two recognition templates, one named `glider' and another named
+`glider2'.  The cycle length is optional and defaults to 0; the second field is
+optional and defaults to the value of the first.  Comments (led by #) and blank
+lines are ignored.  This name container is only activated for the life rules.
+<P>
+The file &quot;named-patterns&quot; default content referes to the file &quot;match.l&quot; which
+contains named patterns list in the #B/#E-format.
+<P>
+<P>
+<A NAME="lbBF">&nbsp;</A>
+<H2>N-STATE SUPPORT</H2>
+
+<P>
+Xlife includes support for automata with up to 64 states using
+the (von-Neumann-style) 4-cell rotationally symmetric neighborhood (rotate4,
+default), rotate4reflect or absence of symmetry; to invoke it, load a rule-set
+file using the `F' command.  It is also possible to use the (Moore-style) 8-cell
+rotationally symmetric neighborhood for the special cases: WireWorld and
+3-components (generations) rules with up to 256 states.  The Moore style maybe
+also used in the general case but only up to 11 states.  These two cases are
+established by `#T' form in a pattern file or by direct manual input after
+the `R' command (use recognized words or a form like 345/2/4).  Many
+interesting automata including the Wireworld-4 construct and the UCC described
+in E. F. Codd's 1968 ACM monograph can be implemented by specifying appropriate
+transition functions.
+<P>
+Don't rotate or flip pattern with non-symmetrical rules!
+<P>
+When Xlife is used in this mode, the program uses color to indicate states.
+Pattern picture files may contain digits to specify the states of picture
+cells; `*' is interpreted as 1.  Color-picker radio buttons are set up at
+the right-hand side of the input window; by clicking your cursor on
+a button, you set button 1 to paint with that color.  You can return
+to 2-state mode with the `R' command.
+<P>
+Refer to the rule-set file `codd.r' for an example of transition
+definition syntax.  Each line contains either a directive or 6 digits or 
+letters arranged as
+<P>
+&lt;old-state&gt;&lt;neighbor&gt;&lt;neighbor&gt;&lt;neighbor&gt;&lt;neighbor&gt;&lt;new-state&gt;
+<P>
+For &lt;old-state&gt; or &lt;neighbor&gt; you may also specify a <I>state set</I>; digits
+or letters enclosed in square brackets.  This wild-cards the transition in the 
+obvious way.  You should use letters instead numbers for states above 9, so 
+use A instead 10, B instead 11, and so on.  The letter `a' means 36, `b' - 37,
+etc.  The sign `@' means 62, `~' - 63.  Comments (begun with `#') are
+permitted in the file.
+<P>
+You can arrange for rulesets to be loaded automatically by putting a `#U' 
+directive in a pattern file.  When you save a pattern, a #U is automatically
+generated into the save file giving the name of the current ruleset.
+<P>
+The directive
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>states &lt;maxstates&gt;<BR>
+<P>
+tells the code what the automaton's count of cell states is.
+<P>
+Rule tables usually don't specify every possible set of inputs.  For those not 
+listed, the central cell remains unchanged if `passive' declaration is not
+used.
+<P>
+The presence of `passive' declaration will require manual input of missed
+transition. So if, while evolving a pattern, the code finds a cell and
+neighborhood in a state for which no transition has been specified, the
+program queries the user for a new state, and the tuple implied is added to
+the database. A line of the form
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;passive&nbsp;&lt;maxstate&gt;
+<P>
+instructs the code that all combinations of cell and neighbor states up
+to and including &lt;maxstate&gt; for which there is no explicit rule leave the cell
+status unchanged.  A `passive' declaration in a rules file can be partially
+overridden by later, explicit transition rules.  The form `passive 0' is a
+way to say to use manual input for every missed transition.
+<P>
+The directive
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>nosymmetries<BR>
+<P>
+sets absence of symmetry in rules.  It may be used with Langton Ants, Perrier
+loops, etc.
+<P>
+<P>
+The directive
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotate4reflect
+<P>
+sets this type of symmetry.  It may be used with Bank I, II, III, IV, etc.
+<P>
+The directive
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moore
+<P>
+sets this neighborhood.  It may be used with Bank III, etc.  The default
+symmetry is `rotate8'.  This directive should precede state or symmetry
+declaration.
+<P>
+You can also specify rules depending on a neighbor count.  A rule line of the
+form 
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>S(N*C)R<BR>
+<P>
+with S, N, C, and R being digits, is interpreted to mean that if a cell has
+state S and exactly C neighbors of state N, the result state is R.  For an
+example of usage, see the Wireworld-4 rules file.  This doesn't works with
+`nosymmetries' or with `Moore'.
+<P>
+Rules are checked in the order given in the file - the first rule that matches
+is applied.  If you want (`passive' should be set in this case), you can write
+rules in the form of general cases and exceptions, as long as the exceptions
+appear first in the file.
+<P>
+When the evolution function encounters a neighborhood for which there is no
+defined transition, it stops and boxes that neighborhood.  You are prompted 
+for a result state.  Once you've entered it, the evolution function continues
+and the new transition rule is appended to a new-transitions file in the
+current directory.  This feature can't be activated because all transitions
+are defined.
+<P>
+<A NAME="lbBG">&nbsp;</A>
+<H2>PRISONER'S DILEMMA MODELS</H2>
+
+<P>
+In the June 1995 Scientific American, the article &quot;The Arithmetic of Mutual&quot;
+Help&quot; (by Martin A. Nowak, Robert M. May and Karl Sigmund) describes an
+interesting class of cellular automata that model iterated Prisoner's Dilemma
+situations.  These games can illustrate stable and winning cooperate/defect
+strategies for situations in which each agent repeatedly interacts with near
+neighbors.  In the same issue, Alun L. Lloyd's &quot;Mathematical Games&quot; column
+goes into more detail about these simulations.
+<P>
+These are two-state automata.  In Alun's implementation one state always
+cooperates, one always defects (higher states could model Tit-for-Tat,
+Generous Tit-for-Tat, or Pavlov).  There is a payoff matrix of the following
+form:
+<P>
+<CENTER><TABLE BORDER><TR><TD><TABLE>
+<TR VALIGN=top><TD>Payoff</TD><TD ALIGN=center>Cooperate</TD><TD ALIGN=center>Defect<BR></TD></TR>
+<TR VALIGN=top><TD COLSPAN=3><HR></TD></TR>
+<TR VALIGN=top><TD>Cooperate</TD><TD ALIGN=center>1</TD><TD ALIGN=center>a<BR></TD></TR>
+<TR VALIGN=top><TD>Defect</TD><TD ALIGN=center>b</TD><TD ALIGN=center>0<BR></TD></TR>
+</TABLE></TABLE></CENTER>
+
+<P>
+To make the game interesting, b must be greater than 1.  (Lloyd's simulation
+only considers the case a = 0.)  On each round, each cell first plays the game
+with each of its neighbors in turn.  Then, each cell looks at the payoffs of
+its neighbors (and its own payoff) and switches to the strategy with the
+highest payoff).
+<P>
+To set up such a game, use the `R' command in the following form:
+<P>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>R&lt;b&gt;$&lt;a&gt;<BR>
+<P>
+You may also use #T form in the pattern file.
+<P>
+For example, to set up Lloyd's simulation, do `R1.85$0'.  In these 
+simulations, use the following mapping between states and strategies:
+<DL COMPACT>
+<DT>0<DD>
+Quiescent.
+<DT>1<DD>
+Live, always cooperates.
+<DT>2<DD>
+Live, always defects.
+<DT>3<DD>
+A transition, from cooperator to defector.  It behaves like defector.
+<DT>4<DD>
+A transition, from defector to cooperator.  It behaves like cooperator.
+<P>
+Interesting b values are in the range (1, 2]; Lloyd likes 1.85.  Different
+values produce wide ranges of different behaviors, including stable end
+states, statistical equilibria and cycles with large swings.  Initial
+clustering of cooperators is also important; a single cooperator will 
+always be snuffed by surrounding defectors, but a block of 4 or more may
+be able to defend themselves and earn a high enough relative payoff to
+convert neighbors.
+<P>
+Lloyd included illustrations of a 1.85 game starting with one defector in a sea
+of cooperators.  The resulting patterns look like Persian carpets or Koch
+snowflake curves.
+<P>
+</DL>
+<A NAME="lbBH">&nbsp;</A>
+<H2>OTHER FEATURES OF RULE FILES AND EDITING</H2>
+
+<P>
+The directive
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;debug&nbsp;NUMBER
+<P>
+is ignored.
+<P>
+Transition rules entered interactively are appended (commented with user
+ID and timestamp) to the file <B>new.transitions</B> in the current directory.
+This file can later be selectively merged with your original ruleset using 
+a text editor.
+<P>
+<A NAME="lbBI">&nbsp;</A>
+<H2>STRUCTURED PATTERN EDITING</H2>
+
+Almost all large Life patterns that exhibit well-defined behavior (such as the
+breeder) are in fact composed of smaller patterns that combine in a predictable
+way.  Storing such patterns as assemblies of subpatterns can greatly aid future
+experimentation as well as synthesis of still more complex patterns.  Here
+we'll explain the structured-editing features, and give several examples of
+their use.
+<P>
+<A NAME="lbBJ">&nbsp;</A>
+<H3>Overview of structured editing</H3>
+
+Structured editing should cut down on the number of Life patterns stored as
+atomic images (i.e. raw bitmaps or point sets).  Once a glider gun, for
+example, has been defined, there should be no need to duplicate the pattern.
+It should instead be possible to refer to it by name, as a known mechanism with
+well-established properties.  In fact, the glider gun itself exhibits some
+structure, as it is composed of two period 30 shuttles that interact to produce
+gliders.  Ultimately, the &quot;interesting&quot; part of the period 30 shuttle does not
+seem to have any structure, and hence must be represented a picture, such as
+the following:
+<P>
+<PRE>
+               ..*...
+               .*.*..
+               *...**
+               *...**
+               *...**
+               .*.*..
+               ..*...
+</PRE>
+
+<P>
+Unfortunately, it is not enough to merely place such a pattern at the correct
+coordinates.  For example, we can rotate this pattern by multiples of 90
+degrees without essentially changing its behavior.  While this particular 
+pattern has mirror symmetry about its horizontal dividing line, other patterns 
+may not, so we may additionally wish to take the mirror image of a pattern.  
+It would be undesirable to maintain eight separate bitmaps for what is really 
+the same pattern, so we would like a facility to perform basic geometric 
+transformations on patterns to be included in more complex ones.
+<P>
+A more subtle issue is that of timing.  When placed between appropriate
+stabilizing objects (such as eaters or blocks) the above pattern will oscillate
+with a period of 30.  Hence, when defining a complex pattern, we may need
+to insist (in addition to any geometric transformations) that it be placed
+within the larger pattern at a particular phase in its cycle.
+<P>
+By controlling position, rotation, flip, and phase shift, we may combine
+patterns in any desired manner.  The #I extensions to Xlife makes this
+possible, and the structured editing features make it (relatively) convenient.
+<P>
+Ideally, the new editing features will make it possible to use 
+the #I format without ever looking at the description file.  The advanced Life 
+experimenter may, however, wish to modify #I lines with a text editor in
+order to achieve very specific effects (still more advanced CAD tools would 
+eliminate this need).
+<P>
+To attempt the following examples, you should be running Xlife.  You must
+have a copy of the file &quot;ex.l&quot;, supplied with the release, in either the
+directory in which you start up Xlife, or in the pattern directory.
+<P>
+Before trying any of the examples, type `C' to clear the workspace, if it
+is not already clear.
+<P>
+<A NAME="lbBK">&nbsp;</A>
+<H3>Experimenting with gun collisions.</H3>
+
+Type `l' to load in a pattern.  Backspace over the default directory, if there
+is one (probably the pattern library) and type &quot;ex:gun&quot;.  This will load the
+pattern &quot;gun&quot; from the file &quot;ex.l&quot; in either the pattern library or current
+directory.  The pattern consists of a glider gun before it has produced any
+gliders.
+<P>
+Get a feel for the movement, flip, and rotation operations performed with the
+mouse buttons.  All operations are performed with respect to the origin of the
+pattern, which is indicated by a single dot at the smallest scales and becomes
+an X shape at the larger scales (zoom in on it to see this).
+<P>
+In order to place patterns such as glider guns, it is especially important to
+know the direction of the outgoing glider stream.  You may preview this
+by generating the loaded pattern with the `G' command (*not* the `g' command).
+Initially, you will want to generate enough steps to see the stream, so type 
+100 when prompted for the number of steps.  It is better to use `I' command before
+`G' with first pattern.  The negative phase shifts otherwise may be produced by
+`W' command.  The negative shifts should be edited manually.
+<P>
+Note that the mouse buttons continue to perform transformations on
+the generated pattern.  Place the pattern as desired.  It will be incorporated
+into the main universe when any of the commands g, h, o, l, or W are typed.
+To incorporate it without doing anything else, use `I'.
+<P>
+Now, load another glider gun in the same manner.  Place the two guns in
+such a way that their outgoing gliders collide.  Not all collisions are 
+well behaved, and you may wish to produce a specific collision, such as
+a clean annihilation of gliders.  The references mentioned at the top, and some
+of the patterns supplied with Xlife, are a good source of interesting 
+collisions.  Use `G' on the second glider gun to control the phase difference 
+between the colliding gliders.
+<P>
+Type `g' to let the pattern go and see what happens.  If the collision was 
+chosen randomly, there is a good chance that it will merely break down into 
+chaos.  Some collisions, however, produce interesting effects.  
+<P>
+Save your gun collision into a file using the `W' command.  Now type `C' and 
+use `l' to load it back in.  Note that the result is not what you would expect 
+from saving the current pattern.  That is, even if the pattern did break down 
+into chaos, the pattern written by `W' corresponds to the collision as you set 
+it up.  If you type `g' then you should witness the same sequence of events as 
+before.
+<P>
+The file written by `W' is not a raw pattern image, but rather a &quot;load script.&quot;
+That is, it gives Xlife enough information to reconstruct your placement of
+loaded patterns.  It does not contain any changes made by drawing or erasing 
+cells with the mouse, but such changes deviate from the philosophy of pattern 
+structuring and should be avoided except when drawing atomic patterns.
+(In any case, the `S' command is provided for saving the whole image in an 
+unstructured way.)
+<P>
+<A NAME="lbBL">&nbsp;</A>
+<H3>Setting up a glider mirror.</H3>
+
+It is possible to reflect a stream of gliders as if by a mirror, using a
+period 30 shuttle with eaters at the ends.  The mirror will not work unless
+the stream (from a period 30 gun) and the mirror are perfectly positioned
+and in phase.  In general, this may involve some simple yet tedious calculation
+or else a still more tedious process of trial and error.  In the
+following, however, we will see how to use the editing features to 
+produce the desired effect reasonably simply.
+<P>
+Load in ex:gun, as before, and let it generate (with `G') until the outgoing
+stream contains 20 or so gliders.  This is the stream we will be reflecting.
+<P>
+Now load in ex:mircollision.  This pattern consists of a glider poised to
+be reflected from a mirror.  Use rotates, flips, and `G' (one step at a 
+time) until the the mirror glider is an exact copy of the glider furthest
+from the gun.  Use the mouse to move the loaded pattern so that these two
+gliders occupy exactly the same five cells.  It may help to zoom in on the
+pattern. 
+<P>
+Now, simply type `g' and let the pattern go.  It you performed the above
+steps correctly, you should see a stream of gliders bouncing off the mirror.
+Add more mirrors, if desired, and save the result into a file using `W'
+<P>
+<A NAME="lbBM">&nbsp;</A>
+<H3>Details of the structured save format</H3>
+
+Skip the following if you are not interested in familiarizing yourself with the
+details of the #I format.
+<P>
+Take a look at the file generated by `W' in the above.  It consists of a 
+sequence of #I lines, the first containing ex:gun, and the others containing
+ex:mircollision.  The latter lines each have a delay value as their final 
+parameter, and these parameters will most likely be in the hundreds, as this
+is the number of steps it takes to make the stream of gliders used as a 
+reference.  
+<P>
+Note that the mirror is a period 30 oscillator, so we may replace all of 
+these numbers by their values mod 30 without affecting the crucial 
+phase difference between the mirror(s) and the gun.  Do this, and look at the
+pattern in Xlife.  Note that it takes less time to load, and that the loaded
+pattern does not contain a long stream of gliders.  Type `g' to verify that the
+mirrors still work (if not, make sure you computed mod correctly). 
+<P>
+The resulting pattern will contain spurious gliders.  These are the gliders
+that came with the pattern ex:mircollision.  Fortunately, ex:mircollision 
+contains ex:mirror with no moves, flips,or rotations applied.
+Hence, by replacing all instances of ex:mircollision by ex:mirror in your
+file, you will obtain the same pattern as before, but without the spurious 
+gliders.
+<P>
+This illustrates the notion of including extra parts in a pattern for 
+reference and eliminating them in the final edit.  Use of this technique
+can substantially reduce the need for explicit calculation when constructing
+complex patterns.
+<P>
+<A NAME="lbBN">&nbsp;</A>
+<H3>Constructing a Structured Pattern from a Template.</H3>
+
+Having familiarized yourself with the use of load scripts, you may wish
+to construct structured versions of old patterns you made in the previous
+version of Xlife.  This can be done in a bottom-up fashion by loading
+in the raw image and building up subpatterns using the initial image
+as a reference.  You first need to identify the the atomic subpatterns in the
+old pattern.  For example, in the mirror of the previous example, the atomic
+patterns are two eaters and the period 30 oscillator (shown earlier in this
+document).  
+<P>
+The template pattern should not be written into the load script, and this
+may be prevented by using the `D' command <B>after</B> this pattern has been
+incorporated into the universe.  The effects of having the template written
+to the load script are non-fatal, and may be corrected with a text editor.
+However, it is best to get in the habit of typing `I' (include pattern),
+`D' (discard load script) immediately upon loading a template.
+<P>
+The mirror in &quot;ex.l&quot; is already given in a structured way, but it will suffice
+to illustrate the technique.  To place the template, load ex:mirror, and type
+`I' and `D' as mentioned above.  Now, load in succession two eaters (ex:eater)
+and the oscillator (ex:oscil) and place each pattern over the corresponding
+part of the old image.  Use `W' to write the load script.
+<P>
+If the original mirror had been stored as a bitmap then you would have 
+transformed a seemingly arbitrary set of points into a structured pattern.  
+Patterns defined in this way can later be combined into more complex patterns, 
+and at any level, the pattern can be seen to be a logical combination of 
+well-understood components rather than an amorphous conglomeration of Life 
+cells.
+<P>
+<A NAME="lbBO">&nbsp;</A>
+<H3>Using the `lifeconv' utility.</H3>
+
+One seeming disadvantage of structuring patterns with the `W' command is that a
+pattern that used to reside in a single file may now be spread over several
+files.  There may be too many to easily keep track of them.  For the user who
+wishes only to use #I as a means of collecting a structured pattern into a
+single file, however, the -I and -C options of `lifeconv' utility are provided.
+<P>
+The lifeconv utility takes a pattern name as an argument (with the same default
+directories as in the `l' command).  It writes a file to standard output that
+contains an equivalent version of the pattern in a different format.  Usage is:
+<P>
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lifeconv&nbsp;pattern&nbsp;[-ACDIMPRSp]&nbsp;&gt;destination
+<P>
+where destination is any valid file name (a .l extension is recommended).  The
+option controls the format in which the destination file is written.  These
+formats are identical to those described under the `S' (save) command,
+except for C.
+<P>
+Either -C or -I will suffice to convert a pattern with inclusions into
+a single-file pattern with all the inclusions resolved.  The difference
+between them is that -I does an automatic scene analysis of the file
+after merging all inclusions into one big picture, while -C just resolves
+the inclusions textually.  The one advantage of the latter method is that it
+preserves any pattern name and structure information present in the input
+file: -I renames all the pattern fragments.
+<P>
+Try these options on any of the files written by `W' in examples 1, 2, and 3.
+<P>
+Old files in #P format may not have same y coordinate when read by the
+new release.  For best results, use &quot;lifeconv -p name ...&quot; on old files.
+<P>
+This utility may also be used for conversion from other formats (MCL, LIF, ...)
+to native XLife format.
+<P>
+<P>
+<A NAME="lbBP">&nbsp;</A>
+<H2>ENVIRONMENT</H2>
+
+The program has a compiled-in default for its global pattern directory,
+LIFEDIR (normally /usr/share/xlife).
+<P>
+If the the variable LIFEPATH is set to a colon-separated list of directories,
+these directories (and their first-level subdirectories) will be searched for
+pattern-file names and rulesets.  The default list includes &quot;.&quot; and LIFEDIR;
+that is, pattern files are searched for, by default, below the current
+directory and below the global pattern directory.
+<P>
+The recommended way to organize your pattern directories is to have one
+subdirectory per automaton.  The distribution provides the following: 
+<DL COMPACT>
+<DT><I>life</I><DD>
+contains an extensive library of interesting Life patterns.
+<DT><I>life-like</I><DD>
+contains a library of interesting similar to Life patterns (seeds, life without 
+death, highlife replicator, brian's brain, starwars, ...).
+<DT><I>codd</I><DD>
+contains transition rules and several demos.
+<DT><I>devore</I><DD>
+variation of the Codd self-replicating computer.
+<DT><I>HPP</I><DD>
+is the earliest lattice gas model.
+<DT><I>perrier</I><DD>
+this loop is a self-reproducing calculator.
+<DT><I>wireworld</I><DD>
+contains transition rules and a test pattern for the Wireworld automaton
+as described in the January 1990 issue of Scientific American (Computer
+Recreations, p. 146).
+<DT><I>wireworld-4</I><DD>
+contains transition rules and test patterns for the Wireworld-4 automata.
+Wireworld-4 is a variant of classical Wireworld at the von-Neumann-style
+rotationally symmetric neighborhood.
+<DT><I>byl</I>, <I>chou-reggia</I><DD>
+contain small n-state replicators.
+<DT><I>langton</I><DD>
+contains famous loop and ant(s).
+<DT><I>evoloop</I>, <I>sexyloop</I>, <I>SDSR</I><DD>
+contain evolutionary replicators.
+<DT><I>pd</I><DD>
+contains patterns for Lloyd's variant of Prisoner's Dilemma games.
+<P>
+These will be copied under LIFEDIR by a normal installation.  The
+distribution may contain additional directories with more patterns.
+<P>
+</DL>
+<A NAME="lbBQ">&nbsp;</A>
+<H2>EXPLORATION</H2>
+
+Here are some 2-state rules to experiment with:
+<DL COMPACT>
+<DT>23/3<DD>
+the default, of course; Conway's &quot;Life&quot; rules.
+<DT>1234/3<DD>
+patterns &quot;crystallize&quot;
+<DT>12345/45<DD>
+patterns become contained
+<DT>12345/4<DD>
+same as above, but settles VERY quickly
+<DT>5/12<DD>
+floor tile patterns... Variations of this tend to be interesting as well.
+<DT>1357/1357<DD>
+replicators world...
+<DT>/2<DD>
+seeds - most patterns expand indefinitely, some interesting ones.  Fast
+gliders.
+<DT>012345678/3<DD>
+life without death.  Ladders.
+<P>
+</DL>
+<A NAME="lbBR">&nbsp;</A>
+<H2>AUTHORS</H2>
+
+Algorithm, implementation and file format enhancements:
+<BR>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Jon Bennett<BR>
+<P>
+Original X code:
+<BR>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Chuck Silvers<BR>
+<P>
+Enhancements to #I format and user interface:
+<BR>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Paul Callahan<BR>
+<P>
+Auto-sizing, load format enhancements, 8-state support, all of the non-Life
+automata, still-life detection, boxing:
+<BR>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Eric S. Raymond<BR>
+<P>
+Many new commands, subpixel resolution, M format:
+<BR>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Achim Flammenkamp<BR>
+<P>
+A lot of fixes, improvements, and a save/load widget:
+<BR>
+
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TT>Vladimir Lidovski<BR>
+<P>
+<A NAME="lbBS">&nbsp;</A>
+<H2>SEE ALSO</H2>
+
+<A HREF="/cgi-bin/man/man2html?6+lifeconv">lifeconv</A>(6), <A HREF="/cgi-bin/man/man2html?6+xlife">xlife</A>(6).
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME</A><DD>
+<DT><A HREF="#lbAC">SYNTAX</A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">COMMANDS</A><DD>
+<DT><A HREF="#lbAF">COMMANDS IN SHIFT MODE</A><DD>
+<DT><A HREF="#lbAG">COMMANDS FOR WIDGET</A><DD>
+<DT><A HREF="#lbAH">MOUSE WHEEL</A><DD>
+<DT><A HREF="#lbAI">BUTTON BINDINGS IN NORMAL MODE</A><DD>
+<DT><A HREF="#lbAJ">BUTTON BINDINGS WITH TENTATIVE PATTERN LOADED</A><DD>
+<DT><A HREF="#lbAK">BUTTON BINDINGS WITH STATE WINDOW</A><DD>
+<DT><A HREF="#lbAL">WIDGET OPTIONS</A><DD>
+<DL>
+<DT><A HREF="#lbAM"><B>Load pattern</B> and <B>Load pattern part</B> modes</A><DD>
+<DT><A HREF="#lbAN"><B>Save pattern</B> mode</A><DD>
+<DT><A HREF="#lbAO"><B>Save script</B> mode</A><DD>
+</DL>
+<DT><A HREF="#lbAP">MAIN LOAD FILE FORMAT</A><DD>
+<DL>
+<DT><A HREF="#lbAQ"><B>A</B> - Absolute</A><DD>
+<DT><A HREF="#lbAR"><B>B&nbsp;name</B> and <B>E</B> - Pattern blocks</A><DD>
+<DT><A HREF="#lbAS"><B>C</B> - Comment</A><DD>
+<DT><A HREF="#lbAT"><B>D&nbsp;[xoff&nbsp;[yoff]]</B> - Relative to the previous coordinate pair</A><DD>
+<DT><A HREF="#lbAU"><B>I&nbsp;[xoff&nbsp;[yoff&nbsp;[rotate&nbsp;[flip&nbsp;[delay]]]]]</B> - include</A><DD>
+<DT><A HREF="#lbAV"><B>K&nbsp;outcome&nbsp;string</B> - special comment</A><DD>
+<DT><A HREF="#lbAW"><B>M&nbsp;[xsize,&nbsp;ysize] [xoff&nbsp;[yoff]]</B> - run-length encoding with</A><DD>
+<DT><A HREF="#lbAX"><B>N</B> - Name</A><DD>
+<DT><A HREF="#lbAY"><B>O</B> - Owner</A><DD>
+<DT><A HREF="#lbAZ"><B>P&nbsp;[xoff&nbsp;[yoff]]</B> - Picture with optional offset coordinate pair.</A><DD>
+<DT><A HREF="#lbBA"><B>R&nbsp;[xoff&nbsp;[yoff]]</B> - Relative with optional offsets</A><DD>
+<DT><A HREF="#lbBB"><B>T&nbsp;survivedigits/borndigits</B> - Set new transition rules</A><DD>
+<DT><A HREF="#lbBC"><B>U&nbsp;filename</B> - Use</A><DD>
+<DT><A HREF="#lbBD"><B>X&nbsp;filename</B> - palette for the piXels</A><DD>
+</DL>
+<DT><A HREF="#lbBE">PATTERN INCLUSION</A><DD>
+<DT><A HREF="#lbBF">N-STATE SUPPORT</A><DD>
+<DT><A HREF="#lbBG">PRISONER'S DILEMMA MODELS</A><DD>
+<DT><A HREF="#lbBH">OTHER FEATURES OF RULE FILES AND EDITING</A><DD>
+<DT><A HREF="#lbBI">STRUCTURED PATTERN EDITING</A><DD>
+<DL>
+<DT><A HREF="#lbBJ">Overview of structured editing</A><DD>
+<DT><A HREF="#lbBK">Experimenting with gun collisions.</A><DD>
+<DT><A HREF="#lbBL">Setting up a glider mirror.</A><DD>
+<DT><A HREF="#lbBM">Details of the structured save format</A><DD>
+<DT><A HREF="#lbBN">Constructing a Structured Pattern from a Template.</A><DD>
+<DT><A HREF="#lbBO">Using the `lifeconv' utility.</A><DD>
+</DL>
+<DT><A HREF="#lbBP">ENVIRONMENT</A><DD>
+<DT><A HREF="#lbBQ">EXPLORATION</A><DD>
+<DT><A HREF="#lbBR">AUTHORS</A><DD>
+<DT><A HREF="#lbBS">SEE ALSO</A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 11:07:15 GMT, April 01, 2018
+</BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<body background=bunnies.png>
+<p>Download port (v6.7.5) for 
+<a href=https://drive.google.com/file/d/1bjYF49kQ6r0QAKC9K3EvXs4gLihCp5e7/view?usp=share_link>32</a>/<a href= https://drive.google.com/file/d/15qDGDdrKvURxUMzkkXoI0_UaXRohIQ_k/view?usp=share_link.zip>64</a>-bit
+Microsoft Windows<sup>&reg;</sup> built by MingW.
+<p>The program `lifeconv.exe' (to convert data) is just a copy of
+`xlife.exe'.  Use it without redirection, e.g.,<br>
+<code>lifeconv -M patt-in.rle patt-out.l</code><br><br>
+
+<p>The <a href=http://www.cygwin.com>Cygwin<a>'s version has several
+advantages over this port:
+<ul>
+<li>it has several times faster video performance
+<li>it supports console text output (mingw has unfixed error for this)
+<li>it looks smoother &mdash; Microsoft Windows' version may sometimes produce
+"the screen artefacts", which maybe removed by r-command
+<li>it has better tested
+</ul>
+
+<p>Xlife requires only minimum Cygwin support.  It is easy to install 
+Cygwin, compile and use Xlife.<br><br>
+
+<p>To build Xlife for Microsoft Windows with MingW you need to use Xlife sources and 
+patched sources of David Kinder's wrapper for Xlife sources.  The compilation 
+maybe described in the next steps:
+<ol>
+<li>Download, unpack, and patch Xlife sources
+<li>Make a subdirectory at Xlife sources directory
+<li>Download David Kinder's 
+<a href=http://www.davidkinder.co.uk/xlife35src.zip>sources</a> and 
+unzip it to the created directory
+<li>Download <a href=https://drive.google.com/file/d/1w_aNSzjR8Head2fwzGwzj1YFlltfhEQQ/view?usp=share_link>patch</a>
+<li>Convert end-of-line markers to Unix style at the wrapper's sources or 
+to DOS style at the patches
+<li>Apply patch
+<li>Remove directory `include/sys'
+<li>Change directory to X11Lib
+<li>Check Makefile, write proper path to your compiler (CC, CXX and RESC 
+variables values)
+<li>Run `make'
+<li>Try to run `xlife' or `lifeconv'
+</ol>
+<p>This process may have variations for the differrent compilers.
+</body>
