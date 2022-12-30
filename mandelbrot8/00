@@ -1,3 +1,0 @@
-mse -t c0.mse zz -o zz1
-sed -rf c1.sed zz1 |sed -rf c2.sed >zz2
-awk -f c3.awk zz2 >zz3
