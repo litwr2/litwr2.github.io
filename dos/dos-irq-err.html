@@ -1,0 +1,14 @@
+<body background=../22.jpg>
+<h1>It is a very odd DOS error which kills any DOS but MS-DOS</h1>
+<p>The program IRQERR.COM can show the problem.  It has intercepted interrupt 8 (IRQ0, timer) and interrupt 9 (IRQ1, keyboard).  If it is running then pressing of any keyboard key causes showing of a scancode of this key in the top left corner of the screen.  Press Esc to leave the program.  Fix any key in the pressed state.  This causes after several seconds producing of beeps which signal about DOS keyboard buffer overflow.  With MS-DOS I can fix the key for any period of time without any problem.  With any other tested DOS (Free, DR, PTS) after several seconds system imminently will be crashed.
+<p>This crash caused by PIC (Programmable Interrupt Controller) 8259 which bits corresponded to IRQ1 in the IRR (Interrupt Request Register) and IMR (Interrupt Mask Register) sometimes remain set after the end of interrupt 9!  My program IRQERRX.COM can show this. This set bits prevent possibility of interrupt 9 and therefore lock the keyboard.
+<p>I can't understand this result...
+<p>I've resolved this problem by using of IMR in my interrupt 9 handler - I mask IRQ 0 before a call to the system keyboard handler, call this system handler by CALL FAR and then restore IMR.  But this "solution" gives a new unanswered question about stability of IRQ with the priority less than 1 (COM1, COM2, FDD, etc)...
+<p>I can only suppose that the problem may be in<br>
+<tt>&nbsp;MOV AL,20H<br>
+&nbsp;OUT 20H,AL<br></tt>
+command sequence in the end of each hardware interrupt.  This sequence is the command to PIC which must clear the set bit in the ISR (In-Service Register) with the largest IRQ priority.  Maybe it is connected with Special Mask Mode (SMM)...
+<p>Maybe I am wrong in the details but my IRQERR.COM crashes FreeDOS, DR-DOS, PTS-DOS not MS-DOS.
+<p>All examples were written for FASM assembler in 2003.
+<p><a href=IRQERR.zip>Download zip-archive (4 KB)</a>
+</body>
