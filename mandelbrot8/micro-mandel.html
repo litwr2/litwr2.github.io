@@ -250,7 +250,7 @@ for (var i = 0; i < cpu.length; i++)
 </table>
 The actual internal frequency of the R800 is 28.4 MHz, so its ER might be set to <script>i = findfirst("cpu", "R800"); document.write(Math.round(4*ma[i].efreq*ma[i].psum))</script>.  The TMS9995 uses 3 MHz to work with memory, so its ER is probably 4 times better, <script>i = findfirst("cpu", "TMS9995"); document.write(Math.round(ma[i].efreq*ma[i].psum/4))</script>.
 
-<p>It is also interesting to compare the code density for this task.  Two values are provided for this: the total program size and the size of the main loop.
+<p>It is also interesting to compare the code density for this task.  Two values are provided for this: the total program code size and the size of the main loop.
 
 <table border=1>
 <tr>
