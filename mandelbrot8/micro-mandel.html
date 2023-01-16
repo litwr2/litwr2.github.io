@@ -51,13 +51,17 @@ ma.push({computer: "Macintosh Classic", year: 1990, cpu: "68000", freq: 7.83, ef
 ma.push({computer: "Amstrad PCW", year: 1985, cpu: "Z80", freq: 4, efreq: 3.2, OS: "CP/M", video_mode: "720x256:2c", window: "512x256:2c", variant: "", version: "pcw-2", tnc: 1.22, t: 202.22, source: "CP/M Box 1.9.2", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Amstrad_PCW", estimation: false, screenshot: "", main: 0})
 ma.push({computer: "Atari ST", year: 1985, cpu: "68000", freq: 8, efreq: 8, OS: "TOS", video_mode: "320x200:16c", window: "256x128:16c", variant: "rotated", version: "str-2", tnc: 0.99, t: 43.32, source: "Hatari 2.5.0", comments: "", href: "https://en.wikipedia.org/wiki/Atari_ST", estimation: false, screenshot: "", main: 0})
 ma.push({computer: "Atari ST", year: 1985, cpu: "68000", freq: 8, efreq: 8, OS: "TOS", video_mode: "640x400:2c", window: "512x256:2c", variant: "monochrome", version: "stm-2", tnc: 0.37, t: 33.41, source: "Hatari 2.5.0", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Atari_ST", estimation: false, screenshot: "", main: 0})
+ma.push({computer: "Tandy Coco 3", year: 1986, cpu: "6809", freq: 1.79, efreq: 1.79, OS: "ROM Basic", video_mode: "256x192:16c", window: "256x128:2c", variant: "rotated", version: "coco3r-1", tnc: 0.58, t: 124.23, source: "XRoar 1.0.7", comments: "", href: "https://en.wikipedia.org/wiki/TRS-80_Color_Computer#Color_Computer_3_(1986%E2%80%931991)", estimation: false, screenshot: "", main: 0})
+ma.push({computer: "Tandy Coco 3", year: 1986, cpu: "6309", freq: 1.79, efreq: 1.79, OS: "ROM Basic", video_mode: "256x192:16c", window: "256x128:2c", variant: "rotated", version: "coco3r3-1", tnc: 0.49, t: 95.27, source: "XRoar 1.0.7", comments: "", href: "https://en.wikipedia.org/wiki/TRS-80_Color_Computer#Color_Computer_3_(1986%E2%80%931991)", estimation: false, screenshot: "", main: 0})
 
 var cpu = []
 cpu.push({id: "ARM2", year: 1987})
 cpu.push({id: "80286", year: 1982})
 cpu.push({id: "68020", year: 1984})
+cpu.push({id: "6309", year: 1982})
 cpu.push({id: "65816", year: 1982})
 cpu.push({id: "R800", year: 1990})
+cpu.push({id: "6809", year: 1978})
 cpu.push({id: "68000", year: 1979})
 cpu.push({id: "8088", year: 1978})
 cpu.push({id: "K1801BM1", year: 1981})
@@ -223,7 +227,7 @@ for (var i = 0; i < ma.length; i++) {
 </script>
 </table>
 
-<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  Some systems (the Apple IIgs, Atari ST, MSX, Geneve 9640) have to use a slower (rotatated images) way to draw images because their graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes these systems graphic performance up to 50% lower.  The Amstrad CPC uses faster main Mandelbrot computational code than the Amstrad PCW or MSX because its memory layout allows us to use a faster way to work with the look-up table.
+<p>The color writing mode for the Corvette writes data for all 3 graphic planes simultaneously, so it actually updates 24 KB of video RAM on each screen in this mode.  Writing modes 0 and 2 were used for the EGA.  Both produce the same picture.  I can think that for the VGA results will be the same.  The results for the Amiga 500 with fast RAM are only about 1% faster so I haven't included them.  Some systems (the Apple IIgs, Atari ST, MSX, Geneve 9640, CoCo 3) have to use a slower (rotatated images) way to draw images because their graphics incapable to show 256 raster lines like most other computers.  I can estimate that this makes these systems graphic performance up to 50% lower.  The Amstrad CPC uses faster main Mandelbrot computational code than the Amstrad PCW or MSX because its memory layout allows us to use a faster way to work with the look-up table.
 
 <p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
@@ -259,19 +263,23 @@ The actual internal frequency of the R800 is 28.4 MHz, so its ER might be set to
 <tr align=center><th>8 <td style=text-align:center>Macintosh <td>68000 <td>1341
 <tr align=center><th>9 <td style=text-align:center>QL <td>68008 <td>2257
 <tr align=center><th>10<td style=text-align:center>Amiga <td>68000<br>68020 <td>2382
-<tr align=center><th>11<td style=text-align:center>Amstrad CPC, 16c <td rowspan=5>Z80 <td>970 <td rowspan=2>54 <td rowspan=2>37
-<tr align=center><th>12<td style=text-align:center>Amstrad CPC, 4c <td>995 
-<tr align=center><th>13<td style=text-align:center>MSX2, rotated <td>1444 <td rowspan=3>61 <td rowspan=3>43
-<tr align=center><th>14<td style=text-align:center>MSX2, interlaced <td>1485 
-<tr align=center><th>15<td style=text-align:center>Amstrad PCW <td>1724
-<tr align=center><th>16<td style=text-align:center>Apple IIgs <td>65816 <td>1362 <td>73 <td>39
-<tr align=center><th>17<td style=text-align:center>Corvette, color<td rowspan=2>8080 <td>1132 <td rowspan=2>84 <td rowspan=2>66
-<tr align=center><th>18<td style=text-align:center>Corvette, planar <td>1177
-<tr align=center><th>19<td style=text-align:center>Archimedes<td>ARM2 <td>1430 <td>100 <td>25
-<tr align=center><th>20<td style=text-align:center>BBC Micro, 16c <td rowspan=4>6502 <td>1346 <td rowspan=4>131 <td rowspan=4>81
-<tr align=center><th>21<td style=text-align:center>BBC Micro, 4c <td>1378 
-<tr align=center><th>22<td style=text-align:center>Plus4, interlaced <td>1768
-<tr align=center><th>23<td style=text-align:center>Plus4, flashing <td>1807
+
+<tr align=center><th>11<td style=text-align:center rowspan=2>Tandy Coco 3 <td>6809 <td rowspan=2>1129 <td>52 <td>25
+<tr align=center><th>12<td>6309 <td rowspan=3>54 <td>24
+
+<tr align=center><th>13<td style=text-align:center>Amstrad CPC, 16c <td rowspan=5>Z80 <td>970 <td rowspan=2>37
+<tr align=center><th>14<td style=text-align:center>Amstrad CPC, 4c <td>995 
+<tr align=center><th>15<td style=text-align:center>MSX2, rotated <td>1444 <td rowspan=3>61 <td rowspan=3>43
+<tr align=center><th>16<td style=text-align:center>MSX2, interlaced <td>1485 
+<tr align=center><th>17<td style=text-align:center>Amstrad PCW <td>1724
+<tr align=center><th>18<td style=text-align:center>Apple IIgs <td>65816 <td>1362 <td>73 <td>39
+<tr align=center><th>19<td style=text-align:center>Corvette, color<td rowspan=2>8080 <td>1132 <td rowspan=2>84 <td rowspan=2>66
+<tr align=center><th>20<td style=text-align:center>Corvette, planar <td>1177
+<tr align=center><th>21<td style=text-align:center>Archimedes<td>ARM2 <td>1430 <td>100 <td>25
+<tr align=center><th>22<td style=text-align:center>BBC Micro, 16c <td rowspan=4>6502 <td>1346 <td rowspan=4>131 <td rowspan=4>81
+<tr align=center><th>23<td style=text-align:center>BBC Micro, 4c <td>1378 
+<tr align=center><th>24<td style=text-align:center>Plus4, interlaced <td>1768
+<tr align=center><th>25<td style=text-align:center>Plus4, flashing <td>1807
 </table>
 
 <p>The QL code is a Basic program which generates and uses ML code.
