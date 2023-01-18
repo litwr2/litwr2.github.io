@@ -244,7 +244,7 @@ for (var i = 0; i < cpu.length; i++)
 </table>
 The actual internal frequency of the R800 is 28.4 MHz, so its ER might be set to <script>i = findfirst("cpu", "R800"); document.write(Math.round(4*ma[i].efreq*(ma[i].t - 16*ma[i].tnc)))</script>.  The TMS9995 uses 3 MHz to work with memory, so its ER is probably 4 times better, <script>i = findfirst("cpu", "TMS9995"); document.write(Math.round(ma[i].efreq*(ma[i].t - 16*ma[i].tnc)/4))</script>.
 
-<p>It is also interesting to compare the code density for this task.  Two values are provided for this: the total program size and the size of the main loop.
+<p>It is also interesting to compare the code density for this task.  Two values are provided for this: the total program size and the size of the main loop.  The results are sorted by the size of the main loop.
 
 <table border=1>
 <tr>
@@ -264,8 +264,8 @@ The actual internal frequency of the R800 is 28.4 MHz, so its ER might be set to
 <tr align=center><th>9 <td style=text-align:center>QL <td>68008 <td>2257
 <tr align=center><th>10<td style=text-align:center>Amiga <td>68000<br>68020 <td>2382
 
-<tr align=center><th>11<td style=text-align:center rowspan=2>Tandy Coco 3 <td>6809 <td rowspan=2>1129 <td>52 <td>25
-<tr align=center><th>12<td>6309 <td rowspan=3>54 <td>24
+<tr align=center><th>11<td style=text-align:center rowspan=2>Tandy Coco 3 <td>6809 <td>1105 <td>52 <td>25
+<tr align=center><th>12<td>6309 <td>1109 <td rowspan=3>54 <td>24
 
 <tr align=center><th>13<td style=text-align:center>Amstrad CPC, 16c <td rowspan=5>Z80 <td>970 <td rowspan=2>37
 <tr align=center><th>14<td style=text-align:center>Amstrad CPC, 4c <td>995 
