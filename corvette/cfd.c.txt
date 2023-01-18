@@ -1,4 +1,4 @@
-//A disc format detector fot the Corvette - Corvette format detector - CFD
+//A disc format detector for the Corvette - Corvette format detector - CFD
 #include<stdio.h>
 int main(int argc, char **argv) {
    FILE *f;
