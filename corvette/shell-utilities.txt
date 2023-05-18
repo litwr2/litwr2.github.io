@@ -1,5 +1,6 @@
-#kcp disk from to
-cpmcp -f `cfd $1` $1 $2 $3
+#kcp disk from to parameter
+#parameter maybe -t
+cpmcp -f `cfd $1` $4 $1 $2 $3
 
 #kls disk
 #kls disk pattern
