@@ -1,5 +1,5 @@
 #kcp disk from to parameter
-#parameter maybe -t
+#optional parameter may be -t to convert Unix and CP/M texts
 cpmcp -f `cfd $1` $4 $1 $2 $3
 
 #kls disk
