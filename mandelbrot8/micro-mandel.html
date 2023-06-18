@@ -56,8 +56,8 @@ ma.push({computer: "Tandy Coco 3 (NTSC)", year: 1986, cpu: "6809", freq: 1.79, e
 ma.push({computer: "Tandy Coco 3 (NTSC)", year: 1986, cpu: "6309", freq: 1.79, efreq: 1.79, OS: "ROM Basic", video_mode: "256x192:16c", window: "256x128:16c", variant: "rotated", version: "coco3r3-1", tnc: 0.49, t: 95.28, source: "XRoar 1.0.7", comments: "", href: "https://en.wikipedia.org/wiki/TRS-80_Color_Computer#Color_Computer_3_(1986%E2%80%931991)", estimation: false, screenshot: "", main: 0})
 ma.push({computer: "Commodore 128 VDC PAL", year: 1985, cpu: "6502", freq: 1.97, efreq: 1.97, OS: "ROM Basic", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128-1", tnc: 1.31, t: 206.77, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", main: 0})
 ma.push({computer: "Commodore 128 VDC NTSC", year: 1985, cpu: "6502", freq: 2.05, efreq: 2.05, OS: "ROM Basic", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128-1", tnc: 1.3, t: 198.57, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", main: 0})
-ma.push({computer: "Commodore 128 VDC PAL", year: 1985, cpu: "Z80", freq: 3.94, efreq: 1.97, OS: "CP/M 3", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128cpm-1", tnc: 3.08, t: 408.5, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", main: 0})
-ma.push({computer: "Commodore 128 VDC NTSC", year: 1985, cpu: "Z80", freq: 4.1, efreq: 2.05, OS: "CP/M 3", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128cpm-1", tnc: 2.97, t: 393.5, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", main: 0})
+ma.push({computer: "Commodore 128 VDC PAL", year: 1985, cpu: "Z80", freq: 3.94, efreq: 1.97, OS: "CP/M 3", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128cpm-2", tnc: 2.96, t: 406.6, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", main: 0})
+ma.push({computer: "Commodore 128 VDC NTSC", year: 1985, cpu: "Z80", freq: 4.1, efreq: 2.05, OS: "CP/M 3", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128cpm-2", tnc: 2.86, t: 391.7, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", main: 0})
 
 var cpu = []
 cpu.push({id: "ARM2", year: 1987})
@@ -268,25 +268,23 @@ The actual internal frequency of the R800 is 28.4 MHz, so its ER might be set to
 <tr align=center><th>8 <td style=text-align:center>Macintosh <td>68000 <td>1341
 <tr align=center><th>9 <td style=text-align:center>QL <td>68008 <td>2257
 <tr align=center><th>10<td style=text-align:center>Amiga <td>68000<br>68020 <td>2382
-
 <tr align=center><th>11<td style=text-align:center rowspan=2>Tandy Coco 3 <td>6809 <td>1105 <td>52 <td>25
 <tr align=center><th>12<td>6309 <td>1109 <td rowspan=4>54 <td>24
-
 <tr align=center><th>13<td style=text-align:center>Amstrad CPC, 16c <td rowspan=6>Z80 <td>1036 <td rowspan=3>37
 <tr align=center><th>14<td style=text-align:center>Amstrad CPC, 4c <td>1060
-<tr align=center><th>17<td style=text-align:center>Amstrad PCW <td>1704
-<tr align=center><th>15<td style=text-align:center>MSX2, rotated <td>1443 <td rowspan=3>61 <td rowspan=3>43
-<tr align=center><th>16<td style=text-align:center>MSX2, interlaced <td>1488 
-<tr align=center><th>16<td style=text-align:center>Commodore 128 <td>1624
-<tr align=center><th>18<td style=text-align:center>Apple IIgs <td>65816 <td>1362 <td>73 <td>39
-<tr align=center><th>19<td style=text-align:center>Corvette, color<td rowspan=2>8080 <td>1131 <td rowspan=2>84 <td rowspan=2>66
-<tr align=center><th>20<td style=text-align:center>Corvette, planar <td>1176
-<tr align=center><th>21<td style=text-align:center>Archimedes<td>ARM2 <td>1430 <td>100 <td>25
-<tr align=center><th>22<td style=text-align:center>BBC Micro, 16c <td rowspan=5>6502 <td>1346 <td rowspan=5>131 <td rowspan=5>81
-<tr align=center><th>23<td style=text-align:center>BBC Micro, 4c <td>1378 
-<tr align=center><th>24<td style=text-align:center>Commodore 128 <td>1645
-<tr align=center><th>25<td style=text-align:center>Plus4, interlaced <td>1768
-<tr align=center><th>26<td style=text-align:center>Plus4, flashing <td>1807
+<tr align=center><th>15<td style=text-align:center>Amstrad PCW <td>1704
+<tr align=center><th>16<td style=text-align:center>MSX2, rotated <td>1443 <td rowspan=3>61 <td rowspan=3>43
+<tr align=center><th>17<td style=text-align:center>MSX2, interlaced <td>1488 
+<tr align=center><th>18<td style=text-align:center>Commodore 128 <td>1609
+<tr align=center><th>19<td style=text-align:center>Apple IIgs <td>65816 <td>1362 <td>73 <td>39
+<tr align=center><th>20<td style=text-align:center>Corvette, color<td rowspan=2>8080 <td>1131 <td rowspan=2>84 <td rowspan=2>66
+<tr align=center><th>21<td style=text-align:center>Corvette, planar <td>1176
+<tr align=center><th>22<td style=text-align:center>Archimedes<td>ARM2 <td>1430 <td>100 <td>25
+<tr align=center><th>23<td style=text-align:center>BBC Micro, 16c <td rowspan=5>6502 <td>1346 <td rowspan=5>131 <td rowspan=5>81
+<tr align=center><th>24<td style=text-align:center>BBC Micro, 4c <td>1378 
+<tr align=center><th>25<td style=text-align:center>Commodore 128 <td>1645
+<tr align=center><th>26<td style=text-align:center>Plus4, interlaced <td>1768
+<tr align=center><th>27<td style=text-align:center>Plus4, flashing <td>1807
 </table>
 
 <p>The QL code is a Basic program which generates and uses ML code.
