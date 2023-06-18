@@ -3,10 +3,10 @@
 <script>
 var query = new URLSearchParams(window.location.search)
 var showopt = 0
-var items = 2
 var data = ["<p>The number &#x3c0; calculator is <a href=pi-spigot-benchmark/pi-spigot-benchmark.html>here</a> (the sources are included).  It can run also on the SuperCPU64.",
 "<p>The fastest known quicksort implementation [version 3] for the C64 is <a href=c64-128/qsort3-c64.d64.bz2>here</a> &ndash; it is also the fastest known universal sorting routine for the C64 at all.  It may be used to sort an array of Basic strings.  It is safe and probably never quadratic.  There is also some <a href=c64-128/qsort-c64.html>documentation</a>.  The disk image contains also two other well known qucksort implementations: Ultrasort and Lightningsort that were published in <a href=https://archive.org/details/1983-09-compute-magazine/page/n195/mode/2up>Compute #40</a> and <a href=https://archive.org/details/1984-09-compute-magazine/page/n115/mode/2up>#52</a> respectively.  The sources are available on <a href=https://github.com/litwr2/6502-sorting/tree/main/strings>github</a>.",
 "<p name=mandelbrot id=mandelbrot><a href=c64-128/mandelbrot.html>Superfast Mandelbrot generator for the Commodore 128 VDC</a> &ndash; it uses probably the fastest known Mandelbrot set computation routine for the 6502 and Z80."]
+var items = data.length
 if (query.has('item')) {
     showopt = query.get('item')
     if (showopt < 0 || showopt > items) showopt = 0

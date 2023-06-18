@@ -7,10 +7,10 @@ a {color:green}
 <script>
 var query = new URLSearchParams(window.location.search)
 var showopt = 0
-var items = 3
 var data = ["<p name=pi id=pi>The number &#x3c0; calculator is <a href=pi/pi-spigot-benchmark.html>here</a> (the sources are included).",
 "<p name=qsort id=qsort>The fastest known quicksort implementation [version 2] for the BBC Micro is <a href=bbcmicro/qsort2-bbcmicro.ssd.bz2>here</a> &ndash; it is also the fastest known universal sorting routine for the BBC Micro at all.  It may be used to sort an array of Basic strings.  It is safe and probably never quadratic.  There is also some <a href=bbcmicro/qsort-bbcmicro.html>documentation</a>.  The sources are available on <a href=https://github.com/litwr2/6502-sorting/tree/main/strings>github</a>.",
 "<p name=mandelbrot id=mandelbrot><a href=bbcmicro/mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses the fastest known Mandelbrot set computation routine for the 6502."]
+var items = data.length
 if (query.has('item')) {
     showopt = query.get('item')
     if (showopt < 0 || showopt > items) showopt = 0

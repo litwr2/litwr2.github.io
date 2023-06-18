@@ -9,12 +9,12 @@ a {color:green}
 <script>
 var query = new URLSearchParams(window.location.search)
 var showopt = 0
-var items = 4
 var data = ["<p name=np4 id=np4><a href=cpc/np4cpc.html>Notepad+4, CPC6128 edition</a>.",
 "<p name=xlife8 id=xlife8>32/64-bit <a href=xlife/xlife4cpc.html>Xlife</a> ported to 8 bit world!",
 "<p name=pi id=pi>The number &#x3c0; calculator is <a href=pi/pi-spigot-benchmark.html>here</a> (sources are included).",
 "<p name=mandelbrot id=mandelbrot><a href=cpc/mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses the fastest known Mandelbrot set computation routine for the Z80."
 ]
+var items = data.length
 if (query.has('item')) {
     showopt = query.get('item')
     if (showopt < 0 || showopt > items) showopt = 0
