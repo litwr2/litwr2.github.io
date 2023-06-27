@@ -13,12 +13,12 @@
 45 gosub 2600:goto 40
 
 100 gosub 10280:cls
-110 locate 15,18:print "Press Cõ + P to get help":locate 0,6
-112 PRINT "¯¯» ¯¯          ¯¯                             ¯¯   »»      »¯¯"
-114 PRINT "¯¯¯¯¯¯ »¯¬¬¯» ¬¬¯¯¬¬  »¯¬¬¯» ¯¯¬¬¯»  ¬¬¬¯» »¯¬¬¯¯ »»¯¯»» »»¬¬¯¯"
-116 PRINT "¯¯ ¬¯¯ ¯¯  ¯¯   ¯¯ »» ¯¯¬¬¬¬ ¯¯»»¯¬ »¯¬¬¯¯ ¯¯  ¯¯   ¯¯   ¬¬¬¬¯¯"
-118 PRINT "¬¬  ¬¬  ¬¬¬¬     ¬¬¬   ¬¬¬¬¬ ¯¯      ¬¬¬¬¬  ¬¬¬¬¬            ¬¬"
-150 locate 38,11:print "üÌeËÔpoÎÉËa âK0011 Edition";
+110 locate 15,18:print "Press CÐ£ + P to get help":locate 0,6
+112 PRINT "â•žâ•žâ•© â•žâ•ž          â•žâ•ž                             â•žâ•ž   â•©â•©      â•©â•žâ•ž"
+114 PRINT "â•žâ•žâ•žâ•žâ•žâ•ž â•©â•žâ•›â•›â•žâ•© â•›â•›â•žâ•žâ•›â•›  â•©â•žâ•›â•›â•žâ•© â•žâ•žâ•›â•›â•žâ•©  â•›â•›â•›â•žâ•© â•©â•žâ•›â•›â•žâ•ž â•©â•©â•žâ•žâ•©â•© â•©â•©â•›â•›â•žâ•ž"
+116 PRINT "â•žâ•ž â•›â•žâ•ž â•žâ•ž  â•žâ•ž   â•žâ•ž â•©â•© â•žâ•žâ•›â•›â•›â•› â•žâ•žâ•©â•©â•žâ•› â•©â•žâ•›â•›â•žâ•ž â•žâ•ž  â•žâ•ž   â•žâ•ž   â•›â•›â•›â•›â•žâ•ž"
+118 PRINT "â•›â•›  â•›â•›  â•›â•›â•›â•›     â•›â•›â•›   â•›â•›â•›â•›â•› â•žâ•ž      â•›â•›â•›â•›â•›  â•›â•›â•›â•›â•›            â•›â•›"
+150 locate 38,11:print "Ð­Ð»eÐºÑ‚poÐ½Ð¸Ðºa Ð‘K0011 Edition";
 154 locate 29,12,0:print "v1r5, by litwr, (c) 2015-21 gnu gpl"
 156 for i=0 to 7000:cx=55*i:next i
 180 c$=inkey$:if c$<>"" then 180
@@ -27,13 +27,13 @@
 300 data 15cd,1b00,65df,f6,ffb4,17c0,84,e5c0,280,15c3,c000,40c0,101f,84,e5c0
 310 data 180,1001,e5c0,280,15c2,200,40c0,40c1,e0c1,e0c0,1250,a11,7e87,15cd,2b00,87
 
-2000 gosub 10280:print chr$(12)tab(16)"Notepad +4 âK0011 Edition commands":print
-2005 print tab(23)chr$(156)"With the Cõ key"chr$(156)
+2000 gosub 10280:print chr$(12)tab(16)"Notepad +4 Ð‘K0011 Edition commands":print
+2005 print tab(23)chr$(156)"With the CÐ£ key"chr$(156)
 2010 print "P - help"tab(22)"N - new"tab(44)"L/S - load/save"
 2020 print "U/D - page up/down"tab(22)"B/E - to begin/end"tab(44)"F - find forward"
 2030 print "R - repeat find"tab(22)"C - cat & load"tab(44)"G - change disk"
 2035 print "O - cursor home"tab(22)"Q - quit":print
-2040 print tab(21)chr$(156)"With the TAâ prefix"chr$(156)
+2040 print tab(21)chr$(156)"With the TAÐ‘ prefix"chr$(156)
 2050 print "A/C - toggle insert/overwrite mode"tab(35)"D/I - delete/insert a line"
 2060 print "J/K - to start/end of line"tab(35)"P/Q - erase begin/end of line";
 2070 print "V/W - scroll up/down"tab(35)"Any other key - cancel TAB":print
