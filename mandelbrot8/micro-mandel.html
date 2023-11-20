@@ -59,9 +59,9 @@ ma.push({computer: "Commodore 128 VDC NTSC", year: 1985, cpu: "6502", freq: 2.05
 ma.push({computer: "Commodore 128 VDC PAL", year: 1985, cpu: "Z80", freq: 3.94, efreq: 1.97, OS: "CP/M 3", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128cpm-4", tnc: 2.36, t: 327.7, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", mark: ""})
 ma.push({computer: "Commodore 128 VDC NTSC", year: 1985, cpu: "Z80", freq: 4.1, efreq: 2.05, OS: "CP/M 3", video_mode: "512x256:2c", window: "512x256:2c", variant: "", version: "c128cpm-4", tnc: 2.27, t: 315.7, source: "VICE 3.7.1", comments: "4x1 texture/pixel", href: "https://en.wikipedia.org/wiki/Commodore_128", estimation: false, screenshot: "", mark: ""})
 ma.push({computer: "DEC Professional 380", year: 1985, cpu: "J-11", freq: 10, efreq: 10, OS: "RT-11XM 5.3", video_mode: "256x256:16c", window: "128x256:16c", variant: "", version: "pro380-6", tnc: .62, t: 44.13, source: "iron (thanks to stanp)", comments: "16 shades", href: "https://en.wikipedia.org/wiki/DEC_Professional_(computer)", estimation: false, screenshot: "", mark: "XM"})
-ma.push({computer: "DEC Professional 380", year: 1985, cpu: "J-11", freq: 10, efreq: 10, OS: "RT-11XM 5.3", video_mode: "256x240:16c", window: "256x128:16c", variant: "rotated", version: "pro380r-5", tnc: .65, t: 44.68, source: "iron (thanks to stanp)", comments: "16 shades", href: "https://en.wikipedia.org/wiki/DEC_Professional_(computer)", estimation: true, screenshot: "", mark: "XM"})
+ma.push({computer: "DEC Professional 380", year: 1985, cpu: "J-11", freq: 10, efreq: 10, OS: "RT-11XM 5.3", video_mode: "256x240:16c", window: "256x128:16c", variant: "rotated", version: "pro380r-6", tnc: .62, t: 43.95, source: "iron (thanks to stanp)", comments: "16 shades", href: "https://en.wikipedia.org/wiki/DEC_Professional_(computer)", estimation: true, screenshot: "", mark: "XM"})
 ma.push({computer: "DEC Professional 380", year: 1985, cpu: "J-11", freq: 10, efreq: 10, OS: "RT-11FB 5.3", video_mode: "256x256:16c", window: "128x256:16c", variant: "", version: "pro380-6", tnc: .62, t: 44.13, source: "iron (thanks to stanp)", comments: "16 shades", href: "https://en.wikipedia.org/wiki/DEC_Professional_(computer)", estimation: false, screenshot: "", mark: "FB"})
-ma.push({computer: "DEC Professional 380", year: 1985, cpu: "J-11", freq: 10, efreq: 10, OS: "RT-11FB 5.3", video_mode: "256x240:16c", window: "256x128:16c", variant: "rotated", version: "pro380r-5", tnc: .65, t: 44.68, source: "iron (thanks to stanp)", comments: "16 shades", href: "https://en.wikipedia.org/wiki/DEC_Professional_(computer)", estimation: true, screenshot: "", mark: "FB"})
+ma.push({computer: "DEC Professional 380", year: 1985, cpu: "J-11", freq: 10, efreq: 10, OS: "RT-11FB 5.3", video_mode: "256x240:16c", window: "256x128:16c", variant: "rotated", version: "pro380r-6", tnc: .62, t: 43.95, source: "iron (thanks to stanp)", comments: "16 shades", href: "https://en.wikipedia.org/wiki/DEC_Professional_(computer)", estimation: true, screenshot: "", mark: "FB"})
 
 var cpu = []
 cpu.push({id: "ARM2", year: 1987})
@@ -119,7 +119,12 @@ for (var i = 0; i < ma.length; i++)
    nt.push({system: ma[i].computer, year: ma[i].year, os: ma[i].OS, href: ma[i].href})
 nt.sort(function(a, b){ return a.year != b.year ? a.year - b.year : (a.computer < b.computer ? -1 : (a.computer > b.computer ? 1 : 0))})
 for (var i = nt.length - 2; i >= 0; i--)
-   if (nt[i + 1].computer == nt[i].computer && nt[i + 1].os == nt[i].os) nt.splice(i + 1, 1)
+   if (nt[i + 1].system === nt[i].system && nt[i + 1].os === nt[i].os) nt.splice(i + 1, 1)
+for (var i = nt.length - 2; i >= 0; i--)
+   if (nt[i + 1].system === nt[i].system && nt[i + 1].os != nt[i].os) {
+       if (!nt[i].os.includes(nt[i + 1].os)) nt[i].os += ", " + nt[i + 1].os
+       nt.splice(i + 1, 1)
+   }
 for (var i = 0; i < nt.length; i++) document.write("<tr><th>" + (i + 1) + "<td style=text-align:left><a href=" + nt[i].href + ">" + nt[i].system + "<td>" + nt[i].year + "<td>" + nt[i].os)
 </script>
 </table>
@@ -167,7 +172,6 @@ for (var i = 0; i < ma.length; i++) {
    if (ma[i].window != ma[i].video_mode) v += " [" + ma[i].window + "]"
    if (ma[i].comments != "") v2 += ",<br>" + ma[i].comments
    r.push({id: v, v0: 1, t0: 1, cpu0: 1, gr0: 1, sc: v2, sc0: 1})
-//p00(ma[i].t), cpu: p00(ma[i].t - 16*ma[i].tnc), gr: p00(1600*ma[i].tnc/ma[i].t))})
 }
 for (var i = 0; i < ma.length; i++) {
    var k = i
@@ -265,7 +269,7 @@ The actual internal frequency of the R800 is 28.4 MHz, so its ER might be set to
 <tr align=center><th>1 <td style=text-align:center>&#x411;K <td>T-11 <td>902 <td>32 <td>13
 <tr align=center><th>2 <td style=text-align:center>Geneve 9640, rotated <td rowspan=2>TMS9995 <td>1720 <td rowspan=2>36 <td rowspan=2>14
 <tr align=center><th>3 <td style=text-align:center>Geneve 9640, interlaced <td>1702
-<tr align=center><th>4 <td style=text-align:center>Pro-380, rotated <td rowspan=2>J-11 <td>1138 <td rowspan=9>46 <td rowspan=2>17
+<tr align=center><th>4 <td style=text-align:center>Pro-380, rotated <td rowspan=2>J-11 <td>1219 <td rowspan=9>46 <td rowspan=2>17
 <tr align=center><th>5 <td style=text-align:center>Pro-380 <td>1221
 <tr align=center><th>6 <td style=text-align:center>IBM PC, mode 2<td rowspan=2>8088<br>80286 <td>919 <td rowspan=7>20
 <tr align=center><th>7 <td style=text-align:center>IBM PC, mode 0<td>1019
