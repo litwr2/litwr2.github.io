@@ -7,9 +7,10 @@ a {color:green}
 <script>
 var query = new URLSearchParams(window.location.search)
 var showopt = 0
-var items = 2
 var data = ["<p name=pi id=pi>The number &#x3c0; calculator is <a href=../pi/pi-spigot-benchmark.html>here</a> (the sources are included).",
-"<p name=mandelbrot id=mandelbrot><a href=mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses a fast Mandelbrot set computation routine for the ARM."]
+"<p name=mandelbrot id=mandelbrot><a href=mandelbrot.html>Superfast Mandelbrot generator</a> &ndash; it uses a fast Mandelbrot set computation routine for the ARM.",
+"<p name=palconvert id=palconvert><a href=https://github.com/litwr2/retro/blob/main/archimedes/cross-tools/archiecconv.cpp>The Archimedes Palette Converter</a>, it converts PPM/P6 24bpp images to images that use a palette that can be used directly on the Archimedes/VIDC1."]
+var items = data.length
 if (query.has('item')) {
     showopt = query.get('item')
     if (showopt < 0 || showopt > items) showopt = 0
