@@ -1,0 +1,91 @@
+<head>
+<title>FLI Library</title>
+</head>
+<body background=../cbm2.gif bgproperties=fixed>
+<h1>FLI Library for C and Assembler</h1>
+
+<p>Sources are available on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-picture-gen>github</a>.  This library provides a C function (<b>setpa</b>) that allows us to set a pixel on the C+4 FLI screen (2 free colors in each 4x2 matrix, and additional 2 free colors for each raster line).  For example, the next C-code (file <em>test.c</em> and VSIZE=280) generates the <em>out1.prg</em> file that will generate the following image on the C+4.
+
+<div style=float:left;padding:8px><form><textarea type=text wrap=off readonly cols=50 rows=37>
+#include<stdio.h>
+#include"svn.h"
+#include"flilib.c"
+#define START 0x1030
+int main() {
+    FILE *fi = fopen("out.prg", "r");
+    int co = fread(prg + 0xfff, 1, 65535, fi);
+    fclose(fi);
+    /* the start of graphics */
+    prg[0x100e] = 5; //border color
+    prg[START + 1] = START&0xff, prg[START + 2] = START >> 8; //no further assembly code
+    for (int x = 0; x < 160; x++)
+        for (int y = 0; y < VSIZE; y++)
+            setpa(x, y, 5, 1);
+    for(int x = 0; x < 160; x++) {
+       setpa(x, x, 0x77, 2);
+       setpa(x, x + 2, 0x52, 0);
+       setpa(x, x + 3, 0x4c, 3);
+       setpa(159 - x, x, 0x4c, 3);
+       setpa(159 - x, x + 2, 0x52, 0);
+       setpa(159 - x, x + 3, 0x77, 2);
+       setpa(x, x + VSIZE - 160, 0x77, 2);
+       setpa(x, x + VSIZE - 162, 0x52, 0);
+       setpa(x, x + VSIZE - 163, 0x4c, 3);
+       setpa(159 - x, x + VSIZE - 160, 0x4c, 3);
+       setpa(159 - x, x + VSIZE - 162, 0x52, 0);
+       setpa(159 - x, x + VSIZE - 163, 0x77, 2);
+    }
+    for(int y = 1; y < 0x7f; y++)
+        for (int x = 0; x < 160; x++)
+            setpa(x, y + 16, y, 0);
+    for (int y = 0; y < VSIZE; y++) {
+        setpa(80, y, 0x77, 2);
+        setpa(81, y, 0x52, 1);
+        setpa(82, y, 0x4c, 3);
+        setpa(83, y, 0x52, 1);
+        setpa(85, y, 0x66, 2);
+        setpa(87, y, 0x66, 2);
+    }
+    /* the finish of graphics */
+    fi = fopen("out1.prg", "w");
+    fwrite(prg + 0xfff, 1, co, fi);
+    fclose(fi);
+}</textarea></form></div>
+<div style=float:left;padding:8px><img src=fli-c-gen.png></div>
+
+<p style=clear:left>This C function can help to draw the static image that can be used as the background.
+
+<p>The assembly library can help to create some dynamics.  It provides several functions (tobasic, delay, setp, seta, setpbyte, getpbyte, getabyte) and features (vertical scrolling and the timer).
+
+<p>The <b>tobasic</b> function returns to Basic, after calling to this function you can call other functions, for example to print characters or check the keyboard status.  The actual return to Basic happens when the RTS instruction is executed, e.g. the next code illustrates the trick.<br>
+<form><textarea type=text readonly cols=50 rows=4>
+    jsr tobasic
+    lda #$41
+    jsr $ffd2
+    rts</textarea>
+</form>
+
+<p>The <b>delay</b> function simply delays for the specified number of frame ticks.  The number must be set in the A register.  The actual accuracy is about half a frame tick.
+
+<p>The <b>setp</b> function sets one pixel.  The X register must contain the X coordinate, the Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  However if the screen height is less than or equal to 256 then the high byte is ignored.  The screen size is set by the VSIZE variable in the <em>svn.asm</em> source file.  The A register must contain the color source.  There are 4 color sources available:
+<ul>
+<li>0 - multicolor 1;
+<li>1 - the background color;
+<li>2 - the foreground color;
+<li>3 - multicolor 2.
+</ul>
+
+<p>The <b>seta</b> function sets an attribute for pixels.  The A register must contain the color source.  This value must be set immediately before the function call because the function uses the Z flag.  The X register must contain the X coordinate, the Y register must contain the low byte of the Y coordinate, the high byte must be in $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.  If A=1 or A=2 the lowest bit of Y and the two lowest bits of X are ignored.  The $d9 memory location must contain the color code, for example, $05 for the dark green.  The color codes may be taken from <a href=plus4-palette.html>this page</a>.  If the multicolor is set then the X coordinate is completely ignored because the C+4 hardware only allows us to use 2 multicolors per line.  If the background or foreground color is set then the change applies to the entire 4x2 matrix.  So, for instance pixels with coordinates in the range (0,0)-(3,1) will have one background and one foreground color.
+
+<p>The <b>setpbyte</b> function sets 4 pixels at once.  The X register must contain the X coordinate (the 2 lowest bits are ignored), the Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.  The A register must contain a byte that is a sequence of 4 color sources.
+
+<p>The <b>getpbyte</b> function returns 4 sequential pixel color sources in A.  The X register must contain the X coordinate (the 2 lowest bits are ignored), the Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.
+
+<p>The <b>getabyte</b> function returns attribute information for pixels.  The A register must contain the color source.  This value must be set immediately before the function call because the function uses the Z flag.  The X register must contain the X coordinate, it is ignored if A==0 or A==3, also if A==1 or A==2 then the 2 lowest bits are ignored.  The Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.  Also, if A==1 or A==2 then the lowest bit of Y is ignored.  The function returns the attribute information via two addresses.  The value at the ($d0),Y address contains multicolor #1 if A==0, multicolor #2 if A==3, the luminance byte if A==1 or A==2.  The color byte is at the ($d2),Y address if A==1 or A==2.  This function may also be used to set or copy attributes.  The color byte upper nible is the foreground color (color source 1), and the lower nible is the background (color source 0).  The luminance byte upper nible is the background luminance, and the lower nible is the foreground.
+
+<p>The 50/60 Hz timer is available at memory locations $a4-$a5, where $a5 is the low byte.  The frequency is set by the PAL or NTSC hardware.
+
+<p>Memory location $d4 contains the vertical scroll value.  A positive number scrolls down, a negative number scrolls up.  If a value is set there, the screen will scroll once.  The scrolling action is completed when this value is set to 0.  So set this value only if it is equal to 0.
+
+<p>The library routines use memory locations in the range $d0-$d7, don't use these addresses.
+</body>
