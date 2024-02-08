@@ -17,7 +17,6 @@ int main() {
     fclose(fi);
     /* the start of graphics */
     prg[0x100e] = 5; //border color
-    prg[START + 1] = START&0xff, prg[START + 2] = START >> 8; //no further assembly code
     for (int x = 0; x < 160; x++)
         for (int y = 0; y < VSIZE; y++)
             setpa(x, y, 5, 1);
@@ -55,7 +54,7 @@ int main() {
 
 <p style=clear:left>This C function can help to draw the static image that can be used as the background.
 
-<p>The assembly library can help to create some dynamics.  It provides several functions (tobasic, delay, setp, seta, setpbyte, getpbyte, getabyte) and features (vertical scrolling and the timer).
+<p>The assembly library can help to create some dynamics.  It provides several functions (tobasic, delay, setp, seta, setpbyte, getpbyte, getabyte) and features (vertical scrolling and the timer).  Just include your code after the <b>main</b> label in the <em>svn.asm</em> file.
 
 <p>The <b>tobasic</b> function returns to Basic, after calling to this function you can call other functions, for example to print characters or check the keyboard status.  The actual return to Basic happens when the RTS instruction is executed, e.g. the next code illustrates the trick.<br>
 <form><textarea type=text readonly cols=50 rows=4>
