@@ -252,7 +252,7 @@ for (var i = 0; i < ma.length; i++) {
 
 <p>The Amstrad CPC/PCW uses faster main Mandelbrot computational code than the MSX or Commodore 128/Z80 because the Amstrad may set a memory layout that allows us to use a faster way to work with the look-up table.
 
-<p>The BK and Geneve take advantage of their CPU's ability to ignore the low bit of the address when working with bytes.  Other architectures have to use special instructions to clear this bit.  This gives the BK and Geneve a speed boost of about 20%.  It is possible to slightly reduce the accuracy of the calculations and to make the value of the bit insignificant, but the first Mandelbrot program of this series was for the BK and therefore the use of the bit remained the same.
+<p>The BK and Geneve take advantage of their CPU's ability to ignore the low bit of the address when working with words.  Other architectures have to use special instructions to clear this bit.  This gives the BK and Geneve a speed boost of about 20%.  It is possible to slightly reduce the accuracy of the calculations and to make the value of the bit insignificant, but the first Mandelbrot program of this series was for the BK and therefore the use of the bit remained the same.
 
 <p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
