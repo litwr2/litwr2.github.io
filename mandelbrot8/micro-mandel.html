@@ -254,6 +254,8 @@ for (var i = 0; i < ma.length; i++) {
 
 <p>The BK and Geneve take advantage of their CPU's ability to ignore the low bit of the address when working with words.  Other architectures have to use special instructions to clear this bit.  This gives the BK and Geneve a speed boost of about 20%.  It is possible to slightly reduce the accuracy of the calculations and to make the value of the bit insignificant, but the first Mandelbrot program of this series was for the BK and therefore the use of the bit remained the same.
 
+<p>The BBC Master Turbo uses OSWORD 6 to draw pixels and this is not the fastest way possibe.
+
 <p>The Commodore +4 results can be about 5% faster if we turn on the NTSC mode during vertical retrace time.
 
 <p>Qemulator appears to be about 7% faster than real hardware.  So the QL results are adjusted according results provided by mk79.  It seems that pcem is also about 7% faster than the real IBM PC XT/AT but I have only indirect information about this so I didn't apply any correction to data from pcem.
