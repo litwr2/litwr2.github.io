@@ -1,8 +1,25 @@
 <head>
 <title>DFLI Library</title>
+<style type=text/css>
+table {
+   border-width:thin;
+   border-style:solid;
+   border-color:black;
+   border-spacing:0px;
+}
+td, th {
+   width: 5ex;
+}
+td {
+   text-align: center;
+}
+textarea {
+   resize: none;
+}
+</style>
 </head>
 <body background=../cbm2.gif bgproperties=fixed>
-<h1>DFLI Library for C and Assembler</h1>
+<h1>DFLI Library for C and Assembler v2</h1>
 
 <p>Sources are available on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-picture-gen>github</a>.  This library provides a C function (<b>setpa</b>) that allows us to set a pixel on the C+4 DFLI screen (2 free colors in each 4x2 matrix, and additional 2 free colors for each raster line).  For example, the next C-code (file <em>test.c</em> and VSIZE=280) generates the <em>out1.prg</em> file that will generate the following image on the C+4.
 
@@ -53,7 +70,7 @@ int main() {
 
 <p style=clear:left>This C function can help to draw the static image that can be used as the background.
 
-<p>The assembly library can help to create some dynamics.  It provides several functions (tobasic, delay, setp, seta, setpbyte, getpbyte, getabyte) and features (vertical scrolling and the timer).  Just include your code after the <b>main</b> label in the <em>svn.asm</em> file.
+<p>The assembly library can help to create some dynamics.  It provides several functions (tobasic, setp, seta, setpbyte, getpbyte, getabyte, ...) and features (vertical scrolling and the timer).  Just include your code after the <b>main</b> label in the <em>svn.asm</em> file.
 
 <p>The <b>tobasic</b> function returns to Basic, after calling to this function you can call other functions, for example to print characters or check the keyboard status.  The actual return to Basic happens when the RTS instruction is executed, e.g. the next code illustrates the trick.<br>
 <form><textarea type=text readonly cols=50 rows=4>
@@ -62,8 +79,6 @@ int main() {
     jsr $ffd2
     rts</textarea>
 </form>
-
-<p>The <b>delay</b> function simply delays for the specified number of frame ticks.  The number must be set in the A register.  The actual accuracy is about half a frame tick.
 
 <p>The <b>setp</b> function sets one pixel.  The X register must contain the X coordinate, the Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  However if the screen height is less than or equal to 256 then the high byte is ignored.  The screen size is set by the VSIZE variable in the <em>svn.asm</em> source file.  The A register must contain the color source.  There are 4 color sources available:
 <ul>
@@ -81,11 +96,146 @@ int main() {
 
 <p>The <b>getabyte</b> function returns attribute information for pixels.  The A register must contain the color source.  This value must be set immediately before the function call because the function uses the Z flag.  The X register must contain the X coordinate, it is ignored if A==0 or A==3, also if A==1 or A==2 then the 2 lowest bits are ignored.  The Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.  Also, if A==1 or A==2 then the lowest bit of Y is ignored.  The function returns the attribute information via two addresses.  The value at the ($d0),Y address contains multicolor #1 if A==0, multicolor #2 if A==3, the luminance byte if A==1 or A==2.  The color byte is at the ($d2),Y address if A==1 or A==2.  This function may also be used to set or copy attributes.  The color byte upper nible is the foreground color (color source 2), and the lower nible is the background (color source 1).  The luminance byte upper nible is the background luminance, and the lower nible is the foreground.
 
-<p>The 50/60 Hz timer is available at memory locations $a4-$a5, where $a5 is the low byte.  The frequency is set by the PAL or NTSC hardware.
+<p>Function <b>getpaddr</b> returns the address of the pixel byte in $d0-d1 for the coordinates given.  The X register must contain the X coordinate (the 2 lowest bits are ignored), the Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.  So <b>getpbyte</b> is defined the next way.<br>
+<form><textarea type=text readonly cols=50 rows=3>
+     jsr getpaddr
+     lda ($d0),y
+     rts</textarea>
+</form>
 
-<p>Memory location $d4 contains the vertical scroll value.  A positive number scrolls down, a negative number scrolls up.  If a value is set there, the screen will scroll once.  When the scrolling action is completed this value is set to 0.  So set this value only if it is equal to 0.  Beware of using too large values, this may cause the displayed image to break!
+<p>Function <b>getnextx</b> returns the address of the next pixel byte in $d0-d1 for the previous address (in $d0-d1) and coordinates given.  The X register must contain the X coordinate (the 2 lowest bits must be 0), the Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.  This function is faster than <b>getpaddr</b>.  It is very useful when the next byte of bitmap is required.
 
-<p>The library routines use memory locations in the range $d0-$d7, don't use these addresses.
+<p>Function <b>setmcl</b> sets both multicolors given in $d9 (for the 1st), $da (for the second) for the line.  The Y register must contain the low byte of the Y coordinate, the high byte must be at $d8.  If the screen height is less than or equal to 256 then the high byte is ignored.
+
+<p>The 50/60 Hz timer is available at memory locations $a4-$a5, where $a5 is the low byte.  The frequency is set by the PAL or NTSC hardware.  If you want to check when the first visible line appears use code similar to the next for this.<br>
+<form><textarea type=text readonly cols=50 rows=3>
+    lda $a4
+    cmp $a4
+    beq *-3</textarea>
+</form>
+The <b>delay</b> function with its argument equal to 1 does the same.
+
+<p>Memory location $d4 contains the vertical scroll value.  A positive number scrolls down, a negative number scrolls up.  If a value is set there, the screen will scroll once.  When the scrolling action is completed this value is set to 0.  So set this value only if it is equal to 0.  Beware of using too large values, this may cause the displayed image to break!  ((Moreover use even values because odd values create the PAL inversion color effects.))
+
+<p>The library routines use memory locations in the range $d0-$da, don't use these addresses.<br>
+
+<h2>Sprite type 1 library</h2>
+<p>You can use this type over upto the 80x128 cell background.  Change VSIZE to get other heights.  The minimal VSIZE is 200 and this is two times faster than for the maximum 256.  The background consists of 2x2 cells and every cell can have any color.  The bitmap is fixed to $A5 pattern for each byte.  So the first 2x2 part color is fore and the second one is back.  Somehow this gets the old Apple Macintosh A5-world!  The sprite consists of individual pixels and it can have almost any size!  However the only two colors are allowed in a sprite line.  If two sprites occupy the same line there will be the color clash.  The latter sprite supresses colors of the previous sprites.  You can mix the type 1 with the type 2.  Four colors are allowed for each line: transparent (0), multicolor 1, multicolor 2, and extra (3).  The extra color just uses another color from the background 4x2 matrix.  So it can be called a shifted transparency.
+
+<p>Use macro <b>sprite_t1</b> to define a sprite.  Its arguments are identifier, width (must be the multiple of 4), the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 8x2 sprite <i>s3</i> that is placed at (81, 198)-coordinates and has only one dataset for all the movements.  So this sprite is unanimated.<br>
+<form><textarea type=text readonly cols=50 rows=6>
+sprite_t1 s3,8,2,81,198,1,1,1,1
+s3_l_sl
+s3_r_sl
+s3_u_sl
+s3_d_sl word data_s3_d1
+        word color_s3_d1</textarea>
+</form>
+A dataset for the every direction must have the proper label <i>ID_DIRECTION_sl</i> where <i>DIRECTION</i> may be <i>l</i>, <i>r</i>, <i>u</i>, <i>d</i>.  The definition of the lists must follow the sprite definition!  The order of the labels for the directions is mandatory.  A dataset element consists of two parts, the bitmap and colors for each line.  The bitmap is just the sequence of bytes represented 4 pixels.  The colors are matrix that sets two colors for each line.  Labels for bitmaps and colors may be arbitrary.  Let's continue the example.<br>
+<form><textarea type=text readonly cols=50 rows=6>
+data_s3_d1
+  byte $66,$66
+  byte $99,$99
+color_s3_d1
+  byte $7e, $6e
+  byte $53, $42</textarea>
+</form>
+More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-sprites>github</a>.  Actually it is quite easy to the the diagonal or other movements.  However the number of the dataset parts is limited to a number slightly above 64.  This limit can easily be removed.
+
+<p>Use functions <b>left_t1</b>, <b>right_t1</b>, <b>up_t1</b>, and <b>down_t1</b> to move a sprite.  You must <b>put_t1</b> your sprite.  There is also the <b>remove_t1</b> sprite function.  Just set your sprite definition address to the $e6-e7 zp-locations before the function invocations.  There are also functions <b>left2_t1</b>, <b>right2_t1</b>, <b>up2_t1</b>, and <b>down2_t1</b> that move a sprite by two pixels. For example, to move a sprite to the specified location use code similar to the next.<br>
+<form><textarea type=text readonly cols=50 rows=8>
+    lda #&lt;SPRITE_ID
+    sta $e6
+    lda #&gt;SPRITE_ID
+    sta $e7
+    jsr remove_t1
+    ldy #sxpos_off
+    lda #XPOS
+    sta ($e6),y
+    iny
+    lda #YPOS
+    sta ($e6),y
+    jsr put_t1</textarea>
+</form>
+
+<p>This library uses zp-locations $e2-e7.
+
+
+<h2>Sprite type 2 library</h2>
+<p>You can use this type over upto the 80x128 cell background.  Change VSIZE to get other heights.  The minimal VSIZE is 200 and this is two times faster than for the maximum 256.  The background consists of 2x2 cells and every cell can have any color.  The bitmap is fixed to $A5 pattern for each byte.  So the first 2x2 part color is fore and the second one is back.  Somehow this gets the old Apple Macintosh A5-world!  The sprite consists of 2x2 pixel tiles too and it can have almost any size!  You can mix the type 1 with the type 2.  The color 0 means the transparency.
+
+<p>Use macro <b>sprite_t2</b> to define a sprite.  Its arguments are identifier, width (must be the even and more than 2), the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 4x3 sprite <i>s3</i> that is placed at (41, 101)-coordinates and has only one dataset for all the movements but downward.  So this sprite is 2-phase animated only for this movement.<br>
+<form><textarea type=text readonly cols=50 rows=5>
+sprite_t2 s3,4,3,41,101,1,1,1,2
+s3_l_sl
+s3_r_sl
+s3_u_sl
+s3_d_sl word data_s3_d1, data_s3_d2</textarea>
+</form>
+A dataset list for the every direction must have the proper label <i>ID_DIRECTION_sl</i> where <i>DIRECTION</i> may be <i>l</i>, <i>r</i>, <i>u</i>, <i>d</i>.  The definition of the lists must follow the sprite definition!  The order of the labels for the directions is mandatory.  A dataset element consists of a bitmap, a byte per pixel.  Labels for bitmaps and colors may be arbitrary.  Let's continue the example.<br>
+<form><textarea type=text readonly cols=50 rows=8>
+data_s3_d1
+  byte $66,$66,$99,$99
+  byte $99,$00,$00,$66
+  byte $66,$66,$99,$99
+data_s3_d2
+  byte $99,$99,$66,$66
+  byte $66,$00,$00,$99
+  byte $66,$66,$99,$99</textarea>
+</form>
+It is also necessary to reserve some additional memory for the sprite.  It must have label <i>saved_ID</i>.  Its size must be XSIZE*YSIZE bytes.  For instance, for the previous sprite we may use an allocation.<br>
+<form><textarea type=text readonly cols=50 rows=1>
+saved_s3 ds 4*3</textarea>
+</form>
+More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-sprites>github</a>.  Actually it is quite easy to implement the diagonal or other movements.  However the number of the dataset parts is limited to a number slightly above 128.  This limit can easily be removed.
+
+<p>Use functions <b>left_t2</b>, <b>right_t2</b>, <b>up_t2</b>, and <b>down_t2</b> to move a sprite.  You must <b>put_t2</b> your sprite.  There is also the <b>remove_t2</b> sprite function.  Just set your sprite definition address to the $e6-e7 zp-locations before the function invocations.  There are also functions <b>left2_t2</b>, <b>right2_t2</b>, <b>up2_t2</b>, and <b>down2_t2</b> that move a sprite by two pixels. For example, to move a sprite to the specified location use code similar to the next.<br>
+<form><textarea type=text readonly cols=50 rows=8>
+    lda #&lt;SPRITE_ID
+    sta $e6
+    lda #&gt;SPRITE_ID
+    sta $e7
+    jsr remove_t1
+    ldy #s2xpos_off
+    lda #XPOS
+    sta ($e6),y
+    iny
+    lda #YPOS
+    sta ($e6),y
+    jsr put_t1</textarea>
+</form>
+
+<p>This library uses zp-locations $e0-e7.
+
+<h2>Auxilary library</h2>
+<p>The <b>delay</b> function simply delays for the specified number of frame ticks.  The number must be set in the A register.  The actual accuracy is about half a frame tick.
+
+<p>Function <b>getkmatrix</b> returns 8 bytes of the keyboard matrix status in <b>kmatrix</b>.  The next table describes it.
+<table border=1>
+<tr><th>  <th>0   <th>1   <th>2   <th>3   <th>4   <th>5   <th>6   <th>7
+<tr><th>0 <td>del <td>return <td>&#xa3; <td>help <td>f1  <td>f2  <td>f3  <td>@
+<tr><th>1  <td>3  <td>W   <td>A   <td>4   <td>Z   <td>S   <td>E  <td>shift
+<tr><th>2  <td>5  <td>R   <td>D   <td>6   <td>C   <td>F   <td>T   <td>X
+<tr><th>3  <td>7  <td>Y   <td>G   <td>8   <td>B   <td>H   <td>U   <td>V
+<tr><th>4  <td>9  <td>I   <td>J   <td>0   <td>M   <td>K   <td>O   <td>N
+<tr><th>5 <td>&#x2193;  <td>P   <td>L  <td>&#x2191;   <td>.   <td>:   <td>-   <td>,
+<tr><th>6 <td>&#x2190;  <td>*   <td>;  <td>&#x2192;  <td>esc  <td>=   <td>+   <td>/
+<tr><th>7  <td>1  <td>clear <td>control  <td>2  <td>spc <td>cbm  <td>Q  <td>run
+</table>
+Rows represent scanned values at $ff08.  So <b>kmatrix+5</b> represents row 5.  Columns represent bits.  So bit 0 at row 5 means the cursor down key.  Zero means it is pressed.
+
+<p>Function <b>waitkey</b> waits for a key press.  It also sets <b>kmatrix</b>.
+
+<hr>
+<h2>v2 news</h2>
+<ul>
+<li>getpaddr
+<li>getnextx
+<li>setmcl
+<li>sprite type 1 library
+<li>sprite type 2 library
+<li>auxilary library
+</ul>
 
 <hr>
 
