@@ -68,7 +68,13 @@ int main() {
 }</textarea></form></div>
 <div style=float:left;padding:8px><img src=fli-c-gen.png></div>
 
-<p style=clear:left>This C function can help to draw the static image that can be used as the background.
+<p style=clear:left>This C function can help to draw the static image that can be used as the background.  There are also two auxilary functions that can help easier use 2x2 tiles: <br>
+<form><textarea type=text readonly cols=50 rows=2>
+void setpa22(int x, int y, int c, int cs)
+void setpa22_a5(int x, int y, int c)
+</textarea>
+</form>
+They both put 2x2 pixel and use doubled coordinates.  The color source (1 or 2) for the latter is calculated automatically as it is required for the sprite playground.
 
 <p>The assembly library can help to create some dynamics.  It provides several functions (tobasic, setp, seta, setpbyte, getpbyte, getabyte, ...) and features (vertical scrolling and the timer).  Just include your code after the <b>main</b> label in the <em>svn.asm</em> file.
 
@@ -115,7 +121,7 @@ int main() {
 </form>
 The <b>delay</b> function with its argument equal to 1 does the same.
 
-<p>Memory location $d4 contains the vertical scroll value.  A positive number scrolls down, a negative number scrolls up.  If a value is set there, the screen will scroll once.  When the scrolling action is completed this value is set to 0.  So set this value only if it is equal to 0.  Beware of using too large values, this may cause the displayed image to break!  ((Moreover use even values because odd values create the PAL inversion color effects.))
+<p>Memory location $d4 contains the vertical scroll value.  A positive number scrolls down, a negative number scrolls up.  If a value is set there, the screen will scroll once.  When the scrolling action is completed this value is set to 0.  So set this value only if it is equal to 0.  Beware of using too large values, this may cause the displayed image to break!  (Moreover use even values because odd values can create the PAL inversion color effects.)
 
 <p>The library routines use memory locations in the range $d0-$da, don't use these addresses.<br>
 
