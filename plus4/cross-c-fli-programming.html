@@ -201,14 +201,14 @@ More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli
     sta $e6
     lda #&gt;SPRITE_ID
     sta $e7
-    jsr remove_t1
+    jsr remove_t2
     ldy #s2xpos_off
     lda #XPOS
     sta ($e6),y
     iny
     lda #YPOS
     sta ($e6),y
-    jsr put_t1</textarea>
+    jsr put_t2</textarea>
 </form>
 
 <p>This library uses zp-locations $e0-e7.
