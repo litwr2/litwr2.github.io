@@ -211,6 +211,8 @@ More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli
     jsr put_t2</textarea>
 </form>
 
+<p>There are also several auxilary functions that can help easier use 2x2 tiles dynamically: <b>getaddr22</b>, <b>setaddr22</b>, <b>nextaddr22</b>, <b>setcolor22</b> &ndash; they all use the A5 convention.
+
 <p>This library uses zp-locations $e0-e7.
 
 <h2>Auxilary library</h2>
@@ -238,7 +240,7 @@ Rows represent scanned values at $ff08.  So <b>kmatrix+5</b> represents row 5.  
 <li>setpa22, setpa22_a5 (static graphics, C)
 <li>getpaddr, getnextx, setmcl (dynamic graphics, asssembler)
 <li>sprite type 1 library
-<li>sprite type 2 library
+<li>sprite type 2 library (+ getaddr22, setaddr22, nextaddr22, setcolor22)
 <li>auxilary library
 </ul>
 
