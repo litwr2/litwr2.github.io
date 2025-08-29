@@ -146,7 +146,7 @@ color_s3_d1
   byte $7e, $6e
   byte $53, $42</textarea>
 </form>
-More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-sprites>github</a>.  Actually it is quite easy to the the diagonal or other movements.  However the number of the dataset parts is limited to a number slightly above 64.  This limit can easily be removed.
+More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-sprites>github</a>.  Actually it is quite easy to implement the the diagonal or other movements.  However the number of the dataset parts is limited to a number slightly above 64.  This limit can easily be removed.
 
 <p>Use functions <b>left_t1</b>, <b>right_t1</b>, <b>up_t1</b>, and <b>down_t1</b> to move a sprite.  You must <b>put_t1</b> your sprite.  There is also the <b>remove_t1</b> sprite function.  Just set your sprite definition address to the $e6-e7 zp-locations before the function invocations.  There are also functions <b>left2_t1</b>, <b>right2_t1</b>, <b>up2_t1</b>, and <b>down2_t1</b> that move a sprite by two pixels. For example, to move a sprite to the specified location use code similar to the next.<br>
 <form><textarea type=text readonly cols=50 rows=8>
