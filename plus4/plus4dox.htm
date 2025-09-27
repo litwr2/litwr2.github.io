@@ -558,135 +558,117 @@ connector);
 
 <a name=12></a><h2 align=center>C+4 vs C64</h2>
 
-<p>C+4 and C64 are very similar. Why does success come only for C64?
+<p>The C+4 and C64 are very similar.  Why does success only come for the C64?  I think it is only one answer: the C64 is almost two years elder!  Below I place a table with quality/quantity comparison of the main features of both machines.  Who has won this data competition?...
 
-<p>I think it is only one answer: C64 is two years elder! Below I place a
-table with quality/quantity comparison of the main features of both machines.
-Who has won this data competition?...</p>
+<table align=center border=1 style=border-color:green;border-width:thin;border-style:solid;border-spacing:0px>
+<tr><th><th>C64 <th>C+4 <th>Notes
 
-<pre>
-                            C64     C+4     Notes
+<tr><th colspan=4 align=center>BASIC
+<tr><td>Version <td>2.0 <td>3.5 <td>
+<tr><td>Free memory, bytes <td>38911 <td>60671 <td>
+<tr><td>Total tokens <td>77 <td>128 <td>
+<tr><td>Special disk commands <td>- <td>+ <td>
+<tr><td>Graphics commands <td>- <td>+ <td>
+<tr><td>Structural commands <td>- <td>+ <td>
+<tr><td>Sound commands <td>- <td>+ <td>
+<tr><td>Joysticks commands <td>- <td>+ <td>
+<tr><td>Speed  <td colspan=3>In full screen modes the C64 is slightly faster than the C+4, but in the screen blank case the C+4 is much faster
 
-  BASIC
-   Version                  2.0     3.5
-   Free memory, bytes       38911   60671
-   Total tokens             77      128
-   Special disk commands    -       +
-   Graphics commands        -       +
-   Structural commands      -       +
-   Sound commands           -       +
-   Joysticks commands       -       +
+<tr><th colspan=4 align=center>OTHER FIRMWARE
+<tr><td>Build-in Monitor<br>with (dis)assembler <td>- <td>+ <td>
+<tr><td>Build-in Full Screen<br>Text Editor, Spreadsheet<br>and DataBase <td>- <td>+ <td>
 
-  Build-in Monitor
-    with (dis)assembler     -       +
+<tr><th colspan=4 align=center>HARDWARE
+<tr><td>Effective CPU frequency<br>in standard screen mode,<br>MHz, PAL <td>0.933 <td>1.144 <td>≈123%
+<tr><td>" NTSC <td>0.961 <td>1.046 <td>≈109%
+<tr><td>Effective CPU frequency<br>in screen blank mode,<br>MHz, PAL <td>0.985 <td>1.7 <td>≈173%
+<tr><td>" NTSC <td>1.023 <td>1.713 <td>≈167%
+<tr><td>RAM Total <td>64K <td>64K <td>
+<tr><td>I/O holes, byte <td>2(+4096)  <td>548  <td>C+4: CPU=2,IO=512(ACIA=16,PIO=16,KBD=16,<br>
+MAGIC VOICE SOUND=16,ROMSEL=16),TED=34.<br>
+C64: CPU=2,VIC=1024,SID=1024,VRAM=1024,CIA1=256,<br>
+CIA2=256,EXP1/Z80=256,EXP2/DISK=256<br>
+These holes (but CPU) reduce total usable RAM/ROM capacity on the C+4 only
+<tr><td>ROM Total <td>2*8K+4K=20K <td>4*16K=64K <td>
+<tr><td>ROM Max <td>5*8K+4K=44K <td>8*16K=128K <td>
+<tr><td>Serial Bus <td>+ <td>+ <td>
+<tr><td>Digital Joysticks <td>2 <td>2 <td>
+<tr><td>Paddles <td>4 <td>- <td>This allows to connect to the C64 up to 2 4-buttons<br>
+analog joysticks (instead 2 digital)
+<tr><td>Datasette <td>1  <td>1 <td>
+<tr><td>Fast C1551 drives <td>- <td>+ <td>These drives are connected directly to the CPU bus,<br>
+the C64 theoretically can use similar drives
 
-  Build-in Full Screen Text
-    Editor, Spreadsheet
-    and DataBase            -       +
+<tr><th colspan=4 align=center>User Port
+<tr><td>Centronics <td>1 <td>1 <td rowspan=3>The C64 or C+4 can use only RS-232C or Centronics in the same time, but not both.<br>Not all standard Centronics or RS-232C signals are supported
+<tr><td>TTL RS-232C <td>1 <td>1
+<tr><td>Max. speed, bauds <td>300 <td>19200
+<tr><td>Synchro Serial Ports <td>2 <td>- <td>
 
-  Speed                     =       =       In full screen modes C64 is
-                                            slightly faster than C+4, but in
-                                            screen blank case C+4 is faster
-  RAM
-   Total                    64K     64K
-   Holes, byte              4098    548     C+4: CPU=2,IO=512(ACIA=16,PIO=16,
-                                                 KBD=16,MAGIC VOICE SOUND=16,
-                                                 ROMSEL=16),TED=34.
-                                            C64: CPU=2,VIC=1024,SID=1024,
-                                                 VRAM=1024,CIA1=256,CIA2=256,
-                                                 EXP1/Z80=256,EXP2/DISK=256
-                                            * These holes reduce total usable
-                                            RAM/ROM capacity
+<tr><th colspan=4 align=center>Keyboard
+<tr><td>Total keys <td>66 <td>67+Reset <td>
+<tr><td>Reset button <td>- <td>+ <td>
+<tr><td>Design <td>worse <td>better <td>
 
-  ROM
-   Total                    2*8K+4K 4*16K   C+4 can work only with one 16K
-                            =20K    =64K    Kernal ROM and use other 3 16K
-                                            ROM slots in any manner (e.g. to
-                                            view/save any ROM chip content)
-   Max                      3*8K+4K 8*16K-3*802-546
-                            =28K    =128K-2952=125.1171875K
-  Keyboard
-   Total keys               66      67+Reset
-   Reset button             -       +
-   Design                   worse   better
+<tr><th colspan=4 align=center>Graphics
+<tr><td>Colors <td>16 <td>121 <td>
+<tr><td>Std. Resolution <td>320x200 <td>320x200 <td>
+<tr><td>Max. Resolution <td>320x200 <td>320x288 <td>The C64 may use sprites to extend the visible screen size.<br>
+This allows, for example to use 368x200 raster and even more
+<tr><td>Extended color text mode <td>+ <td>+ <td>
+<tr><td>Multicolor text mode <td>+ <td>+ <td>The C64 uses two global colors in 4x8 matrix, the C+4 uses three.<br>
+This gives more free colors for the C64
+<tr><td>Hires Bitmap mode <td>+  <td>+ <td>
+<tr><td>Hires Bitmap mode,<br>free color index <td>1/32 <td>1/32 <td>2 free colors in 8x8 matrix,<br>
+the C64 can use sprites to add a lot of additional free colors
+<tr><td>Multicolor Bitmap mode <td>+  <td>+ <td>
+<tr><td>Multicolor Bitmap mode,<br>free color index <td> 3001/32000<td> 2002/32000<td>C64: 3 free colors in 4x8 matrix + 1 free color per screen,<br>
+C+4: 2 free colors in 4x8 matrix + 2 free colors per screen,<br>
+the C64 can use sprites to add a lot of additional free colors
+<tr><td>Hardware cursor <td>- <td>+ <td>
+<tr><td>256 chars. on screen <td>+ <td>+ <td>The C64 has limits on the use of the upper 128 chars:<br>
+Kernal/Basic ROM assumes the reversed chars there
+<tr><td>Hardware reverse <td>- <td>+  <td>This allows automatically to produce inverted
+characters<br>
+saving 2K characters ROM and removing limits on the upper 128 chars
+<tr><td>X/Y-scrolling <td>+ <td>+ <td>
+<tr><td>Color RAM <td>0.5K <td>- <td>This makes the C+4 more flexible but gives less free<br>
+colors in multicolor mode.<br>
+Color RAM helps the C64 to handle video faster than the C+4,<br> and increases free RAM storage for some modes<br>
+(the C+4 takes 1K of main memory for keeping color information)
+<tr><td>Hardware sprites <td>+ <td>- <td>The C64 can manage up to 8 24x21 sprites and even more,<br>
+automatically detects their collisions, etc.
 
-  Graphics
-   Colors                   16      121
-   Max. Resolution          320x200 320x200
-   Extended mode            +       +
-   Multicolor mode          +       +
-   Bit Map Mode             +       +
-   Hardware cursor          -       +
-   256 chars. on screen     +       +
-   Hardware reverse         -       +       This allows automatically to
-                                            produce inverted characters
-                                            saving 2K characters ROM
-   38/40 columns modes      +       +
-   24/25 rows modes         +       +
-   X/Y-scrolling            +       +
-   Fixed color RAM          +       -       This makes C+4 more flexible
-   Color RAM                0.5K    -       Color RAM helps C64 be some 
-                                            faster than C+4 in the text 
-                                            modes, and increases free RAM 
-                                            storage for some modes
-                                            (C+4 takes 1K of main memory
-                                            for keeping color information)
-   Hardware sprites         +       -       C64 can manage up to 8 24x21
-                                            sprites, automatically detects
-                                            their collisions, etc.
-   
-  Sound
-   Channels                 3       2       C+4's second channel can produce
-                                            either white noise or music
-   Frequency range          0-      109Hz-
-                             3.9KHz  110KHz
-   Wave forms               wide    square  C64 can produce various different
-                            range   only    types of special sound effects
-                                            and high quality music synthesis
+<tr><th colspan=4 align=center>Sound
+<tr><td>Channels <td>3 <td>2 <td>The C+4's second channel can produce either white noise or music
+<tr><td>Frequency range <td>0-3.9KHz <td>109Hz-110KHz <td>
+<tr><td>Wave forms <td>wide range <td>square only <td>The C64 can produce various different types<br>
+of special sound effects and high quality music synthesis
 
-  Time
-   2-bytes timers           4       3       C64 timers have wider range of
-                                            working modes than on C+4
-   4-bytes RTC              2       -
+<tr><th colspan=4 align=center>Time
+<tr><td>2-bytes timers <td>4 <td>3 <td>The C64 timers have wider range of working<br>modes than on the C+4
+<tr><td>4-bytes RTC <td>2 <td>- <td>
 
-  Interrupts
-   NMI                      +       -
-   IRQ                      +       +
-   Reset                    worse   better  C64 has no simple user usable
-                                            Reset switch, C+4 has one
-   Interrupts sources
-    Cassette Read/
-     Serial Bus SRQ         1       -       C64 has 13 types of interrupt
-    Timers                  4       3       sources: 4 from VIC, 5 from CIA1
-    RTC                     1       -       and 4 from CIA2 - VIC (IRQ),
-    Raster                  1       1       CIA1 (IRQ) and CIA2 (NMI) can
-    Sprite's                2       -       produce only one interrupt signal;
-    Synchro Serial Port     2       -       C+4 has 6 types of internal
-    Light Pen               1       1       interrupt sources: 5 from TED and 
-    RS-232C                 1       1       1 from ACIA
+<tr><th colspan=4 align=center>Interrupts
+<tr><td>NMI <td>+ <td>- <td>
+<tr><td>IRQ <td>+ <td>+ <td>
+<tr><td>Reset <td>worse <td>better <td> The C64 has no usable Reset switch, the C+4 has one
+<tr><td>Cassette Read/<br>
+Serial Bus SRQ  <td>1  <td>- <td rowspan=8>      The C64 has 13 types of interrupt sources: 4 from VIC, 5 from CIA1 and<br> 4 from CIA2 - VIC (IRQ), CIA1 (IRQ) and CIA2 (NMI) can produce<br> only one interrupt signal; the C+4 has 6 types<br> of internal interrupt sources: 5 from TED and 1 from ACIA
+<tr><td>Timers <td>4 <td>3       
+<tr><td>RTC <td>1 <td>-       
+<tr><td>Raster <td>1 <td>1       
+<tr><td>Sprite's <td>2 <td>-       
+<tr><td>Synchro Serial Ports <td>2 <td>-       
+<tr><td>Light Pen <td>1 <td>1       
+<tr><td>RS-232C <td>1 <td>1       
+</table>
 
-  Serial Bus                +       +       C+4 doesn't support SRQ line
+<p>The C64 can produce FLI graphics allowing 16 free colors in the 8x8 matrix (2 per line) on base hires mode. The C+4 similar DFLI graphics allows to use 8 free colors (2 per 2 lines) in the same matrix. The C+4 may also use FLI graphics using 16 free colors in the 8x8 matrix but this fixes these 16 colors for the whole screen and therefore reducing number of colors from 121 maximum.
 
-  Digital Joysticks         2       2
+<p>The C64 can produce FLI graphics allowing 17 free colors in the 4x8 matrix (2 per line and 1 per the matrix) for on base multicolor mode. This FLI graphics may also use an additional free color per raster line.  The C+4 similar DFLI graphics allows to use 8 free colors in the 4x8 matrix (2 per 2 lines) plus 2 free colors for every raster line.  The C+4 may also use FLI graphics using 16 free colors in the 4x8 matrix but this fixes these 16 colors for the whole screen reducing total number of colors from 121 maximum. The FLI graphics keeps two additional free colors free from this limitation allowing to use any of 121 colors.
 
-  Paddles                   4       -       This allows to connect to C64
-                                            up to 2 4-buttons analog
-                                            joysticks (instead 2 digital)
-
-  User Port
-   Centronics               1       1       C64 and C+4 can use only RS-232C
-   TTL RS-232C              1       1       or Centronics in the same time,
-     Max. speed, bauds      300     19200   but not both
-   Synchro Serial Ports     2       -
-
-  Datasette                 1       1
-
-  Fast C1551 drives         -       +       These drives connected directly to
-                                            the CPU bus, C64 theoretically can
-                                            use similar drives...
-</pre>
-
-
+<p>The C+4 (PAL) can be switched to NTSC mode.  This breaks the video signal but speeds up the CPU to 2.2 MHz!
 
 <a name=13></a><h2 align=center>Debugger</h2>
 
