@@ -572,6 +572,7 @@ connector);
 <tr><td>Structural commands <td>- <td>+ <td>
 <tr><td>Sound commands <td>- <td>+ <td>
 <tr><td>Joysticks commands <td>- <td>+ <td>
+<tr><td>Garbage collection <td>worse <td>better <td>
 <tr><td>Speed  <td colspan=3>In full screen modes the C64 is slightly faster than the C+4, but in the screen blank case the C+4 is much faster
 
 <tr><th colspan=4 align=center>OTHER FIRMWARE
@@ -591,7 +592,7 @@ CIA2=256,EXP1/Z80=256,EXP2/DISK=256<br>
 These holes (but CPU) reduce total usable RAM/ROM capacity on the C+4 only
 <tr><td>ROM Total <td>2*8K+4K=20K <td>4*16K=64K <td>
 <tr><td>ROM Max <td>5*8K+4K=44K <td>8*16K=128K <td>
-<tr><td>CPU ports <td>6 <td>7 <td>
+<tr><td>CPU ports <td>6 <td>7 <td>They are the fastest
 <tr><td>Serial Bus <td>+ <td>+ <td>
 <tr><td>Digital Joysticks <td>2 <td>2 <td>
 <tr><td>Paddles <td>4 <td>- <td>This allows to connect to the C64 up to 2 4-buttons<br>
@@ -609,7 +610,7 @@ the C64 theoretically can use similar drives.<br>This advantage became insignifi
 <tr><th colspan=4 align=center>Keyboard
 <tr><td>Total keys <td>66 <td>67+Reset <td>
 <tr><td>Reset button <td>- <td>+ <td>
-<tr><td>Design <td>worse <td>better <td>
+<tr><td>Design <td>worse <td>better <td>The C+4 has separated cursor keys, the Esc key, and the doubled Control key.<br>The C64 has the Restore special key
 
 <tr><th colspan=4 align=center>Graphics
 <tr><td>Colors <td>16 <td>121 <td>
@@ -621,23 +622,23 @@ This allows, for example to use 368x200 raster and even more
 This gives more free colors for the C64
 <tr><td>Hires Bitmap mode <td>+  <td>+ <td>
 <tr><td>Hires Bitmap mode,<br>bytes per screen <td>9000 <td>10000 <td>C64: 8000 (bitmap) + 1000 (colors)<br>C+4: 8000 + 2000, the C+4 can use more lines: 400 bytes per 8 lines
-<tr><td>Hires Bitmap mode,<br>free color index <td>.03125<td>.03125 <td>2 free colors in 8x8 matrix, 1/32<br>
-the C64 can use sprites to add a lot of additional free colors
+<tr><td>Hires Bitmap mode,<br>dots per free color shape <td>32<td>32 <td>2 free colors in 8x8 matrix, 64/2<br>
+The C64 can use sprites to add a lot of additional free colors
 <tr><td>Hires Bitmap mode, average<br>number of colors per pixel <td>2.4375 <td>5.71875 <td>C64: (16*2+2*62)/64<br>C+4: (121*2+2*62)/64
 <tr><td>Hires FLI-64/DFLI+4,<br>bytes per screen <td>16000 <td>16000 <td>8000 (bitmap) + 8000 (colors)<br>The C+4 can use more lines: 640 bytes per 8 lines
-<tr><td>Hires FLI-64/DFLI+4,<br>free color index <td>.25 <td>.125 <td>C64: 2 free colors in the 8x1 matrix, 2/8<br>C+4: 2 free colors in the 8x2 matrix, 2/16<br>The C64 ability to use sprites is limited with FLI graphics
+<tr><td>Hires FLI-64/DFLI+4,<br>dots per free color shape <td>4 <td>8 <td>C64: 2 free colors in the 8x1 matrix, 8/2<br>C+4: 2 free colors in the 8x2 matrix, 16/2<br>The C64 ability to use sprites is limited with FLI graphics
 <tr><td>HR FLI-64/DFLI+4, average<br>number of colors per pixel <td>5.5 <td>16.875 <td>C64: (16*2+2*6)/8<br>C+4: (121*2+2*14)/16
 <tr><td>Multicolor Bitmap mode <td>better <td>worse <td>
 <tr><td>Multicolor Bitmap mode,<br>bytes per screen <td>9501 <td>10002 <td>C64: 8000 + 1000 + 500 (VRAM) + 1<br>C+4: 8000 + 2000 + 2, the C+4 can use more lines: 400 bytes per 8 lines
-<tr><td>Multicolor Bitmap mode,<br>free color index <td>.09378125 <td>.0625625 <td>C64 free colors: 3 per 4x8 matrix + 1 per screen, 3001/32000 <br>
-C+4 free colors: 2 per 4x8 matrix + 2 per screen, 2002/32000<br>
+<tr><td>Multicolor Bitmap mode,<br>dots per free color shape <td>≈10.663 <td>≈15.984 <td>C64 free colors: 3 per 4x8 matrix + 1 per screen, 32000/3001<br>
+C+4 free colors: 2 per 4x8 matrix + 2 per screen, 32000/2002<br>
 The C64 can use sprites to add a lot of additional free colors
 <tr><td>MC Bitmap mode, average<br>number of colors per pixel <td>5.125375 <td>11.3198125 <td>C64: (16*(1000*3+1)+4*(32000-3001))/32000<br>C+4: (121*(1000*2+2)+4*(32000-2002))/32000
 <tr><td>Multicolor FLI-64/DFLI+4,<br>bytes per screen <td>16700 <td>16400 <td>C64: 8000 + 8*1000 + 500 (VRAM) + 200 (a color per line)<br>
 C+4: 8000 + 4*2000 + 400 (2 colors per line)<br>
 The C+4 can use more lines, 656 bytes per 8 lines
-<tr><td>Multicolor FLI-64/DFLI+4,<br>free color index <td>.5375 <td>.2625 <td>C64 free colors: 2 per 4x1 matrix + 1 per 4x8 matrix + 1 per line, 688/1280<br>
-C+4 free colors: 2 per 4x2 matrix + 2 per line,  84/320<br>
+<tr><td>Multicolor FLI-64/DFLI+4,<br>dots per free color shape <td>≈1.86 <td>≈3.81 <td>C64 free colors: 2 per 4x1 matrix + 1 per 4x8 matrix + 1 per line, 1280/688<br>
+C+4 free colors: 2 per 4x2 matrix + 2 per line, 320/84<br>
 The C64 ability to use sprites is limited with FLI graphics
 <tr><td>MC FLI-64/DFLI+4, average<br>number of colors per pixel <td>10.45 <td>34.7125 <td>C64: (16*(17*40+8)+4*(1280-688))/1280<br>C+4: (121*(2*40+4)+4*(320-84))/320
 <tr><td>CPU cycles on a bad line<td>20/22 + 3 w/o<td>22 + 3 w/o<td>C64: no sprite fetches on this line, 22 - NTSC, 20 - PAL
@@ -680,7 +681,7 @@ Serial Bus SRQ  <td>1  <td>- <td rowspan=8>      The C64 has 13 types of interru
 <tr><td>RS-232C <td>1 <td>1       
 </table>
 
-<p>The C+4 may also use Hires FLI graphics using 2 free colors in the 8x1 matrix but this fixes 16 colors for the whole screen and therefore reducing number of colors from 121 maximum.  This mode gives the same average number of colors per pixel as on the C64 and requires 16040 bytes per 320x200 screen. The C+4 may also use Multicolor FLI graphics using 2 free colors in the 4x1 matrix but this again fixes 16 colors for the whole screen reducing total number of colors from 121 maximum.  The Multicolor FLI graphics keeps the two additional free colors free from this limitation allowing to use any of 121 colors.  So this mode gives (16*80+121*2+4*(160-82))/160 = 11.4625 for the average number of colors per pixel having 82/160 = .5125 for the free color index.  This mode requires 16440 bytes per 320x200 screen.  These modes have been used very rarely.
+<p>The C+4 may also use Hires FLI graphics using 2 free colors in the 8x1 matrix but this fixes 16 colors for the whole screen and therefore reducing number of colors from 121 maximum.  This mode gives the same average number of colors per pixel as on the C64 and requires 16040 bytes per 320x200 screen, 640 bytes per 8 lines plus 40 bytes for the initialization. The C+4 may also use Multicolor FLI graphics using 2 free colors in the 4x1 matrix but this again fixes 16 colors for the whole screen reducing total number of colors from 121 maximum.  The Multicolor FLI graphics keeps the two additional free colors free from this limitation allowing to use any of 121 colors.  So this mode gives (16*80+121*2+4*(160-82))/160 = 11.4625 for the average number of colors per pixel having 160/82 ≈ 1.951 for dots per free color shape.  This mode requires 16440 bytes per 320x200 screen.  These modes have been used very rarely and not properly documented.
 
 <p>The FLI/DFLI graphics requires some code to support it, about 20 bytes per line/dline.
 
@@ -690,13 +691,13 @@ Serial Bus SRQ  <td>1  <td>- <td rowspan=8>      The C64 has 13 types of interru
 
 <p>The C+4 PAL can be switched to NTSC mode.  This breaks the video signal but speeds up the CPU to 2.21 MHz!
 
-<p>So, the C+4 has faster CPU, a better BASIC and keyboard, a much faster RS-232C port, support for many more colors, more ROM and a resizable screen (1-36 rows on PAL or 1-24 rows on NTSC; fewer rows means the faster CPU).  It also has better handling of 256 characters.
+<p>So, the C+4 has the faster CPU, a better BASIC and keyboard, a much faster RS-232C port, support for many more colors, more ROM and a resizable screen (1-29/36 rows on NTSC/PAL; fewer rows means the faster CPU).  It also has better handling of 256 characters.
 
 <p>The C64 has typically slightly more usable RAM, slightly better multicolor modes, hardware sprites and much better synthesized music.  It also supports the paddles and the mouse!  The sprites offer a variety of additional capabilities.  The C64 also has more timers, which are more advanced, but this doesn't rather offer any practical advantages.
 
 <p>It seems that the digital sound quality of both machines is almost identical.
 
-<p>Finally, I should mention that the C64 has more software and hardware while the C+4 has been much cheaper since 1986.  But the C+4 could have been much cheaper since 1984 and if this had happened then we could have had something completely different in the amount of hardware and software available for the C+4.  Moreover, Commodore ceased supporting the C+4 in 1986 and this had dramatic consequences for this computer: no more official software releases, etc.
+<p>Finally, it should be mentioned that the C64 has more software and hardware while the C+4 has been much cheaper since 1986.  But the C+4 could have been much cheaper since 1984 and if this had happened then we could have had something completely different in the amount of hardware and software available for the C+4.  Moreover, Commodore ceased supporting the C+4 in 1986 and this had dramatic consequences for this computer: no more official software releases, etc.
 
 <p>Interestingly that the C+4 PAL is generally more advanced than the C+4 NTSC while the C64 NTSC is only slightly better (a bit faster, few more CPU cycles per raster interrupt) than the C64 PAL.
 
@@ -1145,9 +1146,9 @@ or `/9' prefix.
 <p>So <code>plus4 e.d64 /9g.d64</code>,<br>
 will attach disk image `e' to device 8 and disk image `g' to device 9.
 
-<p>Within the parameters list it is possible to set working directory. This
+<p>Within the parameters list, it is possible to set working directory. This
 setting will affect all followed relative filesystem addresses. The working
-directory may be set several times in one parameters list.
+directory may be set several times in one list of parameters.
 
 <p>Example.<br>
 <code>plus4 c:\cplus4\d64\ disk.d64 /9..\d2.d64 d:\ cbm\a.prg</code><br>
@@ -1156,7 +1157,7 @@ will set working directory, attach `disk.d64' from it, attach `d2.d64' from
 
 <p>NOTE! Do not omit extension for any file name. The working directory must
 be ended by `\'. The order of parameters is important &mdash; the next
-parameter may override effect of previous one.
+parameter may override the effect of the previous one.
 
 <p>The name of the ROM-image file may be preceded by /N, where N is
 ROM-bank number (<a href=#6>to see the table</a>). The default number is 4.
@@ -1204,9 +1205,9 @@ and may contain anything.
 <p>Almost all data and program files of this package are written by
 V.Lidovski in the X/1996-IV/1997;VI-VIII,XII/1998;IV/2000;XI/2002;
 VII-VIII/2003;II,V-VIII,X,XII/2004;VI-VIII,XI,XII/2005;I,V,VII-VIII/2006;
-I-III,VIII,XII/2007;I,VIII/2008.
+I-III,VIII,XII/2007;I,VIII/2008, VI/2024.
 
-<p>All source code is Copyright (C) 1997-2008 Vladimir Lidovski. This program
+<p>All source code is Copyright (C) 1997-2008,2024,2025 Vladimir Lidovski. This program
 is distributed under the GNU General Public License, Version 2, or, at your
 discretion, any later version. The GNU General Public License is available
 via the Web <a href=http://www.gnu.org/copyleft/gpl.html>here</a>. The GPL is 
@@ -1224,16 +1225,12 @@ litwr@yandex.ru.
 
 <a name=21></a><h2 align=center>History and the last updates</h2>
 
-<p>The first version of this emulator was finally compiled at the 9th of April
-of 1997. It was uploaded to ftp.funet.fi at the 30th of June of 1997.
+<p>The first version of this emulator was finally compiled on the 9th of April
+of 1997. It was uploaded to <a href=https://www.zimmers.net/anonftp/pub/cbm/crossplatform/emulators/msdos/index.html>ftp.funet.fi</a> on the 30th of June of 1997.
 
 <p>The <em>changes list history</em> is <a href=plus4chl.htm>here</a>.
 
-<p>v1.42 (VIII-2008)
-
-<ul>
-<li>added ? command line option
-</ul>
+<p>v1.43 Beta has been developing since 2024, its sources are available at <a href=https://github.com/litwr2/retro/tree/main/plus4/plus4-forever-qm>github</a>.
 
 </body>
 </html>
