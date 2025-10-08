@@ -50,23 +50,14 @@
 
 <a name=0></a><h2 align=center>Preview</h2>
 
-<p>I think I've created an unique emulator, because I've never seen any
-Commodore plus/4 (16 or 116) since March 1991... I've also never been an
-owner of Commodore disk drive. This version of the
-emulator has created only from some my old and found in Internet
-documentation (e.g., `c64doc' by John West and Marko Makela, `Extra
-Instructions Of The 65XX Series CPU' by Adam Vardy) and some advice
-from Attila Grosz. It's written only in 100% 80486 assembler (16-bit mode).
+<p>I think I've created a unique emulator because I haven't come across any Commodore Plus/4 (16 or 116) since March 1991. I've also never owned a Commodore disk drive. This version of the emulator has been created solely from some old documentation I had and some that I found on the Internet (e.g., `c64doc' by John West and Marko Makela, `Extra Instructions Of The 65XX Series CPU' by Adam Vardy) and some advice
+from Attila Grosz.  It's written only in 100% 80486 assembler (16-bit mode).
 
 
 
 <a name=1></a><h2 align=center>OS</h2>
 
-<p>Reprogramming the timer hardware made impossible to run the
-emulator from Microsoft Windows GUI environment &mdash; use DOS or Windows
-95/98/Me DOS mode. For NT/2000/XP, Linux, FreeBSD users &mdash; creation a
-DOS boot disk (or CD-ROM) is a possibility to run this program.
-
+<p>Reprogramming the timer hardware has made it impossible to run the emulator from the Microsoft Windows GUI environment. Users are advised to utilize DOS or Windows 95/98/Me DOS mode. For those on NT/2000/XP, Linux, or FreeBSD, creating a DOS boot disk (or CD-ROM) is a viable option to run this program.  Another option is to use a virtual machine to boot DOS. DOSBOX is the best choice as it properly emulates the Sound Blaster, but it can be quite slow. I have found that other virtual machines such as VirtualBox and Qemu+KVM are much faster.
 
 
 <a name=DOS></a><h2 align=center>Why Assembler &amp; DOS?!</h2>
@@ -91,8 +82,8 @@ Windows (Plus4emu, Yape). Presented emulator is the best for DOS forever!
 <li>Author's computer of the middle of 1990s was 486DX-120 and Assembler was
 the only choice in attempt to reach 100% performance with it.
 
-<li>The programming in Assembler under DOS without debugger is very difficult
-and time consumptive &mdash; this makes the pleasure of emulator creation
+<li>The programming in Assembler under DOS without a debugger is very difficult
+and time consumptive &mdash; this makes the pleasure of the emulator creation
 longer.
 </ol>
 
@@ -100,14 +91,14 @@ longer.
 
 <a name=2></a><h2 align=center>Used IBM hardware resources</h2>
 
-<p>The emulator completely takes-over interrupt 9 (keyboard) and intercepts
-interrupt 8. The emulator uses only base DOS memory. Screen size is
+<p>The emulator completely takes over interrupt 9 (keyboard) and intercepts
+interrupt 8. The emulator uses only base DOS memory. The screen size is
 selectable. It has direct access to the following ports: 20-21 (programmable
 interrupt controller); 40, 43 (timer hardware &mdash; to set IRQ0 frequency to
 37288Hz); 60, 64 (keyboard); 61 (speaker); 201 (joysticks); 388, 389 (Ad
 Lib); 3C0, 3C1, 3C2, 3C4, 3C5, 3CE, 3CF (VGA); 3D4, 3D5, 3DA (color VGA);
 3B4, 3B5, 3BA (mono VGA); 2x6, 2xA, 2xC, 2xE (Sound Blaster, x may be 2,4,6,
-or 8). Some VGA registers are used only for several video modes.
+or 8). Several more VGA registers are used only for some video modes.
 
 
 <a name=3></a><h2 align=center>Keyboard</h2>
@@ -127,15 +118,15 @@ or 8). Some VGA registers are used only for several video modes.
 <tr><td>Num Lock<td>-<td>Button Record on the datasette (press only it when 
 message "PRESS PLAY & RECORD ON TAPE" appeared)
 <tr><td>SysRq (Alt+PrintScreen)<td>-<td>Immediate exit to DOS (Warning! It can 
-interrupt any operation, e.g. with file)
+interrupt any operation, e.g. with a file)
 </table>
 
 
 
 <a name=4></a><h2 align=center>Joysticks</h2>
 
-<p>You can use any combination of real analog joysticks and the keyboard keys
-for joystick emulation. There are two keys sets for the emulation:
+<p>You can use any combination of real analog joysticks and keyboard keys
+for the joystick emulation. There are two keys sets for the emulation:
 
 <ul>
 <li>KEYS1 - Word Star like - SEDX/;
@@ -154,10 +145,10 @@ DOS:
 <li>for IBM PC directory (FAT or CD-ROM).
 </ol>
 
-<p>The both emulations allow to use the next BASIC DOS commands and
+<p>The both emulations allow us to use the next BASIC DOS commands and
 variables: DIRECTORY, DLOAD, LOAD, DSAVE, SAVE, VERIFY, INPUT#, GET#, PRINT#,
 OPEN, CLOSE, SCRATCH, RENAME, HEADER, COLLECT, DS, DS$, ST, CMD, COPY. The
-DOS commands U9/UI and U:/UJ are partially supported &mdash; they return DOS
+DOS commands U9/UI and U:/UJ are partially supported &mdash; they return the DOS
 version in the DS$ and finish all i/o operations. The DOS command I
 (INITIALIZE) finishes all i/o operations. The DOS command M-R (MEMORY READ)
 may be used to read C1551 ROM and 5 256 bytes data buffers at addresses from
@@ -170,27 +161,27 @@ the emulation.
 <p>The emulation on the D64 images supports direct access U1/UA, U2/UB, B-A,
 B-F, # and B-P DOS commands that allows to use such programs as
 <em>Zork</em>, <em>Hitchhiker's Guide</em>, <em>Blazin Forth</em>, etc.
-The U1/UA can use the sectors map from D64 images which provide it that allows
+The U1/UA can use the sectors map from D64 images, which provide it, that allows
 to use the programs (e.g. <em>Typing Professor</em>) from copy-protected disk.
-The COPY command is not supported for relative files only. The read-only
-D64-image is considered as write-protected disk by the emulator.
+The COPY command is not supported for relative files only. A read-only
+D64-image is considered as a write-protected disk by the emulator.
 
 <p>The emulation on the IBM PC filesystems provides support for all types of
 standard files and some DOS commands (C, R, S, P, N, V). It doesn't support
 direct access commands like U1, B-A, M-W, etc. The relative files and COPY
-command are fully supported. The HEADER command simply clears current
+command are fully supported. The HEADER command simply clears the current
 directory from all not locked (not read-only) PRG and X00 files. The COLLECT
 command doesn't produce any effect. The read-only files are considered as
 locked by the emulator.
 
-<p>You can use pattern (like A??B*=P) in any command which allows it
-(SCRATCH, DIRECTORY, ...). The SAVE/OPEN command supports usage of @
+<p>You can use a pattern (like A??B*=P) in any command that allows it
+(SCRATCH, DIRECTORY, ...). The SAVE/OPEN command supports usage of the @
 replacement prefix.
 
 <p>The both units are assigned to the current PC directory at the start of
 the emulator. Use F7 in the menus for reassignments of the units.
 
-<p>Usage of IBM PC filesystems emulation gives more space and flexibility
+<p>Usage of the IBM PC filesystems emulation gives more space and flexibility
 especially for such programs like <em>Austrospeed Basic Compiler</em> or 
 <em>SVS B.A.L. System</em>. So extract files from D64 and get some benefit!
 
@@ -226,7 +217,7 @@ especially for such programs like <em>Austrospeed Basic Compiler</em> or
 </table>
 
 <p>[1] - doesn't remove r/o files<br>
-[2] - the splat files are impossible for DOS on PC filesystem<br>
+[2] - the splat files are impossible for DOS on the PC filesystem<br>
 [3] - it can't copy relative files<br>
 [4] - it can't correctly combine relative files with different record size<br>
 [5] - it can be used to access to memory ranges at $300-$7ff (RAM) and
@@ -260,14 +251,14 @@ default is 17)<br>
 
 <a name=SND></a><h2 align=center>Sound</h2>
 
-<p>The emulator can use three kind of hardware for sound generation:
+<p>The emulator can use three kinds of hardware for sound generation:
 
 <ol>
 <li>Standard PC speaker digital sound at 37287Hz;
 <li>Adlib FM sound;
-<li>Sound Blaster digital sound at 18643Hz. The direct mode is used, it is a
-bit slow so it requires at least 300Mhz CPU. The BLASTER environment variable
-is required to set up Sound Blaster hardware.
+<li>Sound Blaster digital sound at 18643Hz. Direct mode is used, it is a
+bit slow and therefore it requires at least 300Mhz CPU. The BLASTER environment variable
+is required to set up the Sound Blaster hardware.
 </ol>
 
 
@@ -289,7 +280,7 @@ is required to set up Sound Blaster hardware.
 </table>
 
 <p>All these modes must be compatible with modern TFT-LCD monitors. Mode 0 
-is set as default. Second mode number is VBE mode.
+is set as default. The second mode number is VBE mode.
 
 
 <a name=5></a><h2 align=center>Mouse</h2>
@@ -319,10 +310,10 @@ starts it looks for the next ROM-image files in the start-up directory:
 </table>
 
 <p>Any of these files must have exactly 16KB length. If one or more of
-the such files are missed then standard (build-in in the emulator program
+such files are missed then standard (build-in in the emulator program
 body) ROM contents will be used instead.
 
-<p>Some ROM images in the Internet have 16386 bytes length (for unknown for
+<p>Some ROM images on the Internet have 16386 bytes length (for unknown for
 me reason 2 bytes added to theirs start) &mdash; remove first 2 bytes from
 them.
 
@@ -370,10 +361,10 @@ table indicates ROM-bank number.
 <p>[1] - full support of datasette lines only (Cassette Read/Write/Motor) and
 bit 5 is always set to 0.<br>
 [2] - 99% compatible.<br>
-[3] - only for PC speaker, Adlib or Sound Blaster compatible cards.
-It's nearly impossible to produce digital sound effects on the
-Adlib-cards family &mdash; use Speaker or Sound Blaster to hear them.<br>
-[4] - only Cassette Sense line.<br>
+[3] - only for the PC speaker, Adlib or Sound Blaster compatible cards.
+It's nearly impossible to produce digital sound effects with the
+Adlib-cards family &mdash; use the PC Speaker or Sound Blaster to hear them.<br>
+[4] - only the Cassette Sense line.<br>
 [5] - Turbo-Loaders and some operations are still not supported.<br>
 
 <p>Internal features of the emulator:
@@ -388,17 +379,17 @@ below) formats;
 <li>build-in debugger with assembler/disassembler.
 </ul>
 
-<p>It can run only on the computer with 80486 compatible CPU (at least P200
-is required for 100% speed emulation, DPMI can reduce performance of emulator
-down more than twice so use pure DOS for maximum performance) and VGA or VESA
+<p>It can run only on a computer with the 80486 compatible CPU (at least the P200
+is required for the 100% speed emulation, DPMI can reduce performance of the emulator
+down more than twice, so use pure DOS for the maximum performance) and the VGA or VESA
 compatible card.
 
 
 
 <a name=8></a><h2 align=center>CPU JAM/HLT instructions</h2>
 
-<p>JAM instructions work like hardware reset. If Reset vector points on
-any HLT type instruction then the emulator begins meditation after reset.
+<p>The 'JAM' instructions work like hardware reset. If the Reset vector points on
+any HLT type instruction then the emulator begins its meditation after the reset.
 
 
 
@@ -518,8 +509,8 @@ memory base<td>+
 [2] - you may use this bit as ordinal RAM storage.<br>
 [4] - always 0.<br>
 [5] - bit 5 has higher priority than bit 6.<br>
-[6] - its value 1 mutes both sound channels for Adlib &mdash; for PC speaker 
-and Sound Blaster this bit supported properly.<br>
+[6] - its value 1 mutes both sound channels for the Adlib &mdash; for the PC speaker 
+and Sound Blaster this bit is supported properly.<br>
 
 
 
@@ -546,7 +537,7 @@ text mode;
 <li>user port (parallel/centronics or serial/RS-232C with TTL logic up to
 19200 bauds!);
 <li>67 keys keyboard + reset button;
-<li>2 digital joysticks;
+<li>2 digital joysticks (the typical Atari joystick logic but with the atypical smaller connector);
 <li>datasette port (the same logic as for C-1530 but with another, smaller
 connector);
 <li>Commodore serial bus.
@@ -558,7 +549,7 @@ connector);
 
 <a name=12></a><h2 align=center>C+4 vs C64</h2>
 
-<p>The C+4 and C64 are very similar.  Why did success only come for the C64?  I think it is only one answer: the C64 is almost two years elder!  Below I place a table with quality/quantity comparison of the main features of both machines.  Who has won this data competition?...
+<p>The C+4 and C64 are very similar, but the C64 achieved greater success. The key difference? The C64 was released almost two years earlier! Below is a comparison table highlighting the main features of both machines. Who comes out on top in this data competition? Let's find out!
 
 <table align=center border=1 style=border-color:green;border-width:thin;border-style:solid;border-spacing:0px>
 <tr><th><th>C64 <th>C+4 <th>Notes
@@ -739,26 +730,25 @@ commands set (see table below).</p>
 <p>[1] - It doesn't support string literals (i.e. this command supports only 
 hex literals).<br>
 [2] - It shows the plus/4 screen.<br>
-[3] - This command is equivalent of G (Go) command with breakpoint set to the
+[3] - This command is equivalent of G (Go) command with a breakpoint set to the
 next assembler instruction, it is very useful for fast tracing
-subroutines (JSR) and back loops (BNE, BEQ, ...). Using P for trace JMP
+subroutines (JSR) and back loops (BNE, BEQ, ...). Using P for tracing the JMP
 instruction or forward conditional branches has no viewable sense.<br>
-[4] - It returns to the emulator and turns emulator to the non-debugger
-mode.<br>
-[5] - This command outputs time of instruction(s) execution. It hides
+[4] - It returns to the emulator and turns it to the non-debugger mode.<br>
+[5] - This command outputs the time of the instruction(s) execution. It hides
 interrupts during its execution but the interrupt execution time is displayed.
 Some interrupt handlers may change interrupt return point &mdash; this may
-throw T-command into endless loop &mdash; press F9 in this case.<br>
-[6] - After these commands emulator turns into debugger mode. In this mode F9
-causes to return to last debugger screen.<br>
-[7] - It has the same syntax as G command but instead of breakpoints it sets
-watchpoints (they break program execution if any byte at given
+throw T-command into an endless loop &mdash; press F9 in this case.<br>
+[6] - After these commands the emulator turns into debugger mode. In this mode F9
+causes to return to the last debugger screen.<br>
+[7] - It has the same syntax as the G command but instead of breakpoints it sets
+watchpoints (they break the program execution if any byte at the given
 addresses is rewritten).<br>
 [8] - It selects 25 or 50 rows debugger mode.<br>
-[9] - Immediate exit from emulator.<br>
-[10] - It breaks execution at given line.<br>
-[11] - This command is TED oriented &mdash; it invokes special mode of
-debugger &mdash; any other command returns debugger to the normal mode<br>
+[9] - Immediate exit from the emulator.<br>
+[10] - It breaks the execution at a given line.<br>
+[11] - This command is TED oriented &mdash; it invokes special mode of the
+debugger &mdash; any other command returns the debugger to normal mode<br>
 [12] - It also shows LINE (TED 1C & 1D registers pair value), POS (TED 1E
 register) and 2CPU (cycles performed by CPU for current instruction).<br>
 [14] - This command shows internal TED and emulated video display values,
@@ -901,30 +891,30 @@ or O (Watchpoint) commands slow the emulator but only on several percents.
 </pre>
 
 <p>You must enter all 2 or 4 digits in operands: don't miss leading zero(s)!
-This limitation is only applicable for entering 8501 assembler mnemonics, not
+This limitation is only applicable for entering the 8501 assembler mnemonics, not
 debugger commands. All spaces are ignored in the entered mnemonics between
 its natural delimiters (comma, brackets, $, #), e.g. you may enter: BNE$0672,
 LDA # $ 01, etc.). Some instructions (NOP1, NOP2, JAM, etc.) have the same
 mnemonics and operands structure: during assembling the minimal appropriate
 opcode is gotten.
 
-<p>The debugger uses command line editor which is built-in in the any DOS
+<p>The debugger uses command line editor which is built-in in any DOS
 core: thus you may use F1, F2, F3, F4, F5, Insert, Delete, Esc,
 and BackSpace keys for edit in any kind of DOS. You may also use ^C
-(Control-C) and ^S (Control-S) keys during text output. Some DOSes have
+(Control-C) and ^S (Control-S) keys during the text output. Some DOSes have
 extended command line editors or command like HISTORY.COM which can extend
 features of the editor.
 
 <p>If you want to save some debugger disassembler or dump output in a file,
-you may use standard DOS streams redirection technique, e.g.<br>
+you may use the standard DOS streams redirection technique, e.g.<br>
 &nbsp;&nbsp;<code>PLUS4 &lt;CMDS &gt;LISTING</code><br>
-will start normal emulator execution but after F9 all input will get from
-CMDS file and all output will send to LISTING. CMDS file must consists of
-debugger's commands (one command per a line) and last line in it ought to
+will start the normal emulator execution but after F9 all input will go from the
+CMDS file and all the output will send to LISTING. The CMDS file must consists of
+the debugger commands (one command per line) and the last line in it ought to
 be Q.
 
-<p>The debugger correct works with PRG and supports pure binary formats (with
-some other formats it can work as with pure binaries).
+<p>The debugger correctly works with PRG and supports pure binary formats (with
+some other formats it can work as with the pure binaries).
 
 <p>NOTE! The i/o menus are not available from the debugger, i.e. during
 execution G, O, or P commands.
@@ -933,7 +923,7 @@ execution G, O, or P commands.
 
 <a name=14></a><h2 align=center>CPU and TED Timing</h2>
 
-<p>Since version of 1.32 of the emulator the timing becomes 99.9% exact. FLI
+<p>Since version of 1.32 of the emulator the timing becomes 99.9% exact. Most FLI
 demos must work.
 
 <p>The emulator maximum frame rate is limited (for synchronization with the
@@ -945,64 +935,64 @@ speed).
 <a name=15></a><h2 align=center>Datasette Emulation</h2>
 
 <p>The CTF format is the best (at least for now) for the emulation of
-datasette. It has some features, which let CTF-file to look slightly better
-than real cassette.
+datasette. It has some features that even let a CTF-file to look slightly better
+than a real cassette.
 
-<p>Before cassette read, you can place datasette's head exactly on desired
-block (using menus). After reading last block on tape, head automatically
-moved to the position of the first block (= auto rewind).
+<p>Before the cassette read, you can place the datasette head exactly on the desired
+block (using menus). After reading the last block on the tape, the head automatically
+moves to the position of the first block (= auto rewind).
 
-<p>The datasette automatically moves head to the start of the tape's free space
+<p>The datasette automatically moves head to the start of the tape free space
 when the write operation begins. After writing the head is placed on
-the start of first block on the tape.
+the start of the first block on the tape.
 
-<p>WARNING!!! Activation of the tape motor not for i/o operation and then
+<p>WARNING!!! Activation of the tape motor not for i/o operations and then
 making attempt to access to the Commodore serial bus may produce a block of
 garbage on the tape (this situation is fully adequate the real one: press play
 & record on the real datasette with the tape then try to access to the serial
-bus and you get some unsense noise on the cassette...) or a block starting
+bus and you get some unsense noise on the cassette) or a block starting
 with garbage (this block may not be recognized in menus). To evade these small
-inconveniences press PLAY (& RECORD) on tape (Scroll Lock button on the PC
+inconveniences press PLAY (& RECORD) on tape (the Scroll Lock button on the PC
 keyboard) only after appropriate prompts.
 
-<p>TAP format is also supported for read operations only.
+<p>The TAP format is also supported but for the read operations only.
 
 
 <a name=16></a><h2 align=center>Menus</h2>
 
-<p>Menus accessible only when debugger is off. They provide a lot of
-the useful features missed on the real plus/4: freeze/restore current
-computer state (e.g. save game in any moment), devices manipulation, fast
+<p>Menus are accessible only when the debugger is off. They provide a lot of
+useful features missed on the real plus/4: freeze/restore the current
+computer state (e.g. save game in any moment), device manipulations, fast
 load/save and export/import data and programs, etc.
 
-<p>'Size' column shows size depend on image file type: in bytes for CTF
-files and in the blocks for D64 ones.
+<p>'Size' column shows size depend on image file type: in bytes for the CTF
+files and in blocks for the D64 files.
 
-<p>If in the 'Type' column for a block of a CTF file placed '?' (and
-appropriate size is equal to 0) then this means that this block is a
+<p>If in the 'Type' column for a block of a CTF file is placed '?' (and
+the appropriate size is equal to 0) then this means that this block is a
 turbo-block or a garbage-block.
 
-<p>Menus support mouse.
+<p>Menus support the mouse.
 
 
 
 <a name=17></a><h2 align=center>CTF Format</h2>
 
-<p>CTF &mdash; Commodore Tape File. It was developed before TAP format appeared.
+<p>CTF &mdash; Commodore Tape File. It was developed before the TAP format appeared.
 The CTF is 100% real cassette compatible (like TAP) and provides some
-structural information which allows to move head position to the beginning
-of every tape block (like T64). The CTF has unlimited capacity. The T64
-doesn't reflect the block nature of CBM method used for
+structural information which allows to move the head position to the beginning
+of every tape block (like T64). CTF has unlimited capacity. T64, unlike CTF,
+doesn't reflect the block nature of the CBM method used for
 writing on the tape. For example, it can't work with data files (via OPEN,
 PRINT#, CLOSE, ...) and turbo loaders and savers.
 
 <p>It's easy to convert T64 to CTF or CTF to TAP. Backward conversion is not
-formal and requires some AI. It's nearly impossible to convert general CTF or
-TAP data to T64 format. Conversion from TAP to CTF is much easier.
-CTF-file size is several times smaller than for the same data in the TAP
+formal and requires some AI. It's nearly impossible to convert the general CTF or
+TAP data to the T64 format. The conversion from TAP to CTF is much easier.
+The CTF-file size is several times smaller than for the same data in the TAP
 format.
 
-<p>TAP is only intermediate format to transfer data from the real tapes.
+<p>TAP is only the intermediate format to transfer data from the real tapes.
 It is the best for its fields but if you want to feel the taste of the full
 scaled job with datasette (data files, turbo savers, ...) then use CTF!
 Utility CTF2TAP may always convert CTF-file to the TAP form.
@@ -1029,9 +1019,9 @@ NNNN+4  BLOCK #2 TIME
 </pre>
 
 <p>Data at offset 0BH consist of bits which are value in the CPU datasette
-port through fix time periods (time constant at 0AH is equal to this period).
+port through fixed time periods (the time constant at 0AH is equal to this period).
 
-<p>Standard Commodore 264 tape block starts and ends with gap from max
+<p>The standard Commodore 264 tape block starts and ends with the gap of max
 frequency waves. Each byte of the information has the next structure:
 
 <p>[SM][B1][B2][B3][B4][B5][B6][B7][B8][B9];<br>
@@ -1048,15 +1038,15 @@ tape two times (with gap between them). The next nine bytes precede a block
 first time: 89h, 88h, .. 81h; and the next nine bytes precede a block second
 time: 9, 8, ..1.
 
-<p>Therefore each byte of data on the tape in standard Commodore 264 format
-occupies (9*6+12)*2=132bits=16.5bytes. The length of block in CTF file (in
+<p>Therefore each byte of data on the tape in the standard Commodore 264 format
+occupies (9*6+12)*2=132bits=16.5 bytes. The length of block in CTF file (in
 standard format) is approximately equal to [start gap length =4096]+[gap
 between blocks length =110]+[end gap length =49]+16.5*([length of block]+10).
-Many of the turbo savers (like NOVALOAD) may produce less than 3 bytes per
+Many of turbo savers (like NOVALOAD) may produce less than 3 bytes per
 each saved byte in a CTF file.
 
-<p>Each block (except program body block) in the standard Commodore 264 tape
-format after 9 marker bytes contains type specification byte, e.g.:
+<p>Each block (except the program body block) in the standard Commodore 264 tape
+format after 9 marker bytes contains the type specification byte, e.g.:
 
 <p>1 - standard (BASIC) program header (next block loaded at $1001)<br>
 2 - data block (created by PRINT# or CLOSE)<br>
@@ -1132,8 +1122,7 @@ from the command line.
 <a name=CLP></a><h2 align=center>Command Line Parameters</h2>
 
 <p>It is possible to use up to 12 parameters at the command line &mdash; the
-names of PRG/P0N/D64/CTF/TAP/C2F/ROM/CFG-files. These files will be
-loaded/attached automatically during startup of the emulator.
+names of PRG/P0n/D64/CTF/TAP/C2F/ROM/CFG-files. These files will be automatically loaded/attached during the emulator's startup.
 
 <p>Example.<br>
 <code>plus4 a.prg x\b.prg c.p01 e.d64 f.tap</code><br>
@@ -1181,7 +1170,7 @@ files.
 <code>plus4 1snd</code><br>
 selects Adlib card.
 
-<p>The option ? (question mark) may be used to show summary of command line
+<p>The option ? (question mark) may be used to show summary of the command line
 parameters.
 
 
