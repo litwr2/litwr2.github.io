@@ -558,12 +558,14 @@ connector);
 <tr><td>Version <td>2.0 <td>3.5 <td>
 <tr><td>Free memory, bytes <td>38911 <td>60671 <td>
 <tr><td>Total tokens <td>77 <td>128 <td>
-<tr><td>Special disk commands <td>- <td>+ <td>
+<tr><td>DOS commands <td>- <td>+ <td>The C64 doesn't even have a command that shows directory contents.<br>
+You have to load the contents as a file and then list it
 <tr><td>Graphics commands <td>- <td>+ <td>
 <tr><td>Structural commands <td>- <td>+ <td>
 <tr><td>Sound commands <td>- <td>+ <td>
 <tr><td>Joysticks commands <td>- <td>+ <td>
-<tr><td>Garbage collection <td>worse <td>better <td>
+<tr><td>Garbage collection <td>worse <td>better <td>This requires 2 bytes more for every string on the C+4
+<tr><td>Editor <td>worse <td>better <td>The C+4 has a set of ESC-commands that are implemented on the C128 too
 <tr><td>Speed  <td colspan=3>In full screen modes the C64 is slightly faster than the C+4, but in the screen blank case the C+4 is much faster
 
 <tr><th colspan=4 align=center>OTHER FIRMWARE
@@ -608,6 +610,9 @@ the C64 theoretically can use similar drives.<br>This advantage became insignifi
 <tr><td>Hires Resolution <td>320x200 <td>320x200 <td>The C+4 can use more lines: 288 (PAL) and 232 (NTSC) or even more.<br>
 The C64 may use sprites to extend the visible screen size. This allows,<br>for example to use 368x200 raster and even more
 <tr><td>Multicolor Resolution <td>160x200 <td>160x200 <td>Similarly to the above, the C+4 can use more lines,<br>while the C64 can improve on this mode by adding sprites
+<tr><td>Normal text mode <td>worse <td>better <td>The C+4 supports hardware flashing and more colors;<br>
+it can also use more rows: 80 bytes per row.<br>
+The C64 may use sprites to enhance this mode greatly
 <tr><td>Extended color text mode <td>+ <td>+ <td>
 <tr><td>Multicolor text mode <td>+ <td>+ <td>
 <tr><td>Hires Bitmap mode <td>+  <td>+ <td>
@@ -681,7 +686,7 @@ Serial Bus SRQ  <td>1  <td>- <td rowspan=8>      The C64 has 13 types of interru
 
 <p>The C+4 PAL can be switched to NTSC mode.  This breaks the video signal but speeds up the CPU to 2.21 MHz!
 
-<p>So, the C+4 has the faster CPU, a better BASIC and keyboard, a good ML monitor, a much faster RS-232C port, support for many more colors, more ROM and a resizable screen (1-29/36 rows on NTSC/PAL; fewer rows means the faster CPU).  It also has better handling of 256 characters.
+<p>So, the C+4 has a faster CPU, an enhanced BASIC with DOS commands, a better editor and keyboard, a good ML monitor, a much faster RS-232C port, support for many more colors, more ROM and a resizable screen (1-29/36 rows on NTSC/PAL; fewer rows means the faster CPU).  It also has better handling of 256 characters.
 
 <p>The C64 has typically slightly more usable RAM, slightly better multicolor bitmap mode, hardware sprites and much better synthesized music.  It also supports the paddles and the mouse!  The sprites offer a variety of additional capabilities.  The C64 also has more timers, which are more advanced, but this doesn't rather offer any practical advantages.
 
