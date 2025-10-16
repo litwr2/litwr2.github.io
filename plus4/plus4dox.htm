@@ -678,13 +678,13 @@ Serial Bus SRQ  <td>1  <td>- <td rowspan=8>      The C64 has 13 types of interru
 
 <p>The C+4 may also use Hires FLI graphics using 2 free colors in the 8x1 matrix but this fixes 16 colors for the whole screen and therefore reducing number of colors from 121 maximum.  This mode gives the same average number of colors per pixel as on the C64 and requires 16040 bytes per 320x200 screen, 640 bytes per 8 lines plus 40 bytes for the initialization.  The C+4 may also use Multicolor FLI graphics using 2 free colors in the 4x1 matrix but this again fixes 16 colors for the whole screen reducing total number of colors from 121 maximum.  The Multicolor FLI graphics keeps the two additional free colors free from this limitation allowing to use any of 121 colors.  So this mode gives (16*80+121*2+4*(160-82))/160 = 11.4625 for the average number of colors per pixel having 160/82 ≈ 1.951 for dots per free color shape.  This mode requires 16440 bytes per 160x200 screen.  These modes have been used very rarely and not properly documented.
 
-<p>The FLI/DFLI graphics requires some code to support it, about 20 bytes per line/dline.
+<p>The FLI/DFLI graphics requires some code to support it, about 20 bytes per line.
 
 <p>The C+4 can use interlacing graphics that doubles the number of raster lines.  Some programs use this.  But this feature is still not documented.  
 
 <p>The C+4 PAL can use PAL inverted colors that gives upto 112 additional colors and that gives resulting 233 colors total!
 
-<p>The C+4 PAL can be switched to NTSC mode.  This unfortunately breaks the video signal but speeds up the CPU to 2.21 MHz!  The effective frequency is slightly lower, at approximately 2.13 MHz when the screen is blank.  Nonetheless, this renders the C+4 faster than any other known 8-bit computer.
+<p>The C+4 PAL can be switched to NTSC mode.  This unfortunately breaks the video signal but speeds up the CPU to 2.22 MHz!  The effective frequency is slightly lower, at approximately 2.12 MHz when the screen is blank.  Nonetheless, this renders the C+4 faster than any other known 8-bit computer.
 
 <p>So, the C+4 has a faster CPU, an enhanced BASIC with DOS commands, a better editor and keyboard, a good ML monitor, a much faster RS-232C port, support for many more colors, more ROM and a resizable screen (1-29/36 rows on NTSC/PAL; fewer rows means the faster CPU).  It also has better handling of 256 characters.
 
