@@ -577,7 +577,7 @@ You have to load the contents as a file and then list it
 <tr><td>" NTSC <td>0.961 <td>1.046 <td>≈109%
 <tr><td>Effective CPU frequency<br>in screen blank mode,<br>MHz, PAL <td>0.985 <td>1.7 <td>≈173%
 <tr><td>" NTSC <td>1.023 <td>1.713 <td>≈167%
-<tr><td>RAM Total <td>64K <td>64K <td>The C64 can use upto about 1.5 KB RAM more than the C+4<br>because of I/O holes and color RAM.<br>However the C+4 gets 1 KB gain when we use a user defined charset.<br>So in this case the C64 advantage is only about .5 KB, and if the C64 doesn't<br>use color RAM and uses a user defined charset then the C+4 gets .5 KB gain
+<tr><td>RAM Total <td>64K <td>64K <td>The C64 can use upto about 1.5 KB RAM more than the C+4<br>because of I/O holes and color RAM.<br>However the C+4 can get 1 KB gain when we use a user defined charset.<br>So in this case the C64 advantage is only about .5 KB, and if the C64 doesn't<br>use color RAM and uses a user defined charset then the C+4 can get .5 KB gain
 <tr><td>I/O holes, byte <td>2(+4096)  <td>548  <td>C+4: CPU=2,IO=512(ACIA=16,PIO=16,KBD=16,<br>
 MAGIC VOICE SOUND=16,ROMSEL=16),TED=34.<br>
 C64: CPU=2,VIC=1024,SID=1024,VRAM=1024,CIA1=256,<br>
@@ -602,7 +602,6 @@ the C64 theoretically can use similar drives.<br>This advantage became insignifi
 
 <tr><th colspan=4 align=center>Keyboard
 <tr><td>Total keys <td>66 <td>67+Reset <td>
-<tr><td>Reset button <td>- <td>+ <td>
 <tr><td>Design <td>worse <td>better <td>The C+4 has separated cursor keys, the Esc key, and the doubled Control key.<br>The C64 has the Restore special key
 
 <tr><th colspan=4 align=center>Graphics
@@ -613,6 +612,12 @@ The C64 may use sprites to extend the visible screen size. This allows,<br>for e
 <tr><td>Normal text mode <td>worse <td>better <td>The C+4 supports hardware flashing and more colors;<br>
 it can also use more rows: 80 bytes per row.<br>
 The C64 may use sprites to enhance this mode greatly
+<tr><td>Hardware cursor <td>- <td>+ <td>
+<tr><td>256 chars. on screen <td>worse <td>better <td>The C64 has limits on the use of the upper 128 chars:<br>
+Kernal/Basic ROM assumes the reversed chars there
+<tr><td>Hardware reverse <td>- <td>+  <td>This allows automatically to produce inverted
+characters<br>
+saving 2K characters ROM and removing limits on the upper 128 chars
 <tr><td>Extended color text mode <td>+ <td>+ <td>
 <tr><td>Multicolor text mode <td>+ <td>+ <td>
 <tr><td>Hires Bitmap mode <td>+  <td>+ <td>
@@ -637,15 +642,9 @@ C+4 free colors: 2 per 4x2 matrix + 2 per line, 320/84<br>
 The C64 ability to use sprites is limited with FLI graphics
 <tr><td>MC FLI-64/DFLI+4, average<br>number of colors per pixel <td>10.45 <td>34.7125 <td>C64: (16*(17*40+8)+4*(1280-688))/1280<br>C+4: (121*(2*40+4)+4*(320-84))/320
 <tr><td>CPU cycles on a bad line<td>20/22 + 3 w/o<td>22 + 3 w/o<td>C64: no sprite fetches on this line, 22 - NTSC, 20 - PAL
-<tr><td>Hardware cursor <td>- <td>+ <td>
-<tr><td>256 chars. on screen <td>worse <td>better <td>The C64 has limits on the use of the upper 128 chars:<br>
-Kernal/Basic ROM assumes the reversed chars there
-<tr><td>Hardware reverse <td>- <td>+  <td>This allows automatically to produce inverted
-characters<br>
-saving 2K characters ROM and removing limits on the upper 128 chars
 <tr><td>X/Y-scrolling <td>+ <td>+ <td>
-<tr><td>Color RAM <td>0.5K <td>- <td>This gives less free colors in multicolor mode for the C+4.<br>
-Color RAM helps the C64 to handle video faster than the C+4,<br> and increases free RAM storage for some modes<br>
+<tr><td>Color RAM <td>0.5K <td>- <td>This gives less free colors in multicolor bitmap mode for the C+4.<br>
+Color RAM helps the C64 to handle video faster than the C+4<br> and increases free RAM storage for some modes<br>
 (the C+4 takes 1K of main memory for keeping color information)
 <tr><td>Hardware sprites <td>+ <td>- <td>The C64 can manage up to 8 24x21 sprites and even more,<br>
 automatically detects their collisions, etc.<br> But every sprite makes the C64 CPU slightly slower
