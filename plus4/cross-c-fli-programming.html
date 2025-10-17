@@ -170,7 +170,7 @@ More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli
 <h2>Sprite type 2 library</h2>
 <p>You can use this type over upto the 80x128 cell background.  Change VSIZE to get other heights.  The minimal VSIZE is 200 and this is two times faster than for the maximum 256.  The background consists of 2x2 cells and every cell can have any color.  The bitmap is fixed to $A5 pattern for each byte.  So the first 2x2 part color is fore and the second one is back.  Somehow this gets the old Apple Macintosh A5-world!  The sprite consists of 2x2 pixel tiles too and it can have almost any size!  You can mix the type 1 with the type 2.  The color 0 means the transparency.
 
-<p>Use macro <b>sprite_t2</b> to define a sprite.  Its arguments are identifier, width (must be the even and more than 2), the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 4x3 sprite <i>s3</i> that is placed at (41, 101)-coordinates and has only one dataset for all the movements but downward.  So this sprite is 2-phase animated only for this movement.<br>
+<p>Use macro <b>sprite_t2</b> to define a sprite.  Its arguments are identifier, width (must be the even), the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 4x3 sprite <i>s3</i> that is placed at (41, 101)-coordinates and has only one dataset for all the movements but downward.  So this sprite is 2-phase animated only for this movement.<br>
 <form><textarea type=text readonly cols=50 rows=5>
 sprite_t2 s3,4,3,41,101,1,1,1,2
 s3_l_sl
