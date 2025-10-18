@@ -618,8 +618,16 @@ Kernal/Basic ROM assumes the reversed chars there
 <tr><td>Hardware reverse <td>- <td>+  <td>This allows automatically to produce inverted
 characters<br>
 saving 2K characters ROM and removing limits on the upper 128 chars
+<tr><td>Hardware flashing <td>- <td>+  <td>This consumes 1 bit of the color byte
+<tr><td>Normal text mode,<br>
+bytes per screen <td>1501 <td>2001 <td>C64: 1000 (chars) + 500 (foreground) + 1 (background)<br>
+C+4: 1000 + 1000 + 1
 <tr><td>Extended color text mode <td>+ <td>+ <td>
-<tr><td>Multicolor text mode <td>+ <td>+ <td>
+<tr><td>Multicolor text mode <td>+ <td>+ <td>Both computers reduce the number of colors from the background byte<br>
+for a multicolor tile: C64 - 8 instead of 16, C+4 - 57 instead of 121
+<tr><td>Multicolor text mode,<br>
+bytes per screen <td>1503 <td>2003 <td>C64: 1000 + 500 + 3 (multicolors)<br>
+C+4: 1000 + 1000 + 3
 <tr><td>Hires Bitmap mode <td>+  <td>+ <td>
 <tr><td>Hires Bitmap mode,<br>bytes per screen <td>9000 <td>10000 <td>C64: 8000 (bitmap) + 1000 (colors)<br>C+4: 8000 + 2000, the C+4 can use more lines: 400 bytes per 8 lines
 <tr><td>Hires Bitmap mode,<br>dots per free color shape <td>32<td>32 <td>2 free colors in 8x8 matrix, 64/2<br>
