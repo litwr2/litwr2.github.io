@@ -623,8 +623,13 @@ saving 2K characters ROM and removing limits on the upper 128 chars
 bytes per screen <td>1501 <td>2001 <td>C64: 1000 (chars) + 500 (foreground) + 1 (background)<br>
 C+4: 1000 + 1000 + 1
 <tr><td>Extended color text mode <td>+ <td>+ <td>
+<tr><td>Extended color text mode,<br>
+bytes per screen <td>1504 <td>2004 <td>C64: 1000 + 500 + 4 (ext. colors)<br>
+C+4: 1000 + 1000 + 4
 <tr><td>Multicolor text mode <td>+ <td>+ <td>Both computers reduce the number of colors from the background byte<br>
-for a multicolor tile: C64 - 8 instead of 16, C+4 - 57 instead of 121
+for a multicolor tile: C64 - 8 instead of 16, C+4 - 57 instead of 121.<br>
+Similarly to the above, the C+4 can use more lines,<br>
+while the C64 can improve on this mode by adding sprites
 <tr><td>Multicolor text mode,<br>
 bytes per screen <td>1503 <td>2003 <td>C64: 1000 + 500 + 3 (multicolors)<br>
 C+4: 1000 + 1000 + 3
