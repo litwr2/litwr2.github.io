@@ -539,6 +539,18 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>arm1-4<td>ARM1<td align=right>540<td align=right>1680
 <tr><td>scpu64-7<td>65816<td align=right>250+768=1018<sup>*5</sup><td align=right>[1764+228+2]=1994<sup>*7</sup>
 <tr><td>apple2gs-1<td>65816<td align=right>250+768=1018<sup>*5</sup><td align=right>1906+416=2322<sup>*1</sup>
+<tr><td>bbc-65c02-10<td>65C02<td align=right>625+768=1393<sup>*5</sup><td align=right>[3604]+465+[177]=4246<sup>*7</sup>
+<tr><td>apple2c-65c02-5<td>65C02<td align=right>630+768=1398<sup>*5</sup><td align=right>4243+432=4675<sup>*1</sup>
+<tr><td>vic20-5<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>[3015+264+2]=3281<sup>*7</sup>
+<tr><td>pet-4<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>[3016+263+2]=3281<sup>*7</sup>
+<tr><td>bbc-nmos-10<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>[2979]+464+[177]=3620<sup>*7</sup>
+<tr><td>atari800xl-8<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>3188+[1326+177]=4691<sup>*7</sup>
+<tr><td>bbc-10<td>6502<td align=right>632+768=1400<sup>*5</sup><td align=right>[2980]+462+[177]=3619<sup>*7</sup>
+<tr><td>plus4-16<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3505+526+2]=4033<sup>*7</sup>
+<tr><td>cbm2-3<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3622+423+2]=4047<sup>*7</sup>
+<tr><td>apple2e-5<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>3735+437=4272<sup>*1</sup>
+<tr><td>c64-16<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3717+570+2]=4289<sup>*7</sup>
+<tr><td>c128-16<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3731+556+2]=4289<sup>*7</sup>
 <tr><td>msx-9<td>Z80<td align=right>725+768=1493<sup>*5</sup><td align=right>1799+452=2251<sup>*1</sup>
 <tr><td>abc800-4<td>Z80<td align=right>725+768=1493<sup>*5</sup><td align=right>4431<sup>*8</sup>
 <tr><td>zx-5<td>Z80<td align=right>725+768=1493<sup>*5</sup><td align=right>4666<sup>*3</sup>
@@ -553,18 +565,6 @@ ma.sort(function(a, b){ return a.t3000 - b.t3000 })
 <tr><td>cpm22bdos-18<td>Z80<td align=right>1078+768=1848<sup>*5</sup><td align=right>2541&mdash;2807
 <tr><td>tandy100-4<td>8085<td align=right>1425+768=2193<sup>*5</sup><td align=right>2469+415=2884<sup>*1</sup>
 <tr><td>cpm22bios-8080-7<td>8080<td align=right>1832+768=2600<sup>*5</sup><td align=right>3320&ndash;3325
-<tr><td>vic20-5<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>[3015+264+2]=3281<sup>*7</sup>
-<tr><td>pet-4<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>[3016+263+2]=3281<sup>*7</sup>
-<tr><td>bbc-10<td>6502<td align=right>632+768=1400<sup>*5</sup><td align=right>[2980]+462+[177]=3619<sup>*7</sup>
-<tr><td>bbc-nmos-10<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>[2979]+464+[177]=3620<sup>*7</sup>
-<tr><td>atari800xl-8<td>6502<td align=right>631+768=1399<sup>*5</sup><td align=right>3188+[1326+177]=4691<sup>*7</sup>
-<tr><td>plus4-16<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3505+526+2]=4033<sup>*7</sup>
-<tr><td>c64-16<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3717+570+2]=4289<sup>*7</sup>
-<tr><td>c128-16<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>[3731+556+2]=4289<sup>*7</sup>
-<tr><td>cbm2-3<td>6509<td align=right>636+768=1404<sup>*5</sup><td align=right>[3622+423+2]=4047<sup>*7</sup>
-<tr><td>apple2e-5<td>6502<td align=right>636+768=1404<sup>*5</sup><td align=right>3735+437=4272<sup>*1</sup>
-<tr><td>bbc-65c02-10<td>65C02<td align=right>625+768=1393<sup>*5</sup><td align=right>[3604]+465+[177]=4246<sup>*7</sup>
-<tr><td>apple2c-65c02-5<td>65C02<td align=right>630+768=1398<sup>*5</sup><td align=right>4243+432=4675<sup>*1</sup>
 </table>
 <td width=20px style=border-style:none>
 <td style=border-style:none>
@@ -574,7 +574,7 @@ Square brackets combine part sizes that are parts of one file.<br>
 <sup>*3</sup> it is a size of the TAP-file<br>
 <sup>*4</sup> it is a size of the assembler + C code without a loader and C-libraries<br>
 <sup>*5</sup> code size + the size of multiplication lookup table<br>
-<sup>*6</sup> the 6502 code may be shorter (1871+768=2639) &ndash; this makes it 1-2% slower<br>
+<sup>*6</sup><br>
 <sup>*7</sup> it is a sum of Asssember + Basic + header/loader code sizes.<br>
 <sup>*8</sup> it is a size of Basic text that contains embedded ML-code.<br>
 </table>
