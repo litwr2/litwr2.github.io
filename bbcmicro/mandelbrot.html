@@ -20,6 +20,17 @@ a {color:green}
 
 <p>All programs start at 0xE00 because they need 11.5 KB RAM for a lookup table, 16 KB RAM for video and 1 KB for its code.  So if you want to run it on the BBC Micro where PAGE is above 0xE00 you will need to use some trick.  These program can't be used with the 2nd processor.  You must load <code>M16CP</code> for a system with the co-pro.
 
+<p>An example of the mentioned tricks.<br>
+<textarea rows=5 cols=40 readonly>
+mode7
+*load m4 6800
+*tape
+pa.=&7000
+new
+fori%=0to2047step4:i%!&e00=i%!&6800:n.
+pa.=&e00
+*fx3,4
+call3584</textarea><br>&nbsp;
 </b>
 </div>
 </body>
