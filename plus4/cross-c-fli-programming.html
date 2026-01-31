@@ -128,7 +128,7 @@ The <b>delay</b> function with its argument equal to 1 does the same.
 <h2>Sprite type 1 library</h2>
 <p>You can use this type over upto the 80x128 cell background.  Change VSIZE to get other heights.  The minimal VSIZE is 200 and this is two times faster than for the maximum 256.  The background consists of 2x2 cells and every cell can have any color.  The bitmap is fixed to $A5 pattern for each byte.  So the first 2x2 part color is fore and the second one is back.  Somehow this gets the old Apple Macintosh A5-world!  The sprite consists of individual pixels and it can have almost any size!  However the only two colors are allowed in a sprite line.  If two sprites occupy the same line there will be the color clash.  The latter sprite supresses colors of the previous sprites.  You can mix the type 1 with the type 2.  Four colors are allowed for each line: transparent (0), multicolor 1, multicolor 2, and extra (3).  The extra color just uses another color from the background 4x2 matrix.  So it can be called a shifted transparency.
 
-<p>Use macro <b>sprite_t1</b> to define a sprite.  Its arguments are identifier, width (must be the multiple of 4), the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 8x2 sprite <i>s3</i> that is placed at (81, 198)-coordinates and has only one dataset for all the movements.  So this sprite is unanimated.<br>
+<p>Use macro <b>sprite_t1</b> to define a sprite.  Its arguments are identifier, width (must be the multiple of 4), height, the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 8x2 sprite <i>s3</i> that is placed at (81, 198)-coordinates and has only one dataset for all the movements.  So this sprite is unanimated.<br>
 <form><textarea type=text readonly cols=50 rows=6>
 sprite_t1 s3,8,2,81,198,1,1,1,1
 s3_l_sl
@@ -146,6 +146,25 @@ color_s3_d1
   byte $7e, $6e
   byte $53, $42</textarea>
 </form>
+This dataset element represents the next image.
+<table style=border:0px>
+<tr><td style=width:40px;color:#0;background-color:#f7dfff>$7e
+<td style=width:40px;color:#ffffff;background-color:#bca4ff>$6e
+<td style=width:40px;color:#0;background-color:#f7dfff>$7e
+<td style=width:40px;color:#ffffff;background-color:#bca4ff>$6e
+<td style=width:40px;color:#0;background-color:#f7dfff>$7e
+<td style=width:40px;color:#ffffff;background-color:#bca4ff>$6e
+<td style=width:40px;color:#0;background-color:#f7dfff>$7e
+<td style=width:40px;color:#ffffff;background-color:#bca4ff>$6e
+<tr><td style=width:40px;color:#ffffff;background-color:#b06364>$42
+<td style=width:40px;color:#0;background-color:#66b3b2>$53
+<td style=width:40px;color:#ffffff;background-color:#b06364>$42
+<td style=width:40px;color:#0;background-color:#66b3b2>$53
+<td style=width:40px;color:#ffffff;background-color:#b06364>$42
+<td style=width:40px;color:#0;background-color:#66b3b2>$53
+<td style=width:40px;color:#ffffff;background-color:#b06364>$42
+<td style=width:40px;color:#0;background-color:#66b3b2>$53
+</table>
 More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli-sprites>github</a>.  Actually it is quite easy to implement the the diagonal or other movements.  However the number of the dataset parts is limited to a number slightly above 64.  This limit can easily be removed.
 
 <p>Use functions <b>left_t1</b>, <b>right_t1</b>, <b>up_t1</b>, and <b>down_t1</b> to move a sprite.  You must <b>put_t1</b> your sprite.  There is also the <b>remove_t1</b> sprite function.  Just set your sprite definition address to the $e6-e7 zp-locations before the function invocations.  There are also functions <b>left2_t1</b>, <b>right2_t1</b>, <b>up2_t1</b>, and <b>down2_t1</b> that move a sprite by two pixels. For example, to move a sprite to the specified location use code similar to the next.<br>
@@ -170,7 +189,7 @@ More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli
 <h2>Sprite type 2 library</h2>
 <p>You can use this type over upto the 80x128 cell background.  Change VSIZE to get other heights.  The minimal VSIZE is 200 and this is two times faster than for the maximum 256.  The background consists of 2x2 cells and every cell can have any color.  The bitmap is fixed to $A5 pattern for each byte.  So the first 2x2 part color is fore and the second one is back.  Somehow this gets the old Apple Macintosh A5-world!  The sprite consists of 2x2 pixel tiles too and it can have almost any size!  You can mix the type 1 with the type 2.  The color 0 means the transparency.
 
-<p>Use macro <b>sprite_t2</b> to define a sprite.  Its arguments are identifier, width (must be the even), the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 4x3 sprite <i>s3</i> that is placed at (41, 101)-coordinates and has only one dataset for all the movements but downward.  So this sprite is 2-phase animated only for this movement.<br>
+<p>Use macro <b>sprite_t2</b> to define a sprite.  Its arguments are identifier, width (must be the even), height, the x-coordinate, the y-coordinate, the number of datasets for the left, right, up, and down movements.  For example, the next code defines the 4x3 sprite <i>s3</i> that is placed at (41, 101)-coordinates and has only one dataset for all the movements but downward.  So this sprite is 2-phase animated only for this movement.<br>
 <form><textarea type=text readonly cols=50 rows=5>
 sprite_t2 s3,4,3,41,101,1,1,1,2
 s3_l_sl
@@ -181,14 +200,46 @@ s3_d_sl word data_s3_d1, data_s3_d2</textarea>
 A dataset list for the every direction must have the proper label <i>ID_DIRECTION_sl</i> where <i>DIRECTION</i> may be <i>l</i>, <i>r</i>, <i>u</i>, <i>d</i>.  The definition of the lists must follow the sprite definition!  The order of the labels for the directions is mandatory.  A dataset element consists of colors, a byte per pixel.  Labels for color sets may be arbitrary.  Let's continue the example.<br>
 <form><textarea type=text readonly cols=50 rows=8>
 data_s3_d1
-  byte $66,$66,$99,$99
-  byte $99,$00,$00,$66
-  byte $66,$66,$99,$99
+  byte $66,$66,$19,$19
+  byte $19,$00,$00,$66
+  byte $66,$66,$19,$19
 data_s3_d2
-  byte $99,$99,$66,$66
-  byte $66,$00,$00,$99
-  byte $66,$66,$99,$99</textarea>
+  byte $19,$19,$66,$66
+  byte $66,$00,$00,$19
+  byte $66,$66,$19,$19</textarea>
 </form>
+These dataset elements represent the next images.
+<table style=border:0px>
+<tr><td style=width:160px><table style=border:0px>
+<tr><td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<tr><td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<td style=width:40px;color:#0>$00
+<td style=width:40px;color:#0>$00
+<td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<tr><td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+</table>
+<td>
+<td style=width:160px><table style=border:0px>
+<tr><td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<tr><td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#0>$00
+<td style=width:40px;color:#0>$00
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<tr><td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#adadff>$66
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+<td style=width:40px;color:#ffffff;background-color:#583c00>$19
+</table>
+</table>
 It is also necessary to reserve some additional memory for the sprite.  It must have label <i>saved_ID</i>.  Its size must be XSIZE*YSIZE bytes.  For instance, for the previous sprite we may use an allocation.<br>
 <form><textarea type=text readonly cols=50 rows=1>
 saved_s3 ds 4*3</textarea>
@@ -218,7 +269,7 @@ More examples are on <a href=https://github.com/litwr2/retro/tree/main/plus4/fli
 <h2>Auxilary library</h2>
 <p>The <b>delay</b> function simply delays for the specified number of frame ticks.  The number must be set in the A register.  The actual accuracy is about half a frame tick.
 
-<p>Function <b>getkmatrix</b> returns 8 bytes of the keyboard matrix status in <b>kmatrix</b>.  The next table describes it.
+<p>Function <b>getkmtrix</b> returns 8 bytes of the keyboard matrix status in <b>kmatrix</b>.  The next table describes it.
 <table border=1>
 <tr><th>  <th>0   <th>1   <th>2   <th>3   <th>4   <th>5   <th>6   <th>7
 <tr><th>0 <td>del <td>return <td>&#xa3; <td>help <td>f1  <td>f2  <td>f3  <td>@
